@@ -19,11 +19,3 @@ La versión más reciente de la aplicación puede encontrarse en la pestaña [re
 ```bash
 $ java -jar <archivo.jar>
 ```
-
-## Desarrollo
-
-Aquellos que deseen colaborar con el proyecto pueden consultar la [guía de desarrollo](./docs/Desarrollo.md).
-
-## Licencia
-
-Este repositorio se encuentra bajo la Licencia MIT.
