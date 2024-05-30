@@ -4,7 +4,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo 1
 
-* **Lucas Adlonate** - [Lucas Adlonate](https://github.com/laldonate96)
+* **Lucas Aldonate** - [Lucas Aldonate](https://github.com/laldonate96)
 * **Ignacio Orgeira** - [Ignacio Orgeira](https://github.com/nachoorgeira)
 * **Felipe Santellán** - [Felipe Santellán](https://github.com/FS-Grimm)
 * **Valentino Ceniceros** - [Valentino Ceniceros](https://github.com/vceniceros)
