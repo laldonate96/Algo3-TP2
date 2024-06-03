@@ -12,15 +12,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VerdaderoFalsoTest {
+    private Jugador jugador1;
+    private Jugador jugador2;
+
+    @BeforeEach
+    public void setUp() {
+        jugador1 = new Jugador("Jugador 1");
+        jugador2 = new Jugador("Jugador 2");
+    }
+
     @Test
     public void test01VerdaderoFalsoClasicoAsignaPuntajeCorrectoAJugadoresQueRespondieronCorrectamente() {
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Verdadero"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Verdadero"), jugador2);
 
@@ -40,9 +47,6 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test02VerdaderoFalsoClasicoAsignaPuntajeCorrectoAJugadoresQueRespondieronIncorrectamente() {
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Falso"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Falso"), jugador2);
 
@@ -62,9 +66,6 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test03VerdaderoFalsoConPenalidadAsignaPuntajeCorrectoAJugadoresQueRespondieronCorrectamente() {
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Verdadero"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Verdadero"), jugador2);
 
@@ -84,9 +85,6 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test04VerdaderoFalsoConPenalidadAsignaPuntajeCorrectoAJugadoresQueRespondieronIncorrectamente() {
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Falso"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Falso"), jugador2);
 

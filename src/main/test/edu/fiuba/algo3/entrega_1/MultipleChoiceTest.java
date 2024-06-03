@@ -12,15 +12,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultipleChoiceTest {
+    private Jugador jugador1;
+    private Jugador jugador2;
+
+    @BeforeEach
+    public void setUp() {
+        jugador1 = new Jugador("Jugador 1");
+        jugador2 = new Jugador("Jugador 2");
+    }
+
     @Test
     public void test01MultipleChoiceClasicoAsignaPuntajeCorrectoAJugadoresQueRespondieronCorrectamente() {
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador2);
 
@@ -45,9 +52,6 @@ public class MultipleChoiceTest {
 
     @Test
     public void test02MultipleChoiceClasicoAsignaPuntajeCorrectoAJugadoresQueRespondieronIncorrectamente() {
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 2"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 1"), jugador2);
 
@@ -72,9 +76,6 @@ public class MultipleChoiceTest {
 
     @Test
     public void test03MultipleChoiceConPenalidadAsignaPuntajeCorrectoAJugadoresQueRespondieronCorrectamente() {
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador2);
 
@@ -99,9 +100,6 @@ public class MultipleChoiceTest {
 
     @Test
     public void test04MultipleChoiceConPenalidadAsignaPuntajeCorrectoAJugadoresQueRespondieronIncorrectamente() {
-        Jugador jugador1 = new Jugador("Jugador 1");
-        Jugador jugador2 = new Jugador("Jugador 2");
-
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 2"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 1"), jugador2);
 
