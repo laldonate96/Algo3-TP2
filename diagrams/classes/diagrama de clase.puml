@@ -14,8 +14,9 @@ Class Respuesta{
     - contenido<String>
     - jugador :Jugador
     ---
-    + {static} respuesta(contenido<String>, jugador:Jugador)
+    + {static} Respuesta(contenido<String>, jugador:Jugador)
     + validarRespuesta(respuesta<String>)
+    + asignarPuntaje(puntos :Int)
 }
 
 interface ValidarRespuesta{
@@ -30,7 +31,7 @@ interface Penalizable{
 class PreguntaVerdaderoFalsoClasico implements ValidarRespuesta{
     - enunciado :String
     - respuestaCorrecta<String>
-    - int puntos
+    - puntos :Int
     ---
     + validarRespuestas(Respuestas<respuestas>)
     + validarRespuesta(respuesta :Respuesta)
@@ -39,7 +40,7 @@ class PreguntaVerdaderoFalsoClasico implements ValidarRespuesta{
 class PreguntaVerdaderoFalsoPenalizable implements ValidarRespuesta, Penalizable{
     - enunciado :String
     - respuestaCorrecta<String>
-    - int puntos
+    - puntos :Int
     ---
     + validarRespuestas(Respuestas<respuestas>)
     + validarRespuesta(respuesta :Respuesta)
@@ -50,7 +51,7 @@ class PreguntaMultipleChoiceClasico implements ValidarRespuesta{
     - enunciado :String
     - respuestaCorrecta<String>
     - opciones<String>;
-    - int puntos
+    - puntos :Int
     ---
     + validarRespuestas(Respuestas<respuestas>)
     + validarRespuesta(respuesta :Respuesta)
@@ -61,7 +62,7 @@ class PreguntaMultipleChoicePenalizable implements ValidarRespuesta, Penalizable
     - enunciado :String
     - respuestaCorrecta<String>
     - opciones<String>;
-    - int puntos
+    - puntos :Int
     ---
     + validarRespuestas(Respuestas<respuestas>)
     + validarRespuesta(respuesta :Respuesta)
