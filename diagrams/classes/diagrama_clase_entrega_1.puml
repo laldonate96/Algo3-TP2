@@ -1,0 +1,67 @@
+@startuml diagrama de clases
+title Diagrama de clases
+
+class Jugador{
+    - nombre: String
+    - puntos: int
+    ---
+    + Jugador(String nombre)
+    + sumarPuntos(Int puntos)
+    + obtenerPuntos()
+}
+
+Class Respuesta{
+    - contenido: List<String>
+    - jugador: Jugador
+    ---
+    + Respuesta(List<String> contenido, Jugador jugador)
+    + validarRespuesta(List<String> respuesta)
+}
+
+interface TipoPregunta {
+    + asignarPuntaje(Boolean esCorrecta, Respuesta respuesta)
+}
+
+class Clasica implements TipoPregunta{
+    - int puntaje
+    ---
+    + asignarPuntaje(Boolean esCorrecta, Respuesta respuesta)
+}
+
+class ConPenalidad implements TipoPregunta{
+    - int puntaje
+    ---
+    + asignarPuntaje(Boolean esCorrecta, Respuesta respuesta)
+}
+
+abstract class Pregunta {
+    - enunciado: String
+    - respuestaCorrecta: List<String>
+    ---
+    + validarRespuestas(List<Respuesta> respuestas)
+    + validarRespuesta(Respuesta respuesta)
+}
+
+class PreguntaVerdaderoFalso extends Pregunta {
+    - enunciado: String
+    - respuestaCorrecta: List<String>
+    ---
+    + validarRespuestas(List<Respuesta> respuestas)
+    + validarRespuesta(Respuesta respuesta)
+}
+
+class PreguntaMultipleChoice extends Pregunta {
+    - enunciado: String
+    - respuestaCorrecta: List<String>
+    - opciones: List<String>
+    ---
+    + validarRespuestas(List<Respuesta> respuestas)
+    + validarRespuesta(Respuesta respuesta)
+
+}
+
+Respuesta -l-> Jugador: "1"
+Pregunta -r-> TipoPregunta: "1"
+Pregunta -l.> Respuesta
+
+@enduml
