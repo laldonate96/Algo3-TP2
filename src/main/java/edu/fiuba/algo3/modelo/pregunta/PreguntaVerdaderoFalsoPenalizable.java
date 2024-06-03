@@ -4,12 +4,12 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
-public class PreguntaVerdaderoFalsoPenalizable implements Pregunta {
+public class PreguntaVerdaderoFalsoPenalizable implements ValidarRespuesta, Penalizable {
     private String enunciado;
-    private String respuestaCorrecta;
+    private List<String> respuestaCorrecta;
     private int puntos;
 
-    public PreguntaVerdaderoFalsoPenalizable(String enunciado, String respuestaCorrecta) {
+    public PreguntaVerdaderoFalsoPenalizable(String enunciado, List<String> respuestaCorrecta) {
         this.enunciado = enunciado;
         this.respuestaCorrecta = respuestaCorrecta;
         this.puntos = 1;
@@ -23,12 +23,17 @@ public class PreguntaVerdaderoFalsoPenalizable implements Pregunta {
     }
 
     @Override
+    public void penalizarRespuesta(Respuesta respuesta) {
+        respuesta.asignarPuntaje(-puntos);
+    }
+
+    @Override
     public void validarRespuesta(Respuesta respuesta) {
         boolean esCorrecta = respuesta.validarRespuesta(respuestaCorrecta);
         if (esCorrecta) {
             respuesta.asignarPuntaje(puntos);
         } else {
-            respuesta.asignarPuntaje(-puntos);
+            this.penalizarRespuesta(respuesta);
         }
     }
 }

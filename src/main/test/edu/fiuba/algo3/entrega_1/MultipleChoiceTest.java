@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.PreguntaMultipleChoiceClasico;
 import edu.fiuba.algo3.modelo.pregunta.PreguntaMultipleChoicePenalizable;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.respuesta.RespuestaMultipleChoice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,14 +18,18 @@ public class MultipleChoiceTest {
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
 
-        Respuesta respuesta1 = new RespuestaMultipleChoice(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
-        Respuesta respuesta2 = new RespuestaMultipleChoice(Arrays.asList("Opcion 1","Opcion 2"), jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaMultipleChoiceClasico("¿Cuáles de las siguientes opciones son correctas?", Arrays.asList("Opcion 1","Opcion 2"));
+        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(
+            "¿Cuáles de las siguientes opciones son correctas?", 
+            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
+            Arrays.asList("Opcion 1","Opcion 2")
+        );
 
         pregunta.validarRespuestas(respuestas);
 
@@ -40,14 +42,18 @@ public class MultipleChoiceTest {
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
 
-        Respuesta respuesta1 = new RespuestaMultipleChoice(Arrays.asList("Opcion 4","Opcion 2"), jugador1);
-        Respuesta respuesta2 = new RespuestaMultipleChoice(Arrays.asList("Opcion 3","Opcion 1"), jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 2"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 1"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaMultipleChoiceClasico("¿Cuáles de las siguientes opciones son correctas?", Arrays.asList("Opcion 1","Opcion 2"));
+        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(
+            "¿Cuáles de las siguientes opciones son correctas?", 
+            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
+            Arrays.asList("Opcion 1","Opcion 2")
+        );
 
         pregunta.validarRespuestas(respuestas);
 
@@ -56,18 +62,22 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test03MultipleChoicePenalizableAsignaPuntajeCorrectoAJugadoresQueRespondieronIncorrectamente() {
+    public void test03MultipleChoicePenalizableAsignaPuntajeCorrectoAJugadoresQueRespondieronCorrectamente() {
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
 
-        Respuesta respuesta1 = new RespuestaMultipleChoice(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
-        Respuesta respuesta2 = new RespuestaMultipleChoice(Arrays.asList("Opcion 1","Opcion 2"), jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaMultipleChoicePenalizable("¿Cuáles de las siguientes opciones son correctas?", Arrays.asList("Opcion 1","Opcion 2"));
+        PreguntaMultipleChoicePenalizable pregunta = new PreguntaMultipleChoicePenalizable(
+            "¿Cuáles de las siguientes opciones son correctas?", 
+            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
+            Arrays.asList("Opcion 1","Opcion 2")
+        );
 
         pregunta.validarRespuestas(respuestas);
 
@@ -80,14 +90,18 @@ public class MultipleChoiceTest {
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
 
-        Respuesta respuesta1 = new RespuestaMultipleChoice(Arrays.asList("Opcion 4","Opcion 2"), jugador1);
-        Respuesta respuesta2 = new RespuestaMultipleChoice(Arrays.asList("Opcion 3","Opcion 1"), jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 2"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 1"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaMultipleChoicePenalizable("¿Cuáles de las siguientes opciones son correctas?", Arrays.asList("Opcion 1","Opcion 2"));
+        PreguntaMultipleChoicePenalizable pregunta = new PreguntaMultipleChoicePenalizable(
+            "¿Cuáles de las siguientes opciones son correctas?", 
+            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
+            Arrays.asList("Opcion 1","Opcion 2")
+        );
 
         pregunta.validarRespuestas(respuestas);
 

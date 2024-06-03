@@ -4,15 +4,17 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
-public class PreguntaMultipleChoiceClasico implements Pregunta {
+public class PreguntaMultipleChoiceClasico implements ValidarRespuesta {
     private String enunciado;
     private List<String> respuestaCorrecta;
+    private List<String> opciones;
     private int puntos;
 
-    public PreguntaMultipleChoiceClasico(String enunciado, List<String> respuestaCorrecta) {
+    public PreguntaMultipleChoiceClasico(String enunciado, List<String> opciones, List<String> respuestaCorrecta) {
         this.enunciado = enunciado;
         this.respuestaCorrecta = respuestaCorrecta;
         this.puntos = 1;
+        this.opciones = opciones;
     }
 
     @Override

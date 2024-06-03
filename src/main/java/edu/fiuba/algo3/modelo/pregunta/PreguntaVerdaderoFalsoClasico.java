@@ -3,12 +3,12 @@ package edu.fiuba.algo3.modelo.pregunta;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import java.util.List;
 
-public class PreguntaVerdaderoFalsoClasico implements Pregunta {
+public class PreguntaVerdaderoFalsoClasico implements ValidarRespuesta {
     private String enunciado;
-    private String respuestaCorrecta;
+    private List<String> respuestaCorrecta;
     private int puntos;
 
-    public PreguntaVerdaderoFalsoClasico(String enunciado, String respuestaCorrecta) {
+    public PreguntaVerdaderoFalsoClasico(String enunciado, List<String> respuestaCorrecta) {
         this.enunciado = enunciado;
         this.respuestaCorrecta = respuestaCorrecta;
         this.puntos = 1;

@@ -1,13 +1,12 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.PreguntaVerdaderoFalsoClasico;
 import edu.fiuba.algo3.modelo.pregunta.PreguntaVerdaderoFalsoPenalizable;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.respuesta.RespuestaVerdaderoFalso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -19,14 +18,14 @@ public class VerdaderoFalsoTest {
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
 
-        Respuesta respuesta1 = new RespuestaVerdaderoFalso("Verdadero", jugador1);
-        Respuesta respuesta2 = new RespuestaVerdaderoFalso("Verdadero", jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Verdadero"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Verdadero"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaVerdaderoFalsoClasico("¿Las palomas vuelan?", "Verdadero");
+        PreguntaVerdaderoFalsoClasico pregunta = new PreguntaVerdaderoFalsoClasico("¿Las palomas vuelan?", Arrays.asList("Verdadero"));
 
         pregunta.validarRespuestas(respuestas);
 
@@ -39,14 +38,14 @@ public class VerdaderoFalsoTest {
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
 
-        Respuesta respuesta1 = new RespuestaVerdaderoFalso("Falso", jugador1);
-        Respuesta respuesta2 = new RespuestaVerdaderoFalso("Falso", jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Falso"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Falso"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaVerdaderoFalsoClasico("¿Las palomas vuelan?", "Verdadero");
+        PreguntaVerdaderoFalsoClasico pregunta = new PreguntaVerdaderoFalsoClasico("¿Las palomas vuelan?", Arrays.asList("Verdadero"));
 
         pregunta.validarRespuestas(respuestas);
 
@@ -59,14 +58,14 @@ public class VerdaderoFalsoTest {
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
 
-        Respuesta respuesta1 = new RespuestaVerdaderoFalso("Verdadero", jugador1);
-        Respuesta respuesta2 = new RespuestaVerdaderoFalso("Verdadero", jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Verdadero"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Verdadero"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaVerdaderoFalsoPenalizable("¿Las palomas vuelan?", "Verdadero");
+        PreguntaVerdaderoFalsoPenalizable pregunta = new PreguntaVerdaderoFalsoPenalizable("¿Las palomas vuelan?", Arrays.asList("Verdadero"));
 
         pregunta.validarRespuestas(respuestas);
 
@@ -79,14 +78,14 @@ public class VerdaderoFalsoTest {
         Jugador jugador1 = new Jugador("Jugador 1");
         Jugador jugador2 = new Jugador("Jugador 2");
 
-        Respuesta respuesta1 = new RespuestaVerdaderoFalso("Falso", jugador1);
-        Respuesta respuesta2 = new RespuestaVerdaderoFalso("Falso", jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Falso"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Falso"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaVerdaderoFalsoPenalizable("¿Las palomas vuelan?", "Verdadero");
+        PreguntaVerdaderoFalsoPenalizable pregunta = new PreguntaVerdaderoFalsoPenalizable("¿Las palomas vuelan?", Arrays.asList("Verdadero"));
 
         pregunta.validarRespuestas(respuestas);
 
