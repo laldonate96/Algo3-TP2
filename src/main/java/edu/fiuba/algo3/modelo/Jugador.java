@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.jugador;
+package edu.fiuba.algo3.modelo;
 
 public class Jugador {
     private int puntaje;

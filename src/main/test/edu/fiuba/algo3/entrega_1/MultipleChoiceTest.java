@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.pregunta.Clasica;
-import edu.fiuba.algo3.modelo.pregunta.ConPenalidad;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.DistribuidoraDePuntaje.Clasica;
+import edu.fiuba.algo3.modelo.DistribuidoraDePuntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,10 +44,8 @@ public class MultipleChoiceTest {
         respuestas.add(respuesta2);
 
         Pregunta pregunta = new MultipleChoice(
-            "¿Cuáles de las siguientes opciones son correctas?", 
-            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
-            Arrays.asList("Opcion 1","Opcion 2"),
-            clasica
+            "¿Cuáles de las siguientes opciones son correctas?",
+                Arrays.asList("Opcion 1","Opcion 2"), clasica, Arrays.asList("Opcion 1","Opcion 2", "Opcion 3")
         );
 
         pregunta.asignarPuntajes(respuestas);
@@ -66,9 +64,8 @@ public class MultipleChoiceTest {
         respuestas.add(respuesta2);
 
         Pregunta pregunta = new MultipleChoice(
-            "¿Cuáles de las siguientes opciones son correctas?", 
-            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
-            Arrays.asList("Opcion 1","Opcion 2"), clasica
+            "¿Cuáles de las siguientes opciones son correctas?",
+                Arrays.asList("Opcion 1","Opcion 2"), clasica, Arrays.asList("Opcion 1","Opcion 2", "Opcion 3")
         );
 
         pregunta.asignarPuntajes(respuestas);
@@ -87,10 +84,8 @@ public class MultipleChoiceTest {
         respuestas.add(respuesta2);
 
         Pregunta pregunta = new MultipleChoice(
-            "¿Cuáles de las siguientes opciones son correctas?", 
-            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
-            Arrays.asList("Opcion 1","Opcion 2"),
-            conPenalidad
+            "¿Cuáles de las siguientes opciones son correctas?",
+                Arrays.asList("Opcion 1","Opcion 2"), conPenalidad, Arrays.asList("Opcion 1","Opcion 2", "Opcion 3")
         );
 
         pregunta.asignarPuntajes(respuestas);
@@ -109,10 +104,8 @@ public class MultipleChoiceTest {
         respuestas.add(respuesta2);
 
         Pregunta pregunta = new MultipleChoice(
-            "¿Cuáles de las siguientes opciones son correctas?", 
-            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5"),
-            Arrays.asList("Opcion 1","Opcion 2"),
-            conPenalidad
+            "¿Cuáles de las siguientes opciones son correctas?",
+                Arrays.asList("Opcion 1","Opcion 2"), conPenalidad, Arrays.asList("Opcion 1","Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5")
         );
 
         pregunta.asignarPuntajes(respuestas);

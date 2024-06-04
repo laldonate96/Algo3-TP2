@@ -1,8 +1,7 @@
-package edu.fiuba.algo3.modelo.respuesta;
+package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.jugador.Jugador;
 import javafx.util.Pair;
 
 

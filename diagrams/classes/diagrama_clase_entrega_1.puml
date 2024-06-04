@@ -1,65 +1,62 @@
 @startuml diagrama de clases
+skinparam classAttributeIconSize 0
 title Diagrama de clases
 
 class Jugador{
     - nombre: String
-    - puntos: int
+    - puntaje: int
     ---
-    + Jugador(String nombre)
-    + sumarPuntos(Int puntos)
-    + obtenerPuntos()
+    + Jugador(nombre:String )
+    + sumarPuntaje(puntaje:int )
+    + obtenerPuntos():int
 }
 
 Class Respuesta {
     - contenido: List<String>
     - jugador: Jugador
     ---
-    + Respuesta(List<String> contenido, Jugador jugador)
-    + validarRespuesta(List<String> respuesta)
-    + asignarPuntaje(int puntaje)
+    + Respuesta(contenido:List<String>,jugador:Jugador )
+    + calcularCantidadRespuestas(respuestasCorrectas:List<String> ):Pair<Integer,Integer>
+    + sumarPuntaje(puntaje:int )
 }
 
-interface TipoPregunta {
-    + asignarPuntaje(int aciertos, int respuestasCorrectas , Respuesta respuesta)
+ abstract class DistribuidoraDePuntaje {
+     #totalCorrectas:int;
+     #puntaje:int;
+     + establecerTotalCorrectas(totalCorrectas:int )
+     + asignarPuntaje(respuesta:Respuesta , respuestasIncorrectas:int , respuestasCorrectas:int )
 }
 
-class Clasica implements TipoPregunta{
-    + asignarPuntaje(int aciertos, int respuestasCorrectas , Respuesta respuesta)
+class Clasica extends DistribuidoraDePuntaje{
+     + asignarPuntaje([super])
 }
 
-class ConPenalidad implements TipoPregunta{
-    + asignarPuntaje(int aciertos, int respuestasCorrectas , Respuesta respuesta)
+class ConPenalidad extends DistribuidoraDePuntaje{
+     + asignarPuntaje([super])
 }
 
 abstract class Pregunta {
     # enunciado: String
     # respuestasCorrectas: List<String>
     ---
-    + validarRespuestas(List<Respuesta> respuestasCorrectas)
+    + Pregunta(enunciado: String, respuestasCorrectas:List<String> ,distribuidoraDePuntaje:DistribuidoraDePuntaje )
+    + validarRespuestas(respuestas:List<Respuesta>)
     + validarRespuesta(Respuesta respuesta)
 }
 
-class PreguntaVerdaderoFalso extends Pregunta {
-    # enunciado: String
-    # respuestasCorrectas: List<String>
-    ---
-    + validarRespuestas(List<Respuesta> respuestas)
-    + validarRespuesta(Respuesta respuesta)
+class VerdaderoFalso extends Pregunta {
+    +VerdaderoOFalso([super])
 }
 
-class PreguntaMultipleChoice extends Pregunta {
-    # enunciado: String
-    # respuestasCorrectas: List<String>
-    - opciones: List<String>
-    ---
-    + validarRespuestas(List<Respuesta> respuestas)
-    + validarRespuesta(Respuesta respuesta)
+class MultipleChoice extends Pregunta {
+    #opciones: List<String>
+    +MultipleChoice([super],opciones: List<String> )
+    }
 
-}
 
-Respuesta -l-> Jugador: "1"
-Pregunta -r-> TipoPregunta: "1"
-Pregunta -l.> Respuesta
-TipoPregunta ..> Respuesta
+Jugador "1" <- Respuesta
+Pregunta -> "1" DistribuidoraDePuntaje
+Respuesta <.. Pregunta
+DistribuidoraDePuntaje ..> Respuesta
 
 @enduml
