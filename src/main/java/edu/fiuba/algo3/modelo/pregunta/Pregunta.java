@@ -6,22 +6,25 @@ import java.util.List;
 
 public abstract class Pregunta {
     protected String enunciado;
-    protected List<String> respuestasCorrectas;
-    protected TipoPregunta tipoPregunta;
+    protected List<String> correctas;
+    protected DistribucionPuntos distribucionPuntos;
 
-    public Pregunta(String enunciado, List<String> respuestasCorrectas, TipoPregunta tipoPregunta) {
+    public Pregunta(String enunciado, List<String> respuestasCorrectas, DistribucionPuntos distribucionPuntos) {
         this.enunciado = enunciado;
-        this.respuestasCorrectas = respuestasCorrectas;
-        this.tipoPregunta = tipoPregunta;
+        this.correctas = respuestasCorrectas;
+        this.distribucionPuntos = distribucionPuntos;
+        distribucionPuntos.establecerTotalCorrectas( this.correctas.size());
     }
 
-    public void validarRespuestas(List<Respuesta> respuestas) {
-        for (Respuesta respuesta : respuestas) {
-            validarRespuesta(respuesta, tipoPregunta);
-        }
-    };
+    public void asignarPuntajes(List<Respuesta> respuestas) {
 
-    public void validarRespuesta(Respuesta respuesta, TipoPregunta tipoPregunta) {
-        respuesta.validarRespuesta(respuestasCorrectas, tipoPregunta);
+        for (Respuesta respuesta : respuestas) {
+            asignarPuntaje(respuesta, distribucionPuntos);
+        }
+    }
+
+    public void asignarPuntaje(Respuesta respuesta, DistribucionPuntos distribucionPuntos) {
+        respuesta.verificarRespuesta(this.correctas);
+        distribucionPuntos.asignarPuntaje(respuesta);
     }
 }

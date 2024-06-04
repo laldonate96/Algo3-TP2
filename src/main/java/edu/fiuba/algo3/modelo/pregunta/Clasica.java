@@ -2,12 +2,14 @@ package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
-public class Clasica implements TipoPregunta {
-    private static final int PUNTAJE = 1;
+public class Clasica extends DistribucionPuntos {
+
+
 
     @Override
-    public void asignarPuntaje(int aciertos, int respuestasCorrectas, Respuesta respuesta) {
-        if (aciertos == respuestasCorrectas)
-            respuesta.asignarPuntaje(PUNTAJE);
+    public void asignarPuntaje(Respuesta respuesta) {
+        int respuestasCorrectas=respuesta.cantidadCorrectas();
+        if (totalCorrectas == respuestasCorrectas)
+            respuesta.sumarPuntaje(puntaje);
     }
 }

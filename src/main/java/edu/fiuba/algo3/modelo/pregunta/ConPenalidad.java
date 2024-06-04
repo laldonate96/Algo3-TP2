@@ -2,11 +2,14 @@ package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
-public class ConPenalidad implements TipoPregunta {
-    private static final int PUNTAJE = 1;
+public class ConPenalidad extends DistribucionPuntos {
+
+
 
     @Override
-    public void asignarPuntaje(int aciertos, int respuestasCorrectas, Respuesta respuesta) {
-        respuesta.asignarPuntaje((aciertos - (respuestasCorrectas - aciertos)) * PUNTAJE);
+    public void asignarPuntaje(Respuesta respuesta) {
+        int respuestasCorrectas=respuesta.cantidadCorrectas();
+        int respuestasIncorrectas=respuesta.cantidadIncorrectas();
+        respuesta.sumarPuntaje((respuestasCorrectas-respuestasIncorrectas) * puntaje);
     }
 }
