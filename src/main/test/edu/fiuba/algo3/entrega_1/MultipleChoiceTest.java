@@ -28,44 +28,40 @@ public class MultipleChoiceTest {
 
     @Test
     public void test01MultipleChoiceClasicoAsignaPuntajeCorrectoAJugadoresQueRespondieronCorrectamente() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador2);
+        TipoPregunta preguntaClasica = new Clasica();
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1, preguntaClasica);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador2, preguntaClasica);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        TipoPregunta preguntaClasica = new Clasica();
-
         Pregunta pregunta = new PreguntaMultipleChoice(
             "¿Cuáles de las siguientes opciones son correctas?", 
             Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
-            Arrays.asList("Opcion 1","Opcion 2"),
-            preguntaClasica
+            Arrays.asList("Opcion 1","Opcion 2")
         );
 
         pregunta.validarRespuestas(respuestas);
 
-        assertEquals(1, jugador1.obtenerPuntos());
-        assertEquals(1, jugador2.obtenerPuntos());
+        assertEquals(2, jugador1.obtenerPuntos());
+        assertEquals(2, jugador2.obtenerPuntos());
     }
 
     @Test
     public void test02MultipleChoiceClasicoAsignaPuntajeCorrectoAJugadoresQueRespondieronIncorrectamente() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 2"), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 1"), jugador2);
+        TipoPregunta preguntaClasica = new Clasica();
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 2"), jugador1, preguntaClasica);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 1"), jugador2, preguntaClasica);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        TipoPregunta preguntaClasica = new Clasica();
-
         Pregunta pregunta = new PreguntaMultipleChoice(
             "¿Cuáles de las siguientes opciones son correctas?", 
             Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
-            Arrays.asList("Opcion 1","Opcion 2"),
-            preguntaClasica
+            Arrays.asList("Opcion 1","Opcion 2")
         );
 
         pregunta.validarRespuestas(respuestas);
@@ -76,49 +72,45 @@ public class MultipleChoiceTest {
 
     @Test
     public void test03MultipleChoiceConPenalidadAsignaPuntajeCorrectoAJugadoresQueRespondieronCorrectamente() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador2);
+        TipoPregunta preguntaConPenalidad = new ConPenalidad();
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1, preguntaConPenalidad);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador2, preguntaConPenalidad);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        TipoPregunta preguntaConPenalidad = new ConPenalidad();
-
         Pregunta pregunta = new PreguntaMultipleChoice(
             "¿Cuáles de las siguientes opciones son correctas?", 
             Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
-            Arrays.asList("Opcion 1","Opcion 2"),
-            preguntaConPenalidad
+            Arrays.asList("Opcion 1","Opcion 2")
         );
 
         pregunta.validarRespuestas(respuestas);
 
-        assertEquals(1, jugador1.obtenerPuntos());
-        assertEquals(1, jugador2.obtenerPuntos());
+        assertEquals(2, jugador1.obtenerPuntos());
+        assertEquals(2, jugador2.obtenerPuntos());
     }
 
     @Test
     public void test04MultipleChoiceConPenalidadAsignaPuntajeCorrectoAJugadoresQueRespondieronIncorrectamente() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 2"), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 1"), jugador2);
+        TipoPregunta preguntaConPenalidad = new ConPenalidad();
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 4"), jugador1, preguntaConPenalidad);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 4"), jugador2, preguntaConPenalidad);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        TipoPregunta preguntaConPenalidad = new ConPenalidad();
-
         Pregunta pregunta = new PreguntaMultipleChoice(
             "¿Cuáles de las siguientes opciones son correctas?", 
-            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3"), 
-            Arrays.asList("Opcion 1","Opcion 2"),
-            preguntaConPenalidad
+            Arrays.asList("Opcion 1","Opcion 2", "Opcion 3", "Opcion 4"), 
+            Arrays.asList("Opcion 1","Opcion 2")
         );
 
         pregunta.validarRespuestas(respuestas);
 
-        assertEquals(-1, jugador1.obtenerPuntos());
-        assertEquals(-1, jugador2.obtenerPuntos());
+        assertEquals(-2, jugador1.obtenerPuntos());
+        assertEquals(-2, jugador2.obtenerPuntos());
     }
 }

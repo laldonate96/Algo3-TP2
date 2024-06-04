@@ -6,23 +6,20 @@ import java.util.List;
 
 public abstract class Pregunta {
     protected String enunciado;
-    protected TipoPregunta tipoPregunta;
-    protected List<String> respuestaCorrecta;
+    protected List<String> respuestasCorrectas;
 
-    public Pregunta(String enunciado, List<String> respuestaCorrecta, TipoPregunta tipoPregunta) {
+    public Pregunta(String enunciado, List<String> respuestasCorrectas) {
         this.enunciado = enunciado;
-        this.respuestaCorrecta = respuestaCorrecta;
-        this.tipoPregunta = tipoPregunta;
+        this.respuestasCorrectas = respuestasCorrectas;
     }
 
     public void validarRespuestas(List<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
-            boolean esCorrecta = validarRespuesta(respuesta);
-            tipoPregunta.asignarPuntaje(esCorrecta, respuesta);
+            validarRespuesta(respuesta);
         }
     };
 
-    public boolean validarRespuesta(Respuesta respuesta) {
-        return respuesta.validarRespuesta(respuestaCorrecta);
+    public void validarRespuesta(Respuesta respuesta) {
+        respuesta.validarRespuesta(respuestasCorrectas);
     }
 }

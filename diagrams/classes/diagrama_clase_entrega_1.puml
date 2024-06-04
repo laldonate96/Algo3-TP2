@@ -10,41 +10,38 @@ class Jugador{
     + obtenerPuntos()
 }
 
-Class Respuesta{
+Class Respuesta {
     - contenido: List<String>
     - jugador: Jugador
     ---
-    + Respuesta(List<String> contenido, Jugador jugador)
+    + Respuesta(List<String> contenido, Jugador jugador, TipoPregunta tipoPregunta)
     + validarRespuesta(List<String> respuesta)
+    + asignarPuntaje(int puntaje)
 }
 
 interface TipoPregunta {
-    + asignarPuntaje(Boolean esCorrecta, Respuesta respuesta)
+    + asignarPuntaje(int aciertos, int respuestasCorrectas , Respuesta respuesta)
 }
 
 class Clasica implements TipoPregunta{
-    - int puntaje
-    ---
-    + asignarPuntaje(Boolean esCorrecta, Respuesta respuesta)
+    + asignarPuntaje(int aciertos, int respuestasCorrectas , Respuesta respuesta)
 }
 
 class ConPenalidad implements TipoPregunta{
-    - int puntaje
-    ---
-    + asignarPuntaje(Boolean esCorrecta, Respuesta respuesta)
+    + asignarPuntaje(int aciertos, int respuestasCorrectas , Respuesta respuesta)
 }
 
 abstract class Pregunta {
     - enunciado: String
-    - respuestaCorrecta: List<String>
+    - respuestasCorrectas: List<String>
     ---
-    + validarRespuestas(List<Respuesta> respuestas)
+    + validarRespuestas(List<Respuesta> respuestasCorrectas)
     + validarRespuesta(Respuesta respuesta)
 }
 
 class PreguntaVerdaderoFalso extends Pregunta {
     - enunciado: String
-    - respuestaCorrecta: List<String>
+    - respuestasCorrectas: List<String>
     ---
     + validarRespuestas(List<Respuesta> respuestas)
     + validarRespuesta(Respuesta respuesta)
@@ -52,7 +49,7 @@ class PreguntaVerdaderoFalso extends Pregunta {
 
 class PreguntaMultipleChoice extends Pregunta {
     - enunciado: String
-    - respuestaCorrecta: List<String>
+    - respuestasCorrectas: List<String>
     - opciones: List<String>
     ---
     + validarRespuestas(List<Respuesta> respuestas)
@@ -61,7 +58,7 @@ class PreguntaMultipleChoice extends Pregunta {
 }
 
 Respuesta -l-> Jugador: "1"
-Pregunta -r-> TipoPregunta: "1"
+Respuesta --> TipoPregunta: "1"
 Pregunta -l.> Respuesta
 
 @enduml
