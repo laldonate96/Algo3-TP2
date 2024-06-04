@@ -9,15 +9,13 @@ import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 public class Respuesta {
     private List<String> contenido;
     private Jugador jugador;
-    private TipoPregunta tipoPregunta;
 
-    public Respuesta(List<String> contenido, Jugador jugador, TipoPregunta tipoPregunta) {
+    public Respuesta(List<String> contenido, Jugador jugador) {
         this.contenido = contenido;
         this.jugador = jugador;
-        this.tipoPregunta = tipoPregunta;
     }
 
-    public void validarRespuesta(List<String> respuestasCorrectas) {
+    public void validarRespuesta(List<String> respuestasCorrectas, TipoPregunta tipoPregunta) {
         int aciertos = 0;
         for (String respuesta : respuestasCorrectas) {
             if (contenido.contains(respuesta)) {

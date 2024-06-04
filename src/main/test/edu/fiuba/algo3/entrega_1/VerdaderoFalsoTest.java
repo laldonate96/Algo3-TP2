@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.pregunta.Clasica;
 import edu.fiuba.algo3.modelo.pregunta.ConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.PreguntaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 import java.util.ArrayList;
@@ -28,17 +27,14 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test01VerdaderoFalsoClasicoAsignaPuntajeCorrectoAJugadoresQueRespondieronCorrectamente() {
-        TipoPregunta preguntaClasica = new Clasica();
-        Respuesta respuesta1 = new Respuesta(Arrays.asList("Verdadero"), jugador1, preguntaClasica);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList("Verdadero"), jugador2, preguntaClasica);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Verdadero"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Verdadero"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        
-
-        Pregunta pregunta = new PreguntaVerdaderoFalso("¿Las palomas vuelan?", Arrays.asList("Verdadero"));
+        Pregunta pregunta = new PreguntaVerdaderoFalso("¿Las palomas vuelan?", Arrays.asList("Verdadero"), new Clasica());
 
         pregunta.validarRespuestas(respuestas);
 
@@ -48,15 +44,14 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test02VerdaderoFalsoClasicoAsignaPuntajeCorrectoAJugadoresQueRespondieronIncorrectamente() {
-        TipoPregunta preguntaClasica = new Clasica();
-        Respuesta respuesta1 = new Respuesta(Arrays.asList("Falso"), jugador1, preguntaClasica);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList("Falso"), jugador2, preguntaClasica);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Falso"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Falso"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaVerdaderoFalso("¿Las palomas vuelan?", Arrays.asList("Verdadero"));
+        Pregunta pregunta = new PreguntaVerdaderoFalso("¿Las palomas vuelan?", Arrays.asList("Verdadero"), new Clasica());
 
         pregunta.validarRespuestas(respuestas);
 
@@ -66,15 +61,14 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test03VerdaderoFalsoConPenalidadAsignaPuntajeCorrectoAJugadoresQueRespondieronCorrectamente() {
-        TipoPregunta preguntaConPenalidad = new ConPenalidad();
-        Respuesta respuesta1 = new Respuesta(Arrays.asList("Verdadero"), jugador1, preguntaConPenalidad);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList("Verdadero"), jugador2, preguntaConPenalidad);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Verdadero"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Verdadero"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaVerdaderoFalso("¿Las palomas vuelan?", Arrays.asList("Verdadero"));
+        Pregunta pregunta = new PreguntaVerdaderoFalso("¿Las palomas vuelan?", Arrays.asList("Verdadero"), new ConPenalidad());
 
         pregunta.validarRespuestas(respuestas);
 
@@ -84,15 +78,14 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void test04VerdaderoFalsoConPenalidadAsignaPuntajeCorrectoAJugadoresQueRespondieronIncorrectamente() {
-        TipoPregunta preguntaConPenalidad = new ConPenalidad();
-        Respuesta respuesta1 = new Respuesta(Arrays.asList("Falso"), jugador1, preguntaConPenalidad);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList("Falso"), jugador2, preguntaConPenalidad);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList("Falso"), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList("Falso"), jugador2);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new PreguntaVerdaderoFalso("¿Las palomas vuelan?", Arrays.asList("Verdadero"));
+        Pregunta pregunta = new PreguntaVerdaderoFalso("¿Las palomas vuelan?", Arrays.asList("Verdadero"), new ConPenalidad());
 
         pregunta.validarRespuestas(respuestas);
 

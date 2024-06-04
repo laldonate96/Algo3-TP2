@@ -14,7 +14,7 @@ Class Respuesta {
     - contenido: List<String>
     - jugador: Jugador
     ---
-    + Respuesta(List<String> contenido, Jugador jugador, TipoPregunta tipoPregunta)
+    + Respuesta(List<String> contenido, Jugador jugador)
     + validarRespuesta(List<String> respuesta)
     + asignarPuntaje(int puntaje)
 }
@@ -32,24 +32,24 @@ class ConPenalidad implements TipoPregunta{
 }
 
 abstract class Pregunta {
-    - enunciado: String
-    - respuestasCorrectas: List<String>
+    # enunciado: String
+    # respuestasCorrectas: List<String>
     ---
     + validarRespuestas(List<Respuesta> respuestasCorrectas)
     + validarRespuesta(Respuesta respuesta)
 }
 
 class PreguntaVerdaderoFalso extends Pregunta {
-    - enunciado: String
-    - respuestasCorrectas: List<String>
+    # enunciado: String
+    # respuestasCorrectas: List<String>
     ---
     + validarRespuestas(List<Respuesta> respuestas)
     + validarRespuesta(Respuesta respuesta)
 }
 
 class PreguntaMultipleChoice extends Pregunta {
-    - enunciado: String
-    - respuestasCorrectas: List<String>
+    # enunciado: String
+    # respuestasCorrectas: List<String>
     - opciones: List<String>
     ---
     + validarRespuestas(List<Respuesta> respuestas)
@@ -58,7 +58,8 @@ class PreguntaMultipleChoice extends Pregunta {
 }
 
 Respuesta -l-> Jugador: "1"
-Respuesta --> TipoPregunta: "1"
+Pregunta -r-> TipoPregunta: "1"
 Pregunta -l.> Respuesta
+TipoPregunta ..> Respuesta
 
 @enduml
