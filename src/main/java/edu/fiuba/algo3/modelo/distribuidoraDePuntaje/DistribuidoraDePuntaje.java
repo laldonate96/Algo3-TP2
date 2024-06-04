@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo.DistribuidoraDePuntaje;
+package edu.fiuba.algo3.modelo.distribuidoraDePuntaje;
 
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 public abstract class DistribuidoraDePuntaje {
     protected int totalCorrectas ;

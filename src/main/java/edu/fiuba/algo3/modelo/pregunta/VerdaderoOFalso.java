@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-
-import edu.fiuba.algo3.modelo.DistribuidoraDePuntaje.DistribuidoraDePuntaje;
+import edu.fiuba.algo3.modelo.distribuidoraDePuntaje.DistribuidoraDePuntaje;
 
 import java.util.List;
 

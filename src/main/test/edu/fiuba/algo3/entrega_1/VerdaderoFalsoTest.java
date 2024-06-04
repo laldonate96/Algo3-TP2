@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.DistribuidoraDePuntaje.Clasica;
-import edu.fiuba.algo3.modelo.DistribuidoraDePuntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoOFalso;
-import edu.fiuba.algo3.modelo.Respuesta;
+import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.distribuidoraDePuntaje.Clasica;
+import edu.fiuba.algo3.modelo.distribuidoraDePuntaje.ConPenalidad;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 import java.util.ArrayList;
 
