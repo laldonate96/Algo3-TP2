@@ -40,8 +40,8 @@ abstract class Pregunta {
     # respuestasCorrectas: List<String>
     ---
     + Pregunta(enunciado: String, respuestasCorrectas:List<String> ,distribuidoraDePuntaje:DistribuidoraDePuntaje )
-    + validarRespuestas(respuestas:List<Respuesta>)
-    + validarRespuesta(Respuesta respuesta)
+    + asignarPuntajes(respuestas:List<Respuesta>)
+    + asignarPuntaje(Respuesta respuesta)
 }
 
 class VerdaderoFalso extends Pregunta {
