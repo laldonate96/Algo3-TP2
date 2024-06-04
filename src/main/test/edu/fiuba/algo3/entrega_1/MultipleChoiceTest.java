@@ -43,8 +43,8 @@ public class MultipleChoiceTest {
 
         pregunta.validarRespuestas(respuestas);
 
-        assertEquals(2, jugador1.obtenerPuntos());
-        assertEquals(2, jugador2.obtenerPuntos());
+        assertEquals(1, jugador1.obtenerPuntos());
+        assertEquals(1, jugador2.obtenerPuntos());
     }
 
     @Test
