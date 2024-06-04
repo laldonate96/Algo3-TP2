@@ -2,14 +2,14 @@ package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
-public class Clasica extends DistribucionPuntos {
+public class Clasica extends DistribuidoraDePuntaje {
 
 
 
     @Override
-    public void asignarPuntaje(Respuesta respuesta) {
-        int respuestasCorrectas=respuesta.cantidadCorrectas();
-        if (totalCorrectas == respuestasCorrectas)
+    public void asignarPuntaje(Respuesta respuesta, int respuestasIncorrectas, int respuestasCorrectas) {
+        if (totalCorrectas == respuestasCorrectas) {
             respuesta.sumarPuntaje(puntaje);
+        }
     }
 }

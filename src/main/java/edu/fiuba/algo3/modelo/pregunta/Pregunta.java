@@ -1,30 +1,33 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import javafx.util.Pair;
 
 import java.util.List;
 
 public abstract class Pregunta {
     protected String enunciado;
     protected List<String> correctas;
-    protected DistribucionPuntos distribucionPuntos;
+    protected DistribuidoraDePuntaje distribuidoraDePuntaje;
 
-    public Pregunta(String enunciado, List<String> respuestasCorrectas, DistribucionPuntos distribucionPuntos) {
+    public Pregunta(String enunciado, List<String> respuestasCorrectas, DistribuidoraDePuntaje distribuidoraDePuntaje) {
         this.enunciado = enunciado;
         this.correctas = respuestasCorrectas;
-        this.distribucionPuntos = distribucionPuntos;
-        distribucionPuntos.establecerTotalCorrectas( this.correctas.size());
+        this.distribuidoraDePuntaje = distribuidoraDePuntaje;
+        distribuidoraDePuntaje.establecerTotalCorrectas( this.correctas.size());
     }
 
     public void asignarPuntajes(List<Respuesta> respuestas) {
 
         for (Respuesta respuesta : respuestas) {
-            asignarPuntaje(respuesta, distribucionPuntos);
+            asignarPuntaje(respuesta);
         }
     }
 
-    public void asignarPuntaje(Respuesta respuesta, DistribucionPuntos distribucionPuntos) {
-        respuesta.verificarRespuesta(this.correctas);
-        distribucionPuntos.asignarPuntaje(respuesta);
+    public void asignarPuntaje(Respuesta respuesta) {
+        Pair<Integer,Integer> cantidadRespuestas =respuesta.calcularCantidadRespuestas(this.correctas);
+        int respuestaIncorrectas = cantidadRespuestas.getKey();
+        int respuestasCorrectas = cantidadRespuestas.getValue();
+        distribuidoraDePuntaje.asignarPuntaje(respuesta, respuestaIncorrectas, respuestasCorrectas);
     }
 }

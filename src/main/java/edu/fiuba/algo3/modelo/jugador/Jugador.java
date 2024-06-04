@@ -13,7 +13,7 @@ public class Jugador {
         this.puntaje += puntaje;
     }
 
-    public int obtenerPuntos() {
+    public int obtenerPuntaje() {
         return puntaje;
     }
 }

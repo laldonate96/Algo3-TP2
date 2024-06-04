@@ -52,8 +52,8 @@ public class MultipleChoiceTest {
 
         pregunta.asignarPuntajes(respuestas);
 
-        assertEquals(1, jugador1.obtenerPuntos());
-        assertEquals(1, jugador2.obtenerPuntos());
+        assertEquals(1, jugador1.obtenerPuntaje());
+        assertEquals(1, jugador2.obtenerPuntaje());
     }
 
     @Test
@@ -73,8 +73,8 @@ public class MultipleChoiceTest {
 
         pregunta.asignarPuntajes(respuestas);
 
-        assertEquals(0, jugador1.obtenerPuntos());
-        assertEquals(0, jugador2.obtenerPuntos());
+        assertEquals(0, jugador1.obtenerPuntaje());
+        assertEquals(0, jugador2.obtenerPuntaje());
     }
 
     @Test
@@ -95,8 +95,8 @@ public class MultipleChoiceTest {
 
         pregunta.asignarPuntajes(respuestas);
 
-        assertEquals(2, jugador1.obtenerPuntos());
-        assertEquals(1, jugador2.obtenerPuntos());
+        assertEquals(2, jugador1.obtenerPuntaje());
+        assertEquals(1, jugador2.obtenerPuntaje());
     }
 
     @Test
@@ -117,7 +117,7 @@ public class MultipleChoiceTest {
 
         pregunta.asignarPuntajes(respuestas);
 
-        assertEquals(-2, jugador1.obtenerPuntos());
-        assertEquals(-2, jugador2.obtenerPuntos());
+        assertEquals(-2, jugador1.obtenerPuntaje());
+        assertEquals(-2, jugador2.obtenerPuntaje());
     }
 }

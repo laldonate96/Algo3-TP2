@@ -47,8 +47,8 @@ public class VerdaderoFalsoTest {
 
         pregunta.asignarPuntajes(respuestas);
 
-        assertEquals(1, jugador1.obtenerPuntos());
-        assertEquals(1, jugador2.obtenerPuntos());
+        assertEquals(1, jugador1.obtenerPuntaje());
+        assertEquals(1, jugador2.obtenerPuntaje());
     }
 
     @Test
@@ -64,8 +64,8 @@ public class VerdaderoFalsoTest {
 
         pregunta.asignarPuntajes(respuestas);
 
-        assertEquals(0, jugador1.obtenerPuntos());
-        assertEquals(0, jugador2.obtenerPuntos());
+        assertEquals(0, jugador1.obtenerPuntaje());
+        assertEquals(0, jugador2.obtenerPuntaje());
     }
 
     @Test
@@ -81,8 +81,8 @@ public class VerdaderoFalsoTest {
 
         pregunta.asignarPuntajes(respuestas);
 
-        assertEquals(1, jugador1.obtenerPuntos());
-        assertEquals(1, jugador2.obtenerPuntos());
+        assertEquals(1, jugador1.obtenerPuntaje());
+        assertEquals(1, jugador2.obtenerPuntaje());
     }
 
     @Test
@@ -98,7 +98,7 @@ public class VerdaderoFalsoTest {
 
         pregunta.asignarPuntajes(respuestas);
 
-        assertEquals(-1, jugador1.obtenerPuntos());
-        assertEquals(-1, jugador2.obtenerPuntos());
+        assertEquals(-1, jugador1.obtenerPuntaje());
+        assertEquals(-1, jugador2.obtenerPuntaje());
     }
 }
