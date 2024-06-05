@@ -10,8 +10,6 @@ public abstract class Pregunta {
     protected String enunciado;
     protected List<String> correctas;
     protected DistribuidoraDePuntaje distribuidoraDePuntaje;
-    private static final String RESPUESTAS_CORRECTAS = "correctas";
-    private static final String RESPUESTAS_INCORRECTAS = "incorrectas";
 
     public Pregunta(String enunciado, List<String> respuestasCorrectas, DistribuidoraDePuntaje distribuidoraDePuntaje) {
         this.enunciado = enunciado;
@@ -20,17 +18,14 @@ public abstract class Pregunta {
         distribuidoraDePuntaje.establecerTotalCorrectas( this.correctas.size());
     }
 
-    public void asignarPuntajes(List<Respuesta> respuestas) {
+    public void asignarPuntajes(List<Respuesta> opciones) {
 
-        for (Respuesta respuesta : respuestas) {
+        for (Respuesta respuesta : opciones) {
             asignarPuntaje(respuesta);
         }
     }
 
     public void asignarPuntaje(Respuesta respuesta) {
-        HashMap<String, Integer> cantidadRespuestas = respuesta.calcularCantidadRespuestas(this.correctas);
-        int respuestasCorrectas = cantidadRespuestas.getOrDefault(RESPUESTAS_CORRECTAS, 0);
-        int respuestaIncorrectas = cantidadRespuestas.getOrDefault(RESPUESTAS_INCORRECTAS, 0);
-        distribuidoraDePuntaje.asignarPuntaje(respuesta, respuestaIncorrectas, respuestasCorrectas);
+
     }
 }

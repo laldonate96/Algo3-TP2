@@ -39,13 +39,13 @@ public class VerdaderoFalsoTest {
         Respuesta respuesta1 = new Respuesta(List.of("Verdadero"), jugador1);
         Respuesta respuesta2 = new Respuesta(List.of("Verdadero"), jugador2);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+        List<Respuesta> opciones = new ArrayList<>();
+        opciones.add(respuesta1);
+        opciones.add(respuesta2);
 
         Pregunta pregunta = new VerdaderoOFalso("¿Las palomas vuelan?", List.of("Verdadero"), clasica);
 
-        pregunta.asignarPuntajes(respuestas);
+        pregunta.asignarPuntajes(opciones);
 
         assertEquals(1, jugador1.obtenerPuntaje());
         assertEquals(1, jugador2.obtenerPuntaje());
@@ -56,13 +56,13 @@ public class VerdaderoFalsoTest {
         Respuesta respuesta1 = new Respuesta(List.of("Falso"), jugador1);
         Respuesta respuesta2 = new Respuesta(List.of("Falso"), jugador2);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+        List<Respuesta> opciones = new ArrayList<>();
+        opciones.add(respuesta1);
+        opciones.add(respuesta2);
 
         Pregunta pregunta = new VerdaderoOFalso("¿Las palomas vuelan?", List.of("Verdadero"),clasica );
 
-        pregunta.asignarPuntajes(respuestas);
+        pregunta.asignarPuntajes(opciones);
 
         assertEquals(0, jugador1.obtenerPuntaje());
         assertEquals(0, jugador2.obtenerPuntaje());
@@ -73,13 +73,13 @@ public class VerdaderoFalsoTest {
         Respuesta respuesta1 = new Respuesta(List.of("Verdadero"), jugador1);
         Respuesta respuesta2 = new Respuesta(List.of("Verdadero"), jugador2);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+        List<Respuesta> opciones = new ArrayList<>();
+        opciones.add(respuesta1);
+        opciones.add(respuesta2);
 
         Pregunta pregunta = new VerdaderoOFalso("¿Las palomas vuelan?", List.of("Verdadero"), conPenalidad);
 
-        pregunta.asignarPuntajes(respuestas);
+        pregunta.asignarPuntajes(opciones);
 
         assertEquals(1, jugador1.obtenerPuntaje());
         assertEquals(1, jugador2.obtenerPuntaje());
@@ -90,13 +90,13 @@ public class VerdaderoFalsoTest {
         Respuesta respuesta1 = new Respuesta(List.of("Falso"), jugador1);
         Respuesta respuesta2 = new Respuesta(List.of("Falso"), jugador2);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+        List<Respuesta> opciones = new ArrayList<>();
+        opciones.add(respuesta1);
+        opciones.add(respuesta2);
 
         Pregunta pregunta = new VerdaderoOFalso("¿Las palomas vuelan?", List.of("Verdadero"), conPenalidad);
 
-        pregunta.asignarPuntajes(respuestas);
+        pregunta.asignarPuntajes(opciones);
 
         assertEquals(-1, jugador1.obtenerPuntaje());
         assertEquals(-1, jugador2.obtenerPuntaje());

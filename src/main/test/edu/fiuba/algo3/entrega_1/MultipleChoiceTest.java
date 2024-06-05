@@ -39,16 +39,16 @@ public class MultipleChoiceTest {
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador2);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+        List<Respuesta> opciones = new ArrayList<>();
+        opciones.add(respuesta1);
+        opciones.add(respuesta2);
 
         Pregunta pregunta = new MultipleChoice(
             "¿Cuáles de las siguientes opciones son correctas?",
                 Arrays.asList("Opcion 1","Opcion 2"), clasica, Arrays.asList("Opcion 1","Opcion 2", "Opcion 3")
         );
 
-        pregunta.asignarPuntajes(respuestas);
+        pregunta.asignarPuntajes(opciones);
 
         assertEquals(1, jugador1.obtenerPuntaje());
         assertEquals(1, jugador2.obtenerPuntaje());
@@ -59,16 +59,16 @@ public class MultipleChoiceTest {
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 2"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 1"), jugador2);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+        List<Respuesta> opciones = new ArrayList<>();
+        opciones.add(respuesta1);
+        opciones.add(respuesta2);
 
         Pregunta pregunta = new MultipleChoice(
             "¿Cuáles de las siguientes opciones son correctas?",
                 Arrays.asList("Opcion 1","Opcion 2"), clasica, Arrays.asList("Opcion 1","Opcion 2", "Opcion 3")
         );
 
-        pregunta.asignarPuntajes(respuestas);
+        pregunta.asignarPuntajes(opciones);
 
         assertEquals(0, jugador1.obtenerPuntaje());
         assertEquals(0, jugador2.obtenerPuntaje());
@@ -79,16 +79,16 @@ public class MultipleChoiceTest {
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 1","Opcion 2"), jugador1);
         Respuesta respuesta2 = new Respuesta(List.of("Opcion 1"), jugador2);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+        List<Respuesta> opciones = new ArrayList<>();
+        opciones.add(respuesta1);
+        opciones.add(respuesta2);
 
         Pregunta pregunta = new MultipleChoice(
             "¿Cuáles de las siguientes opciones son correctas?",
                 Arrays.asList("Opcion 1","Opcion 2"), conPenalidad, Arrays.asList("Opcion 1","Opcion 2", "Opcion 3")
         );
 
-        pregunta.asignarPuntajes(respuestas);
+        pregunta.asignarPuntajes(opciones);
 
         assertEquals(2, jugador1.obtenerPuntaje());
         assertEquals(1, jugador2.obtenerPuntaje());
@@ -99,16 +99,16 @@ public class MultipleChoiceTest {
         Respuesta respuesta1 = new Respuesta(Arrays.asList("Opcion 3","Opcion 4"), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList("Opcion 3","Opcion 4"), jugador2);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+        List<Respuesta> opciones = new ArrayList<>();
+        opciones.add(respuesta1);
+        opciones.add(respuesta2);
 
         Pregunta pregunta = new MultipleChoice(
             "¿Cuáles de las siguientes opciones son correctas?",
                 Arrays.asList("Opcion 1","Opcion 2"), conPenalidad, Arrays.asList("Opcion 1","Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5")
         );
 
-        pregunta.asignarPuntajes(respuestas);
+        pregunta.asignarPuntajes(opciones);
 
         assertEquals(-2, jugador1.obtenerPuntaje());
         assertEquals(-2, jugador2.obtenerPuntaje());
