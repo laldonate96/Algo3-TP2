@@ -19,4 +19,14 @@ public class Respuesta {
     public void sumarPuntaje(int puntaje) {
         jugador.sumarPuntaje(puntaje);
     }
+
+    public List<Opcion> getOpciones() {
+        return opciones;
+    }
+
+    public void validarOpcion(Opcion opcionCorrecta) {
+        for (Opcion opcion : opciones) {
+            opcion.equals(opcionCorrecta);
+        }
+    }
 }
