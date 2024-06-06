@@ -20,18 +20,18 @@ Class Respuesta {
     + sumarPuntaje(puntaje:int )
 }
 
- abstract class DistribuidoraDePuntaje {
+ abstract class Puntaje {
      #totalCorrectas:int;
      #puntaje:int;
      + establecerTotalCorrectas(totalCorrectas:int )
      + asignarPuntaje(respuesta:Respuesta , respuestasIncorrectas:int , respuestasCorrectas:int )
 }
 
-class Clasica extends DistribuidoraDePuntaje{
+class Clasica extends Puntaje{
      + asignarPuntaje([super])
 }
 
-class ConPenalidad extends DistribuidoraDePuntaje{
+class ConPenalidad extends Puntaje{
      + asignarPuntaje([super])
 }
 
@@ -53,10 +53,36 @@ class MultipleChoice extends Pregunta {
     +MultipleChoice([super],opciones: List<String> )
     }
 
+class Opcion {
+    -descripcion :String
+    -estado :Estado
+    -equals(opcion :Opcion) :Bool
+    ---
+    {static}+ Opcion(descripcion :String, estado :Estado)
+    {static}+ Opcion(descripcion :String, estado :Estado)
+    +cambiarEstado(Estado estado)
+    +esCorrecta():Bool
+    +siIgualActualizarEstado(Opcion opcionCorrecta) :Bool
+}
+
+interface Estado{
+    +esCorrecta():Bool
+}
+
+class Correcta implements Estado{
+    +esCorrecta():Bool   
+}
+
+class Incorrecta implements Estado{
+    +esCorrecta():Bool
+}
 
 Jugador "1" <- Respuesta
-Pregunta -> "1" DistribuidoraDePuntaje
+Pregunta -l-> "1" Puntaje
 Respuesta <.. Pregunta
-DistribuidoraDePuntaje ..> Respuesta
+Puntaje ..> Respuesta
+Opcion *-- Estado
+Pregunta -d-> Opcion: "1..*"
+Respuesta -> Opcion:"1..*"
 
 @enduml
