@@ -5,17 +5,16 @@ import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Pregunta {
     protected String enunciado;
-    protected List<Opcion> correctas;
     protected List<Opcion> opciones;
     protected Puntaje Puntaje;
 
-    public Pregunta(String enunciado, List<Opcion> opciones, List<Opcion> correctas, Puntaje Puntaje) {
+    public Pregunta(String enunciado, List<Opcion> opciones, Puntaje Puntaje) {
         this.enunciado = enunciado;
         this.opciones = opciones;
-        this.correctas = correctas;
         this.Puntaje = Puntaje;
     }
 
@@ -31,8 +30,8 @@ public class Pregunta {
     }
 
     public void verificarOpciones(Respuesta respuesta) {
-        for (Opcion opcionCorrecta : this.correctas) {
-            respuesta.validarOpcion(opcionCorrecta);
+        for (Opcion opcionPregunta : opciones) {
+            respuesta.validarOpcion(opcionPregunta);
         }
     }
 }

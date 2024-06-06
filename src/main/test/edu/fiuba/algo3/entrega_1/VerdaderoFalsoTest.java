@@ -23,8 +23,6 @@ public class VerdaderoFalsoTest {
     private Jugador jugador2;
     private Opcion opcion1;
     private Opcion opcion2;
-    private Estado correcta;
-    private Opcion opcionCorrecta;
     private static Clasica clasica;
     private static ConPenalidad conPenalidad;
 
@@ -38,10 +36,8 @@ public class VerdaderoFalsoTest {
     public void setUp() {
         jugador1 = new Jugador("Jugador 1");
         jugador2 = new Jugador("Jugador 2");
-        opcion1 = new Opcion("Verdadero");
+        opcion1 = new Opcion("Verdadero", new Correcta());
         opcion2 = new Opcion("Falso");
-        correcta = new Correcta();
-        opcionCorrecta = new Opcion("Verdadero", correcta);
     }
 
     @Test
@@ -53,7 +49,7 @@ public class VerdaderoFalsoTest {
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new Pregunta("¿Las palomas vuelan?", List.of(opcion1, opcion2), List.of(opcionCorrecta), clasica);
+        Pregunta pregunta = new Pregunta("¿Las palomas vuelan?", List.of(opcion1, opcion2), clasica);
 
         pregunta.asignarPuntajes(respuestas);
 
@@ -70,7 +66,7 @@ public class VerdaderoFalsoTest {
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new Pregunta("¿Las palomas vuelan?", List.of(opcion1, opcion2), List.of(opcionCorrecta), conPenalidad);
+        Pregunta pregunta = new Pregunta("¿Las palomas vuelan?", List.of(opcion1, opcion2), conPenalidad);
 
         pregunta.asignarPuntajes(respuestas);
 

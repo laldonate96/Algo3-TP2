@@ -18,6 +18,10 @@ public class Opcion {
         this.estado = estado;
     }
 
+    private boolean equals(Opcion opcion){
+        return (this.texto).equals(opcion.texto);
+    }
+
     public void cambiarEstado(Estado estado) {
         this.estado = estado;
     }
@@ -26,13 +30,9 @@ public class Opcion {
         return estado.esCorrecta();
     }
 
-    public String getTexto() {
-        return texto;
-    }
-
-    public boolean equals(Opcion opcion) {
-        if (opcion.getTexto().equals(texto)) {
-            this.cambiarEstado(new Correcta());
+    public boolean siIgualActualizarEstado(Opcion opcionCorrecta) {
+        if (opcionCorrecta.equals(this)) {
+            this.cambiarEstado(opcionCorrecta.estado);
             return true;
         }
         return false;

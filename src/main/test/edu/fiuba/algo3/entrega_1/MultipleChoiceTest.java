@@ -24,10 +24,10 @@ public class MultipleChoiceTest {
     private Opcion opcion1;
     private Opcion opcion2;
     private Opcion opcion3;
-    private Estado correcta;
-    private List<Opcion> opcionesCorrectas;
     private static Clasica clasica;
     private static ConPenalidad conPenalidad;
+    private Opcion opcion1Incorrecta;
+    private Opcion opcion2Incorrecta;
 
     @BeforeAll
     public static void setUpClass() {
@@ -39,20 +39,17 @@ public class MultipleChoiceTest {
     public void setUp() {
         jugador1 = new Jugador("Jugador 1");
         jugador2 = new Jugador("Jugador 2");
-        opcion1 = new Opcion("Opcion 1");
-        opcion2 = new Opcion("Opcion 2");
+        opcion1Incorrecta = new Opcion("Opcion 1");
+        opcion2Incorrecta = new Opcion("Opcion 2");
+        opcion1 = new Opcion("Opcion 1", new Correcta());
+        opcion2 = new Opcion("Opcion 2", new Correcta());
         opcion3 = new Opcion("Opcion 3");
-        correcta = new Correcta();
-        opcionesCorrectas = Arrays.asList(
-            new Opcion("Opcion 1", correcta),
-            new Opcion("Opcion 2", correcta)
-        );
     }
 
     @Test
     public void test01MultipleChoiceClasicoAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1, opcion2), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion1, opcion2), jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1Incorrecta, opcion2Incorrecta), jugador1);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion1Incorrecta, opcion2Incorrecta), jugador2);
 
         List<Respuesta> opciones = new ArrayList<>();
         opciones.add(respuesta1);
@@ -61,8 +58,7 @@ public class MultipleChoiceTest {
         Pregunta pregunta = new Pregunta(
             "¿Cuáles de las siguientes opciones son correctas?",
             Arrays.asList(opcion1, opcion2, opcion3),
-            opcionesCorrectas,
-            clasica
+                clasica
         );
 
         pregunta.asignarPuntajes(opciones);
@@ -73,7 +69,7 @@ public class MultipleChoiceTest {
 
     @Test
     public void test02MultipleChoiceConPenalidadAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1, opcion2), jugador1);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1Incorrecta, opcion2Incorrecta), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion3), jugador2);
 
         List<Respuesta> opciones = new ArrayList<>();
@@ -83,8 +79,7 @@ public class MultipleChoiceTest {
         Pregunta pregunta = new Pregunta(
             "¿Cuáles de las siguientes opciones son correctas?",
             Arrays.asList(opcion1, opcion2, opcion3),
-            opcionesCorrectas,
-            conPenalidad
+                conPenalidad
         );
 
         pregunta.asignarPuntajes(opciones);
