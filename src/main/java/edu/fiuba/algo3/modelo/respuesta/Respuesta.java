@@ -24,9 +24,9 @@ public class Respuesta {
         return opciones;
     }
 
-    public void validarOpcion(Opcion opcionCorrecta) {
+    public void validarOpcion(Opcion opcionPregunta) {
         for (Opcion opcion : opciones) {
-            opcion.equals(opcionCorrecta);
+            opcion.siIgualActualizarEstado(opcionPregunta);
         }
     }
 }
