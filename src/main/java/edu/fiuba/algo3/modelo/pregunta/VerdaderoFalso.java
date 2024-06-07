@@ -5,8 +5,8 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 
 import java.util.List;
 
-public class MultipleChoice extends Pregunta {
-    public MultipleChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje) {
+public class VerdaderoFalso extends Pregunta {
+    public VerdaderoFalso(String enunciado, List<Opcion> opciones, Puntaje puntaje) {
         super(enunciado, opciones, puntaje);
     }
 }

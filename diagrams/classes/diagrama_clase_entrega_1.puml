@@ -6,42 +6,42 @@ class Jugador{
     - nombre: String
     - puntaje: int
     ---
-    + Jugador(nombre:String )
-    + sumarPuntaje(puntaje:int )
-    + obtenerPuntos():int
+    + Jugador(nombre: String)
+    + sumarPuntaje(puntaje: int)
+    + obtenerPuntaje(): int
 }
 
 Class Respuesta {
-    - contenido: List<String>
+    - contenido: List<Opcion>
     - jugador: Jugador
     ---
-    + Respuesta(contenido:List<String>,jugador:Jugador )
-    + calcularCantidadRespuestas(respuestasCorrectas:List<String> ):Pair<Integer,Integer>
-    + sumarPuntaje(puntaje:int )
+    + Respuesta(opciones: List<Opcion>,jugador: Jugador )
+    + sumarPuntaje(puntaje: int)
+    + obtenerOpciones(): List<Opcion>
+    + validarOpcion(opcion: Opcion)
 }
 
- abstract class DistribuidoraDePuntaje {
-     #totalCorrectas:int;
-     #puntaje:int;
-     + establecerTotalCorrectas(totalCorrectas:int )
-     + asignarPuntaje(respuesta:Respuesta , respuestasIncorrectas:int , respuestasCorrectas:int )
+ abstract class Puntaje {
+     # puntaje: int
+     + asignarPuntaje(respuesta: Respuesta)
 }
 
-class Clasica extends DistribuidoraDePuntaje{
+class Clasica extends Puntaje{
      + asignarPuntaje([super])
 }
 
-class ConPenalidad extends DistribuidoraDePuntaje{
+class ConPenalidad extends Puntaje{
      + asignarPuntaje([super])
 }
 
 abstract class Pregunta {
     # enunciado: String
-    # respuestasCorrectas: List<String>
+    # opciones: List<Opcion>
     ---
-    + Pregunta(enunciado: String, respuestasCorrectas:List<String> ,distribuidoraDePuntaje:DistribuidoraDePuntaje )
-    + asignarPuntajes(respuestas:List<Respuesta>)
-    + asignarPuntaje(Respuesta respuesta)
+    + Pregunta(enunciado: String, opciones: List<Opcion>, puntaje: Puntaje )
+    + asignarPuntajes(respuestas: List<Respuesta>)
+    + asignarPuntaje(respuesta: Respuesta)
+    + verificarOpciones(respuesta: Respuesta)
 }
 
 class VerdaderoFalso extends Pregunta {
@@ -49,14 +49,39 @@ class VerdaderoFalso extends Pregunta {
 }
 
 class MultipleChoice extends Pregunta {
-    #opciones: List<String>
-    +MultipleChoice([super],opciones: List<String> )
+    +MultipleChoice([super])
     }
 
+class Opcion {
+    -texto: String
+    -estado: Estado
+    -equals(opcion: Opcion): Bool
+    ---
+    + Opcion(descripcion :String)
+    + Opcion(descripcion :String, estado :Estado)
+    + cambiarEstado(estado: Estado)
+    + esCorrecta(): Bool
+    + ActualizarEstado(opcionCorrecta: Opcion)
+}
 
-Jugador "1" <- Respuesta
-Pregunta -> "1" DistribuidoraDePuntaje
-Respuesta <.. Pregunta
-DistribuidoraDePuntaje ..> Respuesta
+interface Estado{
+    + esCorrecta(): Bool
+}
+
+class Correcta implements Estado{
+    + esCorrecta(): Bool   
+}
+
+class Incorrecta implements Estado{
+    + esCorrecta(): Bool
+}
+
+Jugador "1" <-d- Respuesta
+Pregunta -l-> "1" Puntaje
+Respuesta .l.> Pregunta
+Puntaje ..> Respuesta
+Opcion *-r- Estado
+Pregunta ---> Opcion: "1..*"
+Respuesta -> Opcion:"1..*"
 
 @enduml
