@@ -1,11 +1,11 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.testEntrega1;
 
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
+import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
-import edu.fiuba.algo3.modelo.estado.Estado;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 
@@ -55,7 +55,7 @@ public class MultipleChoiceTest {
         opciones.add(respuesta1);
         opciones.add(respuesta2);
 
-        Pregunta pregunta = new Pregunta(
+        Pregunta pregunta = new VerdaderoFalso(
             "¿Cuáles de las siguientes opciones son correctas?",
             Arrays.asList(opcion1, opcion2, opcion3),
                 clasica
@@ -76,7 +76,7 @@ public class MultipleChoiceTest {
         opciones.add(respuesta1);
         opciones.add(respuesta2);
 
-        Pregunta pregunta = new Pregunta(
+        Pregunta pregunta = new VerdaderoFalso(
             "¿Cuáles de las siguientes opciones son correctas?",
             Arrays.asList(opcion1, opcion2, opcion3),
                 conPenalidad

@@ -20,13 +20,13 @@ public class Respuesta {
         jugador.sumarPuntaje(puntaje);
     }
 
-    public List<Opcion> getOpciones() {
+    public List<Opcion> obtenerOpciones() {
         return opciones;
     }
 
     public void validarOpcion(Opcion opcionPregunta) {
         for (Opcion opcion : opciones) {
-            opcion.siIgualActualizarEstado(opcionPregunta);
+            opcion.ActualizarEstado(opcionPregunta);
         }
     }
 }

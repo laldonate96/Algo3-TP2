@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.opcion;
 
-import edu.fiuba.algo3.modelo.estado.Correcta;
 import edu.fiuba.algo3.modelo.estado.Estado;
 import edu.fiuba.algo3.modelo.estado.Incorrecta;
 
@@ -30,11 +29,9 @@ public class Opcion {
         return estado.esCorrecta();
     }
 
-    public boolean siIgualActualizarEstado(Opcion opcionCorrecta) {
-        if (opcionCorrecta.equals(this)) {
-            this.cambiarEstado(opcionCorrecta.estado);
-            return true;
+    public void ActualizarEstado(Opcion opcion) {
+        if (opcion.equals(this)) {
+            this.cambiarEstado(opcion.estado);
         }
-        return false;
     }
 }

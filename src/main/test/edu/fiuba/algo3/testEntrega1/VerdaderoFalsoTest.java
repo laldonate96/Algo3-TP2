@@ -1,11 +1,11 @@
-package edu.fiuba.algo3.entrega_1;
+package edu.fiuba.algo3.testEntrega1;
 
+import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
-import edu.fiuba.algo3.modelo.estado.Estado;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 
@@ -49,7 +49,7 @@ public class VerdaderoFalsoTest {
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new Pregunta("¿Las palomas vuelan?", List.of(opcion1, opcion2), clasica);
+        Pregunta pregunta = new MultipleChoice("¿Las palomas vuelan?", List.of(opcion1, opcion2), clasica);
 
         pregunta.asignarPuntajes(respuestas);
 
@@ -66,7 +66,7 @@ public class VerdaderoFalsoTest {
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new Pregunta("¿Las palomas vuelan?", List.of(opcion1, opcion2), conPenalidad);
+        Pregunta pregunta = new MultipleChoice("¿Las palomas vuelan?", List.of(opcion1, opcion2), conPenalidad);
 
         pregunta.asignarPuntajes(respuestas);
 

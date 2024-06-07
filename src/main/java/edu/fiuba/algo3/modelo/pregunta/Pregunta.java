@@ -5,9 +5,8 @@ import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Pregunta {
+public abstract class Pregunta {
     protected String enunciado;
     protected List<Opcion> opciones;
     protected Puntaje Puntaje;
