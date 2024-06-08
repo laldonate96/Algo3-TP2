@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Simple;
 
 import java.util.ArrayList;
 
@@ -36,8 +37,8 @@ public class VerdaderoFalsoTest {
     public void setUp() {
         jugador1 = new Jugador("Jugador 1");
         jugador2 = new Jugador("Jugador 2");
-        opcion1 = new Opcion("Verdadero", new Correcta());
-        opcion2 = new Opcion("Falso");
+        opcion1 = new Simple("Verdadero", new Correcta());
+        opcion2 = new Simple("Falso");
     }
 
     @Test

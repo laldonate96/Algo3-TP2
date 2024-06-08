@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Ordered;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,13 +21,13 @@ import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 
 public class OrderedChoiceTest {
     private Jugador jugador1;
-    private Jugador jugador2;
     private Opcion opcion1;
     private Opcion opcion2;
     private Opcion opcion3;
     private static Clasica clasica;
     private Opcion opcion1Incorrecta;
     private Opcion opcion2Incorrecta;
+    private Opcion opcion3Incorrecta;
 
     @BeforeAll
     public static void setUpClass() {
@@ -36,55 +37,31 @@ public class OrderedChoiceTest {
     @BeforeEach
     public void setUp() {
         jugador1 = new Jugador("Jugador 1");
-        jugador2 = new Jugador("Jugador 2");
 
         
-        opcion1Incorrecta = new Opcion("Opcion 1","3");
-        opcion2Incorrecta = new Opcion("Opcion 2","4");
-        opcion1 = new Opcion("Opcion 1","2", new Correcta());
-        opcion2 = new Opcion("Opcion 2","3", new Correcta());
-        opcion3 = new Opcion("Opcion 3");
+        opcion1Incorrecta = new Ordered("Opcion 1",1);
+        opcion2Incorrecta = new Ordered("Opcion 2",2);
+        opcion3Incorrecta = new Ordered("Opcion 3",3);
+        opcion1 = new Ordered("Opcion 3", 1, new Correcta());
+        opcion2 = new Ordered("Opcion 2", 2, new Correcta());
+        opcion3 = new Ordered("Opcion 1", 3, new Correcta());
     }
 
     @Test
     public void test01OrderedChoiceClasicoAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1Incorrecta, opcion2Incorrecta), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion1Incorrecta, opcion2Incorrecta), jugador2);
+        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1Incorrecta, opcion2Incorrecta, opcion3Incorrecta), jugador1);
 
-        List<Respuesta> opciones = new ArrayList<>();
-        opciones.add(respuesta1);
-        opciones.add(respuesta2);
+        List<Respuesta> respuestas = new ArrayList<>();
+        respuestas.add(respuesta1);
 
         Pregunta pregunta = new OrderedChoice(
-            "¿Cuáles de las siguientes opciones son correctas?",
+            "Ordenar las siguientes opciones",
             Arrays.asList(opcion1, opcion2, opcion3),
-                clasica
+            clasica
         );
 
-        pregunta.asignarPuntajes(opciones);
+        pregunta.asignarPuntajes(respuestas);
 
-        assertEquals(1, jugador1.obtenerPuntaje());
-        assertEquals(1, jugador2.obtenerPuntaje());
-    }
-
-    @Test
-    public void test02MultipleChoiceConPenalidadAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1Incorrecta, opcion2Incorrecta), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion3), jugador2);
-
-        List<Respuesta> opciones = new ArrayList<>();
-        opciones.add(respuesta1);
-        opciones.add(respuesta2);
-
-        Pregunta pregunta = new VerdaderoFalso(
-            "¿Cuáles de las siguientes opciones son correctas?",
-            Arrays.asList(opcion1, opcion2, opcion3),
-                conPenalidad
-        );
-
-        pregunta.asignarPuntajes(opciones);
-
-        assertEquals(2, jugador1.obtenerPuntaje());
-        assertEquals(-1, jugador2.obtenerPuntaje());
+        assertEquals(0, jugador1.obtenerPuntaje());
     }
 }
