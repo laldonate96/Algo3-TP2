@@ -16,8 +16,18 @@ public class Group extends Opcion {
         this.grupo = grupo;
     }
 
+    public Grupo obtenerGrupo() {
+        return grupo;
+    }
+
     @Override
     protected boolean equals(Opcion opcion) {
-        return (this.texto).equals(opcion.texto) && (this.grupo.equals(((Group)opcion).grupo));
+        OpcionVisitor visitor = new OpcionEsVisitor(this);
+        return opcion.accept(visitor);
+    }
+
+    @Override
+    public boolean accept(OpcionVisitor visitor) {
+        return visitor.visit(this);
     }
 }

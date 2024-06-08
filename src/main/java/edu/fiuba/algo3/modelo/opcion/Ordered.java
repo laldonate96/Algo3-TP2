@@ -15,8 +15,18 @@ public class Ordered extends Opcion {
         this.posicion = posicion;
     }
 
+    public int obtenerPosicion() {
+        return posicion;
+    }
+
     @Override
     protected boolean equals(Opcion opcion) {
-        return (this.texto).equals(opcion.texto) && (this.posicion == ((Ordered)opcion).posicion);
+        OpcionVisitor visitor = new OpcionEsVisitor(this);
+        return opcion.accept(visitor);
+    }
+
+    @Override
+    public boolean accept(OpcionVisitor visitor) {
+        return visitor.visit(this);
     }
 }

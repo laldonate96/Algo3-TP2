@@ -19,6 +19,8 @@ public abstract class Opcion {
 
     protected abstract boolean equals(Opcion opcion);
 
+    public abstract boolean accept(OpcionVisitor visitor);
+
     public boolean esCorrecta() {
         return estado.esCorrecta();
     }

@@ -13,6 +13,12 @@ public class Simple extends Opcion {
 
     @Override
     protected boolean equals(Opcion opcion) {
-        return (this.texto).equals(opcion.texto);
+        OpcionVisitor visitor = new OpcionEsVisitor(this);
+        return opcion.accept(visitor);
+    }
+
+    @Override
+    public boolean accept(OpcionVisitor visitor) {
+        return visitor.visit(this);
     }
 }
