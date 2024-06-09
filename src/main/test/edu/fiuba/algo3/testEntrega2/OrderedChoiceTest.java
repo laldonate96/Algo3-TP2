@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
+import edu.fiuba.algo3.modelo.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordered;
@@ -39,9 +40,9 @@ public class OrderedChoiceTest {
         jugador1 = new Jugador("Jugador 1");
 
         
-        opcion1Incorrecta = new Ordered("Opcion 1",1);
-        opcion2Incorrecta = new Ordered("Opcion 2",2);
-        opcion3Incorrecta = new Ordered("Opcion 3",3);
+        opcion1Incorrecta = new Ordered("Opcion 1",1, new Incorrecta());
+        opcion2Incorrecta = new Ordered("Opcion 2",2, new Incorrecta());
+        opcion3Incorrecta = new Ordered("Opcion 3",3, new Incorrecta());
         opcion1 = new Ordered("Opcion 3", 1, new Correcta());
         opcion2 = new Ordered("Opcion 2", 2, new Correcta());
         opcion3 = new Ordered("Opcion 1", 3, new Correcta());

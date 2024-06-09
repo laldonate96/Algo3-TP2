@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
+import edu.fiuba.algo3.modelo.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
@@ -40,11 +41,11 @@ public class MultipleChoiceTest {
     public void setUp() {
         jugador1 = new Jugador("Jugador 1");
         jugador2 = new Jugador("Jugador 2");
-        opcion1Incorrecta = new Simple("Opcion 1");
-        opcion2Incorrecta = new Simple("Opcion 2");
+        opcion1Incorrecta = new Simple("Opcion 1", new Incorrecta());
+        opcion2Incorrecta = new Simple("Opcion 2", new Incorrecta());
         opcion1 = new Simple("Opcion 1", new Correcta());
         opcion2 = new Simple("Opcion 2", new Correcta());
-        opcion3 = new Simple("Opcion 3");
+        opcion3 = new Simple("Opcion 3", new Incorrecta());
     }
 
     @Test

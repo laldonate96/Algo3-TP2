@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
+import edu.fiuba.algo3.modelo.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
@@ -38,7 +39,7 @@ public class VerdaderoFalsoTest {
         jugador1 = new Jugador("Jugador 1");
         jugador2 = new Jugador("Jugador 2");
         opcion1 = new Simple("Verdadero", new Correcta());
-        opcion2 = new Simple("Falso");
+        opcion2 = new Simple("Falso", new Incorrecta());
     }
 
     @Test
