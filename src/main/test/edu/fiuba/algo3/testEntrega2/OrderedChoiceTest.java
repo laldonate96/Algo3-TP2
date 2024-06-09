@@ -6,6 +6,8 @@ import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
 import edu.fiuba.algo3.modelo.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordered;
 
@@ -33,6 +35,8 @@ public class OrderedChoiceTest {
     private Opcion opcion1Correcta;
     private Opcion opcion2Correcta;
     private Opcion opcion3Correcta;
+    private Modificador modificador;
+    private List<Modificador> modificadores;
 
     @BeforeAll
     public static void setUpClass() {
@@ -41,8 +45,11 @@ public class OrderedChoiceTest {
 
     @BeforeEach
     public void setUp() {
-        jugador1 = new Jugador("Jugador 1");
-        jugador2 = new Jugador("Jugador 2");
+        modificador = new Nulo();
+        modificadores = new ArrayList<>();
+        modificadores.add(modificador);
+        jugador1 = new Jugador("Jugador 1", modificadores);
+        jugador2 = new Jugador("Jugador 2", modificadores);
         
         opcion1Jugador1 = new Ordered("Opcion 1",1, new Incorrecta());
         opcion2Jugador1 = new Ordered("Opcion 2",2, new Incorrecta());
@@ -57,8 +64,8 @@ public class OrderedChoiceTest {
 
     @Test
     public void test01OrderedChoiceAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion1Jugador2, opcion2Jugador2, opcion3Jugador2), jugador2);
+        Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1), modificador);
+        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion1Jugador2, opcion2Jugador2, opcion3Jugador2), modificador);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);

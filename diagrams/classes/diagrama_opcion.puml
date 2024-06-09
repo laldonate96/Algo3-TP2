@@ -43,4 +43,30 @@ class Incorrecta implements Estado {
     + cambiarEstado()
 }
 
+class Grupo {
+    -nombre: String
+    ---
+    +Grupo(nombre: String)
+    +obtenerNombre(): String
+}
+
+interface OpcionVisitor {
+    + visitarSimple(opcion: Simple)
+    + visitarOrdered(opcion: Ordered)
+    + visitarGroup(opcion: Group)
+}
+
+class OpcionEsVisitor implements OpcionVisitor {
+    -opcion: Opcion
+    ---
+    + OpcionEsVisitor(opcion: Opcion)
+    + visitarSimple(opcion: Simple)
+    + visitarOrdered(opcion: Ordered)
+    + visitarGroup(opcion: Group)
+}
+
+Opcion *- Estado
+Group -d-> Grupo
+Opcion .l.> OpcionVisitor
+
 @enduml

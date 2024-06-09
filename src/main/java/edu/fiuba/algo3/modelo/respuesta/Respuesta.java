@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.respuesta;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 
 
@@ -10,14 +11,17 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 public class Respuesta {
     private List<Opcion> opciones;
     private Jugador jugador;
+    private Modificador modificador;
 
-    public Respuesta(List<Opcion> opciones, Jugador jugador) {
+    public Respuesta(List<Opcion> opciones, Jugador jugador, Modificador modificador) {
         this.opciones = opciones;
         this.jugador = jugador;
+        this.modificador = modificador;
     }
 
     public void sumarPuntaje(int puntaje) {
-        jugador.sumarPuntaje(puntaje);
+        int puntajeModificado = modificador.modificarPuntaje(puntaje);
+        jugador.sumarPuntaje(puntajeModificado);
     }
 
     public List<Opcion> obtenerOpciones() {

@@ -1,13 +1,14 @@
-package edu.fiuba.algo3.testEntrega1;
+package edu.fiuba.algo3.testEntrega2;
 
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
-import edu.fiuba.algo3.modelo.puntaje.Clasica;
-import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
+import edu.fiuba.algo3.modelo.puntaje.Parcial;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
 import edu.fiuba.algo3.modelo.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 
@@ -20,28 +21,31 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MultipleChoiceTest {
+public class MultipleChoiceTestParcial {
     private Jugador jugador1;
     private Jugador jugador2;
     private Opcion opcion1;
     private Opcion opcion2;
     private Opcion opcion3;
-    private static Clasica clasica;
-    private static ConPenalidad conPenalidad;
+    private static Parcial parcial;
     private Opcion opcion1Correcta;
     private Opcion opcion2Correcta;
     private Opcion opcion3Incorrecta;
+    private Modificador modificador;
+    private List<Modificador> modificadores;
 
     @BeforeAll
     public static void setUpClass() {
-        clasica = new Clasica();
-        conPenalidad = new ConPenalidad();
+        parcial = new Parcial();
     }
 
     @BeforeEach
     public void setUp() {
-        jugador1 = new Jugador("Jugador 1");
-        jugador2 = new Jugador("Jugador 2");
+        modificador = new Nulo();
+        modificadores = new ArrayList<>();
+        modificadores.add(modificador);
+        jugador1 = new Jugador("Jugador 1", modificadores);
+        jugador2 = new Jugador("Jugador 2", modificadores);
         opcion1 = new Simple("Opcion 1", new Incorrecta());
         opcion2 = new Simple("Opcion 2", new Incorrecta());
         opcion3 = new Simple("Opcion 3", new Incorrecta());
@@ -51,9 +55,9 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test01MultipleChoiceClasicoAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1, opcion2), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion1, opcion2), jugador2);
+    public void test01MultipleChoiceParcialAsignaPuntajeCorrectoAJugadores() {
+        Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1, opcion2), modificador);
+        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion1, opcion3), modificador);
 
         List<Respuesta> opciones = new ArrayList<>();
         opciones.add(respuesta1);
@@ -62,33 +66,12 @@ public class MultipleChoiceTest {
         Pregunta pregunta = new VerdaderoFalso(
             "¿Cuáles de las siguientes opciones son correctas?",
             Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta),
-                clasica
-        );
-
-        pregunta.asignarPuntajes(opciones);
-
-        assertEquals(1, jugador1.obtenerPuntaje());
-        assertEquals(1, jugador2.obtenerPuntaje());
-    }
-
-    @Test
-    public void test02MultipleChoiceConPenalidadAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1, opcion2), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion3), jugador2);
-
-        List<Respuesta> opciones = new ArrayList<>();
-        opciones.add(respuesta1);
-        opciones.add(respuesta2);
-
-        Pregunta pregunta = new VerdaderoFalso(
-            "¿Cuáles de las siguientes opciones son correctas?",
-            Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta),
-                conPenalidad
+            parcial
         );
 
         pregunta.asignarPuntajes(opciones);
 
         assertEquals(2, jugador1.obtenerPuntaje());
-        assertEquals(-1, jugador2.obtenerPuntaje());
+        assertEquals(0, jugador2.obtenerPuntaje());
     }
 }

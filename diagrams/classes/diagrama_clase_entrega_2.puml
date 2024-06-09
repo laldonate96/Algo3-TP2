@@ -61,28 +61,67 @@ class GroupChoice extends Pregunta {
     +GroupChoice([super])
 }
 
-class Opcion {
-    -texto: String
-    -estado: Estado
-    -equals(opcion: Opcion): Bool
+abstract class Opcion {
+    #texto: String
+    #estado: Estado
+    #equals(opcion: Opcion): Bool
     ---
-    + Opcion(descripcion :String)
-    + Opcion(descripcion :String, estado :Estado)
-    + cambiarEstado(estado: Estado)
-    + esCorrecta(): Bool
-    + ActualizarEstado(opcionCorrecta: Opcion)
+    +Opcion(texto: String, estado: Estado)
+    +aceptar(OpcionVisitor visitor)
+    +esCorrecta(): Bool
+    +actualizarEstado(estado: Estado)
 }
 
-interface Estado{
-    + esCorrecta(): Bool
+class Ordered extends Opcion {
+    -posicion: int
+    ---
+    +Ordered([super], posicion: int)
+    +obtenerPosicion(): int
 }
 
-class Correcta implements Estado{
-    + esCorrecta(): Bool   
+class Simple extends Opcion {
+    +Simple([super])
 }
 
-class Incorrecta implements Estado{
-    + esCorrecta(): Bool
+class Group extends Opcion {
+    -grupo: Grupo
+    ---
+    +Group([super], grupo: Grupo)
+    +obtenerGrupo(): Grupo
+}
+
+interface Estado {
+    + cambiarEstado()
+}
+
+class Correcta implements Estado {
+    + cambiarEstado()
+}
+
+class Incorrecta implements Estado {
+    + cambiarEstado()
+}
+
+class Grupo {
+    -nombre: String
+    ---
+    +Grupo(nombre: String)
+    +obtenerNombre(): String
+}
+
+interface OpcionVisitor {
+    + visitarSimple(opcion: Simple)
+    + visitarOrdered(opcion: Ordered)
+    + visitarGroup(opcion: Group)
+}
+
+class OpcionEsVisitor {
+    -opcion: Opcion
+    ---
+    + OpcionEsVisitor(opcion: Opcion)
+    + visitarSimple(opcion: Simple)
+    + visitarOrdered(opcion: Ordered)
+    + visitarGroup(opcion: Group)
 }
 
 Jugador "1" <-d- Respuesta
@@ -90,5 +129,8 @@ Respuesta .l.> Pregunta
 Puntaje .u.> Respuesta
 Opcion *-r- Estado
 Respuesta -> Opcion:"1..*"
+Group -d-> Grupo
+Opcion .u.> OpcionVisitor
+OpcionEsVisitor .d.|> OpcionVisitor
 
 @enduml
