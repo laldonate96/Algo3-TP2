@@ -1,0 +1,46 @@
+@startuml diagrama de clases
+skinparam classAttributeIconSize 0
+title Diagrama de Opcion
+
+abstract class Opcion {
+    #texto: String
+    #estado: Estado
+    #equals(opcion: Opcion): Bool
+    ---
+    +Opcion(texto: String, estado: Estado)
+    +aceptar(OpcionVisitor visitor)
+    +esCorrecta(): Bool
+    +actualizarEstado(estado: Estado)
+}
+
+class Ordered extends Opcion {
+    -posicion: int
+    ---
+    +Ordered([super], posicion: int)
+    +obtenerPosicion(): int
+}
+
+class Simple extends Opcion {
+    +Simple([super])
+}
+
+class Group extends Opcion {
+    -grupo: Grupo
+    ---
+    +Group([super], grupo: Grupo)
+    +obtenerGrupo(): Grupo
+}
+
+interface Estado {
+    + cambiarEstado()
+}
+
+class Correcta implements Estado {
+    + cambiarEstado()
+}
+
+class Incorrecta implements Estado {
+    + cambiarEstado()
+}
+
+@enduml

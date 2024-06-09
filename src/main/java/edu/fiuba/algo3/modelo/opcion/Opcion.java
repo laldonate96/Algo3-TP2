@@ -13,13 +13,13 @@ public abstract class Opcion {
 
     protected abstract boolean equals(Opcion opcion);
 
-    public abstract boolean accept(OpcionVisitor visitor);
+    public abstract boolean aceptar(OpcionVisitor visitor);
 
     public boolean esCorrecta() {
         return estado.esCorrecta();
     }
 
-    public void ActualizarEstado(Opcion opcion) {
+    public void actualizarEstado(Opcion opcion) {
         if (opcion.equals(this)) {
             this.estado = opcion.estado;
         }

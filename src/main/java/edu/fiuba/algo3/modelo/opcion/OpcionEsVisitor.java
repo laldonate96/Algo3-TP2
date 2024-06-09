@@ -8,7 +8,7 @@ public class OpcionEsVisitor implements OpcionVisitor {
     }
 
     @Override
-    public boolean visit(Ordered opcionOrdered) {
+    public boolean visitar(Ordered opcionOrdered) {
         if (!(opcion instanceof Ordered)) {
             return false;
         }
@@ -17,7 +17,7 @@ public class OpcionEsVisitor implements OpcionVisitor {
     }
 
     @Override
-    public boolean visit(Simple opcionSimple) {
+    public boolean visitar(Simple opcionSimple) {
         if (!(opcion instanceof Simple)) {
             return false;
         }
@@ -26,7 +26,7 @@ public class OpcionEsVisitor implements OpcionVisitor {
     }
 
     @Override
-    public boolean visit(Group opcionGroup) {
+    public boolean visitar(Group opcionGroup) {
         if (!(opcion instanceof Group)) {
             return false;
         }

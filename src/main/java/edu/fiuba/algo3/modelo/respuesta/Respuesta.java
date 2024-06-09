@@ -26,7 +26,7 @@ public class Respuesta {
 
     public void validarOpcion(Opcion opcionPregunta) {
         for (Opcion opcion : opciones) {
-            opcion.ActualizarEstado(opcionPregunta);
+            opcion.actualizarEstado(opcionPregunta);
         }
     }
 }

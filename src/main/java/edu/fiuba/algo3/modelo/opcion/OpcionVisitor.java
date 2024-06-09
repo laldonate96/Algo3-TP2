@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.opcion;
 
 public interface OpcionVisitor {
-    boolean visit(Ordered ordered);
-    boolean visit(Simple simple);
-    boolean visit(Group group);
+    boolean visitar(Ordered ordered);
+    boolean visitar(Simple simple);
+    boolean visitar(Group group);
 }

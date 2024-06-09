@@ -37,6 +37,7 @@ class ConPenalidad extends Puntaje{
 abstract class Pregunta {
     # enunciado: String
     # opciones: List<Opcion>
+    # puntaje: Puntaje
     ---
     + Pregunta(enunciado: String, opciones: List<Opcion>, puntaje: Puntaje )
     + asignarPuntajes(respuestas: List<Respuesta>)
@@ -50,7 +51,15 @@ class VerdaderoFalso extends Pregunta {
 
 class MultipleChoice extends Pregunta {
     +MultipleChoice([super])
-    }
+}
+
+class OrderedChoice extends Pregunta {
+    +OrderedChoice([super])
+}
+
+class GroupChoice extends Pregunta {
+    +GroupChoice([super])
+}
 
 class Opcion {
     -texto: String
@@ -77,11 +86,9 @@ class Incorrecta implements Estado{
 }
 
 Jugador "1" <-d- Respuesta
-Pregunta -l-> "1" Puntaje
 Respuesta .l.> Pregunta
-Puntaje ..> Respuesta
+Puntaje .u.> Respuesta
 Opcion *-r- Estado
-Pregunta ---> Opcion: "1..*"
 Respuesta -> Opcion:"1..*"
 
 @enduml

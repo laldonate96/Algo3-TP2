@@ -1,9 +1,8 @@
-package edu.fiuba.algo3.testEntrega1;
+package edu.fiuba.algo3.testEntrega2;
 
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
-import edu.fiuba.algo3.modelo.puntaje.Clasica;
-import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
+import edu.fiuba.algo3.modelo.puntaje.Parcial;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.estado.Correcta;
 import edu.fiuba.algo3.modelo.estado.Incorrecta;
@@ -26,16 +25,14 @@ public class MultipleChoiceTest {
     private Opcion opcion1;
     private Opcion opcion2;
     private Opcion opcion3;
-    private static Clasica clasica;
-    private static ConPenalidad conPenalidad;
+    private static Parcial parcial;
     private Opcion opcion1Correcta;
     private Opcion opcion2Correcta;
     private Opcion opcion3Incorrecta;
 
     @BeforeAll
     public static void setUpClass() {
-        clasica = new Clasica();
-        conPenalidad = new ConPenalidad();
+        parcial = new Parcial();
     }
 
     @BeforeEach
@@ -51,9 +48,9 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test01MultipleChoiceClasicoAsignaPuntajeCorrectoAJugadores() {
+    public void test01MultipleChoiceParcialAsignaPuntajeCorrectoAJugadores() {
         Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1, opcion2), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion1, opcion2), jugador2);
+        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion1, opcion3), jugador2);
 
         List<Respuesta> opciones = new ArrayList<>();
         opciones.add(respuesta1);
@@ -62,33 +59,12 @@ public class MultipleChoiceTest {
         Pregunta pregunta = new VerdaderoFalso(
             "¿Cuáles de las siguientes opciones son correctas?",
             Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta),
-                clasica
-        );
-
-        pregunta.asignarPuntajes(opciones);
-
-        assertEquals(1, jugador1.obtenerPuntaje());
-        assertEquals(1, jugador2.obtenerPuntaje());
-    }
-
-    @Test
-    public void test02MultipleChoiceConPenalidadAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1, opcion2), jugador1);
-        Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion3), jugador2);
-
-        List<Respuesta> opciones = new ArrayList<>();
-        opciones.add(respuesta1);
-        opciones.add(respuesta2);
-
-        Pregunta pregunta = new VerdaderoFalso(
-            "¿Cuáles de las siguientes opciones son correctas?",
-            Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta),
-                conPenalidad
+            parcial
         );
 
         pregunta.asignarPuntajes(opciones);
 
         assertEquals(2, jugador1.obtenerPuntaje());
-        assertEquals(-1, jugador2.obtenerPuntaje());
+        assertEquals(0, jugador2.obtenerPuntaje());
     }
 }
