@@ -56,7 +56,7 @@ public class OrderedChoiceTest {
     }
 
     @Test
-    public void test01OrderedChoiceClasicoAsignaPuntajeCorrectoAJugadores() {
+    public void test01OrderedChoiceAsignaPuntajeCorrectoAJugadores() {
         Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion1Jugador2, opcion2Jugador2, opcion3Jugador2), jugador2);
 

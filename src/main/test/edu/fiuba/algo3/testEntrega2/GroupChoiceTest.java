@@ -19,7 +19,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
+import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 
 public class GroupChoiceTest {
     private Jugador jugador1;
@@ -63,7 +63,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void test01OrderedChoiceAsignaPuntajeCorrectoAJugadores() {
+    public void test01GroupChoiceAsignaPuntajeCorrectoAJugadores() {
         Respuesta respuesta1 = new Respuesta(Arrays.asList(opcion3Jugador1, opcion2Jugador1, opcion1Jugador1), jugador1);
         Respuesta respuesta2 = new Respuesta(Arrays.asList(opcion3Jugador2, opcion2Jugador2, opcion1Jugador2), jugador2);
 
@@ -71,7 +71,7 @@ public class GroupChoiceTest {
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
 
-        Pregunta pregunta = new OrderedChoice(
+        Pregunta pregunta = new GroupChoice(
             "Ordenar las siguientes opciones",
             Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta),
             clasica
