@@ -24,4 +24,19 @@ public class Ordered extends Opcion {
     public boolean aceptar(OpcionVisitor visitor) {
         return visitor.visitar(this);
     }
+
+    @Override
+    protected boolean equalsEspecifico(Simple opcion) {
+        return false;
+    }
+
+    @Override
+    protected boolean equalsEspecifico(Ordered opcion) {
+        return this.texto.equals(opcion.texto) && this.posicion == opcion.posicion;
+    }
+
+    @Override
+    protected boolean equalsEspecifico(Group opcion) {
+        return false;
+    }
 }

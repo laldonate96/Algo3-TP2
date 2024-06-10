@@ -9,28 +9,16 @@ public class OpcionEsVisitor implements OpcionVisitor {
 
     @Override
     public boolean visitar(Ordered opcionOrdered) {
-        if (!(opcion instanceof Ordered)) {
-            return false;
-        }
-        Ordered ordered = (Ordered) opcion;
-        return ordered.texto.equals(opcionOrdered.texto) && ordered.obtenerPosicion() == opcionOrdered.obtenerPosicion();
+        return opcion.equalsEspecifico(opcionOrdered);
     }
 
     @Override
     public boolean visitar(Simple opcionSimple) {
-        if (!(opcion instanceof Simple)) {
-            return false;
-        }
-        Simple simple = (Simple) opcion;
-        return simple.texto.equals(opcionSimple.texto);
+        return opcion.equalsEspecifico(opcionSimple);
     }
 
     @Override
     public boolean visitar(Group opcionGroup) {
-        if (!(opcion instanceof Group)) {
-            return false;
-        }
-        Group group = (Group) opcion;
-        return group.texto.equals(opcionGroup.texto) && group.obtenerGrupo().equals(opcionGroup.obtenerGrupo());
+        return opcion.equalsEspecifico(opcionGroup);
     }
 }

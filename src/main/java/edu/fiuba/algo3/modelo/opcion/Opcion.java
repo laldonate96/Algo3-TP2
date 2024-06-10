@@ -13,6 +13,10 @@ public abstract class Opcion {
 
     protected abstract boolean equals(Opcion opcion);
 
+    protected abstract boolean equalsEspecifico(Simple opcion);
+    protected abstract boolean equalsEspecifico(Ordered opcion);
+    protected abstract boolean equalsEspecifico(Group opcion);
+
     public abstract boolean aceptar(OpcionVisitor visitor);
 
     public boolean esCorrecta() {
