@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.opcion;
 
 import edu.fiuba.algo3.modelo.estado.Estado;
 
-public abstract class Opcion {
+public abstract class Opcion implements OpcionVisitor {
     protected Estado estado;
     protected String texto;
     
@@ -12,10 +12,6 @@ public abstract class Opcion {
     }
 
     protected abstract boolean equals(Opcion opcion);
-
-    protected abstract boolean equalsEspecifico(Simple opcion);
-    protected abstract boolean equalsEspecifico(Ordered opcion);
-    protected abstract boolean equalsEspecifico(Group opcion);
 
     public abstract boolean aceptar(OpcionVisitor visitor);
 
@@ -27,5 +23,9 @@ public abstract class Opcion {
         if (opcion.equals(this)) {
             this.estado = opcion.estado;
         }
+    }
+
+    protected String obtenerTexto() {
+        return texto;
     }
 }

@@ -9,8 +9,7 @@ public class Simple extends Opcion {
 
     @Override
     protected boolean equals(Opcion opcion) {
-        OpcionVisitor visitor = new OpcionEsVisitor(this);
-        return opcion.aceptar(visitor);
+        return opcion.aceptar(this);
     }
 
     @Override
@@ -19,17 +18,17 @@ public class Simple extends Opcion {
     }
 
     @Override
-    protected boolean equalsEspecifico(Simple opcion) {
-        return this.texto.equals(opcion.texto);
-    }
-
-    @Override
-    protected boolean equalsEspecifico(Ordered opcion) {
+    public boolean visitar(Ordered ordered) {
         return false;
     }
 
     @Override
-    protected boolean equalsEspecifico(Group opcion) {
+    public boolean visitar(Simple simple) {
+        return this.texto.equals(simple.obtenerTexto());
+    }
+
+    @Override
+    public boolean visitar(Group group) {
         return false;
     }
 }

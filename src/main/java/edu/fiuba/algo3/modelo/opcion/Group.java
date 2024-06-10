@@ -17,8 +17,7 @@ public class Group extends Opcion {
 
     @Override
     protected boolean equals(Opcion opcion) {
-        OpcionVisitor visitor = new OpcionEsVisitor(this);
-        return opcion.aceptar(visitor);
+        return opcion.aceptar(this);
     }
 
     @Override
@@ -27,17 +26,17 @@ public class Group extends Opcion {
     }
 
     @Override
-    protected boolean equalsEspecifico(Simple opcion) {
+    public boolean visitar(Ordered ordered) {
         return false;
     }
 
     @Override
-    protected boolean equalsEspecifico(Ordered opcion) {
+    public boolean visitar(Simple simple) {
         return false;
     }
 
     @Override
-    protected boolean equalsEspecifico(Group opcion) {
-        return this.texto.equals(opcion.texto) && this.grupo.equals(opcion.grupo);
+    public boolean visitar(Group group) {
+        return this.texto.equals(group.obtenerTexto()) && this.grupo.equals(group.obtenerGrupo());
     }
 }

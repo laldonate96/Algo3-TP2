@@ -1,24 +1,24 @@
 package edu.fiuba.algo3.modelo.opcion;
 
 public class OpcionEsVisitor implements OpcionVisitor {
-    private final Opcion opcion;
+    private final OpcionEsVisitor opcion;
 
-    public OpcionEsVisitor(Opcion opcion) {
-        this.opcion = opcion;
+    public OpcionEsVisitor(OpcionEsVisitor opcionVisitor) {
+        this.opcion = opcionVisitor;
     }
 
     @Override
-    public boolean visitar(Ordered opcionOrdered) {
-        return opcion.equalsEspecifico(opcionOrdered);
+    public boolean visitar(Ordered ordered) {
+        return opcion.visitar(ordered);
     }
 
     @Override
-    public boolean visitar(Simple opcionSimple) {
-        return opcion.equalsEspecifico(opcionSimple);
+    public boolean visitar(Simple simple) {
+        return opcion.visitar(simple);
     }
 
     @Override
-    public boolean visitar(Group opcionGroup) {
-        return opcion.equalsEspecifico(opcionGroup);
+    public boolean visitar(Group group) {
+        return opcion.visitar(group);
     }
 }
