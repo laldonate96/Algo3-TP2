@@ -14,6 +14,8 @@ public class Multiplicador implements Modificador {
         return puntos*this.factorDeMultiplicacion;
     }
 
+
+
     @Override
     public void usar() {
         this.usos -= 1;
