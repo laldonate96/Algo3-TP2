@@ -32,12 +32,9 @@ public class Jugador {
         for (Opcion opcionPregunta : opcionesPregunta) {
             respuesta.validarOpcion(opcionPregunta);
         }
-
-        if (modificador.tieneUsos()) {
-            modificador.usar();
-        } else {
+        modificador.usar();
+        if (!modificador.tieneUsos())
             modificadores.remove(modificador);
-        }
         return respuesta;
     }
 }
