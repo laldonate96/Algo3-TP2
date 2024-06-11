@@ -89,4 +89,27 @@ public class GrupoChoiceTest {
         //Assert
         assertEquals(0, jugador1.obtenerPuntaje());
     }
+
+    @Test
+    public void test02GroupChoiceAsignaPuntajeCorrectoAJugadorQueRespondeCorrectamente(){
+        //Arrange
+        List<Opcion> opcionesPregunta = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
+
+        Pregunta pregunta = new GroupChoice(
+                "Poner las siguientes preguntas en su grupo correspondiente",
+                opcionesPregunta,
+                clasica
+        );
+
+
+        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion3Jugador2, opcion2Jugador2, opcion1Jugador2),opcionesPregunta, modificador);
+        List<Respuesta> respuestas = new ArrayList<>();
+        respuestas.add(respuesta2);
+
+        //Act
+        pregunta.asignarPuntajes(respuestas);
+
+        //Assert
+        assertEquals(1, jugador2.obtenerPuntaje());
+    }
 }

@@ -54,4 +54,11 @@ public class RespuestaTest {
 
         assertEquals(true, opcion2.esCorrecta());
     }
+
+    @Test
+    public void test03ValidarOpcionesDeUnaRespuestaEstableceElEstadoCorrectamente() {
+        respuesta.validarOpcion(opcion1Correcta);
+
+        assertEquals(true, opcion2.esCorrecta());
+    }
 }
