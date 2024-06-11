@@ -25,12 +25,20 @@ public class Jugador {
         return puntaje;
     }
 
-    public Respuesta responder(List<Opcion> opciones, Modificador modificador) {
+    public Respuesta responder(List<Opcion> opciones, List<Opcion> opcionesPregunta, Modificador modificador) {
         Respuesta respuesta = new Respuesta(opciones, this, modificador);
-        modificador.usar();
-        if (!modificador.tieneUsos()) {
+
+        for (Opcion opcionPregunta : opcionesPregunta) {
+            respuesta.validarOpcion(opcionPregunta);
+        }
+
+        if (modificador.tieneUsos()) {
+            modificador.usar();
+        } else {
             modificadores.remove(modificador);
         }
         return respuesta;
     }
 }
+
+

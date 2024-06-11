@@ -72,18 +72,19 @@ public class GroupChoiceTest {
 
     @Test
     public void test01GroupChoiceAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1), modificador);
-        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion3Jugador2, opcion2Jugador2, opcion1Jugador2), modificador);
+        List<Opcion> opcionesPregunta = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
+
+        Pregunta pregunta = new GroupChoice(
+            "Ordenar las siguientes opciones",
+                opcionesPregunta,
+            clasica
+        );
+        Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1),opcionesPregunta, modificador);
+        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion3Jugador2, opcion2Jugador2, opcion1Jugador2),opcionesPregunta, modificador);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
-
-        Pregunta pregunta = new GroupChoice(
-            "Ordenar las siguientes opciones",
-            Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta),
-            clasica
-        );
 
         pregunta.asignarPuntajes(respuestas);
 

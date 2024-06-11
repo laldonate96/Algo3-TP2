@@ -24,6 +24,7 @@ import java.util.List;
 public class PuntajeTest {
     private Jugador jugador;
     private Opcion opcion1;
+    private Opcion opcion1Correcta;
     private Opcion opcion2;
     private Opcion opcion3;
     private Modificador modificador;
@@ -40,14 +41,15 @@ public class PuntajeTest {
         modificadores = new ArrayList<>();
         modificadores.add(modificador);
 
-        opcion1 = new Simple("Opcion 1", new Correcta());
+        opcion1 = new Simple("Opcion 1", new Incorrecta());
+        opcion1Correcta = new Simple("Opcion 1", new Correcta());
         opcion2 = new Simple("Opcion 2", new Incorrecta());
         opcion3 = new Simple("Opcion 3", new Incorrecta());
 
         jugador = new Jugador("Jugador 1", modificadores);
-
-        respuesta1 = jugador.responder(Arrays.asList(opcion1, opcion2, opcion3), modificador);
-        respuesta2 = jugador.responder(Arrays.asList(opcion1), modificador);
+        List<Opcion> opcionesPregunta=Arrays.asList(opcion1Correcta,opcion2,opcion3);
+        respuesta1 = jugador.responder(Arrays.asList(opcion1, opcion2, opcion3),opcionesPregunta, modificador);
+        respuesta2 = jugador.responder(Arrays.asList(opcion1),opcionesPregunta, modificador);
 
         puntaje1 = new Clasica();
         puntaje2 = new Parcial();
