@@ -22,7 +22,7 @@ public class RespuestaTest {
     private Jugador jugador;
     private Opcion opcion1;
     private Opcion opcion2;
-    private Opcion opcionCorrecta;
+    private Opcion opcion1Correcta;
     private Modificador modificador;
     private List<Modificador> modificadores;
     private Respuesta respuesta;
@@ -49,8 +49,8 @@ public class RespuestaTest {
     }
 
     @Test
-    public void test02ValidarOpcionesDeUnaRespuestaEstableceElEstadoCorrectamente() {
-        respuesta.validarOpcion(opcionCorrecta);
+    public void test02ValidarOpcionTeniendoUnaCorrectaCambiaSu() {
+        respuesta.validarOpcion(opcion1Correcta);
 
         assertEquals(true, opcion2.esCorrecta());
     }
