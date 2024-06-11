@@ -24,7 +24,6 @@ public class SimpleTest {
     public void test01SiSeleAsignaEstadoCorrectaEsCorrecta() {
         //Assert
         assertTrue(opcionCorrecta.esCorrecta());
-
     }
 
     @Test

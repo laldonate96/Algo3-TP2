@@ -55,7 +55,7 @@ public class MultipleChoiceTestParcial {
     }
 
     @Test
-    public void test01MultipleChoiceParcialAsignaPuntajeCorrectoAJugadores() {
+    public void test01MultipleChoiceParcialAsignaPuntajeCorrectoAJugadoreQueRespondioBien() {
 
         List<Opcion> opcionesPregunta = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
 
@@ -63,16 +63,33 @@ public class MultipleChoiceTestParcial {
             "¿Cuáles de las siguientes opciones son opcionesPregunta?",
                 opcionesPregunta,       parcial
         );
-        Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1, opcion2),opcionesPregunta, modificador);
-        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion1, opcion3),opcionesPregunta, modificador);
+        Respuesta correcta = jugador1.responder(Arrays.asList(opcion1, opcion2),opcionesPregunta, modificador);
 
         List<Respuesta> opciones = new ArrayList<>();
-        opciones.add(respuesta1);
-        opciones.add(respuesta2);
+        opciones.add(correcta);
 
         pregunta.asignarPuntajes(opciones);
 
         assertEquals(2, jugador1.obtenerPuntaje());
+    }
+
+    @Test
+    public void test02MultipleChoiceParcialAsignaPuntajeCorrectoAJugadorQueRespondioMal() {
+
+        List<Opcion> opcionesPregunta = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
+
+        Pregunta pregunta = new VerdaderoFalso(
+                "¿Cuáles de las siguientes opciones son opcionesPregunta?",
+                opcionesPregunta,       parcial
+        );
+
+        Respuesta incorrecta = jugador2.responder(Arrays.asList(opcion1, opcion3),opcionesPregunta, modificador);
+
+        List<Respuesta> opciones = new ArrayList<>();
+        opciones.add(incorrecta);
+
+        pregunta.asignarPuntajes(opciones);
+
         assertEquals(0, jugador2.obtenerPuntaje());
     }
 }

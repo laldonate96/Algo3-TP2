@@ -60,7 +60,6 @@ public class MultiplicadorTest {
     public void test01unJugadorUtilizaUnMultiplicadorEnUnaPreguntaVerdaderosOFalsoYAcierto(){
         //arrange
         List<Opcion> opcionesPregunta = Arrays.asList(opcion1, opcion2);
-
         Pregunta pregunta = new VerdaderoFalso(
                 "¿Cuáles de las siguientes opciones son correctas?",
                 opcionesPregunta,
@@ -68,9 +67,7 @@ public class MultiplicadorTest {
         );
 
         Multiplicador multiplicador1 = new Multiplicador(2);
-
         Respuesta respuesta = jugador1.responder(List.of(opcion1),opcionesPregunta, multiplicador1);
-
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta);
 
@@ -86,7 +83,6 @@ public class MultiplicadorTest {
         //arrange
 
         List<Opcion> opcionesPregunta = Arrays.asList(opcion1, opcion2);
-
         Pregunta pregunta = new VerdaderoFalso(
                 "¿Cuáles de las siguientes opciones son correctas?",
                 opcionesPregunta,
@@ -95,7 +91,6 @@ public class MultiplicadorTest {
 
         Multiplicador multiplicador1 = new Multiplicador(2);
         Respuesta respuesta = jugador1.responder(List.of(opcion2),opcionesPregunta, multiplicador1);
-
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta);
 

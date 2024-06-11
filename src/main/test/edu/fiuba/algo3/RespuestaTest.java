@@ -33,9 +33,9 @@ public class RespuestaTest {
         modificadores = new ArrayList<>();
         modificadores.add(modificador);
 
-        opcion1 = new Simple("Verdadero", new Correcta());
-        opcion2 = new Simple("Falso", new Incorrecta());
-        opcionCorrecta = new Simple("Falso", new Correcta());
+        opcion1 = new Simple("Falso", new Incorrecta());
+        opcion2 = new Simple("Verdadero", new Incorrecta());
+        opcion1Correcta = new Simple("Falso", new Correcta());
 
         jugador = new Jugador("Jugador 1", modificadores);
         respuesta = new RespuestaConcreta(Arrays.asList(opcion1, opcion2), jugador, modificador);
