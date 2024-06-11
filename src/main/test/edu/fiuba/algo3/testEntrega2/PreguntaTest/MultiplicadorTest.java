@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.testEntrega2;
+package edu.fiuba.algo3.testEntrega2.PreguntaTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -59,18 +59,20 @@ public class MultiplicadorTest {
     @Test
     public void test01unJugadorUtilizaUnMultiplicadorEnUnaPreguntaVerdaderosOFalsoYAcierto(){
         //arrange
-        Multiplicador multiplicador1 = new Multiplicador(2);
-
-        Respuesta respuesta = jugador1.responder(List.of(opcion1), multiplicador1);
-
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta);
+        List<Opcion> opcionesPregunta = Arrays.asList(opcion1, opcion2);
 
         Pregunta pregunta = new VerdaderoFalso(
                 "¿Cuáles de las siguientes opciones son correctas?",
-                Arrays.asList(opcion1, opcion2),
+                opcionesPregunta,
                 conPenalidad
         );
+
+        Multiplicador multiplicador1 = new Multiplicador(2);
+
+        Respuesta respuesta = jugador1.responder(List.of(opcion1),opcionesPregunta, multiplicador1);
+
+        List<Respuesta> respuestas = new ArrayList<>();
+        respuestas.add(respuesta);
 
         //act
         pregunta.asignarPuntajes(respuestas);
@@ -82,17 +84,20 @@ public class MultiplicadorTest {
     @Test
     public void test02unJugadorUtilizaUnMultiplicadorEnUnaPreguntaVerdaderosOFalsoYFalla(){
         //arrange
-        Multiplicador multiplicador1 = new Multiplicador(2);
-        Respuesta respuesta = jugador1.responder(List.of(opcion2), multiplicador1);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta);
+        List<Opcion> opcionesPregunta = Arrays.asList(opcion1, opcion2);
 
         Pregunta pregunta = new VerdaderoFalso(
                 "¿Cuáles de las siguientes opciones son correctas?",
-                Arrays.asList(opcion1, opcion2),
+                opcionesPregunta,
                 conPenalidad
         );
+
+        Multiplicador multiplicador1 = new Multiplicador(2);
+        Respuesta respuesta = jugador1.responder(List.of(opcion2),opcionesPregunta, multiplicador1);
+
+        List<Respuesta> respuestas = new ArrayList<>();
+        respuestas.add(respuesta);
 
         //act
         pregunta.asignarPuntajes(respuestas);

@@ -41,7 +41,6 @@ public class RespuestaTest {
 
     @Test
     public void test01UnaRespuestaSumaPuntajeCorrectamenteConMultiplicador() {
-        respuesta = jugador.responder(Arrays.asList(opcion1), modificador);
         respuesta.sumarPuntaje(1);
 
         assertEquals(2, jugador.obtenerPuntaje());
@@ -49,7 +48,6 @@ public class RespuestaTest {
 
     @Test
     public void test02ValidarOpcionesDeUnaRespuestaEstableceElEstadoCorrectamente() {
-        respuesta = jugador.responder(Arrays.asList(opcion2), modificador);
         respuesta.validarOpcion(opcionCorrecta);
 
         assertEquals(true, opcion2.esCorrecta());

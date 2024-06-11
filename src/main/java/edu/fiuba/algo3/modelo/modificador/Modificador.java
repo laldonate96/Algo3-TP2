@@ -5,5 +5,7 @@ public interface Modificador {
 
     public void usar();
 
+    public boolean equals(Modificador  modificador);
+
     public boolean tieneUsos();
 }

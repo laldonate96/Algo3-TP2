@@ -1,4 +1,8 @@
-package edu.fiuba.algo3.modelo.opcion;
+package edu.fiuba.algo3.modelo.opcion.visitor;
+
+import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Ordered;
+import edu.fiuba.algo3.modelo.opcion.Simple;
 
 public class OpcionEsVisitor implements OpcionVisitor {
     private final OpcionEsVisitor opcion;
@@ -18,7 +22,7 @@ public class OpcionEsVisitor implements OpcionVisitor {
     }
 
     @Override
-    public boolean visitar(Group group) {
-        return opcion.visitar(group);
+    public boolean visitar(Grupo grupo) {
+        return opcion.visitar(grupo);
     }
 }

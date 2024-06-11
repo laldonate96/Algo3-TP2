@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.testEntrega2;
+package edu.fiuba.algo3.testEntrega2.PreguntaTest;
 
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
@@ -56,18 +56,19 @@ public class MultipleChoiceTestParcial {
 
     @Test
     public void test01MultipleChoiceParcialAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1, opcion2), modificador);
-        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion1, opcion3), modificador);
+
+        List<Opcion> opcionesPregunta = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
+
+        Pregunta pregunta = new VerdaderoFalso(
+            "¿Cuáles de las siguientes opciones son opcionesPregunta?",
+                opcionesPregunta,       parcial
+        );
+        Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1, opcion2),opcionesPregunta, modificador);
+        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion1, opcion3),opcionesPregunta, modificador);
 
         List<Respuesta> opciones = new ArrayList<>();
         opciones.add(respuesta1);
         opciones.add(respuesta2);
-
-        Pregunta pregunta = new VerdaderoFalso(
-            "¿Cuáles de las siguientes opciones son correctas?",
-            Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta),
-            parcial
-        );
 
         pregunta.asignarPuntajes(opciones);
 
