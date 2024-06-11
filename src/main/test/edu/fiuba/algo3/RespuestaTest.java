@@ -94,13 +94,15 @@ public class RespuestaTest {
 
         respuesta.validarOpcion(opcion1Correcta);
 
-        assertEquals(true, opcion2.esCorrecta());
+        assertTrue(opcion1.esCorrecta());
     }
 
     @Test
-    public void test03ValidarOpcionesDeUnaRespuestaEstableceElEstadoCorrectamente() {
+    public void test05ValidarOpcionRecibiendoUnaIncorretaActualizaSuEstado() {
+        RespuestaConcreta respuesta = new RespuestaConcreta(Arrays.asList(opcion1, opcion2), jugador, nulo);
+
         respuesta.validarOpcion(opcion1Correcta);
 
-        assertEquals(true, opcion2.esCorrecta());
+        assertFalse(opcion2.esCorrecta());
     }
 }
