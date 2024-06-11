@@ -1,6 +1,5 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Modificador;
 import edu.fiuba.algo3.modelo.modificador.Multiplicador;
@@ -25,16 +24,6 @@ public class JugadorTest {
 
         jugador = new Jugador("Jugador 1", modificadores);
     }
-
-
-//    modificadores = new ArrayList<>();
-//        modificadores.add(modificador1);
-//        modificadores.add(modificador2);
-//        modificadores.add(modificador3);
-//
-//    opcion1 = new Simple("Palomas", new Incorrecta());
-//    opcion2 = new Simple("Aviones", new Incorrecta());
-
 
     @Test
     public void test01SumarPuntajeAUnJugadorSumaLosPuntosCorrectamente() {

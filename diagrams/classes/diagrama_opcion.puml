@@ -2,15 +2,17 @@
 skinparam classAttributeIconSize 0
 title Diagrama de Opcion
 
-abstract class Opcion {
+abstract class Opcion implements OpcionVisitor {
     #texto: String
     #estado: Estado
     #equals(opcion: Opcion): Bool
     ---
     +Opcion(texto: String, estado: Estado)
+    +equals(opcion: Opcion): Bool
     +aceptar(OpcionVisitor visitor)
     +esCorrecta(): Bool
     +actualizarEstado(estado: Estado)
+    +obtenerTexto(): String
 }
 
 class Ordered extends Opcion {
@@ -24,49 +26,40 @@ class Simple extends Opcion {
     +Simple([super])
 }
 
-class Group extends Opcion {
-    -grupo: Grupo
+class Grupo extends Opcion {
+    -nombreGrupo: String
     ---
-    +Group([super], grupo: Grupo)
-    +obtenerGrupo(): Grupo
+    +Grupo([super], nombreGrupo: String)
+    +obtenerGrupo(): String
 }
 
 interface Estado {
-    + cambiarEstado()
+    + esCorrecta()
 }
 
 class Correcta implements Estado {
-    + cambiarEstado()
+    + esCorrecta()
 }
 
 class Incorrecta implements Estado {
-    + cambiarEstado()
-}
-
-class Grupo {
-    -nombre: String
-    ---
-    +Grupo(nombre: String)
-    +obtenerNombre(): String
+    + esCorrecta()
 }
 
 interface OpcionVisitor {
-    + visitarSimple(opcion: Simple)
-    + visitarOrdered(opcion: Ordered)
-    + visitarGroup(opcion: Group)
+    + visitar(opcion: Simple)
+    + visitar(opcion: Ordered)
+    + visitar(opcion: Grupo)
 }
 
 class OpcionEsVisitor implements OpcionVisitor {
     -opcion: Opcion
     ---
     + OpcionEsVisitor(opcion: Opcion)
-    + visitarSimple(opcion: Simple)
-    + visitarOrdered(opcion: Ordered)
-    + visitarGroup(opcion: Group)
+    + visitar(opcion: Simple)
+    + visitar(opcion: Ordered)
+    + visitar(opcion: Grupo)
 }
 
 Opcion *- Estado
-Group -d-> Grupo
-Opcion .l.> OpcionVisitor
 
 @enduml

@@ -15,8 +15,6 @@ public class Ordered extends Opcion {
         return posicion;
     }
 
-
-
     @Override
     public boolean aceptar(OpcionVisitor visitor) {
         return visitor.visitar(this);

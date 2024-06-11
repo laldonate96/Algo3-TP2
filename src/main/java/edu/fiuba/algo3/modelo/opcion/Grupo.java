@@ -16,7 +16,6 @@ public class Grupo extends Opcion {
         return nombreGrupo;
     }
 
-
     @Override
     public boolean aceptar(OpcionVisitor visitor) {
         return visitor.visitar(this);

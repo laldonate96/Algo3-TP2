@@ -8,7 +8,6 @@ public class Simple extends Opcion {
         super(texto, estado);
     }
 
-
     @Override
     public boolean aceptar(OpcionVisitor visitor) {
         return visitor.visitar(this);

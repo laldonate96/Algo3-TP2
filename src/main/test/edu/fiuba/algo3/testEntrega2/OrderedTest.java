@@ -1,23 +1,22 @@
-package edu.fiuba.algo3.testEntrega2.OpcionTest;
+package edu.fiuba.algo3.testEntrega2;
 
 import edu.fiuba.algo3.modelo.estado.Correcta;
 import edu.fiuba.algo3.modelo.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.Ordered;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SimpleTest {
+public class OrderedTest {
     private Opcion opcionCorrecta;
     private Opcion opcionIncorrecta;
 
     @BeforeEach
     public void setUpClass() {
-        opcionCorrecta = new Simple("Opcion 1", new Correcta());
-        opcionIncorrecta = new Simple("Opcion 1", new Incorrecta());
+        opcionCorrecta = new Ordered("Opcion 1", 1, new Correcta());
+        opcionIncorrecta = new Ordered("Opcion 1", 1, new Incorrecta());
     }
 
     @Test
@@ -39,6 +38,7 @@ public class SimpleTest {
 
         assertTrue(opcionIncorrecta.esCorrecta());
     }
+
     @Test
     public void test04CambiarElEstadoConOtraIncorrectaEstableceElEstadoIncorrecto() {
         opcionCorrecta.actualizarEstado(opcionCorrecta);
@@ -47,42 +47,42 @@ public class SimpleTest {
     }
 
     @Test
-    public void test05AceptaVisitaDeUnaOpcionSimpleConElMismoTextoYDevuelveTrue(){
+    public void test05AceptaVisitaDeUnaOpcionOrderedConLaMismaPosicionYDevuelveTrue(){
         //Arrange
-        Simple opcionVisitor = new Simple("Opcion 1", new Correcta());
+        Ordered opcionVisitor = new Ordered("Opcion 1", 1, new Correcta());
         //Assert
         assertTrue(opcionCorrecta.aceptar(opcionVisitor));
     }
 
     @Test
-    public void test06AceptaVisitaDeUnaOpcionSimpleConDistintoTextoYDevuelveFalse(){
+    public void test06AceptaVisitaDeUnaOpcionOrderedConDistintaPosicionYDevuelveFalse(){
         //Arrange
-        Simple opcionVisitor = new Simple("Verdaderont", new Correcta());
+        Ordered opcionVisitor = new Ordered("Opcion 1", 3, new Correcta());
         //Assert
         assertFalse(opcionCorrecta.aceptar(opcionVisitor));
     }
 
     @Test
-    public void test07VisitaAUnaOpcionSimpleConElMismoTextoYDevuelveTrue(){
+    public void test07VisitaAUnaOpcionOrderedConLaMismaPosicionYDevuelveTrue(){
         //Arrange
-        Simple opcionCorrecta2 = new Simple("Opcion 1", new Correcta());
+        Ordered opcionCorrecta2 = new Ordered("Opcion 1", 1, new Correcta());
         //Assert
         assertTrue(opcionCorrecta.visitar(opcionCorrecta2));
     }
 
     @Test
-    public void test08VisitaAUnaOpcionSimpleConDistintoTextoYDevuelveFalse(){
+    public void test08VisitaAUnaOpcionOrderedConDistintoTextoYDevuelveFalse(){
         //Arrange
-        Simple opcionDistintoTexto = new Simple("Opcion 1n't", new Correcta());
+        Ordered opcionDistintoTexto = new Ordered("Opcion 12", 1, new Correcta());
         //Assert
         assertFalse(opcionCorrecta.visitar(opcionDistintoTexto));
     }
 
     @Test
-    public void test09VisitaAOpcionNoSimpleYDevuelveFalse(){
+    public void test09VisitaAOpcionNoGrupoYDevuelveFalse(){
         //Arrange
-        Ordered opcionOrdered = new Ordered("Verdadero", 1, new Correcta());
+        Grupo opcionGrupo = new Grupo("Verdadero", "Grupo 3", new Correcta());
         //Assert
-        assertFalse(opcionCorrecta.visitar(opcionOrdered));
+        assertFalse(opcionCorrecta.visitar(opcionGrupo));
     }
 }

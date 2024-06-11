@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.testEntrega2.PreguntaTest;
+package edu.fiuba.algo3.testEntrega2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

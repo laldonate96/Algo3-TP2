@@ -15,11 +15,6 @@ public class Nulo implements Modificador {
     }
 
     @Override
-    public boolean equals(Modificador modificador) {
-        return (modificador instanceof Nulo);
-    }
-
-    @Override
     public boolean tieneUsos() {
         return true;
     }

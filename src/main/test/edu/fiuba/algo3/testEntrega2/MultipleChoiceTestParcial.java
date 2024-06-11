@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.testEntrega2.PreguntaTest;
+package edu.fiuba.algo3.testEntrega2;
 
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;

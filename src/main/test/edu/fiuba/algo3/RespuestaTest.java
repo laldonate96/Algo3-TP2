@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Modificador;
 import edu.fiuba.algo3.modelo.modificador.Multiplicador;
@@ -37,6 +38,7 @@ public class RespuestaTest {
         opcionCorrecta = new Simple("Falso", new Correcta());
 
         jugador = new Jugador("Jugador 1", modificadores);
+        respuesta = new RespuestaConcreta(Arrays.asList(opcion1, opcion2), jugador, modificador);
     }
 
     @Test
