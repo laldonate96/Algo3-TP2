@@ -7,8 +7,11 @@ public class Nulo implements Modificador {
     }
 
     @Override
-    public void usar() {
-        return;
+    public void usar() { }
+
+    @Override
+    public boolean equals(Modificador modificador) {
+        return (modificador instanceof Nulo);
     }
 
     @Override

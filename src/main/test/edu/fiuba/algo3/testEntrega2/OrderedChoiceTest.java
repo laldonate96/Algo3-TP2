@@ -64,12 +64,8 @@ public class OrderedChoiceTest {
 
     @Test
     public void test01OrderedChoiceAsignaPuntajeCorrectoAJugadores() {
-        Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1), modificador);
-        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion1Jugador2, opcion2Jugador2, opcion3Jugador2), modificador);
-
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+        //Arrange
+        List<Opcion> opcionesPregunta = Arrays.asList(opcion1Correcta, opcion2Correcta,opcion3Correcta);
 
         Pregunta pregunta = new OrderedChoice(
             "Ordenar las siguientes opciones",
@@ -77,8 +73,17 @@ public class OrderedChoiceTest {
             clasica
         );
 
-        pregunta.asignarPuntajes(respuestas);
 
+        Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1),opcionesPregunta, modificador);
+        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion1Jugador2, opcion2Jugador2, opcion3Jugador2),opcionesPregunta, modificador);
+
+        List<Respuesta> respuestas = new ArrayList<>();
+        respuestas.add(respuesta1);
+        respuestas.add(respuesta2);
+
+        //Act
+        pregunta.asignarPuntajes(respuestas);
+        //Assert
         assertEquals(0, jugador1.obtenerPuntaje());
         assertEquals(1, jugador2.obtenerPuntaje());
     }

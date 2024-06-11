@@ -31,4 +31,23 @@ public class JugadorTest {
 
         assertEquals(2, jugador.obtenerPuntaje());
     }
+
+@Test
+public void test01UsarUnModificadorNoNuloRemueveDeLaListaDeModificadoresDelJugador() {
+
+//        assertEquals(2, modificadores.size());
 }
+
+@Test
+public void test02UsarUnModificadorNuloNoRemueveDeLaListaDeModificadoresDelJugador() {
+
+//        assertEquals(3, modificadores.size());
+}
+
+@Test
+public void test03UsarUnMultiplicadorNoTieneMasUsosLuegoDeUsarseUnaVez() {
+
+//        assertEquals(false, modificador1.tieneUsos());
+}
+}
+

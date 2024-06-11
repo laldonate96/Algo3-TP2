@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.opcion;
 
 import edu.fiuba.algo3.modelo.estado.Estado;
+import edu.fiuba.algo3.modelo.opcion.visitor.OpcionVisitor;
 
 public class Ordered extends Opcion {
     private int posicion;
@@ -12,11 +13,6 @@ public class Ordered extends Opcion {
 
     public int obtenerPosicion() {
         return posicion;
-    }
-
-    @Override
-    protected boolean equals(Opcion opcion) {
-        return opcion.aceptar(this);
     }
 
     @Override
@@ -35,7 +31,7 @@ public class Ordered extends Opcion {
     }
 
     @Override
-    public boolean visitar(Group group) {
+    public boolean visitar(Grupo grupo) {
         return false;
     }
 }

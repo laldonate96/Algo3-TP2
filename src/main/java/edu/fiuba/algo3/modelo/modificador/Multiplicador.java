@@ -20,6 +20,11 @@ public class Multiplicador implements Modificador {
     }
 
     @Override
+    public boolean equals(Modificador modificador) {
+        return (modificador instanceof Multiplicador);
+    }
+
+    @Override
     public boolean tieneUsos() {
         return this.usos > 0;
     }

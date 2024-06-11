@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 public class Parcial extends Puntaje {
 
+
     @Override
     public void asignarPuntaje(Respuesta respuesta) {
         int puntosParciales = 0;
@@ -15,7 +16,11 @@ public class Parcial extends Puntaje {
                 return;
             }
         }
+
         respuesta.sumarPuntaje(puntosParciales);
     }
-    
 }
+
+
+
+

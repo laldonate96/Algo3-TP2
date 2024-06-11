@@ -13,4 +13,6 @@ public class Clasica extends Puntaje {
         }
         respuesta.sumarPuntaje(puntaje);
     }
+
+
 }

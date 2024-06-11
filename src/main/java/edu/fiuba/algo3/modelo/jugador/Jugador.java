@@ -5,6 +5,7 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
 
 public class Jugador {
     private int puntaje;
@@ -25,12 +26,20 @@ public class Jugador {
         return puntaje;
     }
 
-    public Respuesta responder(List<Opcion> opciones, Modificador modificador) {
-        Respuesta respuesta = new Respuesta(opciones, this, modificador);
-        modificador.usar();
-        if (!modificador.tieneUsos()) {
+    public Respuesta responder(List<Opcion> opciones, List<Opcion> opcionesPregunta, Modificador modificador) {
+        Respuesta respuesta = new RespuestaConcreta(opciones, this, modificador);
+
+        for (Opcion opcionPregunta : opcionesPregunta) {
+            respuesta.validarOpcion(opcionPregunta);
+        }
+
+        if (modificador.tieneUsos()) {
+            modificador.usar();
+        } else {
             modificadores.remove(modificador);
         }
         return respuesta;
     }
 }
+
+
