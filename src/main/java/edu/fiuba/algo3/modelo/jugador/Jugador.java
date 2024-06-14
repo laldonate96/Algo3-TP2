@@ -33,8 +33,7 @@ public class Jugador {
             respuesta.validarOpcion(opcionPregunta);
         }
         modificador.usar();
-        if (!modificador.tieneUsos())
-            modificadores.remove(modificador);
+        modificador.actualizar(modificadores);
         return respuesta;
     }
 }

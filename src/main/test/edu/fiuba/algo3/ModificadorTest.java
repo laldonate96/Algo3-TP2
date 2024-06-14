@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.modificador.Nulo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,21 +28,21 @@ public class ModificadorTest {
         multiplicadorDos = new Multiplicador(2);
         multiplicadorTres = new Multiplicador(3);
         nulo = new Nulo();
-}
-
-    @Test
-    public void test01UnMultiplicadorTieneUsos() {
-        //Assert
-        assertTrue(multiplicadorDos.tieneUsos());
+        modificadores = new ArrayList<>();
+        modificadores.add(multiplicadorDos);
+        modificadores.add(multiplicadorTres);
+        modificadores.add(nulo);
     }
+
 
     @Test
     public void test05UnMultiplicadorSeUsaYNoTieneMasUsos() {
         //Act
         multiplicadorDos.usar();
+        multiplicadorDos.actualizar(modificadores);
 
         //Assert
-        assertFalse(multiplicadorDos.tieneUsos());
+        assertEquals(2, modificadores.size());
     }
 
     @Test
@@ -67,18 +68,13 @@ public class ModificadorTest {
     }
 
     @Test
-    public void test08UnNuloTieneUsos() {
-        //Assert
-        assertTrue(nulo.tieneUsos());
-    }
-
-    @Test
     public void test11UnNuloSeUsaYTieneMasUsos() {
         //Act
         nulo.usar();
+        nulo.actualizar(modificadores);
 
         //Assert
-        assertTrue(nulo.tieneUsos());
+        assertEquals(3, modificadores.size());
     }
 
     @Test
@@ -88,9 +84,10 @@ public class ModificadorTest {
         nulo.usar();
         nulo.usar();
         nulo.usar();
+        nulo.actualizar(modificadores);
 
         //Assert
-        assertTrue(nulo.tieneUsos());
+        assertEquals(3, modificadores.size());
     }
 
     @Test

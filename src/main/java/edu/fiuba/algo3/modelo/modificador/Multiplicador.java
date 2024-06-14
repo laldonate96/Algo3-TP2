@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.modificador;
 
+import java.util.List;
+
 public class Multiplicador implements Modificador {
     private int factorDeMultiplicacion;
     private int usos;
@@ -20,7 +22,8 @@ public class Multiplicador implements Modificador {
     }
 
     @Override
-    public boolean tieneUsos() {
-        return this.usos > 0;
+    public void actualizar(List<Modificador> modificadores) {
+        if (usos == 0)
+            modificadores.remove(this);
     }
 }
