@@ -26,8 +26,8 @@ public class Jugador {
         return puntaje;
     }
 
-    public Respuesta responder(List<Opcion> opciones, List<Opcion> opcionesPregunta, Modificador modificador) {
-        Respuesta respuesta = new RespuestaConcreta(opciones, this, modificador);
+    public Respuesta responder(List<Opcion> opcionesJugador, List<Opcion> opcionesPregunta, Modificador modificador) {
+        Respuesta respuesta = new RespuestaConcreta(opcionesJugador, this, modificador);
 
         for (Opcion opcionPregunta : opcionesPregunta) {
             respuesta.validarOpcion(opcionPregunta);

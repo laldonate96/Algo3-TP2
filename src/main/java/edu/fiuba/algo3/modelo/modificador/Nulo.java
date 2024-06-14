@@ -10,11 +10,6 @@ public class Nulo implements Modificador {
     public void usar() { }
 
     @Override
-    public boolean equals(Modificador modificador) {
-        return (modificador instanceof Nulo);
-    }
-
-    @Override
     public boolean tieneUsos() {
         return true;
     }

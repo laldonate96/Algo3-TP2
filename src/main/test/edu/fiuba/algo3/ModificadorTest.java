@@ -36,28 +36,6 @@ public class ModificadorTest {
     }
 
     @Test
-    public void test02UnMultiplicadorEsIgualASiMismo() {
-        //Assert
-        assertTrue(multiplicadorDos.equals(multiplicadorDos));
-    }
-
-    @Test
-    public void test03UnMultiplicadorEsIgualAOtroConMismoFactor() {
-        //Arrange
-        Multiplicador multiplicadorDos2=new Multiplicador(2);
-
-        //Assert
-        assertTrue(multiplicadorDos.equals(multiplicadorDos2));
-    }
-
-
-    // @Test
-    // public void test04UnMultiplicadorNoEsIgualAOtroConDistintoFactor() {
-    //     //Assert
-    //     assertFalse(multiplicadorDos.equals(multiplicadorTres));
-    // }
-
-    @Test
     public void test05UnMultiplicadorSeUsaYNoTieneMasUsos() {
         //Act
         multiplicadorDos.usar();
@@ -92,20 +70,6 @@ public class ModificadorTest {
     public void test08UnNuloTieneUsos() {
         //Assert
         assertTrue(nulo.tieneUsos());
-    }
-
-    @Test
-    public void test09UnNuloEsIgualASiMismo() {
-        //Assert
-        assertTrue(nulo.equals(nulo));
-    }
-
-    @Test
-    public void test10UnNuloEsIgualACualquierOtroNulo() {
-        //Arrange
-        Modificador nulo2 = new Nulo();
-        //Assert
-        assertTrue(nulo.equals(nulo2));
     }
 
     @Test
