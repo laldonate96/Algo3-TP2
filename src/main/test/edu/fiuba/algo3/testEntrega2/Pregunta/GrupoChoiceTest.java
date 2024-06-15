@@ -1,10 +1,10 @@
-package edu.fiuba.algo3.testEntrega2;
+package edu.fiuba.algo3.testEntrega2.Pregunta;
 
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.estado.Correcta;
-import edu.fiuba.algo3.modelo.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Modificador;

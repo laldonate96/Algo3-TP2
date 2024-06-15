@@ -2,17 +2,18 @@ package edu.fiuba.algo3.modelo.opcion;
 
 import edu.fiuba.algo3.modelo.opcion.estado.Estado;
 
-public class Grupo extends Opcion {
-    private final String nombreGrupo;
-
-    public Grupo(String texto, String nombreGrupo, Estado estado) {
+public class Ordenada extends Opcion {
+    private int posicion;
+    
+    public Ordenada(String texto, int posicion, Estado estado) {
         super(texto, estado);
-        this.nombreGrupo = nombreGrupo;
+        this.posicion = posicion;
     }
 
-    protected String obtenerGrupo() {
-        return nombreGrupo;
+    public int obtenerPosicion() {
+        return posicion;
     }
+
 
 
     @Override
@@ -21,14 +22,16 @@ public class Grupo extends Opcion {
     }
 
     protected boolean equals(Ordenada ordenada) {
-        return false;
+        return this.texto.equals(ordenada.obtenerTexto()) && this.posicion == ordenada.obtenerPosicion();
     }
+
 
     protected boolean equals(Simple simple) {
         return false;
     }
 
+
     protected boolean equals(Grupo grupo) {
-        return this.texto.equals(grupo.texto) && this.nombreGrupo.equals(grupo.nombreGrupo);
+        return false;
     }
 }

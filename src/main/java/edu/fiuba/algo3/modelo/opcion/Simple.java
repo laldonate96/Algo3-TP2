@@ -1,30 +1,28 @@
 package edu.fiuba.algo3.modelo.opcion;
 
-import edu.fiuba.algo3.modelo.estado.Estado;
-import edu.fiuba.algo3.modelo.opcion.visitor.OpcionVisitor;
+import edu.fiuba.algo3.modelo.opcion.estado.Estado;
 
 public class Simple extends Opcion {
     public Simple(String texto, Estado estado) {
         super(texto, estado);
     }
 
-    @Override
-    public boolean aceptar(OpcionVisitor visitor) {
-        return visitor.visitar(this);
-    }
+
 
     @Override
-    public boolean visitar(Ordered ordered) {
+    public boolean equals(Opcion opcion) {
+        return opcion.equals(this);
+    }
+
+    protected boolean equals(Ordenada ordenada) {
         return false;
     }
 
-    @Override
-    public boolean visitar(Simple simple) {
+    protected boolean equals(Simple simple) {
         return this.texto.equals(simple.obtenerTexto());
     }
 
-    @Override
-    public boolean visitar(Grupo grupo) {
+    protected boolean equals(Grupo grupo) {
         return false;
     }
 }

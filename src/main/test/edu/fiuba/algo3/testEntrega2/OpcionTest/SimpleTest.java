@@ -1,10 +1,10 @@
-package edu.fiuba.algo3.testEntrega2;
+package edu.fiuba.algo3.testEntrega2.OpcionTest;
 
-import edu.fiuba.algo3.modelo.estado.Correcta;
-import edu.fiuba.algo3.modelo.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.opcion.Ordered;
+import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -41,47 +41,32 @@ public class SimpleTest {
     @Test
     public void test04CambiarElEstadoConOtraIncorrectaEstableceElEstadoIncorrecto() {
         opcionCorrecta.actualizarEstado(opcionCorrecta);
-
         assertFalse(opcionIncorrecta.esCorrecta());
     }
 
     @Test
-    public void test05AceptaVisitaDeUnaOpcionSimpleConElMismoTextoYDevuelveTrue(){
+    public void test05EsIgualAOtraSimpleConElMismoTexto(){
         //Arrange
-        Simple opcionVisitor = new Simple("Opcion 1", new Correcta());
+        Simple opcion = new Simple("Opcion 1", new Correcta());
         //Assert
-        assertTrue(opcionCorrecta.aceptar(opcionVisitor));
+
+        assertTrue(opcionCorrecta.equals(opcion));
     }
 
     @Test
-    public void test06AceptaVisitaDeUnaOpcionSimpleConDistintoTextoYDevuelveFalse(){
+    public void test06NoEsIgualAOtraSimpleConOtroTexto(){
         //Arrange
-        Simple opcionVisitor = new Simple("Verdaderont", new Correcta());
+        Simple opcion = new Simple("Opcion 1n't", new Correcta());
         //Assert
-        assertFalse(opcionCorrecta.aceptar(opcionVisitor));
+        assertFalse(opcionCorrecta.equals(opcion));
     }
 
-    @Test
-    public void test07VisitaAUnaOpcionSimpleConElMismoTextoYDevuelveTrue(){
-        //Arrange
-        Simple opcionCorrecta2 = new Simple("Opcion 1", new Correcta());
-        //Assert
-        assertTrue(opcionCorrecta.visitar(opcionCorrecta2));
-    }
 
     @Test
-    public void test08VisitaAUnaOpcionSimpleConDistintoTextoYDevuelveFalse(){
+    public void test07NoEsIgualAUnaOpcionNoSimple(){
         //Arrange
-        Simple opcionDistintoTexto = new Simple("Opcion 1n't", new Correcta());
+        Ordenada opcionNoSimple = new Ordenada("Opcion 1", 1, new Correcta());
         //Assert
-        assertFalse(opcionCorrecta.visitar(opcionDistintoTexto));
-    }
-
-    @Test
-    public void test09VisitaAOpcionNoSimpleYDevuelveFalse(){
-        //Arrange
-        Ordered opcionOrdered = new Ordered("Verdadero", 1, new Correcta());
-        //Assert
-        assertFalse(opcionCorrecta.visitar(opcionOrdered));
+        assertNotEquals(opcionCorrecta, opcionNoSimple);
     }
 }

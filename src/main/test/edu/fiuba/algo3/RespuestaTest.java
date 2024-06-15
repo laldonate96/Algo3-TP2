@@ -1,11 +1,10 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.estado.Correcta;
-import edu.fiuba.algo3.modelo.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Modificador;

@@ -1,15 +1,15 @@
-package edu.fiuba.algo3.testEntrega2;
+package edu.fiuba.algo3.testEntrega2.Pregunta;
 
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.estado.Correcta;
-import edu.fiuba.algo3.modelo.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Modificador;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Ordered;
+import edu.fiuba.algo3.modelo.opcion.Ordenada;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,15 +51,15 @@ public class OrderedChoiceTest {
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);
 
-        opcion1Jugador1 = new Ordered("Opcion 1",1, new Incorrecta());
-        opcion2Jugador1 = new Ordered("Opcion 2",2, new Incorrecta());
-        opcion3Jugador1 = new Ordered("Opcion 3",3, new Incorrecta());
-        opcion1Jugador2 = new Ordered("Opcion 3",1, new Incorrecta());
-        opcion2Jugador2 = new Ordered("Opcion 2",2, new Incorrecta());
-        opcion3Jugador2 = new Ordered("Opcion 1",3, new Incorrecta());
-        opcion1Correcta = new Ordered("Opcion 3", 1, new Correcta());
-        opcion2Correcta = new Ordered("Opcion 2", 2, new Correcta());
-        opcion3Correcta = new Ordered("Opcion 1", 3, new Correcta());
+        opcion1Jugador1 = new Ordenada("Opcion 1",1, new Incorrecta());
+        opcion2Jugador1 = new Ordenada("Opcion 2",2, new Incorrecta());
+        opcion3Jugador1 = new Ordenada("Opcion 3",3, new Incorrecta());
+        opcion1Jugador2 = new Ordenada("Opcion 3",1, new Incorrecta());
+        opcion2Jugador2 = new Ordenada("Opcion 2",2, new Incorrecta());
+        opcion3Jugador2 = new Ordenada("Opcion 1",3, new Incorrecta());
+        opcion1Correcta = new Ordenada("Opcion 3", 1, new Correcta());
+        opcion2Correcta = new Ordenada("Opcion 2", 2, new Correcta());
+        opcion3Correcta = new Ordenada("Opcion 1", 3, new Correcta());
     }
 
     @Test

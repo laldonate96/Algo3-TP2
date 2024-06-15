@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.modificador;
 import java.util.List;
 
 public class Multiplicador implements Modificador {
-    private int factorDeMultiplicacion;
+    private final int factorDeMultiplicacion;
     private int usos;
 
     public Multiplicador(int factorDeMultiplicacion){
