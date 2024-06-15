@@ -8,16 +8,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.estado.Correcta;
-import edu.fiuba.algo3.modelo.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Modificador;
 import edu.fiuba.algo3.modelo.modificador.Multiplicador;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
+import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.turno.Turno;
 
@@ -25,6 +26,7 @@ import edu.fiuba.algo3.modelo.turno.Turno;
 public class TurnosTest {
     private Turno turno;
     private VerdaderoFalso vof;
+    private VerdaderoFalso vofPenal;
     private Modificador nulo;
     private Modificador multiplicador;
     private Correcta correcta;
@@ -35,6 +37,7 @@ public class TurnosTest {
     private Opcion opcion2;
     private List<Modificador> modificadores;
     private Clasica clasica;
+    private ConPenalidad penalidad;
     private Jugador jugador1;
     private Jugador jugador2;
 
@@ -47,22 +50,23 @@ public class TurnosTest {
         opciones.add(opcion1);
         opciones.add(opcion2);
         vof = new VerdaderoFalso("un enunciado",opciones, clasica);
-
+        vofPenal = new VerdaderoFalso("un enunciado",opciones, penalidad);
         turno = new Turno();
-
-    }
-    @BeforeEach
-    public void setUp(){
         nulo = new Nulo();
         multiplicador = new Multiplicador(2);
         modificadores.add(nulo);
         modificadores.add(multiplicador);
+
+    }
+    @BeforeEach
+    public void setUp(){
+       
         jugador1 = new Jugador("un jugador", modificadores);
         jugador2 = new Jugador("otro jugador", modificadores);
         
         
     }
-    
+
     @Test
     public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYseLespidePuntos(){
        //arrange
@@ -82,6 +86,28 @@ public class TurnosTest {
         // assert
         
         assertEquals(1, jugador1.obtenerPuntaje());
+        assertEquals(1, jugador1.obtenerPuntaje());
+    }
+
+    @Test
+    public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaConMultiplicadorYseLespidePuntos(){
+       //arrange
+
+        Opcion respuestaJugador1 = new Simple("correcta", incorrecta);
+        Opcion respuestaJugador2 = new Simple("incorrecta", incorrecta);
+        Respuesta respuesta1 = jugador1.responder(Arrays.asList(respuestaJugador1),opciones, multiplicador);
+        Respuesta respuesta2 = jugador1.responder(Arrays.asList(respuestaJugador1),opciones, nulo);
+        respuestas.add(respuesta1);
+        respuestas.add(respuesta2);
+
+        //act
+
+        turno.asignarPreguntaDelTurno(vof);
+        turno.responderPorTurno(respuestas);
+
+        // assert
+        
+        assertEquals(2, jugador1.obtenerPuntaje());
         assertEquals(1, jugador1.obtenerPuntaje());
     }
 

@@ -33,7 +33,9 @@ public class Turno {
         this.preguntaDelTurno = pregunta;
     }
     public void responderPorTurno(List<Respuesta> respuestasPorTurno){
+        
         preguntaDelTurno.asignarPuntajes(respuestasPorTurno);
+        turno += 1;
     }
 
 }
