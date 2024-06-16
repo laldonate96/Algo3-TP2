@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.testEntrega2;
+package edu.fiuba.algo3.testEntrega2.mocks;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;

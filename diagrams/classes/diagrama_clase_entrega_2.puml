@@ -153,6 +153,22 @@ class OpcionEsVisitor {
     + visitar(opcion: Grupo)
 }
 
+class Turno {
+    - turno :Int
+    - respuestasPorTurno <Jugador>
+    - preguntaDelTurno: Pregunta
+    - modificadoresUsados<Modificador>
+    - usarModificador(modificador :Modificador)
+    ---
+    + {static} Turno()
+    + asignarPreguntaDelTurno(pregunta :Pregunta)
+    + responderPorTurno(respuestasPorTurno<Respuestas>)
+}
+
+
+Turno o-- Jugador
+Turno o-- Modificador
+Turno *-- Pregunta
 Jugador "1" <-d- Respuesta
 Respuesta .l.> Pregunta
 Puntaje .u.> Respuesta
@@ -165,5 +181,6 @@ Jugador -l> Modificador: "1..*"
 Multiplicador .u.|> Modificador
 Nulo .u.|> Modificador
 RespuestaConcreta --> Modificador
+
 
 @enduml
