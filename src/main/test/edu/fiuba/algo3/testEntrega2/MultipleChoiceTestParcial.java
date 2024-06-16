@@ -61,7 +61,7 @@ public class MultipleChoiceTestParcial {
 
         Pregunta pregunta = new VerdaderoFalso(
             "¿Cuáles de las siguientes opciones son opcionesPregunta?",
-                opcionesPregunta,       parcial
+                opcionesPregunta,       parcial, "Tema"
         );
         Respuesta correcta = jugador1.responder(Arrays.asList(opcion1, opcion2),opcionesPregunta, modificador);
 
@@ -80,7 +80,7 @@ public class MultipleChoiceTestParcial {
 
         Pregunta pregunta = new VerdaderoFalso(
                 "¿Cuáles de las siguientes opciones son opcionesPregunta?",
-                opcionesPregunta,       parcial
+                opcionesPregunta,       parcial, "Tema"
         );
 
         Respuesta incorrecta = jugador2.responder(Arrays.asList(opcion1, opcion3),opcionesPregunta, modificador);

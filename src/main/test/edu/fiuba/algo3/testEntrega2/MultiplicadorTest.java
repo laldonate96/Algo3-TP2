@@ -63,7 +63,8 @@ public class MultiplicadorTest {
         Pregunta pregunta = new VerdaderoFalso(
                 "¿Cuáles de las siguientes opciones son correctas?",
                 opcionesPregunta,
-                conPenalidad
+                conPenalidad,
+                "Tema"
         );
 
         Multiplicador multiplicador1 = new Multiplicador(2);
@@ -86,7 +87,8 @@ public class MultiplicadorTest {
         Pregunta pregunta = new VerdaderoFalso(
                 "¿Cuáles de las siguientes opciones son correctas?",
                 opcionesPregunta,
-                conPenalidad
+                conPenalidad,
+                "Tema"
         );
 
         Multiplicador multiplicador1 = new Multiplicador(2);
