@@ -27,7 +27,7 @@ public class Juego {
             //turnoActual = Turno new(jugadores, preguntas[i])
             //para cada pregunta inicializa un turno, pasandole los jugadores y la pregunta.
 
-            //Controlador.MostrarTurno(Turno);
+            //Controlador.MostrarTurno(turnoActual);
             //la lógica asociada al turno
             i++;
         }
