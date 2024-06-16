@@ -70,7 +70,8 @@ public class OrderedChoiceTest {
         Pregunta pregunta = new OrderedChoice(
                 "Ordenar las siguientes opciones",
                 opcionesPregunta,
-                clasica
+                clasica,
+                "Tema"
         );
 
         Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion2Jugador2, opcion1Jugador2, opcion3Jugador2),opcionesPregunta, modificador);
@@ -94,7 +95,8 @@ public class OrderedChoiceTest {
         Pregunta pregunta = new OrderedChoice(
                 "Ordenar las siguientes opciones",
                 opcionesPregunta,
-                clasica
+                clasica,
+                "Tema"
         );
         Respuesta correcta = jugador1.responder(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1),opcionesPregunta, modificador);
         List<Respuesta> respuestas = new ArrayList<>();

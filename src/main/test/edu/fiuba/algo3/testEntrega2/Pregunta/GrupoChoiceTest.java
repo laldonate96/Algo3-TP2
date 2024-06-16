@@ -75,8 +75,9 @@ public class GrupoChoiceTest {
 
         Pregunta pregunta = new GroupChoice(
             "Poner las siguientes preguntas en su grupo correspondiente",
-                opcionesPregunta,
-            clasica
+            opcionesPregunta,
+            clasica,
+            "Animales"
         );
         Respuesta respuesta1 = jugador1.responder(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1),opcionesPregunta, modificador);
 
@@ -98,7 +99,8 @@ public class GrupoChoiceTest {
         Pregunta pregunta = new GroupChoice(
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesPregunta,
-                clasica
+                clasica,
+                "Animales"
         );
 
 
