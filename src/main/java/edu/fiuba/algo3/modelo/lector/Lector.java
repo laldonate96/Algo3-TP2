@@ -5,34 +5,33 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import edu.fiuba.algo3.excepciones.ArchivoInexistenteException;
+import edu.fiuba.algo3.modelo.mezclador.Mezclador;
 import edu.fiuba.algo3.modelo.pregunta.FabricaPreguntas;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.puntaje.Parcial;
 
-public class Lector {
-    private int cantidadDePreguntas;
-    
-    public ArrayList<Pregunta> obtenerPreguntasDeJson() throws ArchivoInexistenteException {
+public class Lector {  
+    public List<Pregunta> obtenerPreguntasDeJson() throws ArchivoInexistenteException {
         try {
             String datos = new String(Files.readAllBytes(Paths.get("preguntas/preguntas.json")));
             ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
             JSONArray arrayJson = new JSONArray(datos);
-            cantidadDePreguntas = arrayJson.length();
 
             Clasica clasica;
             ConPenalidad conPenalidad = new ConPenalidad();
             Parcial parcial = new Parcial();
 
-            for (int i = 0; i < cantidadDePreguntas; i++) {
+            for (Object obj : arrayJson) {
+                JSONObject preguntaJson = (JSONObject) obj;
                 Pregunta pregunta = null;
-                JSONObject preguntaJson = arrayJson.getJSONObject(i);
                 String tipoPregunta = preguntaJson.getString("Tipo");
 
                 switch (tipoPregunta) {
@@ -64,12 +63,12 @@ public class Lector {
                     default:
                         break;
                 }
-
                 preguntas.add(pregunta);
             }
-            return preguntas;
+            List<Pregunta> preguntasMezcladas = new Mezclador().mezclarPreguntas(preguntas);
+            return preguntasMezcladas;
         } catch (NoSuchFileException e) {
-        throw new ArchivoInexistenteException("El archivo de preguntas no existe: " + e.getMessage());
+            throw new ArchivoInexistenteException("El archivo de preguntas no existe: " + e.getMessage());
         } catch (IOException e) {
             throw new ArchivoInexistenteException("Error de IO al leer el archivo de preguntas: " + e.getMessage());
         } catch (Exception e) {
