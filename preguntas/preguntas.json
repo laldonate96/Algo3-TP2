@@ -100,11 +100,11 @@
       "Tipo": "Multiple Choice Simple",
       "Pregunta": "¿En qué año se produjo el accidente nuclear de Chernobyl?",
       "Respuesta": "3",
-      "Opcion 1": 1994,
-      "Opcion 2": 1985,
-      "Opcion 3": 1986,
-      "Opcion 4": 1987,
-      "Opcion 5": 1991,
+      "Opcion 1": "1994",
+      "Opcion 2": "1985",
+      "Opcion 3": "1986",
+      "Opcion 4": "1987",
+      "Opcion 5": "1991",
       "Texto respuesta": "Ocurrió en 1986, y se conoció mundialmente la magnitud del accidente unas semanas después en Suecia cuando los sensores de radiación arrojaron valores inusuales. "
     },
     {

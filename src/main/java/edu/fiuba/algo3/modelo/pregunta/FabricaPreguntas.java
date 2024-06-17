@@ -32,12 +32,6 @@ public class FabricaPreguntas {
         return new VerdaderoFalso(enunciado, opciones, puntaje, categoria);
     }
 
-
-    public static int obtenerCantidadCorrectas(JSONObject preguntaJson) {
-        List<String> opcionesCorrectas = Arrays.asList(preguntaJson.getString("Respuesta").split("\\s*,\\s*"));
-        return (opcionesCorrectas.size());
-    }
-
     public static Pregunta preguntaMultipleChoice(JSONObject preguntaJson, Puntaje puntaje) {
         String enunciado = preguntaJson.getString("Pregunta");
         String categoria = preguntaJson.getString("Tema");
@@ -101,5 +95,10 @@ public class FabricaPreguntas {
             }
         }
         return new GroupChoice(enunciado, opciones, puntaje, categoria);
+    }
+
+    public static int obtenerCantidadCorrectas(JSONObject preguntaJson) {
+        List<String> opcionesCorrectas = Arrays.asList(preguntaJson.getString("Respuesta").split("\\s*,\\s*"));
+        return (opcionesCorrectas.size());
     }
 }
