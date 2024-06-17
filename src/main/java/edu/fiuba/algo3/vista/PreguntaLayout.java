@@ -18,9 +18,11 @@ public class PreguntaLayout extends Application {
         launch(args);
     }
 
+    
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Formulario de Pregunta");
+        primaryStage.setTitle("!!! Respondan las preguntas");
 
         Label preguntaLabel = new Label("Pregunta");
         preguntaLabel.getStyleClass().add("titulo-label");
@@ -102,7 +104,7 @@ public class PreguntaLayout extends Application {
         //}
         gridPane.getStyleClass().add("form-grid");
 
-        Scene scene = new Scene(gridPane, 450, 500);
+        Scene scene = new Scene(gridPane, 500, 550);
         String css = this.getClass().getResource("src/css/style.css").toExternalForm();
         scene.getStylesheets().add(css);
 

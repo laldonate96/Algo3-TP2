@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
-
-import java.util.List;
 
 public abstract class Pregunta {
     protected String categoria;
@@ -18,7 +19,15 @@ public abstract class Pregunta {
         this.puntaje = puntaje;
         this.categoria = categoria;
     }
-
+    
+    public List<String> obtenerOpciones(){
+        List<String> textoOpciones = new ArrayList<String>();
+        for(Opcion opcion: this.opciones){
+            textoOpciones.add(opcion.obtenerTexto());
+        }
+        return  textoOpciones;
+    }
+    
     public void asignarPuntajes(List<Respuesta> respuestas) {
         puntaje.asignarPuntajes(respuestas);
     }
