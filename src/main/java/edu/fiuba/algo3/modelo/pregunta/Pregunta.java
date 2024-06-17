@@ -32,4 +32,7 @@ public abstract class Pregunta {
         puntaje.asignarPuntajes(respuestas);
     }
 
+    public String obtenerCategoria() {
+        return categoria;
+    }
 }
