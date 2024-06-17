@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.modificador;
 
 import java.util.List;
 
-public class Multiplicador implements Modificador {
+public class Multiplicador implements ModificadorPuntaje {
     private final int factorDeMultiplicacion;
     private int usos;
 
@@ -22,7 +22,7 @@ public class Multiplicador implements Modificador {
     }
 
     @Override
-    public void actualizar(List<Modificador> modificadores) {
+    public void actualizar(List<ModificadorPuntaje> modificadores) {
         if (usos == 0)
             modificadores.remove(this);
     }

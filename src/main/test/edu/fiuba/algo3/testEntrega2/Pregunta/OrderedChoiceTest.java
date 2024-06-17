@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
@@ -23,40 +23,45 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 
 public class OrderedChoiceTest {
-    private Jugador jugador1;
-    private Jugador jugador2;
-    private Opcion opcion1Jugador1;
-    private Opcion opcion2Jugador1;
-    private Opcion opcion3Jugador1;
-    private Opcion opcion1Jugador2;
-    private Opcion opcion2Jugador2;
-    private Opcion opcion3Jugador2;
-    private static Clasica clasica;
     private Opcion opcion1Correcta;
     private Opcion opcion2Correcta;
     private Opcion opcion3Correcta;
-    private Modificador modificador;
-    private List<Modificador> modificadores;
+    private Opcion opcion1Incorrecta;
+    private Opcion opcion2Incorrecta;
+    private Opcion opcion3Incorrecta;
+    private Opcion opcion1CorrectaSinValidar;
+    private Opcion opcion2CorrectaSinValidar;
+    private Opcion opcion3CorrectaSinValidar;
+
+    private Jugador jugador1;
+    private Jugador jugador2;
+    private static Clasica clasica;
+    private static ModificadorPuntaje nulo;
+    private List<ModificadorPuntaje> modificadores;
 
     @BeforeAll
     public static void setUpClass() {
-        clasica = new Clasica();
+        clasica= new Clasica(3);
+        nulo=new Nulo();
     }
 
     @BeforeEach
     public void setUp() {
-        modificador = new Nulo();
         modificadores = new ArrayList<>();
-        modificadores.add(modificador);
+        modificadores.add(nulo);
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);
 
-        opcion1Jugador1 = new Ordenada("Opcion 1",1, new Incorrecta());
-        opcion2Jugador1 = new Ordenada("Opcion 2",2, new Incorrecta());
-        opcion3Jugador1 = new Ordenada("Opcion 3",3, new Incorrecta());
-        opcion1Jugador2 = new Ordenada("Opcion 3",1, new Incorrecta());
-        opcion2Jugador2 = new Ordenada("Opcion 2",2, new Incorrecta());
-        opcion3Jugador2 = new Ordenada("Opcion 1",3, new Incorrecta());
+
+
+        opcion1Incorrecta = new Ordenada("Opcion 1",1, new Incorrecta());
+        opcion2Incorrecta = new Ordenada("Opcion 2",2, new Incorrecta());
+        opcion3Incorrecta = new Ordenada("Opcion 3",3, new Incorrecta());
+
+        opcion1CorrectaSinValidar = new Ordenada("Opcion 3",1, new Incorrecta());
+        opcion2CorrectaSinValidar = new Ordenada("Opcion 2",2, new Incorrecta());
+        opcion3CorrectaSinValidar = new Ordenada("Opcion 1",3, new Incorrecta());
+
         opcion1Correcta = new Ordenada("Opcion 3", 1, new Correcta());
         opcion2Correcta = new Ordenada("Opcion 2", 2, new Correcta());
         opcion3Correcta = new Ordenada("Opcion 1", 3, new Correcta());
@@ -74,7 +79,7 @@ public class OrderedChoiceTest {
                 "Tema"
         );
 
-        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion2Jugador2, opcion1Jugador2, opcion3Jugador2),opcionesPregunta, modificador);
+        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion2CorrectaSinValidar, opcion1CorrectaSinValidar, opcion3CorrectaSinValidar),opcionesPregunta, nulo);
 
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(respuesta2);
@@ -98,7 +103,7 @@ public class OrderedChoiceTest {
                 clasica,
                 "Tema"
         );
-        Respuesta correcta = jugador1.responder(Arrays.asList(opcion1Jugador1, opcion2Jugador1, opcion3Jugador1),opcionesPregunta, modificador);
+        Respuesta correcta = jugador1.responder(Arrays.asList(opcion1Incorrecta, opcion2Incorrecta, opcion3Incorrecta),opcionesPregunta, nulo);
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(correcta);
 

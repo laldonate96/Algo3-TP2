@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
@@ -21,7 +21,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MultipleChoiceTestParcial {
+public class MultipleChoiceTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private Opcion opcion1;
@@ -31,8 +31,8 @@ public class MultipleChoiceTestParcial {
     private Opcion opcion1Correcta;
     private Opcion opcion2Correcta;
     private Opcion opcion3Incorrecta;
-    private Modificador modificador;
-    private List<Modificador> modificadores;
+    private Nulo nulo;
+    private List<ModificadorPuntaje> modificadores;
 
     @BeforeAll
     public static void setUpClass() {
@@ -41,9 +41,9 @@ public class MultipleChoiceTestParcial {
 
     @BeforeEach
     public void setUp() {
-        modificador = new Nulo();
+        nulo = new Nulo();
         modificadores = new ArrayList<>();
-        modificadores.add(modificador);
+        modificadores.add(nulo);
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);
         opcion1 = new Simple("Opcion 1", new Incorrecta());
@@ -63,7 +63,7 @@ public class MultipleChoiceTestParcial {
             "¿Cuáles de las siguientes opciones son opcionesPregunta?",
                 opcionesPregunta,       parcial, "Tema"
         );
-        Respuesta correcta = jugador1.responder(Arrays.asList(opcion1, opcion2),opcionesPregunta, modificador);
+        Respuesta correcta = jugador1.responder(Arrays.asList(opcion1, opcion2),opcionesPregunta, nulo);
 
         List<Respuesta> opciones = new ArrayList<>();
         opciones.add(correcta);
@@ -83,7 +83,7 @@ public class MultipleChoiceTestParcial {
                 opcionesPregunta,       parcial, "Tema"
         );
 
-        Respuesta incorrecta = jugador2.responder(Arrays.asList(opcion1, opcion3),opcionesPregunta, modificador);
+        Respuesta incorrecta = jugador2.responder(Arrays.asList(opcion1, opcion3),opcionesPregunta, nulo);
 
         List<Respuesta> opciones = new ArrayList<>();
         opciones.add(incorrecta);

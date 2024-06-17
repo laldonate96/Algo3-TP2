@@ -12,8 +12,6 @@ public abstract class Puntaje {
     public void asignarPuntajes(List<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
             asignarPuntaje(respuesta);
-
-
         }
     }
 }

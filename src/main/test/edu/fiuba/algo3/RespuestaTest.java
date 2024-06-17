@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Multiplicador;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -38,7 +38,7 @@ public class RespuestaTest {
     @BeforeEach
     public void setUp() {
 
-        List<Modificador> modificadores = new ArrayList<>();
+        List<ModificadorPuntaje> modificadores = new ArrayList<>();
         modificadores.add(multiplicador);
         modificadores.add(nulo);
 

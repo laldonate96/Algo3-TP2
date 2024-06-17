@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.testEntrega2.ModificadorTest;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Multiplicador;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
 
@@ -13,14 +13,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ModificadorTest {
+public class ModificadorPuntajeTest {
 
     private Opcion opcion1;
     private Opcion opcion2;
-    private Modificador multiplicadorDos;
-    private Modificador multiplicadorTres;
-    private Modificador nulo;
-    private List<Modificador> modificadores;
+    private ModificadorPuntaje multiplicadorDos;
+    private ModificadorPuntaje multiplicadorTres;
+    private ModificadorPuntaje nulo;
+    private List<ModificadorPuntaje> modificadores;
 
 
     @BeforeEach

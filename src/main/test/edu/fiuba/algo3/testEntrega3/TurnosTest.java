@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Multiplicador;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
@@ -26,15 +26,15 @@ public class TurnosTest {
     private Turno turno;
     private VerdaderoFalso vof;
     private VerdaderoFalso vofPenal;
-    private Modificador nulo;
-    private Modificador multiplicador;
+    private ModificadorPuntaje nulo;
+    private ModificadorPuntaje multiplicador;
     private Correcta correcta;
     private Incorrecta incorrecta;
     private List<Opcion> opciones;
     private List<Respuesta> respuestas;
     private Opcion opcion1;
     private Opcion opcion2;
-    private List<Modificador> modificadores;
+    private List<ModificadorPuntaje> modificadores;
     private Clasica clasica;
     private ConPenalidad penalidad;
     private Jugador jugador1;
@@ -51,10 +51,10 @@ public class TurnosTest {
         opciones.add(opcion1);
         opciones.add(opcion2);
 
-        clasica = new Clasica();
+        clasica = new Clasica(1);
         penalidad = new ConPenalidad();
-        vof = new VerdaderoFalso("un enunciado",opciones, clasica);
-        vofPenal = new VerdaderoFalso("un enunciado",opciones, penalidad);
+        vof = new VerdaderoFalso("un enunciado",opciones, clasica,"Mock");
+        vofPenal = new VerdaderoFalso("un enunciado",opciones, penalidad,"Mock");
 
         modificadores = new ArrayList<>(); // Inicializando la lista de modificadores
         multiplicador = new Multiplicador(2);

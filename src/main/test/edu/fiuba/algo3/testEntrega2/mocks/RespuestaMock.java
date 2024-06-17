@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.testEntrega2.mocks;
 
+import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
@@ -30,6 +31,11 @@ public class RespuestaMock implements Respuesta {
 
     @Override
     public void validarOpcion(Opcion opcionPregunta) {
+
+    }
+
+    @Override
+    public void borrar(ModificadorPuntaje modificadorchiquito) {
 
     }
 }
