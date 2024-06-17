@@ -6,11 +6,11 @@ import java.util.List;
 
 import org.json.JSONObject;
 
-import edu.fiuba.algo3.modelo.estado.Correcta;
-import edu.fiuba.algo3.modelo.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Ordered;
+import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 
@@ -65,7 +65,7 @@ public class FabricaPreguntas {
             if (preguntaJson.has(opcionKey)) {
                 String opcionTexto = preguntaJson.getString(opcionKey);
                 int posicion = opcionesCorrectas.indexOf(String.valueOf(i)) + 1;
-                Opcion opcion = new Ordered(opcionTexto, posicion, new Correcta());
+                Opcion opcion = new Ordenada(opcionTexto, posicion, new Correcta());
                 opciones.add(opcion);
             }
         }
