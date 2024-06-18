@@ -28,7 +28,7 @@ public abstract class Opcion {
         }
     }
 
-    protected String obtenerTexto() {
+    public String obtenerTexto() {
         return texto;
     }
 
