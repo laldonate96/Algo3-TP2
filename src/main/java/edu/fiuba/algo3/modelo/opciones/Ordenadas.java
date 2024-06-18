@@ -76,7 +76,9 @@ public class Ordenadas implements Opciones{
     @Override
     public Iterator<Opcion> iterator() {
         List<Opcion> listaOpcion=new ArrayList<>();
-        listaOpcion.add((Opcion) listaOpciones);
+        for (Opcion ordenada: listaOpciones){
+            listaOpcion.add(ordenada);
+        }
         return listaOpcion.iterator();
     }
 }

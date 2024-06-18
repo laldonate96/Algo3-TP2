@@ -1,14 +1,13 @@
 package edu.fiuba.algo3.modelo.opciones;
 
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opciones.opcion.Ordenada;
-import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 
 public class Simples implements Opciones {
     protected List<Simple> listaOpciones;
@@ -29,7 +28,7 @@ public class Simples implements Opciones {
     public Simples(List<String> contenidoOpciones, List<String> posicionesDeCorrectas){
 
         int posicion = 1;
-
+        this.listaOpciones=new ArrayList<>();
         Simple opcion;
         for (String contenidoOpcion : contenidoOpciones) {
             if (posicionesDeCorrectas.contains(String.valueOf(posicion))) {
@@ -64,7 +63,9 @@ public class Simples implements Opciones {
     @Override
     public Iterator<Opcion> iterator() {
         List<Opcion> listaOpcion=new ArrayList<>();
-        listaOpcion.add((Opcion) listaOpciones);
+        for (Opcion simple: listaOpciones){
+            listaOpcion.add(simple);
+        }
         return listaOpcion.iterator();
     }
 }
