@@ -1,20 +1,15 @@
 package edu.fiuba.algo3.testEntrega2.Pregunta;
 
-import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
+
 import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.RespuestaConcreta;
+
 import edu.fiuba.algo3.modelo.modificadores.Modificadores;
-import edu.fiuba.algo3.modelo.opciones.GruposMock;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
+
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.opciones.opcion.Grupo;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
