@@ -1,8 +1,12 @@
 package edu.fiuba.algo3.testEntrega2.PuntajeTest;
 
+import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
+import edu.fiuba.algo3.modelo.opciones.Simples;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
+import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.puntaje.Parcial;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
@@ -17,24 +21,21 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PuntajeTest {
-    private Simple opcion1Correcta;
-    private Simple opcion2Correcta;
 
-    private Simple opcion1;
-    private Simple opcion2;
-    private Simple opcion3;
     private Puntaje parcial;
     private Puntaje conPenalidad;
+    private RespuestasConcretas respuestas;
+    private Simples opciones;
 
     @BeforeEach
     public void setUpClass() {
 
-        opcion1 = new Simple("Opcion 1", new Incorrecta());
-        opcion1Correcta = new Simple("Opcion 1", new Correcta());
-        opcion2 = new Simple("Opcion 2", new Incorrecta());
-        opcion2Correcta = new Simple("Opcion 2", new Correcta());
-        opcion3 = new Simple("Opcion 3", new Incorrecta());
-     
+        List<String> opcionesTexto= List.of("Opcion 1", "Opcion 2", "Opcion 3");
+        List<String> posicionesCorrectas= List.of("1", "2");
+
+        respuestas=new RespuestasConcretas();
+        opciones=new Simples(opcionesTexto,posicionesCorrectas);
+
 
         parcial = new Parcial();
         conPenalidad = new ConPenalidad();
@@ -43,8 +44,10 @@ public class PuntajeTest {
     @Test
     public void test11ParcialAUnaRespuestaConUnaCorrectaSeLeAsignanPuntosCorrectamente() {
         //Arrange
-        RespuestaMock respuesta = new RespuestaMock(Arrays.asList(opcion1Correcta));
-        List<Respuesta> respuestas= List.of(respuesta);
+
+        Opciones opcionesRespuesta=opciones.crearCopia(List.of("Opcion 1"));
+        RespuestaMock respuesta = new RespuestaMock(opcionesRespuesta);
+        respuestas.agregar(respuesta);
 
         //Act
         parcial.asignarPuntajes(respuestas);
@@ -56,8 +59,10 @@ public class PuntajeTest {
     @Test
     public void test12ParcialAUnaRespuestaConUnaIncorrectaSeLeAsignanPuntosCorrectamente() {
         //Arrange
-        RespuestaMock respuesta = new RespuestaMock(Arrays.asList(opcion1));
-        List<Respuesta> respuestas= List.of(respuesta);
+        Opciones opcionesRespuesta=opciones.crearCopia(List.of("Opcion 3"));
+        RespuestaMock respuesta = new RespuestaMock(opcionesRespuesta);
+        respuestas.agregar(respuesta);
+
 
         //Act
         parcial.asignarPuntajes(respuestas);
@@ -69,9 +74,9 @@ public class PuntajeTest {
     @Test
     public void test13ParcialAUnaRespuestaConVariasCorrectasSeLeAsignanPuntosCorrectamente() {
         //Arrange
-        RespuestaMock respuesta = new RespuestaMock(Arrays.asList(opcion1Correcta, opcion2Correcta));
-        List<Respuesta> respuestas= List.of(respuesta);
-
+        Opciones opcionesRespuesta=opciones.crearCopia(List.of("Opcion 2", "Opcion 1"));
+        RespuestaMock respuesta = new RespuestaMock(opcionesRespuesta);
+        respuestas.agregar(respuesta);
         //Act
         parcial.asignarPuntajes(respuestas);
 
@@ -82,8 +87,9 @@ public class PuntajeTest {
     @Test
     public void test14ParcialAUnaRespuestaConCorrectasEIncorrectasSeLeAsignanPuntosCorrectamente() {
         //Arrange
-        RespuestaMock respuesta = new RespuestaMock(Arrays.asList(opcion1Correcta, opcion2));
-        List<Respuesta> respuestas= List.of(respuesta);
+        Opciones opcionesRespuesta=opciones.crearCopia(List.of("Opcion 2n't", "Opcion 1"));
+        RespuestaMock respuesta = new RespuestaMock(opcionesRespuesta);
+        respuestas.agregar(respuesta);
 
         //Act
         parcial.asignarPuntajes(respuestas);
@@ -95,9 +101,12 @@ public class PuntajeTest {
     @Test
     public void test15ParcialAUnaListaDeRespuestasUnaCorrectaYUnaIncorrectaSeLesAsignanPuntosCorrectamente() {
         //Arrange
-        RespuestaMock respuesta1 = new RespuestaMock(Arrays.asList(opcion1Correcta));
-        RespuestaMock respuesta2 = new RespuestaMock(Arrays.asList(opcion1));
-        List<Respuesta> respuestas= List.of(respuesta1,respuesta2);
+        Opciones opcionesRespuesta1=opciones.crearCopia(List.of("Opcion 1", "Opcion 2"));
+        Opciones opcionesRespuesta2=opciones.crearCopia(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"));
+        RespuestaMock respuesta1 = new RespuestaMock(opcionesRespuesta1);
+        RespuestaMock respuesta2 = new RespuestaMock(opcionesRespuesta2);
+        respuestas.agregar(respuesta1);
+        respuestas.agregar(respuesta2);
 
         //Act
         parcial.asignarPuntajes(respuestas);
