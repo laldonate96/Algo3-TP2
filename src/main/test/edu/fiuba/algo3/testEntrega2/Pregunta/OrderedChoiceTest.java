@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.testEntrega2.Pregunta;
 
+import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
+import edu.fiuba.algo3.modelo.modificadores.Modificadores;
+import edu.fiuba.algo3.modelo.opciones.Ordenadas;
+import edu.fiuba.algo3.modelo.opciones.Simples;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
@@ -38,6 +42,8 @@ public class OrderedChoiceTest {
     private static Clasica clasica;
     private static ModificadorPuntaje nulo;
     private List<ModificadorPuntaje> modificadores;
+    private RespuestasConcretas respuestas;
+    private Ordenadas opciones;
 
     @BeforeAll
     public static void setUpClass() {
@@ -47,11 +53,19 @@ public class OrderedChoiceTest {
 
     @BeforeEach
     public void setUp() {
-        modificadores = new ArrayList<>();
-        modificadores.add(nulo);
+
+        List<ModificadorPuntaje> modificadores= Modificadores.obtenerListaModificadoresPuntaje();
+
+        nulo = modificadores.getFirst();
+
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);
 
+        List<String> opcionesTexto= List.of("Opcion 1", "Opcion 2", "Opcion 3");
+        List<String> posicionesCorrectas= List.of("1", "2");
+
+        respuestas=new RespuestasConcretas();
+        opciones=new Ordenadas(opcionesTexto,posicionesCorrectas);
 
 
         opcion1Incorrecta = new Ordenada("Opcion 1",1, new Incorrecta());

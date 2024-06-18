@@ -29,7 +29,7 @@ public class Ordenadas implements Opciones{
 
         Ordenada opcion;
         for (String contenidoOpcion : contenidoOpciones) {
-
+            //Entiendo que esto no funciona como deberia, refactor needed
             if (posicionesDeCorrectas.get(posicion).equals(contenidoOpciones.get(posicion))) {
                 opcion = new Ordenada(contenidoOpcion, posicion ,new Correcta());
             } else {
