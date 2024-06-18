@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.testEntrega2.ModificadorTest;
 
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificador.Multiplicador;
-import edu.fiuba.algo3.modelo.modificador.Nulo;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ public class ModificadorPuntajeTest {
     public void setUp() {
         multiplicadorDos = new Multiplicador(2);
         multiplicadorTres = new Multiplicador(3);
-        nulo = new Nulo();
+        nulo = new NuloPuntaje();
         modificadores = new ArrayList<>();
         modificadores.add(multiplicadorDos);
         modificadores.add(multiplicadorTres);

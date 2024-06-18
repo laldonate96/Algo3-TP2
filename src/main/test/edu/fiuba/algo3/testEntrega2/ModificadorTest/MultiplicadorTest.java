@@ -11,7 +11,7 @@ import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
 import java.util.Arrays;
@@ -21,9 +21,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificador.Multiplicador;
-import edu.fiuba.algo3.modelo.modificador.Nulo;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 
 public class MultiplicadorTest {
     private Jugador jugador1;
@@ -40,7 +40,7 @@ public class MultiplicadorTest {
 
     @BeforeEach
     public void setUp() {
-        nulo = new Nulo();
+        nulo = new NuloPuntaje();
         Multiplicador multiplicador1 = new Multiplicador(2);
         Multiplicador multiplicador2 = new Multiplicador(3);
 

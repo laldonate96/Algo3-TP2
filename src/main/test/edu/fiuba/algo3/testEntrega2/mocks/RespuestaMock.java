@@ -1,15 +1,17 @@
 package edu.fiuba.algo3.testEntrega2.mocks;
 
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
 
 import java.util.List;
 
 public class RespuestaMock implements Respuesta {
     int puntaje;
-    List<Opcion> opcionesMock;
+    Opciones opcionesMock;
 
-    public RespuestaMock(List<Opcion> opcionesMock){
+    public RespuestaMock(Opciones opcionesMock){
         this.opcionesMock=opcionesMock;
         puntaje =0;
     }
@@ -21,7 +23,7 @@ public class RespuestaMock implements Respuesta {
 
 
     @Override
-    public List<Opcion> obtenerOpciones() {
+    public Opciones obtenerOpciones() {
         return opcionesMock;
     }
 
@@ -37,7 +39,7 @@ public class RespuestaMock implements Respuesta {
 
     @Override
     public void multiplicarPuntaje(int valor) {
-        return puntaje*valor;
+        puntaje=puntaje*valor;
     }
 
     @Override
@@ -47,6 +49,11 @@ public class RespuestaMock implements Respuesta {
 
     @Override
     public void sumarPuntaje() {
+    }
+
+    @Override
+    public boolean perteneceA(Jugador first) {
+        return false;
     }
 
 }

@@ -2,14 +2,13 @@ package edu.fiuba.algo3.modelo.opciones;
 
 import edu.fiuba.algo3.modelo.opciones.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Estado;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
-import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Grupos implements Opciones {
@@ -20,16 +19,19 @@ public class Grupos implements Opciones {
     }
 
 
-    public Grupos(List<String> opcionesGrupos) {
+    public Grupos(List<String> grupos,List<List<String>> contenidoOpcionesPorGrupo) {
         Grupo opcion;
+        String nombreGrupo;
+        listaOpciones = new ArrayList<>();
 
-        List<String> listaGrupos = obtenerGrupos(opcionesGrupos.getFirst());
-        for (String nombreGrupo : listaGrupos) {
-            List<String> textos = obtenerTextos(opcionesGrupos.getFirst(), nombreGrupo);
-            for (String texto : textos) {
-                opcion = new Grupo(texto, nombreGrupo, new Correcta());
+        for(List<String> contenidoOpciones:contenidoOpcionesPorGrupo){
+            nombreGrupo=grupos.removeFirst();
+            for(String contenidoOpcion:contenidoOpciones){
+                opcion = new Grupo(contenidoOpcion, nombreGrupo, new Correcta());
+                this.listaOpciones.add(opcion);
             }
         }
+
     }
 
 
@@ -85,5 +87,12 @@ public class Grupos implements Opciones {
         }
 
         return contiene;
+    }
+
+    @Override
+    public Iterator<Opcion> iterator() {
+        List<Opcion> listaOpcion=new ArrayList<>();
+        listaOpcion.add((Opcion) listaOpciones);
+        return listaOpcion.iterator();
     }
 }

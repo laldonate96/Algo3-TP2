@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.opciones.opcion.estado.Estado;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Ordenadas implements Opciones{
@@ -60,6 +61,8 @@ public class Ordenadas implements Opciones{
     }
 
 
+
+
     private boolean contiene(String elegida, int posicion) {
         boolean contiene = false;
 
@@ -71,4 +74,10 @@ public class Ordenadas implements Opciones{
         return contiene;
     }
 
+    @Override
+    public Iterator<Opcion> iterator() {
+        List<Opcion> listaOpcion=new ArrayList<>();
+        listaOpcion.add((Opcion) listaOpciones);
+        return listaOpcion.iterator();
+    }
 }

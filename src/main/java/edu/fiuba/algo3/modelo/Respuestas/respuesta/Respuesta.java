@@ -1,5 +1,7 @@
-package edu.fiuba.algo3.modelo.respuesta;
+package edu.fiuba.algo3.modelo.Respuestas.respuesta;
 
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 public interface Respuesta {
     void asignarPuntaje(int puntaje);
 
-    List<Opcion> obtenerOpciones();
+    Opciones obtenerOpciones();
 
     void validarOpcion(Opcion opcionPregunta);
 
@@ -26,4 +28,6 @@ public interface Respuesta {
     //Pre: La respuesta fue asignada un puntaje
     //Post: Se suma el puntaje de la respuesta al jugador
     void sumarPuntaje();
+
+    boolean perteneceA(Jugador first);
 }

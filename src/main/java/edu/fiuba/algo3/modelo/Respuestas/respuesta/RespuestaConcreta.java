@@ -1,20 +1,20 @@
-package edu.fiuba.algo3.modelo.respuesta;
+package edu.fiuba.algo3.modelo.Respuestas.respuesta;
+
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-
-
 
 public class RespuestaConcreta implements Respuesta {
-    private final List<Opcion> opciones;
+    private final Opciones opciones;
     private final Jugador jugador;
     private int puntaje;
     private final ModificadorPuntaje modificadorPuntaje;
 
-    public RespuestaConcreta(List<Opcion> opciones, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
+    public RespuestaConcreta(Opciones opciones, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
         this.opciones = opciones;
         this.jugador = jugador;
         this.modificadorPuntaje = modificadorPuntaje;
@@ -25,14 +25,14 @@ public class RespuestaConcreta implements Respuesta {
 
     }
 
-    public List<Opcion> obtenerOpciones() {
+    public Opciones obtenerOpciones() {
         return opciones;
     }
 
     public void validarOpcion(Opcion opcionPregunta) {
-        for (Opcion opcion : opciones) {
-            opcion.actualizarEstado(opcionPregunta);
-        }
+//        for (Opcion opcion : opciones) {
+//            opcion.actualizarEstado(opcionPregunta);
+//        }
     }
 
     @Override
@@ -54,5 +54,11 @@ public class RespuestaConcreta implements Respuesta {
     public void sumarPuntaje() {
         jugador.sumarPuntaje(puntaje);
     }
+
+    @Override
+    public boolean perteneceA(Jugador first) {
+        return jugador.equals(jugador);
+    }
+
 
 }

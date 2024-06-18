@@ -3,12 +3,12 @@ package edu.fiuba.algo3.testEntrega2.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Parcial;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificador.Nulo;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 
@@ -31,7 +31,7 @@ public class MultipleChoiceTest {
     private Opcion opcion1Correcta;
     private Opcion opcion2Correcta;
     private Opcion opcion3Incorrecta;
-    private Nulo nulo;
+    private NuloPuntaje nulo;
     private List<ModificadorPuntaje> modificadores;
 
     @BeforeAll
@@ -41,7 +41,7 @@ public class MultipleChoiceTest {
 
     @BeforeEach
     public void setUp() {
-        nulo = new Nulo();
+        nulo = new NuloPuntaje();
         modificadores = new ArrayList<>();
         modificadores.add(nulo);
         jugador1 = new Jugador("Jugador 1", modificadores);

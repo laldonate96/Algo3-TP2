@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.modelo.opciones;
 
-import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 
 import java.util.List;
 
-public interface Opciones {
+public interface Opciones extends Iterable<Opcion> {
 
     Opciones crearCopia(List<String> opcionesElegidas);
+
 }

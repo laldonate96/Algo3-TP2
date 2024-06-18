@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Simples implements Opciones {
@@ -48,5 +49,12 @@ public class Simples implements Opciones {
             }
         }
         return opciones;
+    }
+
+    @Override
+    public Iterator<Opcion> iterator() {
+        List<Opcion> listaOpcion=new ArrayList<>();
+        listaOpcion.add((Opcion) listaOpciones);
+        return listaOpcion.iterator();
     }
 }

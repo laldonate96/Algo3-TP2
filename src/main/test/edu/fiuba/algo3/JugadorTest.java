@@ -1,9 +1,9 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificador.Multiplicador;
-import edu.fiuba.algo3.modelo.modificador.Nulo;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
@@ -25,7 +25,7 @@ public class JugadorTest {
     @BeforeEach
     public void setUpClass() {
         multiplicador = new Multiplicador(2);
-        Nulo nulo = new Nulo();
+        NuloPuntaje nulo = new NuloPuntaje();
         modificadores = new ArrayList<>();
         modificadores.add(multiplicador);
         modificadores.add(nulo);
@@ -54,7 +54,7 @@ public class JugadorTest {
     @Test
     public void test03UsarUnModificadorNoNuloRemueveDeLaListaDeModificadoresDelJugador() {
         //Act
-        jugador.responder(opciones, opciones, multiplicador);
+        jugador.usar(multiplicador);
 
         //Assert
         assertEquals(1, modificadores.size());
@@ -62,10 +62,10 @@ public class JugadorTest {
     @Test
     public void test04UsarUnModificadorNuloNoLoRemueveDeLaListaDeModificadoresDelJugador() {
         //Arrange
-        Nulo nulo = new Nulo();
+        NuloPuntaje nulo = new NuloPuntaje();
 
         //Act
-        jugador.responder(opciones, opciones, nulo);
+        jugador.usar(nulo);
 
         //Assert
         assertEquals(2, modificadores.size());

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.opciones.Grupos;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
+import edu.fiuba.algo3.modelo.opciones.Ordenadas;
+import edu.fiuba.algo3.modelo.opciones.Simples;
 import edu.fiuba.algo3.modelo.pregunta.*;
 import org.json.JSONObject;
 
@@ -19,57 +23,49 @@ public class FabricaPreguntas {
     public static Pregunta preguntaVerdaderoFalso(JSONObject preguntaJson, Puntaje puntaje) {
         String enunciado = preguntaJson.getString("Pregunta");
         String categoria = preguntaJson.getString("Tema");
-        String opcionCorrecta = preguntaJson.getString("Respuesta");
-        String opcion1 = preguntaJson.getString("Opcion 1");
-        String opcion2 = preguntaJson.getString("Opcion 2");
-        List<Opcion> opciones = new ArrayList<>();
-        if (opcionCorrecta.equals("1")) {
-            opciones.add(new Simple(opcion1, new Correcta()));
-            opciones.add(new Simple(opcion2, new Incorrecta()));
-        } else {
-            opciones.add(new Simple(opcion1, new Incorrecta()));
-            opciones.add(new Simple(opcion2, new Correcta()));
-        }
+        List<String> posicionesCorrectas =new ArrayList<>();
+        posicionesCorrectas.add(preguntaJson.getString("Respuesta"));
+        List<String> contenidoOpciones = new ArrayList<>();
+        contenidoOpciones.add(preguntaJson.getString("Opcion 1"));
+        contenidoOpciones.add(preguntaJson.getString("Opcion 2" ));
+
+        Opciones opciones=new Simples(contenidoOpciones,posicionesCorrectas);
+
+
         return new VerdaderoFalso(enunciado, opciones, puntaje, categoria);
     }
 
     public static Pregunta preguntaMultipleChoice(JSONObject preguntaJson, Puntaje puntaje) {
         String enunciado = preguntaJson.getString("Pregunta");
         String categoria = preguntaJson.getString("Tema");
-        List<String> opcionesCorrectas = Arrays.asList(preguntaJson.getString("Respuesta").split("\\s*,\\s*"));
-        List<Opcion> opciones = new ArrayList<>();
-        
+        List<String> posicionesCorrectas = Arrays.asList(preguntaJson.getString("Respuesta").split("\\s*,\\s*"));
+        List<String> contenidoOpciones = new ArrayList<>();
+
+
         for (int i = 1; i <= 5; i++) {
             String opcionKey = "Opcion " + i;
             if (preguntaJson.has(opcionKey)) {
-                String opcionTexto = preguntaJson.getString(opcionKey);
-                Opcion opcion;
-                if (opcionesCorrectas.contains(String.valueOf(i))) {
-                    opcion = new Simple(opcionTexto, new Correcta());
-                } else {
-                    opcion = new Simple(opcionTexto, new Incorrecta());
-                }
-                opciones.add(opcion);
+                contenidoOpciones.add(preguntaJson.getString(opcionKey));
             }
         }
+        Opciones opciones=new Simples(contenidoOpciones,posicionesCorrectas);
+
         return new MultipleChoice(enunciado, opciones, puntaje, categoria);
     }
 
     public static Pregunta preguntaOrderedChoice(JSONObject preguntaJson, Puntaje puntaje) {
         String enunciado = preguntaJson.getString("Pregunta");
         String categoria = preguntaJson.getString("Tema");
-        List<String> opcionesCorrectas = Arrays.asList(preguntaJson.getString("Respuesta").split("\\s*,\\s*"));
-        List<Opcion> opciones = new ArrayList<>();
-        
+        List<String> posicionesCorrectas = Arrays.asList(preguntaJson.getString("Respuesta").split("\\s*,\\s*"));
+        List<String> contenidoOpciones = new ArrayList<>();
+
         for (int i = 1; i <= 6; i++) {
             String opcionKey = "Opcion " + i;
             if (preguntaJson.has(opcionKey)) {
-                String opcionTexto = preguntaJson.getString(opcionKey);
-                int posicion = opcionesCorrectas.indexOf(String.valueOf(i)) + 1;
-                Opcion opcion = new Ordenada(opcionTexto, posicion, new Correcta());
-                opciones.add(opcion);
+                contenidoOpciones.add(preguntaJson.getString(opcionKey));
             }
         }
+        Opciones opciones=new Ordenadas(contenidoOpciones,posicionesCorrectas);
         return new OrderedChoice(enunciado, opciones, puntaje, categoria);
     }
 
@@ -77,24 +73,35 @@ public class FabricaPreguntas {
         String enunciado = preguntaJson.getString("Pregunta");
         String categoria = preguntaJson.getString("Tema");
         String[] grupos = preguntaJson.getString("Respuesta").split("\\s*;\\s*");
-        List<Opcion> opciones = new ArrayList<>();
+
+        List<String> nombresGrupos=new ArrayList<>();
+        List<List<String>> contenidoOpcionesPorGrupo=new ArrayList<>();
+        List<String> contenidoOpciones=new ArrayList<>();
+
+        String[] partesTexto;
+        String indexGrupo;
+        List<String> indices;
 
         for (String grupo : grupos) {
-            String[] partes = grupo.split(":");
-            String nombreGrupo = partes[0].trim();
-            List<String> indices = Arrays.asList(partes[1].split("\\s*,\\s*"));
-            String etiquetaGrupo = preguntaJson.getString("Grupo " + nombreGrupo);
 
+            partesTexto = grupo.split(":");
+            indexGrupo = partesTexto[0].trim();
+            indices = Arrays.asList(partesTexto[1].split("\\s*,\\s*"));
+
+            nombresGrupos.add(preguntaJson.getString("Grupo " + indexGrupo));
             for (String index : indices) {
                 int i = Integer.parseInt(index.trim());
                 String opcionKey = "Opcion " + i;
                 if (preguntaJson.has(opcionKey)) {
-                    String opcionTexto = preguntaJson.getString(opcionKey);
-                    Opcion opcion = new Grupo(opcionTexto, etiquetaGrupo, new Correcta());
-                    opciones.add(opcion);
+                    contenidoOpciones.add(preguntaJson.getString(opcionKey));
                 }
             }
+
+            contenidoOpcionesPorGrupo.add(contenidoOpciones);
         }
+
+        Opciones opciones=new Grupos(nombresGrupos,contenidoOpcionesPorGrupo);
+
         return new GroupChoice(enunciado, opciones, puntaje, categoria);
     }
 

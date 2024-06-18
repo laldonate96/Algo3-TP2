@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
 import edu.fiuba.algo3.testEntrega2.mocks.RespuestaMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

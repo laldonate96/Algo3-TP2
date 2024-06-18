@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
+import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
 import edu.fiuba.algo3.modelo.opciones.Opciones;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
 
 import java.util.List;
 
@@ -20,6 +21,10 @@ public abstract class Pregunta {
     }
 
     public void asignarPuntajes(List<Respuesta> respuestas) {
+
+        puntaje.asignarPuntajes(respuestas);
+    }
+    public void asignarPuntajes(Respuestas respuestas) {
 
         puntaje.asignarPuntajes(respuestas);
     }

@@ -2,12 +2,12 @@ package edu.fiuba.algo3.testEntrega2.Pregunta;
 
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificador.Nulo;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opciones.opcion.Ordenada;
 
@@ -42,7 +42,7 @@ public class OrderedChoiceTest {
     @BeforeAll
     public static void setUpClass() {
         clasica= new Clasica(3);
-        nulo=new Nulo();
+        nulo=new NuloPuntaje();
     }
 
     @BeforeEach

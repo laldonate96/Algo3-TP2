@@ -2,13 +2,13 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
-import edu.fiuba.algo3.modelo.modificador.Nulo;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
-import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
+import edu.fiuba.algo3.modelo.Respuestas.respuesta.RespuestaConcreta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificador.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,12 +26,12 @@ public class RespuestaTest {
     private Opcion opcion1;
     private Opcion opcion2;
     private Opcion opcion1Correcta;
-    private static Nulo nulo;
+    private static NuloPuntaje nulo;
 
 
     @BeforeAll
     public static void setUpClass(){
-        nulo=new Nulo();
+        nulo=new NuloPuntaje();
         multiplicador = new Multiplicador(2);
     }
 
