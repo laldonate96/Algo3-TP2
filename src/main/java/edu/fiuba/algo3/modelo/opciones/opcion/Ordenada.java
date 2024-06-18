@@ -16,8 +16,6 @@ public class Ordenada extends Opcion {
         return posicion;
     }
 
-
-
     @Override
     public boolean equals(Opcion opcion) {
         return opcion.equals(this);
@@ -27,13 +25,16 @@ public class Ordenada extends Opcion {
         return this.texto.equals(ordenada.obtenerTexto()) && this.posicion == ordenada.obtenerPosicion();
     }
 
-
     protected boolean equals(Simple simple) {
         return false;
     }
 
-
     protected boolean equals(Grupo grupo) {
         return false;
     }
+
+    public boolean textoEstaContenidoYRespetaPosicion(String opcionElegida, int posicion) {
+        return (texto.equals(opcionElegida)) && (this.posicion == posicion);
+    }
+
 }
