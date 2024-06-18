@@ -21,6 +21,11 @@ public class Simples implements Opciones {
         listaOpciones.add(simple);
     }
 
+    public Simples(List<Simple> listaOpciones) {
+        this.listaOpciones = listaOpciones;
+    }
+
+
     public Simples(List<String> contenidoOpciones, List<String> posicionesDeCorrectas){
 
         int posicion = 1;

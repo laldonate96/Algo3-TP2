@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.testEntrega2.Pregunta;
 
+import edu.fiuba.algo3.modelo.modificadores.Modificadores;
+import edu.fiuba.algo3.modelo.opciones.Grupos;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
@@ -26,48 +29,39 @@ import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 public class GroupChoiceTest {
     private Jugador jugador1;
     private Jugador jugador2;
-    private Opcion opcion1Correcta;
-    private Opcion opcion2Correcta;
-    private Opcion opcion3Correcta;
-    private Opcion opcion1CorrectaSinValidar;
-    private Opcion opcion2CorrectaSinValidar;
-    private Opcion opcion3CorrectaSinValidar;
-    private Opcion opcion1Incorrecta;
-    private Opcion opcion2Incorrecta;
-    private Opcion opcion3Incorrecta;
+
+    static List<String> grupos;
+    static List<String> miembrosGrupo1;
+    static List<String> miembrosGrupo2;
     private static Clasica clasica;
-    private Grupo mamifero;
-    private Grupo pez;
-    private Grupo grupo3;
     private ModificadorPuntaje modificadorPuntaje;
     private List<ModificadorPuntaje> modificadores;
 
     @BeforeAll
     public static void setUpClass() {
         clasica = new Clasica(3);
+        grupos = Arrays.asList("Mamifero", "Pez");
+        miembrosGrupo1 = Arrays.asList("Gato", "Perro");
+        miembrosGrupo2 = List.of("Tiburon");
+
     }
 
     @BeforeEach
     public void setUp() {
-        modificadorPuntaje = new NuloPuntaje();
-        modificadores = new ArrayList<>();
-        modificadores.add(modificadorPuntaje);
+        modificadores = Modificadores.obtenerListaModificadoresPuntaje();
+        modificadorPuntaje= modificadores.getFirst();
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);
 
-
-
-        opcion1Correcta = new Grupo("Gato", "Mamifero", new Correcta());
-        opcion2Correcta = new Grupo("Perro", "Mamifero", new Correcta());
-        opcion3Correcta = new Grupo("Tiburon", "Pez", new Correcta());
+        List<List<String>> miembrosPorGrupos=new ArrayList<>();
+        miembrosPorGrupos.add(miembrosGrupo1);
+        miembrosPorGrupos.add(miembrosGrupo2);
+        Opciones opcionesCorrectas=new Grupos(grupos,miembrosPorGrupos);
 
         opcion1CorrectaSinValidar = new Grupo("Gato", "Mamifero", new Incorrecta());
         opcion2CorrectaSinValidar = new Grupo("Perro", "Mamifero", new Incorrecta());
         opcion3CorrectaSinValidar = new Grupo("Tiburon", "Pez", new Incorrecta());
 
-        opcion1Incorrecta=new Grupo("Sapo", "Mamifero", new Incorrecta());
-        opcion2Incorrecta= new Grupo("Perro", "Pez", new Incorrecta());
-        opcion1Incorrecta=new Grupo("Gato", "Lagarto", new Incorrecta());
 
     }
 
