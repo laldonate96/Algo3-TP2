@@ -5,27 +5,21 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
-import edu.fiuba.algo3.modelo.opciones.Simples;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
+import edu.fiuba.algo3.modelo.opciones.Simples;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.turno.Turno;
 
 public class TurnosTest {
@@ -43,6 +37,7 @@ public class TurnosTest {
     private List<ModificadorPuntaje> modificadores;
     private Jugador jugador1;
     private Jugador jugador2;
+    private NuloTurno nuloTurno;
 
 
 
@@ -55,7 +50,7 @@ public class TurnosTest {
         List<String> posicionesCorrectas= List.of("1");
         opciones=new Simples(opcionesTexto,posicionesCorrectas);
 
-        Clasica clasica=new Clasica(1);
+        Clasica clasica = new Clasica(1);
         ConPenalidad penalidad=new ConPenalidad();
 
         vof = new VerdaderoFalso("un enunciado",opciones, clasica,"Mock");
@@ -67,6 +62,9 @@ public class TurnosTest {
         nulo = new NuloPuntaje();
         modificadores.add(nulo);
         modificadores.add(multiplicador);
+
+        nuloTurno=new NuloTurno();
+
 
         jugador1 = new Jugador("un jugador", modificadores);
         jugador2 = new Jugador("otro jugador", modificadores);
@@ -85,7 +83,7 @@ public class TurnosTest {
         List<String> respuestaJugador1 = List.of("Correcta");
         List<String> respuestaJugador2 = List.of("Incorrecta");
 
-
+        turno.asignarModificador(nuloTurno);
         turno.agregarRespuesta(respuestaJugador1,jugador1,nulo);
         turno.agregarRespuesta(respuestaJugador2,jugador2,nulo);
 
@@ -93,10 +91,10 @@ public class TurnosTest {
 
         turno.asignarPuntajes();
 
-        // assert
-        
+        // assert   
+
+        assertEquals(0, jugador2.obtenerPuntaje());        
         assertEquals(1, jugador1.obtenerPuntaje());
-        assertEquals(0, jugador2.obtenerPuntaje());
     }
 
     @Test
@@ -108,7 +106,7 @@ public class TurnosTest {
         List<String> respuestaJugador1 = List.of("Correcta");
         List<String> respuestaJugador2 = List.of("Incorrecta");
 
-
+        turno.asignarModificador(nuloTurno);
         turno.agregarRespuesta(respuestaJugador1,jugador1,nulo);
         turno.agregarRespuesta(respuestaJugador2,jugador2,nulo);
 
@@ -129,7 +127,7 @@ public class TurnosTest {
 
         List<String> respuestaJugadores = List.of("Correcta");
 
-
+        turno.asignarModificador(nuloTurno);
         turno.agregarRespuesta(respuestaJugadores,jugador1,multiplicador);
         turno.agregarRespuesta(respuestaJugadores,jugador2,nulo);
 

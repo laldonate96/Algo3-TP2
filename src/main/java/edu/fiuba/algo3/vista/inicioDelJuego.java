@@ -35,6 +35,7 @@ public class inicioDelJuego extends Application {
         layout.setPadding(new Insets(20)); 
         layout.getChildren().addAll(label, inputJugador, jugadoresGuardados, botonJugar);
         layout.setAlignment(Pos.CENTER);
+        
         Scene scene = new Scene(layout, 400, 350);
         stage.setScene(scene);
 

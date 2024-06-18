@@ -1,15 +1,15 @@
 package edu.fiuba.algo3.modelo.opciones;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 import edu.fiuba.algo3.modelo.opciones.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Estado;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 public class Grupos implements Opciones {
     List<Grupo> listaOpciones;
@@ -98,7 +98,9 @@ public class Grupos implements Opciones {
     @Override
     public Iterator<Opcion> iterator() {
         List<Opcion> listaOpcion=new ArrayList<>();
-        listaOpcion.add((Opcion) listaOpciones);
+        for (Opcion ordenada: listaOpciones){
+            listaOpcion.add(ordenada);
+        }
         return listaOpcion.iterator();
     }
 }

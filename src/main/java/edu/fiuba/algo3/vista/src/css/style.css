@@ -29,8 +29,10 @@
 }
 
 .button{
-    -fx-background-color: #15de0a;
     -fx-padding: 20px;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
 }
 
 .titulo-label {
@@ -45,9 +47,11 @@
 }
 
 .enviar-button {
-    -fx-font-size: 14px;
-    -fx-padding: 10px 20px;
-    -fx-border-radius: 5px;
+    -fx-background-color: #15de0a;
+}
+
+.modificador-button{
+    -fx-background-color: #0a1cde;
 }
 
 .form-grid {
