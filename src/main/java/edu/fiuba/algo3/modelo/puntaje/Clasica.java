@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
 
 public class Clasica extends Puntaje {
     protected int cantidadCorrectasEsperada;
@@ -21,9 +21,9 @@ public class Clasica extends Puntaje {
         }
 
         if(cantidadCorrectas==cantidadCorrectasEsperada) {
-            respuesta.sumarPuntaje(puntaje);
+            respuesta.asignarPuntaje(puntaje);
         } else {
-            respuesta.sumarPuntaje(0);
+            respuesta.asignarPuntaje(0);
         }
     }
 }

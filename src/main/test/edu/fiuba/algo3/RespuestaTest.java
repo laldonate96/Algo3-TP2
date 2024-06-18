@@ -1,14 +1,13 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
-import edu.fiuba.algo3.modelo.modificador.Nulo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
+import edu.fiuba.algo3.modelo.opciones.Simples;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.Respuestas.respuesta.RespuestaConcreta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificador.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,15 +22,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RespuestaTest {
     private static Multiplicador multiplicador;
     private Jugador jugador;
-    private Opcion opcion1;
-    private Opcion opcion2;
-    private Opcion opcion1Correcta;
-    private static Nulo nulo;
+    private static NuloPuntaje nulo;
+    private Simples opcionesCorrectas;
+
 
 
     @BeforeAll
     public static void setUpClass(){
-        nulo=new Nulo();
+        nulo=new NuloPuntaje();
         multiplicador = new Multiplicador(2);
     }
 
@@ -42,9 +40,12 @@ public class RespuestaTest {
         modificadores.add(multiplicador);
         modificadores.add(nulo);
 
-        opcion1 = new Simple("Falso", new Incorrecta());
-        opcion2 = new Simple("Verdadero", new Incorrecta());
-        opcion1Correcta = new Simple("Falso", new Correcta());
+        List<String> opcionesTexto= Arrays.asList("Correcta", "Incorrecta");
+        List<String> posicionesCorrectas= List.of("1");
+
+        opcionesCorrectas=new Simples(List.of("Correcta"),posicionesCorrectas);
+
+
 
         jugador = new Jugador("Jugador 1", modificadores);
     }
@@ -52,56 +53,43 @@ public class RespuestaTest {
     @Test
     public void test01ObtenerOpcionesDaLasOpciones() {
         //Arrange
-        List<Opcion> opciones = Arrays.asList(opcion1, opcion2);
-        RespuestaConcreta respuesta = new RespuestaConcreta(opciones, jugador, nulo);
+
+
+        RespuestaConcreta respuesta = new RespuestaConcreta(opcionesCorrectas, jugador, nulo);
 
         //Act
-        List<Opcion> opcionesObtenidas = respuesta.obtenerOpciones();
+        Opciones opcionesObtenidas = respuesta.obtenerOpciones();
 
         //Assert
-        assertEquals(opcionesObtenidas, opciones);
+        assertEquals(opcionesObtenidas, opcionesCorrectas);
     }
 
     @Test
-    public void test02SumarPuntajePasaLosPuntosAsignadosConModificadorNulo() {
+    public void test02AsignarPuntajePasaLosPuntosAsignadosConModificadorNulo() {
         //Arrange
-        RespuestaConcreta respuesta = new RespuestaConcreta(Arrays.asList(opcion1, opcion2), jugador, nulo);
+        RespuestaConcreta respuesta = new RespuestaConcreta(opcionesCorrectas, jugador, nulo);
 
         //Act
-        respuesta.sumarPuntaje(1);
+        respuesta.asignarPuntaje(1);
 
         //Assert
         assertEquals(1, jugador.obtenerPuntaje());
     }
 
     @Test
-    public void test03SumarPuntajePasaLosPuntosEsperadosConModificadorNoNulo() {
+    public void test03AsignarPuntajePasaLosPuntosEsperadosConModificadorNoNulo() {
         //Arrange
-        RespuestaConcreta respuesta = new RespuestaConcreta(Arrays.asList(opcion1, opcion2), jugador, multiplicador);
+        RespuestaConcreta respuesta = new RespuestaConcreta(opcionesCorrectas, jugador, multiplicador);
 
         //Act
-        respuesta.sumarPuntaje(1);
+        respuesta.asignarPuntaje(1);
 
 
         //Assert
         assertEquals(2, jugador.obtenerPuntaje());
     }
 
-    @Test
-    public void test04ValidarOpcionRecibiendoUnaCorrectaActualizaSuEstado() {
-        RespuestaConcreta respuesta = new RespuestaConcreta(Arrays.asList(opcion1, opcion2), jugador, nulo);
 
-        respuesta.validarOpcion(opcion1Correcta);
 
-        assertTrue(opcion1.esCorrecta());
-    }
 
-    @Test
-    public void test05ValidarOpcionRecibiendoUnaIncorretaActualizaSuEstado() {
-        RespuestaConcreta respuesta = new RespuestaConcreta(Arrays.asList(opcion1, opcion2), jugador, nulo);
-
-        respuesta.validarOpcion(opcion1Correcta);
-
-        assertFalse(opcion2.esCorrecta());
-    }
 }

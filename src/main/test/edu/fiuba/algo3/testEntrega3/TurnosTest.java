@@ -8,104 +8,131 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificador.Multiplicador;
-import edu.fiuba.algo3.modelo.modificador.Nulo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
+import edu.fiuba.algo3.modelo.opciones.Simples;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.turno.Turno;
 
 public class TurnosTest {
-    private Turno turno;
+
+
+
     private VerdaderoFalso vof;
     private VerdaderoFalso vofPenal;
     private ModificadorPuntaje nulo;
     private ModificadorPuntaje multiplicador;
-    private Correcta correcta;
-    private Incorrecta incorrecta;
-    private List<Opcion> opciones;
-    private List<Respuesta> respuestas;
-    private Opcion opcion1;
-    private Opcion opcion2;
+
+
+    private Opciones opciones;
+    private Respuestas respuestas;
     private List<ModificadorPuntaje> modificadores;
-    private Clasica clasica;
-    private ConPenalidad penalidad;
     private Jugador jugador1;
     private Jugador jugador2;
+    private NuloTurno nuloTurno;
+
+
 
     @BeforeEach
     public void setUp(){
-        correcta = new Correcta();
-        incorrecta = new Incorrecta();
-        opcion1 = new Simple("correcta", correcta);
-        opcion2 = new Simple("incorrecta", incorrecta);
 
-        opciones = new ArrayList<>(); // Inicializando la lista de opciones
-        opciones.add(opcion1);
-        opciones.add(opcion2);
 
-        clasica = new Clasica(1);
-        penalidad = new ConPenalidad();
+
+        List<String> opcionesTexto= Arrays.asList("Correcta", "Incorrecta");
+        List<String> posicionesCorrectas= List.of("1");
+        opciones=new Simples(opcionesTexto,posicionesCorrectas);
+
+        Clasica clasica = new Clasica(1);
+        ConPenalidad penalidad=new ConPenalidad();
+
         vof = new VerdaderoFalso("un enunciado",opciones, clasica,"Mock");
+
         vofPenal = new VerdaderoFalso("un enunciado",opciones, penalidad,"Mock");
 
         modificadores = new ArrayList<>(); // Inicializando la lista de modificadores
         multiplicador = new Multiplicador(2);
-        nulo = new Nulo();
+        nulo = new NuloPuntaje();
         modificadores.add(nulo);
         modificadores.add(multiplicador);
+
+        nuloTurno=new NuloTurno();
+
 
         jugador1 = new Jugador("un jugador", modificadores);
         jugador2 = new Jugador("otro jugador", modificadores);
 
-        turno = new Turno();
+        respuestas=new RespuestasConcretas();
         
-        respuestas = new ArrayList<>(); // Inicializando la lista de respuestas
+
     }
 
     @Test
     public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYseLespidePuntos(){
        //arrange
+        Turno turno = new Turno(vof, new RespuestasConcretas());
 
-        Opcion respuestaJugador1 = new Simple("correcta", incorrecta);
-        Opcion respuestaJugador2 = new Simple("incorrecta", incorrecta);
-        Respuesta respuesta1 = jugador1.responder(Arrays.asList(respuestaJugador1),opciones, nulo);
-        Respuesta respuesta2 = jugador2.responder(Arrays.asList(respuestaJugador2),opciones, nulo);
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+
+        List<String> respuestaJugador1 = List.of("Correcta");
+        List<String> respuestaJugador2 = List.of("Incorrecta");
+
+        turno.asignarModificador(nuloTurno);
+        turno.agregarRespuesta(respuestaJugador1,jugador1,nulo);
+        turno.agregarRespuesta(respuestaJugador2,jugador2,nulo);
 
         //act
 
-        turno.asignarPreguntaDelTurno(vof);
-        turno.responderPorTurno(respuestas);
+        turno.asignarPuntajes();
+
+        // assert   
+
+        assertEquals(0, jugador2.obtenerPuntaje());        
+        assertEquals(1, jugador1.obtenerPuntaje());
+    }
+
+    @Test
+    public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaYseLespidePuntos(){
+        //arrange
+        Turno turno = new Turno(vof, new RespuestasConcretas());
+
+
+        List<String> respuestaJugador1 = List.of("Correcta");
+        List<String> respuestaJugador2 = List.of("Incorrecta");
+
+        turno.asignarModificador(nuloTurno);
+        turno.agregarRespuesta(respuestaJugador1,jugador1,nulo);
+        turno.agregarRespuesta(respuestaJugador2,jugador2,nulo);
+
+        //act
+        turno.asignarPuntajes();
 
         // assert
-        
+
         assertEquals(1, jugador1.obtenerPuntaje());
         assertEquals(0, jugador2.obtenerPuntaje());
     }
 
     @Test
-    public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaConMultiplicadorYseLespidePuntos(){
+    public void test03seJuegaUnTurnoConUnaPreguntaVoFPenalizadaConMultiplicadorYseLespidePuntos(){
        //arrange
+        Turno turno = new Turno(vof, new RespuestasConcretas());
 
-        Opcion respuestaJugador = new Simple("correcta", incorrecta);
-        Respuesta respuesta1 = jugador1.responder(Arrays.asList(respuestaJugador),opciones, multiplicador);
-        Respuesta respuesta2 = jugador2.responder(Arrays.asList(respuestaJugador),opciones, nulo);
-        respuestas.add(respuesta1);
-        respuestas.add(respuesta2);
+
+        List<String> respuestaJugadores = List.of("Correcta");
+
+        turno.asignarModificador(nuloTurno);
+        turno.agregarRespuesta(respuestaJugadores,jugador1,multiplicador);
+        turno.agregarRespuesta(respuestaJugadores,jugador2,nulo);
 
         //act
-
-        turno.asignarPreguntaDelTurno(vofPenal);
-        turno.responderPorTurno(respuestas);
+        turno.asignarPuntajes();
 
         // assert
         
