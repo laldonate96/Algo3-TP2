@@ -8,4 +8,6 @@ public interface Opciones extends Iterable<Opcion> {
 
     Opciones crearCopia(List<String> opcionesElegidas);
 
+
+    List<String> obtenerListaStrings();
 }

@@ -57,6 +57,11 @@ public class Simples implements Opciones {
     }
 
     @Override
+    public List<String> obtenerListaStrings() {
+        return List.of();
+    }
+
+    @Override
     public Iterator<Opcion> iterator() {
         List<Opcion> listaOpcion=new ArrayList<>();
         listaOpcion.add((Opcion) listaOpciones);

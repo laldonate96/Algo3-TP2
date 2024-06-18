@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo.opciones;
 
-import edu.fiuba.algo3.modelo.opciones.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opciones.opcion.Ordenada;
-import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Estado;
 import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
@@ -23,20 +21,18 @@ public class Ordenadas implements Opciones{
         listaOpciones.add(ordenada);
     }
 
-    public Ordenadas (List<String> contenidoOpciones, List<String> posicionesDeCorrectas) {
-
-        int posicion = 0;
+    public Ordenadas (List<String> contenidoOpciones, List<String> ordenCorrecto) {
+        listaOpciones=new ArrayList<>();
+        int posicionEnLista;
+        int posicionOrdenada=1;
 
         Ordenada opcion;
-        for (String contenidoOpcion : contenidoOpciones) {
-            //Entiendo que esto no funciona como deberia, refactor needed
-            if (posicionesDeCorrectas.get(posicion).equals(contenidoOpciones.get(posicion))) {
-                opcion = new Ordenada(contenidoOpcion, posicion ,new Correcta());
-            } else {
-                opcion = new Ordenada(contenidoOpcion, posicion ,new Incorrecta());
-            }
+        for (String textoPosicion : ordenCorrecto) {
+            posicionEnLista=Integer.parseInt(textoPosicion);
+
+            opcion = new Ordenada(contenidoOpciones.get(posicionEnLista), posicionOrdenada ,new Correcta());
             listaOpciones.add(opcion);
-            posicion++;
+            posicionOrdenada++;
         }
     }
 
@@ -60,7 +56,10 @@ public class Ordenadas implements Opciones{
         return opciones;
     }
 
-
+    @Override
+    public List<String> obtenerListaStrings() {
+        return List.of();
+    }
 
 
     private boolean contiene(String elegida, int posicion) {

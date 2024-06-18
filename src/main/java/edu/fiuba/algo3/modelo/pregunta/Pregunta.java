@@ -38,8 +38,8 @@ public abstract class Pregunta {
         return categoria;
     }
 
-    public Opciones obtenerOpciones() {
-        return opciones;
+    public List<String> obtenerOpciones() {
+        return opciones.obtenerListaStrings();
     }
 
     public Opciones crearCopiaOpciones(List<String> opcionesElegidas) {

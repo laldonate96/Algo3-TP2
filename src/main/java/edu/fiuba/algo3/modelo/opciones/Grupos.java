@@ -78,6 +78,12 @@ public class Grupos implements Opciones {
         return grupos;
     }
 
+    @Override
+    public List<String> obtenerListaStrings() {
+        return List.of();
+    }
+
+
     private boolean contiene(String texto, String grupo) {
         boolean contiene = false;
         for (Grupo opcion : listaOpciones) {

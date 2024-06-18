@@ -27,16 +27,6 @@ public class Jugador {
         return puntaje;
     }
 
-    public Respuesta responder(Opciones opcionesJugador, List<Opcion> opcionesPregunta, ModificadorPuntaje modificadorPuntaje) {
-        Respuesta respuesta = new RespuestaConcreta(opcionesJugador, this, modificadorPuntaje);
-
-        for (Opcion opcionPregunta : opcionesPregunta) {
-            respuesta.validarOpcion(opcionPregunta);
-        }
-        modificadorPuntaje.usar();
-        modificadorPuntaje.actualizar(modificadores);
-        return respuesta;
-    }
 
     public void usar(ModificadorPuntaje modificadorPuntaje){
         modificadorPuntaje.usar();

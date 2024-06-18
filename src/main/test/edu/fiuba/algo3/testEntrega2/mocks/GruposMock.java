@@ -100,4 +100,9 @@ public class GruposMock implements Opciones {
     public Opciones crearCopia(List<String> opcionesElegidas) {
         return null;
     }
+
+    @Override
+    public List<String> obtenerListaStrings() {
+        return List.of();
+    }
 }

@@ -2,8 +2,8 @@ package edu.fiuba.algo3.testEntrega2.Pregunta;
 
 import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
 import edu.fiuba.algo3.modelo.modificadores.Modificadores;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
 import edu.fiuba.algo3.modelo.opciones.Ordenadas;
-import edu.fiuba.algo3.modelo.opciones.Simples;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
@@ -27,21 +27,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 
 public class OrderedChoiceTest {
-    private Opcion opcion1Correcta;
-    private Opcion opcion2Correcta;
-    private Opcion opcion3Correcta;
-    private Opcion opcion1Incorrecta;
-    private Opcion opcion2Incorrecta;
-    private Opcion opcion3Incorrecta;
-    private Opcion opcion1CorrectaSinValidar;
-    private Opcion opcion2CorrectaSinValidar;
-    private Opcion opcion3CorrectaSinValidar;
+
 
     private Jugador jugador1;
     private Jugador jugador2;
     private static Clasica clasica;
     private static ModificadorPuntaje nulo;
-    private List<ModificadorPuntaje> modificadores;
+
     private RespuestasConcretas respuestas;
     private Ordenadas opciones;
 
@@ -62,41 +54,29 @@ public class OrderedChoiceTest {
         jugador2 = new Jugador("Jugador 2", modificadores);
 
         List<String> opcionesTexto= List.of("Opcion 1", "Opcion 2", "Opcion 3");
-        List<String> posicionesCorrectas= List.of("1", "2");
+        List<String> ordenCorrecto = List.of("3", "2", "1");
 
         respuestas=new RespuestasConcretas();
-        opciones=new Ordenadas(opcionesTexto,posicionesCorrectas);
-
-
-        opcion1Incorrecta = new Ordenada("Opcion 1",1, new Incorrecta());
-        opcion2Incorrecta = new Ordenada("Opcion 2",2, new Incorrecta());
-        opcion3Incorrecta = new Ordenada("Opcion 3",3, new Incorrecta());
-
-        opcion1CorrectaSinValidar = new Ordenada("Opcion 3",1, new Incorrecta());
-        opcion2CorrectaSinValidar = new Ordenada("Opcion 2",2, new Incorrecta());
-        opcion3CorrectaSinValidar = new Ordenada("Opcion 1",3, new Incorrecta());
-
-        opcion1Correcta = new Ordenada("Opcion 3", 1, new Correcta());
-        opcion2Correcta = new Ordenada("Opcion 2", 2, new Correcta());
-        opcion3Correcta = new Ordenada("Opcion 1", 3, new Correcta());
+        opciones=new Ordenadas(opcionesTexto, ordenCorrecto);
     }
 
     @Test
     public void test01OrderedChoiceAsignaPuntajeCorrectoAJugadorQueRespondeCorrectamente(){
         //Arrange
-        List<Opcion> opcionesPregunta = Arrays.asList(opcion1Correcta, opcion2Correcta,opcion3Correcta);
 
         Pregunta pregunta = new OrderedChoice(
                 "Ordenar las siguientes opciones",
-                opcionesPregunta,
+                opciones,
                 clasica,
                 "Tema"
         );
 
-        Respuesta respuesta2 = jugador2.responder(Arrays.asList(opcion2CorrectaSinValidar, opcion1CorrectaSinValidar, opcion3CorrectaSinValidar),opcionesPregunta, nulo);
 
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(respuesta2);
+        Opciones opcionesJugador = pregunta.crearCopiaOpciones(List.of( "Opcion 3","Opcion 2", "Opcion 1"));
+        respuestas.agregar(opcionesJugador,jugador1,nulo);
+
+        //Act
+        pregunta.asignarPuntajes(respuestas);
 
         //Act
 
@@ -109,17 +89,16 @@ public class OrderedChoiceTest {
     @Test
     public void test02OrderedChoiceAsignaPuntajeCorrectoAJugadorQueRespondeIncorrectamente() {
         //Arrange
-        List<Opcion> opcionesPregunta = Arrays.asList(opcion1Correcta, opcion2Correcta,opcion3Correcta);
 
         Pregunta pregunta = new OrderedChoice(
                 "Ordenar las siguientes opciones",
-                opcionesPregunta,
+                opciones,
                 clasica,
                 "Tema"
         );
-        Respuesta correcta = jugador1.responder(Arrays.asList(opcion1Incorrecta, opcion2Incorrecta, opcion3Incorrecta),opcionesPregunta, nulo);
-        List<Respuesta> respuestas = new ArrayList<>();
-        respuestas.add(correcta);
+        
+        Opciones opcionesJugador = pregunta.crearCopiaOpciones(List.of( "Opcion 1","Opcion 2", "Opcion 3"));
+        respuestas.agregar(opcionesJugador,jugador1,nulo);
 
         //Act
         pregunta.asignarPuntajes(respuestas);
