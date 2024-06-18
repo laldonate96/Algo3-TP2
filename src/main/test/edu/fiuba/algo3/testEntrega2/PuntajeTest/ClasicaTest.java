@@ -1,45 +1,42 @@
 package edu.fiuba.algo3.testEntrega2.PuntajeTest;
 
-import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
+import edu.fiuba.algo3.modelo.opciones.Opciones;
+import edu.fiuba.algo3.modelo.opciones.Simples;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
 import edu.fiuba.algo3.testEntrega2.mocks.RespuestaMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ClasicaTest {
 
-    private Simple opcion1Correcta;
-    private Simple opcion2Correcta;
 
-    private Simple opcion1;
-    private Simple opcion2;
-    private Simple opcion3;
     private Puntaje clasica;
+    private Simples opciones;
+    private RespuestasConcretas respuestas;
 
     @BeforeEach
     public void setUpClass() {
 
-        opcion1 = new Simple("Opcion 1", new Incorrecta());
-        opcion1Correcta = new Simple("Opcion 1", new Correcta());
-        opcion2 = new Simple("Opcion 2", new Incorrecta());
-        opcion2Correcta = new Simple("Opcion 2", new Correcta());
-        opcion3 = new Simple("Opcion 3", new Incorrecta());
+        List<String> opcionesTexto= List.of("Opcion 1", "Opcion 2", "Opcion 3");
+        List<String> posicionesCorrectas= List.of("1", "2");
+
+        respuestas=new RespuestasConcretas();
+        opciones=new Simples(opcionesTexto,posicionesCorrectas);
     }
 
     public void test01UnaRespuestaConUnaCorrectaSeLeAsignaUnPunto() {
         //Arrange
         Clasica clasica = new Clasica(1);
-        RespuestaMock respuesta = new RespuestaMock(Arrays.asList(opcion1Correcta));
-        List<Respuesta> respuestas = List.of(respuesta);
+
+        Opciones opcionesRespuesta=opciones.crearCopia(List.of("Opcion 1"));
+        RespuestaMock respuesta = new RespuestaMock(opcionesRespuesta);
+        respuestas.agregar(respuesta);
 
 
         //Act
@@ -54,8 +51,9 @@ public class ClasicaTest {
         //Arrange
         Clasica clasica = new Clasica(2);
 
-        RespuestaMock respuesta = new RespuestaMock(Arrays.asList(opcion1Correcta, opcion2Correcta));
-        List<Respuesta> respuestas = List.of(respuesta);
+        Opciones opcionesRespuesta=opciones.crearCopia(List.of("Opcion 1", "Opcion 2"));
+        RespuestaMock respuesta = new RespuestaMock(opcionesRespuesta);
+        respuestas.agregar(respuesta);
 
         //Act
         clasica.asignarPuntajes(respuestas);
@@ -69,8 +67,10 @@ public class ClasicaTest {
         //Arrange
         Clasica clasica = new Clasica(1);
 
-        RespuestaMock respuesta = new RespuestaMock(Arrays.asList(opcion1, opcion2, opcion3));
-        List<Respuesta> respuestas = List.of(respuesta);
+
+        Opciones opcionesRespuesta=opciones.crearCopia(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"));
+        RespuestaMock respuesta = new RespuestaMock(opcionesRespuesta);
+        respuestas.agregar(respuesta);
 
         //Act
         clasica.asignarPuntajes(respuestas);
@@ -83,8 +83,11 @@ public class ClasicaTest {
     public void test04UnaRespuestaConCorrectasEIncorrectasSeLeAsignan0Puntos() {
         //Arrange
         Clasica clasica = new Clasica(1);
-        RespuestaMock respuesta = new RespuestaMock(Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3));
-        List<Respuesta> respuestas = List.of(respuesta);
+
+
+        Opciones opcionesRespuesta=opciones.crearCopia(List.of("Opcion 1", "Opcion 2","Opcion 3"));
+        RespuestaMock respuesta = new RespuestaMock(opcionesRespuesta);
+        respuestas.agregar(respuesta);
 
         //Act
         clasica.asignarPuntajes(respuestas);
@@ -94,13 +97,16 @@ public class ClasicaTest {
     }
 
     @Test
-    public void test05UnaListaDeRespuestasUnaCorrectaYUnaIncorrectaSeLesAsignan0Puntos() {
+    public void test05DosRespuestasUnaCorrectaYUnaIncorrectaSeLesAsignan0Puntos() {
         //Arrange
         Clasica clasica = new Clasica(1);
 
-        RespuestaMock respuesta1 = new RespuestaMock(Arrays.asList(opcion1Correcta));
-        RespuestaMock respuesta2 = new RespuestaMock(Arrays.asList(opcion1));
-        List<Respuesta> respuestas = List.of(respuesta1, respuesta2);
+        Opciones opcionesRespuesta1=opciones.crearCopia(List.of("Opcion 1", "Opcion 2"));
+        Opciones opcionesRespuesta2=opciones.crearCopia(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"));
+        RespuestaMock respuesta1 = new RespuestaMock(opcionesRespuesta1);
+        RespuestaMock respuesta2 = new RespuestaMock(opcionesRespuesta2);
+        respuestas.agregar(respuesta1);
+        respuestas.agregar(respuesta2);
 
         //Act
         clasica.asignarPuntajes(respuestas);
@@ -116,13 +122,14 @@ public class ClasicaTest {
         //Arrange
         Clasica clasica = new Clasica(3);
 
-        RespuestaMock respuesta1 = new RespuestaMock(Arrays.asList(opcion1Correcta));
+        Opciones opcionesRespuesta=opciones.crearCopia(List.of("Opcion 1"));
+        RespuestaMock respuesta = new RespuestaMock(opcionesRespuesta);
 
         //Act
-        clasica.asignarPuntaje(respuesta1);
+        clasica.asignarPuntaje(respuesta);
 
         //Assert
-        assertEquals(0, respuesta1.obtenerPuntaje());
+        assertEquals(0, respuesta.obtenerPuntaje());
 
     }
 
