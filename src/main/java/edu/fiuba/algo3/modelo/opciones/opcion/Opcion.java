@@ -1,9 +1,11 @@
-package edu.fiuba.algo3.modelo.opcion;
+package edu.fiuba.algo3.modelo.opciones.opcion;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Estado;
-import edu.fiuba.algo3.modelo.opcion.visitor.OpcionVisitor;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Estado;
 
-public abstract class Opcion implements OpcionVisitor {
+
+import java.util.List;
+
+public abstract class Opcion {
     protected Estado estado;
     protected String texto;
     
@@ -29,4 +31,6 @@ public abstract class Opcion implements OpcionVisitor {
     protected String obtenerTexto() {
         return texto;
     }
+
+
 }

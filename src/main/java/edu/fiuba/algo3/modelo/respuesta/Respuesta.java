@@ -1,16 +1,29 @@
 package edu.fiuba.algo3.modelo.respuesta;
 
-import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 
 import java.util.List;
 
 public interface Respuesta {
-    void sumarPuntaje(int puntaje);
+    void asignarPuntaje(int puntaje);
 
     List<Opcion> obtenerOpciones();
 
     void validarOpcion(Opcion opcionPregunta);
 
-    void borrar(ModificadorPuntaje modificadorchiquito);
+    //Pre: La respuesta fue asignada un puntaje
+    //Post: Se obtiene ese puntaje
+    int obtenerPuntaje();
+
+    //Pre: La respuesta fue asignada un puntaje
+    //Post: Se multiplica el puntaje por el valor recibido
+    void multiplicarPuntaje(int valor);
+
+    //Pre: La respuesta fue asignada un puntaje
+    //Post: Devuelve true si la respuesta tiene un puntaje mayor a 0, false en caso contrario
+    boolean esCorrecta();
+
+    //Pre: La respuesta fue asignada un puntaje
+    //Post: Se suma el puntaje de la respuesta al jugador
+    void sumarPuntaje();
 }

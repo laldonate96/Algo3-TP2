@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.mezclador;
+package edu.fiuba.algo3.modelo.lector.mezclador;
 
 import java.util.Collections;
 import java.util.List;

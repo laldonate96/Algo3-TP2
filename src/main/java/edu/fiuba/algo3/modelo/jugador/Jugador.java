@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.jugador;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
 
@@ -35,6 +35,11 @@ public class Jugador {
         modificadorPuntaje.usar();
         modificadorPuntaje.actualizar(modificadores);
         return respuesta;
+    }
+
+
+    public boolean tieneNombre(String buscado) {
+        return nombre.equals(buscado);
     }
 }
 

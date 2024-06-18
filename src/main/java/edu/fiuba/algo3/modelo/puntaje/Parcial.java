@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
-import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 public class Parcial extends Puntaje {
@@ -18,7 +18,7 @@ public class Parcial extends Puntaje {
             }
         }
 
-        respuesta.sumarPuntaje(puntosParciales);
+        respuesta.asignarPuntaje(puntosParciales);
     }
 }
 

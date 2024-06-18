@@ -12,7 +12,7 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 public class LectorTest {
     @Test
     public void test01LectorLeeCorrectamenteArchivoJson() {
-        List<Pregunta> preguntas = new Lector().obtenerPreguntasDeJson();
+        List<Pregunta> preguntas = Lector.obtenerPreguntasDeJson();
         assertEquals(25, preguntas.size());
     }
 }

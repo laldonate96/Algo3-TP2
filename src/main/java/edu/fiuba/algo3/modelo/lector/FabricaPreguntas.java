@@ -1,17 +1,18 @@
-package edu.fiuba.algo3.modelo.pregunta;
+package edu.fiuba.algo3.modelo.lector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.pregunta.*;
 import org.json.JSONObject;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
-import edu.fiuba.algo3.modelo.opcion.Grupo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Ordenada;
-import edu.fiuba.algo3.modelo.opcion.Simple;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opciones.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Ordenada;
+import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 
 public class FabricaPreguntas {

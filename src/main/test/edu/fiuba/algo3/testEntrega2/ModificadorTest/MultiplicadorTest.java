@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Simple;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;

@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.modelo.opcion;
+package edu.fiuba.algo3.modelo.opciones.opcion;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Estado;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Estado;
+
+import java.util.List;
 
 public class Simple extends Opcion {
     public Simple(String texto, Estado estado) {
@@ -24,5 +26,9 @@ public class Simple extends Opcion {
 
     protected boolean equals(Grupo grupo) {
         return false;
+    }
+
+    public boolean textoEstaContenido(List<String> opcionesElegidas) {
+        return opcionesElegidas.contains(texto);
     }
 }

@@ -12,10 +12,10 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Multiplicador;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
@@ -23,7 +23,7 @@ import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.turno.Turno;
 
 public class TurnosTest {
-    private Turno turno;
+
     private VerdaderoFalso vof;
     private VerdaderoFalso vofPenal;
     private ModificadorPuntaje nulo;
@@ -42,6 +42,7 @@ public class TurnosTest {
 
     @BeforeEach
     public void setUp(){
+
         correcta = new Correcta();
         incorrecta = new Incorrecta();
         opcion1 = new Simple("correcta", correcta);
@@ -65,7 +66,7 @@ public class TurnosTest {
         jugador1 = new Jugador("un jugador", modificadores);
         jugador2 = new Jugador("otro jugador", modificadores);
 
-        turno = new Turno();
+
         
         respuestas = new ArrayList<>(); // Inicializando la lista de respuestas
     }
@@ -73,6 +74,7 @@ public class TurnosTest {
     @Test
     public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYseLespidePuntos(){
        //arrange
+        Turno turno = new Turno(vof);
 
         Opcion respuestaJugador1 = new Simple("correcta", incorrecta);
         Opcion respuestaJugador2 = new Simple("incorrecta", incorrecta);
@@ -83,7 +85,6 @@ public class TurnosTest {
 
         //act
 
-        turno.asignarPreguntaDelTurno(vof);
         turno.responderPorTurno(respuestas);
 
         // assert
@@ -96,6 +97,8 @@ public class TurnosTest {
     public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaConMultiplicadorYseLespidePuntos(){
        //arrange
 
+
+        Turno turno = new Turno(vofPenal);
         Opcion respuestaJugador = new Simple("correcta", incorrecta);
         Respuesta respuesta1 = jugador1.responder(Arrays.asList(respuestaJugador),opciones, multiplicador);
         Respuesta respuesta2 = jugador2.responder(Arrays.asList(respuestaJugador),opciones, nulo);
@@ -104,7 +107,7 @@ public class TurnosTest {
 
         //act
 
-        turno.asignarPreguntaDelTurno(vofPenal);
+
         turno.responderPorTurno(respuestas);
 
         // assert

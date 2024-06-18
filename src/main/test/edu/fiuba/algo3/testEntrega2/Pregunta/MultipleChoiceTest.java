@@ -4,13 +4,13 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Parcial;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Simple;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,7 +55,7 @@ public class MultipleChoiceTest {
     }
 
     @Test
-    public void test01MultipleChoiceParcialAsignaPuntajeCorrectoAJugadoreQueRespondioBien() {
+    public void test01Asigna2PuntosAUnJugadorQueRespondio2Correctas() {
 
         List<Opcion> opcionesPregunta = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
 

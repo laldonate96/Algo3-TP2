@@ -45,7 +45,7 @@ public class ExclusividadTurno implements ModificadorTurno {
     @Override
     public void usar(String jugadorActivo, Respuesta respuesta) {
         if (usoExclusividadUnaVez.contains(jugadorActivo)) {
-            respuesta.borrar(modificadorchiquito);
+            //respuesta.borrar();
         } else {
             usoExclusividadUnaVez.add(jugadorActivo);
         }

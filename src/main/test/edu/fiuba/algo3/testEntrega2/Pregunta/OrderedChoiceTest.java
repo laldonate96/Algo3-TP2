@@ -3,13 +3,13 @@ package edu.fiuba.algo3.testEntrega2.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Ordenada;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Ordenada;
 
 import java.util.ArrayList;
 import java.util.Arrays;

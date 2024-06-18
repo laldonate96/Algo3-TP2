@@ -1,8 +1,8 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Estado;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Estado;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 
 import org.junit.jupiter.api.Test;
 

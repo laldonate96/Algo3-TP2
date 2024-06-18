@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.testEntrega2.PuntajeTest;
 
-import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;

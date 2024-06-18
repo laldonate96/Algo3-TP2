@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Multiplicador implements ModificadorPuntaje {
     private final int factorDeMultiplicacion;
-    private int usos;
+    private boolean usado;
 
     public Multiplicador(int factorDeMultiplicacion){
         this.factorDeMultiplicacion = factorDeMultiplicacion;
-        this.usos = 1;
+        this.usado=false;
     }
 
     @Override
@@ -18,12 +18,12 @@ public class Multiplicador implements ModificadorPuntaje {
 
     @Override
     public void usar() {
-        this.usos -= 1;
+        this.usado=true;
     }
 
     @Override
     public void actualizar(List<ModificadorPuntaje> modificadores) {
-        if (usos == 0)
+        if (usado)
             modificadores.remove(this);
     }
 }

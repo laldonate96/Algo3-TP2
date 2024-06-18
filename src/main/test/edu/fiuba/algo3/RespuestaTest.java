@@ -1,10 +1,10 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.Simple;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
@@ -63,24 +63,24 @@ public class RespuestaTest {
     }
 
     @Test
-    public void test02SumarPuntajePasaLosPuntosAsignadosConModificadorNulo() {
+    public void test02AsignarPuntajePasaLosPuntosAsignadosConModificadorNulo() {
         //Arrange
         RespuestaConcreta respuesta = new RespuestaConcreta(Arrays.asList(opcion1, opcion2), jugador, nulo);
 
         //Act
-        respuesta.sumarPuntaje(1);
+        respuesta.asignarPuntaje(1);
 
         //Assert
         assertEquals(1, jugador.obtenerPuntaje());
     }
 
     @Test
-    public void test03SumarPuntajePasaLosPuntosEsperadosConModificadorNoNulo() {
+    public void test03AsignarPuntajePasaLosPuntosEsperadosConModificadorNoNulo() {
         //Arrange
         RespuestaConcreta respuesta = new RespuestaConcreta(Arrays.asList(opcion1, opcion2), jugador, multiplicador);
 
         //Act
-        respuesta.sumarPuntaje(1);
+        respuesta.asignarPuntaje(1);
 
 
         //Assert

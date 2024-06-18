@@ -7,10 +7,6 @@ import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
-
 public class AnuladorTurno implements ModificadorTurno{
 
     ModificadorPuntaje modificadorchiquito;
@@ -33,8 +29,6 @@ public class AnuladorTurno implements ModificadorTurno{
 //                    respuesta.cambiarMultiplicador()
 //                }
             }
-
-
         }
 
 
@@ -43,7 +37,7 @@ public class AnuladorTurno implements ModificadorTurno{
         @Override
         public void usar(String jugadorActivo, Respuesta respuesta) {
 
-            respuesta.borrar(modificadorchiquito);
+           // respuesta.borrar();
 
         }
 

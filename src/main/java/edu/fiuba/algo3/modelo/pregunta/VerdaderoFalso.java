@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
 
 import java.util.List;
 
