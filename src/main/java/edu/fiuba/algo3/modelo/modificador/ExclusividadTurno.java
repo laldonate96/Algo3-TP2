@@ -24,7 +24,7 @@ public class ExclusividadTurno implements ModificadorTurno {
     }
 
     @Override
-    public void asignarPuntajes(List<RespuestaConcreta> respuestas) {
+    public void asignarPuntajes(List<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
             //supuesto TEMPORAL -> Una respuesta es correcta si se le asigno un puntaje mayor a 0
 //            if (respuesta.esCorrecta()) {

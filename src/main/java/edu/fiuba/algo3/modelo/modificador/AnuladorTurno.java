@@ -27,7 +27,7 @@ public class AnuladorTurno implements ModificadorTurno{
         }
 
         @Override
-        public void asignarPuntajes(List<RespuestaConcreta> respuestas) {
+        public void asignarPuntajes(List<Respuesta> respuestas) {
             for (Respuesta respuesta : respuestas) {
 //                if (respuesta.perteneceA(jugadorProtegido.getFirst())){
 //                    respuesta.cambiarMultiplicador()

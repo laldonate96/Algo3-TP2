@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.respuesta.RespuestaConcreta;
 import java.util.List;
 
 public interface ModificadorTurno {
-    public void asignarPuntajes(List<RespuestaConcreta> respuestas);
+    public void asignarPuntajes(List<Respuesta> respuestas);
 
     void usar(String jugadorActivo, Respuesta respuesta);
 
