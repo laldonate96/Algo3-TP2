@@ -1,7 +1,7 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Multiplicador;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Simple;
@@ -17,8 +17,8 @@ import java.util.List;
 
 public class JugadorTest {
     private Jugador jugador;
-    private Modificador multiplicador;
-    private List<Modificador> modificadores;
+    private ModificadorPuntaje multiplicador;
+    private List<ModificadorPuntaje> modificadores;
     private List<Opcion> opciones;
     private Opcion opcion;
 

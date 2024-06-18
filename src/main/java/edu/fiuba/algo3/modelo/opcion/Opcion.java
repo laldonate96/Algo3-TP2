@@ -26,7 +26,7 @@ public abstract class Opcion implements OpcionVisitor {
         }
     }
 
-    protected String obtenerTexto() {
+    public String obtenerTexto() {
         return texto;
     }
 }

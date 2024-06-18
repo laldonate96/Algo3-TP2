@@ -9,6 +9,7 @@ public class Parcial extends Puntaje {
     @Override
     public void asignarPuntaje(Respuesta respuesta) {
         int puntosParciales = 0;
+
         for (Opcion opcion : respuesta.obtenerOpciones()) {
             if (opcion.esCorrecta()) {
                 puntosParciales += puntaje;

@@ -21,7 +21,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificador.Multiplicador;
 import edu.fiuba.algo3.modelo.modificador.Nulo;
 
@@ -30,8 +30,8 @@ public class MultiplicadorTest {
     private Opcion opcion1;
     private Opcion opcion2;
     private static ConPenalidad conPenalidad;
-    private Modificador nulo;
-    List<Modificador> modificadores = new ArrayList<>();
+    private ModificadorPuntaje nulo;
+    List<ModificadorPuntaje> modificadores = new ArrayList<>();
 
     @BeforeAll
     public static void setUpClass() {
@@ -46,7 +46,7 @@ public class MultiplicadorTest {
 
         modificadores.add(nulo);
 
-        List<Modificador> modificadores = new ArrayList<>();
+        List<ModificadorPuntaje> modificadores = new ArrayList<>();
         modificadores.add(multiplicador1);
         modificadores.add(multiplicador2);
 
