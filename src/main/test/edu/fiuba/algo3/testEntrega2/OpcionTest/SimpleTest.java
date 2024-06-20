@@ -23,25 +23,26 @@ public class SimpleTest {
     @Test
     public void test01SiSeleAsignaEstadoCorrectaEsCorrecta() {
         //Assert
-        assertTrue(opcionCorrecta.esCorrecta());
+        assertEquals(1, opcionCorrecta.contarCorrecta());
+        assertEquals(0, opcionCorrecta.contarIncorrecta());
     }
 
     @Test
     public void test02SiSeleAsignaEstadoIncorrectaNoEsCorrecta() {
         //Assert
-        assertFalse(opcionIncorrecta.esCorrecta());
+        assertEquals(0, opcionIncorrecta.contarCorrecta());
+        assertEquals(1, opcionIncorrecta.contarIncorrecta());
     }
 
     @Test
     public void test03CambiarElEstadoConOtraCorrectaEstableceElEstadoCorrecto() {
         opcionIncorrecta.actualizarEstado(opcionCorrecta);
-
-        assertTrue(opcionIncorrecta.esCorrecta());
+        assertEquals(1, opcionIncorrecta.contarCorrecta());
     }
     @Test
     public void test04CambiarElEstadoConOtraIncorrectaEstableceElEstadoIncorrecto() {
         opcionCorrecta.actualizarEstado(opcionCorrecta);
-        assertFalse(opcionIncorrecta.esCorrecta());
+        assertEquals(0, opcionIncorrecta.contarCorrecta());
     }
 
     @Test
