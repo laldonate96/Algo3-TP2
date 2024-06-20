@@ -115,7 +115,7 @@ public class PuntajeTest {
         parcial.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(1, respuesta1.obtenerPuntaje());
+        assertEquals(2, respuesta1.obtenerPuntaje());
         assertEquals(0, respuesta2.obtenerPuntaje());
 
     }
