@@ -38,7 +38,7 @@ public class FabricaOpciones {
         for (String textoPosicion : ordenCorrecto) {
             posicionEnLista=Integer.parseInt(textoPosicion);
 
-            opcion = new Ordenada(contenidoOpciones.get(posicionEnLista), posicionOrdenada ,new Correcta());
+            opcion = new Ordenada(contenidoOpciones.get(posicionEnLista - 1), posicionOrdenada ,new Correcta());
             listaOpciones.add(opcion);
             posicionOrdenada++;
         }

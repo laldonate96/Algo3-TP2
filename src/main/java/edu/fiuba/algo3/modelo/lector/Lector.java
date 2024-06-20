@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaPreguntas;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -27,6 +28,7 @@ public class Lector {
             JSONArray arrayJson = new JSONArray(datos);
 
             Clasica clasica;
+            LectorParser parser;
             ConPenalidad conPenalidad = new ConPenalidad();
             Parcial parcial = new Parcial();
 
@@ -34,32 +36,40 @@ public class Lector {
                 JSONObject preguntaJson = (JSONObject) obj;
                 Pregunta pregunta = null;
                 String tipoPregunta = preguntaJson.getString("Tipo");
+                System.out.println(tipoPregunta);
 
                 switch (tipoPregunta) {
                     case "Verdadero Falso Simple":
+                        parser = new ParserVoF();
                         clasica=new Clasica(1);
-                        pregunta = FabricaPreguntas.preguntaVerdaderoFalso(preguntaJson, clasica);
+                        pregunta = parser.parsearPregunta(preguntaJson, clasica);
                         break;
                     case "Verdadero Falso Penalidad":
-                        pregunta = FabricaPreguntas.preguntaVerdaderoFalso(preguntaJson, conPenalidad);
+                        parser = new ParserVoF();
+                        pregunta = parser.parsearPregunta(preguntaJson, conPenalidad);
                         break;
                     case "Multiple Choice Simple":
+                        parser = new ParserMChoice();
                         clasica = new Clasica(FabricaPreguntas.obtenerCantidadCorrectas(preguntaJson));
-                        pregunta = FabricaPreguntas.preguntaMultipleChoice(preguntaJson, clasica);
+                        pregunta = parser.parsearPregunta(preguntaJson, clasica);
                         break;
                     case "Multiple Choice Penalidad":
-                        pregunta = FabricaPreguntas.preguntaMultipleChoice(preguntaJson, conPenalidad);
+                        parser = new ParserMChoice();
+                        pregunta = parser.parsearPregunta(preguntaJson, conPenalidad);
                         break;
                     case "Multiple Choice Parcial":
-                        pregunta = FabricaPreguntas.preguntaMultipleChoice(preguntaJson, parcial);
+                        parser = new ParserMChoice();
+                        pregunta = parser.parsearPregunta(preguntaJson, parcial);
                         break;
                     case "Ordered Choice":
+                        parser = new ParserOrdered();
                         clasica = new Clasica(FabricaPreguntas.obtenerCantidadCorrectas(preguntaJson));
-                        pregunta = FabricaPreguntas.preguntaOrderedChoice(preguntaJson, clasica);
+                        pregunta = parser.parsearPregunta(preguntaJson, clasica);
                         break;
                     case "Group Choice":
+                        parser = new ParserGroup();
                         clasica = new Clasica(FabricaPreguntas.obtenerCantidadCorrectas(preguntaJson));
-                        pregunta = FabricaPreguntas.preguntaGroupChoice(preguntaJson, clasica);
+                        pregunta = parser.parsearPregunta(preguntaJson, clasica);
                         break;
                     default:
                         break;
