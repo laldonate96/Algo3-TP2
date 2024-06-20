@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.Fabricas.FabricaPreguntas;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

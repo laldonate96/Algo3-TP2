@@ -3,9 +3,10 @@ package edu.fiuba.algo3.vista;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.opciones.Opciones;
-import edu.fiuba.algo3.modelo.opciones.Simples;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
+
+import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import javafx.application.Application;
@@ -105,7 +106,7 @@ public class PreguntaLayout extends Application {
         Incorrecta incorrecta = new Incorrecta();
         List<String> textoOpciones=Arrays.asList("texto1","texto2","texto3","texto4");
         List<String> posicionesCorrectas=Arrays.asList("1");
-        Opciones opciones = new Simples(textoOpciones,posicionesCorrectas);
+        List<Opcion> opciones = FabricaOpciones.crearListaSimple(textoOpciones,posicionesCorrectas);
         
         Clasica clasica = new Clasica(1);
 

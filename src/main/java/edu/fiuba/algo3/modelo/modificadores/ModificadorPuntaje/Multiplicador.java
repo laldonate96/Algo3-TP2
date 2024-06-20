@@ -23,9 +23,7 @@ public class Multiplicador extends ModificadorPuntaje {
 
     @Override
     public void actualizar(List<ModificadorPuntaje> modificadores) {
-        if (usado) {
-            modificadores.remove(this);
-        }
+        modificadores.remove(this);
     }
 
     @Override

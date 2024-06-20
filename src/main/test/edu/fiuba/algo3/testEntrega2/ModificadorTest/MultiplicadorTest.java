@@ -4,16 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
-import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
-import edu.fiuba.algo3.modelo.opciones.Simples;
+import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
+
+
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
 import java.util.Arrays;
@@ -29,8 +28,8 @@ import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 
 public class MultiplicadorTest {
     private Jugador jugador1;
-    private Opciones opcionesPregunta;
-    private Respuestas respuestas;
+    private List<Opcion> opcionesPregunta;
+    private List<Respuesta> respuestas;
 
     private Pregunta vofPenal;
     private static String opcionCorrectaTexto;
@@ -62,13 +61,13 @@ public class MultiplicadorTest {
 
         List<String> opcionesTexto= Arrays.asList(opcionCorrectaTexto, opcionIncorrectaTexto);
         List<String> posicionesCorrectas= List.of("1");
-        opcionesPregunta=new Simples(opcionesTexto,posicionesCorrectas);
+        opcionesPregunta= FabricaOpciones.crearListaSimple(opcionesTexto,posicionesCorrectas);
         Clasica clasica=new Clasica(1);
         ConPenalidad penalidad=new ConPenalidad();
         vofPenal = new VerdaderoFalso("un enunciado",opcionesPregunta, penalidad,"Mock");
 
 
-        respuestas=new RespuestasConcretas();
+        respuestas=new ArrayList<>();
         jugador1 = new Jugador("Jugador 1", modificadores);
 
     }
@@ -77,11 +76,12 @@ public class MultiplicadorTest {
     public void test01unJugadorUtilizaUnMultiplicadorEnUnaPreguntaVerdaderosOFalsoYAcierto(){
         //arrange
 
-        Opciones opcionesJugador = opcionesPregunta.crearCopia(Arrays.asList(opcionCorrectaTexto));
+        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of(opcionCorrectaTexto),List.of("1"));
 
 
         Multiplicador multiplicador1 = new Multiplicador(2);
-        respuestas.agregar(opcionesJugador,jugador1, multiplicador1);
+        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, multiplicador1);
+        respuestas.add(respuesta);
 
         //act
         vofPenal.asignarPuntajes(respuestas);
@@ -94,11 +94,13 @@ public class MultiplicadorTest {
     public void test02unJugadorUtilizaUnMultiplicadorEnUnaPreguntaVerdaderosOFalsoYFalla(){
 
         //arrange
+        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of(opcionIncorrectaTexto),List.of("0"));
 
-        Opciones opcionesJugador = opcionesPregunta.crearCopia(Arrays.asList(opcionIncorrectaTexto));
+
 
         Multiplicador multiplicador1 = new Multiplicador(2);
-        respuestas.agregar(opcionesJugador,jugador1, multiplicador1);
+        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, multiplicador1);
+        respuestas.add(respuesta);
 
         //act
         vofPenal.asignarPuntajes(respuestas);

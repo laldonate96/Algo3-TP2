@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo.modificadores.ModificadorTurno;
 
-import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 
 import java.util.ArrayList;
@@ -22,9 +21,9 @@ public class AnuladorTurno implements ModificadorTurno {
 
 
     @Override
-    public void modificarPuntajes(Respuestas respuestas) {
+    public void modificarPuntajes(List<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
-            if ((jugadoresProtegidos.size() == 1) && (respuesta.perteneceA(jugadoresProtegidos.getFirst()))) {
+            if ((jugadoresProtegidos.size() == 1) && (respuesta.perteneceA(jugadoresProtegidos.get(0)))) {
                 respuesta.multiplicarPuntaje(1);
             } else {
                 respuesta.multiplicarPuntaje(0);

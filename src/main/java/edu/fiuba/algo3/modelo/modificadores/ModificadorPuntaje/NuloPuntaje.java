@@ -13,7 +13,7 @@ public class NuloPuntaje extends ModificadorPuntaje {
 
     @Override
     public void actualizar(List<ModificadorPuntaje> modificadores) {
-        return;
+
     }
 
     @Override

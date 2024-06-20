@@ -1,22 +1,17 @@
-package edu.fiuba.algo3.modelo.lector;
+package edu.fiuba.algo3.modelo.Fabricas;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.opciones.Grupos;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
-import edu.fiuba.algo3.modelo.opciones.Ordenadas;
-import edu.fiuba.algo3.modelo.opciones.Simples;
+
+
+
+
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.*;
 import org.json.JSONObject;
 
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
-import edu.fiuba.algo3.modelo.opciones.opcion.Grupo;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opciones.opcion.Ordenada;
-import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 
 public class FabricaPreguntas {
@@ -29,7 +24,7 @@ public class FabricaPreguntas {
         contenidoOpciones.add(preguntaJson.getString("Opcion 1"));
         contenidoOpciones.add(preguntaJson.getString("Opcion 2" ));
 
-        Opciones opciones=new Simples(contenidoOpciones,posicionesCorrectas);
+        List<Opcion> opciones=FabricaOpciones.crearListaSimple(contenidoOpciones,posicionesCorrectas);
 
 
         return new VerdaderoFalso(enunciado, opciones, puntaje, categoria);
@@ -48,7 +43,7 @@ public class FabricaPreguntas {
                 contenidoOpciones.add(preguntaJson.getString(opcionKey));
             }
         }
-        Opciones opciones=new Simples(contenidoOpciones,posicionesCorrectas);
+        List<Opcion> opciones=FabricaOpciones.crearListaSimple(contenidoOpciones,posicionesCorrectas);
 
         return new MultipleChoice(enunciado, opciones, puntaje, categoria);
     }
@@ -65,7 +60,7 @@ public class FabricaPreguntas {
                 contenidoOpciones.add(preguntaJson.getString(opcionKey));
             }
         }
-        Opciones opciones=new Ordenadas(contenidoOpciones,posicionesCorrectas);
+        List<Opcion> opciones=FabricaOpciones.crearListaOrdenada(contenidoOpciones,posicionesCorrectas);
         return new OrderedChoice(enunciado, opciones, puntaje, categoria);
     }
 
@@ -100,7 +95,7 @@ public class FabricaPreguntas {
             contenidoOpcionesPorGrupo.add(contenidoOpciones);
         }
 
-        Opciones opciones=new Grupos(nombresGrupos,contenidoOpcionesPorGrupo);
+        List<Opcion> opciones=FabricaOpciones.crearListaGrupo(nombresGrupos,contenidoOpcionesPorGrupo);
 
         return new GroupChoice(enunciado, opciones, puntaje, categoria);
     }

@@ -5,18 +5,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
-import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
-import edu.fiuba.algo3.modelo.opciones.Simples;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
@@ -32,8 +32,8 @@ public class TurnosTest {
     private ModificadorPuntaje multiplicador;
 
 
-    private Opciones opciones;
-    private Respuestas respuestas;
+    private List<Opcion> opciones;
+    private List<Respuesta> respuestas;
     private List<ModificadorPuntaje> modificadores;
     private Jugador jugador1;
     private Jugador jugador2;
@@ -48,7 +48,7 @@ public class TurnosTest {
 
         List<String> opcionesTexto= Arrays.asList("Correcta", "Incorrecta");
         List<String> posicionesCorrectas= List.of("1");
-        opciones=new Simples(opcionesTexto,posicionesCorrectas);
+        opciones= FabricaOpciones.crearListaSimple(opcionesTexto,posicionesCorrectas);
 
         Clasica clasica = new Clasica(1);
         ConPenalidad penalidad=new ConPenalidad();
@@ -69,7 +69,7 @@ public class TurnosTest {
         jugador1 = new Jugador("un jugador", modificadores);
         jugador2 = new Jugador("otro jugador", modificadores);
 
-        respuestas=new RespuestasConcretas();
+        respuestas=new ArrayList<>();
         
 
     }
@@ -77,7 +77,7 @@ public class TurnosTest {
     @Test
     public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYseLespidePuntos(){
        //arrange
-        Turno turno = new Turno(vof, new RespuestasConcretas());
+        Turno turno = new Turno(vof);
 
 
         List<String> respuestaJugador1 = List.of("Correcta");
@@ -100,7 +100,7 @@ public class TurnosTest {
     @Test
     public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaYseLespidePuntos(){
         //arrange
-        Turno turno = new Turno(vof, new RespuestasConcretas());
+        Turno turno = new Turno(vof);
 
 
         List<String> respuestaJugador1 = List.of("Correcta");
@@ -122,7 +122,7 @@ public class TurnosTest {
     @Test
     public void test03seJuegaUnTurnoConUnaPreguntaVoFPenalizadaConMultiplicadorYseLespidePuntos(){
        //arrange
-        Turno turno = new Turno(vof, new RespuestasConcretas());
+        Turno turno = new Turno(vof);
 
 
         List<String> respuestaJugadores = List.of("Correcta");

@@ -1,22 +1,16 @@
 package edu.fiuba.algo3.testEntrega2.Pregunta;
 
-import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
-import edu.fiuba.algo3.modelo.modificadores.Modificadores;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
-import edu.fiuba.algo3.modelo.opciones.Ordenadas;
+import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
+import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opciones.opcion.Ordenada;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -34,8 +28,8 @@ public class OrderedChoiceTest {
     private static Clasica clasica;
     private static ModificadorPuntaje nulo;
 
-    private RespuestasConcretas respuestas;
-    private Ordenadas opciones;
+    private List<Respuesta> respuestas;
+    private List<Opcion> opciones;
 
     @BeforeAll
     public static void setUpClass() {
@@ -46,9 +40,9 @@ public class OrderedChoiceTest {
     @BeforeEach
     public void setUp() {
 
-        List<ModificadorPuntaje> modificadores= Modificadores.obtenerListaModificadoresPuntaje();
+        List<ModificadorPuntaje> modificadores= FabricaModificadores.obtenerListaModificadoresPuntaje();
 
-        nulo = modificadores.getFirst();
+        nulo = modificadores.get(0);
 
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);
@@ -56,8 +50,8 @@ public class OrderedChoiceTest {
         List<String> opcionesTexto= List.of("Opcion 1", "Opcion 2", "Opcion 3");
         List<String> ordenCorrecto = List.of("3", "2", "1");
 
-        respuestas=new RespuestasConcretas();
-        opciones=new Ordenadas(opcionesTexto, ordenCorrecto);
+        respuestas=new ArrayList<>();
+        opciones= FabricaOpciones.crearListaOrdenada(opcionesTexto, ordenCorrecto);
     }
 
     @Test
@@ -72,8 +66,11 @@ public class OrderedChoiceTest {
         );
 
 
-        Opciones opcionesJugador = pregunta.crearCopiaOpciones(List.of( "Opcion 3","Opcion 2", "Opcion 1"));
-        respuestas.agregar(opcionesJugador,jugador1,nulo);
+
+        List<Opcion> opcionesJugador=new ArrayList<>();
+//        opcionesJugador = pregunta.crearCopia(List.of("Opcion 3", "Opcion 2", "Opcion 1"), List.of(""));
+        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
+        respuestas.add(respuesta);
 
         //Act
         pregunta.asignarPuntajes(respuestas);
@@ -96,9 +93,11 @@ public class OrderedChoiceTest {
                 clasica,
                 "Tema"
         );
-        
-        Opciones opcionesJugador = pregunta.crearCopiaOpciones(List.of( "Opcion 1","Opcion 2", "Opcion 3"));
-        respuestas.agregar(opcionesJugador,jugador1,nulo);
+
+        List<Opcion> opcionesJugador=new ArrayList<>();
+//        opcionesJugador = pregunta.crearCopia(List.of( "Opcion 1","Opcion 2", "Opcion 3"), List.of(""));
+        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
+        respuestas.add(respuesta);
 
         //Act
         pregunta.asignarPuntajes(respuestas);

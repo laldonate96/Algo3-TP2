@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.opciones.opcion.estado;
+package edu.fiuba.algo3.modelo.opcion.estado;
 
 public class Incorrecta implements Estado {
     @Override

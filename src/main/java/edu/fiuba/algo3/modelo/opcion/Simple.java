@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo.opciones.opcion;
+package edu.fiuba.algo3.modelo.opcion;
 
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Estado;
+import edu.fiuba.algo3.modelo.opcion.estado.Estado;
 
 import java.util.List;
 

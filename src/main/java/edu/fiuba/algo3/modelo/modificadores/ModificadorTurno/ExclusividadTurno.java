@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo.modificadores.ModificadorTurno;
 
 
-import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 
@@ -28,7 +27,7 @@ public class ExclusividadTurno implements ModificadorTurno {
     }
 
 
-    public void modificarPuntajes(Respuestas respuestas) {
+    public void modificarPuntajes(List<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
             if (respuesta.esCorrecta()) {
                 cantidadCorrectas++;
@@ -44,8 +43,7 @@ public class ExclusividadTurno implements ModificadorTurno {
         }
     }
 
-    private void usarModificador(Jugador jugadorActivo) {
-
+    private void usarModificador() {
         cantidadLlamados++;
     }
 
@@ -53,9 +51,9 @@ public class ExclusividadTurno implements ModificadorTurno {
 
     @Override
     public void actualizar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo) {
-        jugadorActivo.usar(modificadorDereferencia);
+        jugadorActivo.usar(modificadorPuntaje);
         if(jugadorActivo.tieneModificador(modificadorPuntaje) && modificadorPuntaje.equals(modificadorDereferencia)){
-            usarModificador(jugadorActivo);
+            usarModificador();
         }
     }
 }

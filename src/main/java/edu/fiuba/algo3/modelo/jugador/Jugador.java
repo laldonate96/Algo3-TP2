@@ -3,10 +3,6 @@ package edu.fiuba.algo3.modelo.jugador;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.RespuestaConcreta;
 
 public class Jugador {
     private int puntaje;

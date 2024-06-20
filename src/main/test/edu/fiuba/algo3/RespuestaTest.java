@@ -1,10 +1,11 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opciones.Opciones;
-import edu.fiuba.algo3.modelo.opciones.Simples;
+
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.RespuestaConcreta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
@@ -23,7 +24,7 @@ public class RespuestaTest {
     private static Multiplicador multiplicador;
     private Jugador jugador;
     private static NuloPuntaje nulo;
-    private Simples opcionesCorrectas;
+    private List<Opcion> opcionesCorrectas;
 
 
 
@@ -43,31 +44,19 @@ public class RespuestaTest {
         List<String> opcionesTexto= Arrays.asList("Correcta", "Incorrecta");
         List<String> posicionesCorrectas= List.of("1");
 
-        opcionesCorrectas=new Simples(List.of("Correcta"),posicionesCorrectas);
+        opcionesCorrectas= FabricaOpciones.crearListaSimple(List.of("Correcta"),posicionesCorrectas);
 
 
 
         jugador = new Jugador("Jugador 1", modificadores);
     }
 
-    @Test
-    public void test01ObtenerOpcionesDaLasOpciones() {
-        //Arrange
 
-
-        RespuestaConcreta respuesta = new RespuestaConcreta(opcionesCorrectas, jugador, nulo);
-
-        //Act
-        Opciones opcionesObtenidas = respuesta.obtenerOpciones();
-
-        //Assert
-        assertEquals(opcionesObtenidas, opcionesCorrectas);
-    }
 
     @Test
-    public void test02AsignarPuntajePasaLosPuntosAsignadosConModificadorNulo() {
+    public void test01AsignarPuntajePasaLosPuntosAsignadosConModificadorNulo() {
         //Arrange
-        RespuestaConcreta respuesta = new RespuestaConcreta(opcionesCorrectas, jugador, nulo);
+        Respuesta respuesta = new Respuesta(opcionesCorrectas, jugador, nulo);
 
         //Act
         respuesta.asignarPuntaje(1);
@@ -77,9 +66,9 @@ public class RespuestaTest {
     }
 
     @Test
-    public void test03AsignarPuntajePasaLosPuntosEsperadosConModificadorNoNulo() {
+    public void test02AsignarPuntajePasaLosPuntosEsperadosConModificadorNoNulo() {
         //Arrange
-        RespuestaConcreta respuesta = new RespuestaConcreta(opcionesCorrectas, jugador, multiplicador);
+        Respuesta respuesta = new Respuesta(opcionesCorrectas, jugador, multiplicador);
 
         //Act
         respuesta.asignarPuntaje(1);
@@ -88,8 +77,4 @@ public class RespuestaTest {
         //Assert
         assertEquals(2, jugador.obtenerPuntaje());
     }
-
-
-
-
 }

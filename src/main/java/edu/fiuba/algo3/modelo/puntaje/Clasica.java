@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
 public class Clasica extends Puntaje {
     protected int cantidadCorrectasEsperada;

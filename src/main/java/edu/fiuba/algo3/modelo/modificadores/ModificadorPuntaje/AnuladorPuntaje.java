@@ -15,7 +15,7 @@ public class AnuladorPuntaje extends ModificadorPuntaje {
 
     @Override
     public void actualizar(List<ModificadorPuntaje> modificadores) {
-
+        modificadores.remove(this);
     }
 
     @Override
