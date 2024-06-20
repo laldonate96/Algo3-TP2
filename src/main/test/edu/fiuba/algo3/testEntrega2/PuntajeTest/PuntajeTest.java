@@ -27,8 +27,7 @@ public class PuntajeTest {
     @BeforeEach
     public void setUpClass() {
 
-        List<String> opcionesTexto= List.of("Opcion 1", "Opcion 2", "Opcion 3");
-        List<String> posicionesCorrectas= List.of("1", "2");
+
 
         respuestas=new ArrayList<>();
 

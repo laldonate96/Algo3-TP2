@@ -4,9 +4,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
-import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

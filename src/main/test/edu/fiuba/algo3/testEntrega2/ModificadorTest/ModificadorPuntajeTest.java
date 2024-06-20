@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.testEntrega2.ModificadorTest;
 
-import edu.fiuba.algo3.modelo.opcion.Opcion;
+
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;

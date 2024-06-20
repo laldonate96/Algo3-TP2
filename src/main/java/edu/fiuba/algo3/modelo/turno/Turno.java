@@ -25,9 +25,9 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
      */
 
 public class Turno {
-    private List<Respuesta> respuestas;
+    private final List<Respuesta> respuestas;
     private int turno;
-    private Pregunta preguntaDelTurno;
+    private final Pregunta preguntaDelTurno;
     private final List<ModificadorPuntaje> modificadoresUsados;
     private ModificadorTurno modificador;
 

@@ -24,13 +24,12 @@ public class TurnosTest {
 
 
     private VerdaderoFalso vof;
-    private ModificadorPuntaje nulo;
-    private ModificadorPuntaje multiplicador;
+
 
 
     private Jugador jugador1;
     private Jugador jugador2;
-    private NuloTurno nuloTurno;
+
 
 
 
@@ -44,7 +43,7 @@ public class TurnosTest {
         List<Opcion> opciones = FabricaOpciones.crearListaSimple(opcionesTexto, posicionesCorrectas);
 
         Clasica clasica = new Clasica(1);
-        ConPenalidad penalidad=new ConPenalidad();
+
 
         vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock");
 

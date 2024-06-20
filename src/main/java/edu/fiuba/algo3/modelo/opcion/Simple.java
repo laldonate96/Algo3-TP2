@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.opcion;
 
 import edu.fiuba.algo3.modelo.opcion.estado.Estado;
 
-import java.util.List;
+
 
 public class Simple extends Opcion {
     public Simple(String texto, Estado estado) {
