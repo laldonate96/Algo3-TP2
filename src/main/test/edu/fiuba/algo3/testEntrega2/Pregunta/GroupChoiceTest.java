@@ -47,7 +47,7 @@ public class GroupChoiceTest {
 
     @BeforeEach
     public void setUp() {
-        List<ModificadorPuntaje> modificadores = FabricaModificadores.obtenerListaModificadoresPuntaje();
+        List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
         nulo = modificadores.get(0);
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);

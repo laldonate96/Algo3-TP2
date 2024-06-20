@@ -18,7 +18,7 @@ public class Multiplicador extends ModificadorPuntaje {
 
     @Override
     public void usar() {
-        this.usado=true;
+
     }
 
     @Override

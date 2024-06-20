@@ -40,7 +40,7 @@ public class OrderedChoiceTest {
     @BeforeEach
     public void setUp() {
 
-        List<ModificadorPuntaje> modificadores= FabricaModificadores.obtenerListaModificadoresPuntaje();
+        List<ModificadorPuntaje> modificadores= FabricaModificadores.crearListaModificadoresPuntaje();
 
         nulo = modificadores.get(0);
 

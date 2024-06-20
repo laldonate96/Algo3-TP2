@@ -9,7 +9,6 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
-import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +32,7 @@ public class ClasicaTest {
         respuestas=new ArrayList<>();
 
         //USAR UN MOCKITO
-        jugador= new Jugador("jugador1", FabricaModificadores.obtenerListaModificadoresPuntaje());
+        jugador= new Jugador("jugador1", FabricaModificadores.crearListaModificadoresPuntaje());
     }
 
     @Test
@@ -119,7 +118,7 @@ public class ClasicaTest {
         Respuesta respuesta1 = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
         respuestas.add(respuesta1);
 
-        Jugador jugador2= new Jugador("USAR MOCKITO", FabricaModificadores.obtenerListaModificadoresPuntaje());
+        Jugador jugador2= new Jugador("USAR MOCKITO", FabricaModificadores.crearListaModificadoresPuntaje());
         List<Opcion> opcionesJugador2 = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"));
         Respuesta respuesta2 = new Respuesta(opcionesJugador2,jugador2,new NuloPuntaje());
         respuestas.add(respuesta2);

@@ -20,7 +20,7 @@ public class AlgoKahoot3 {
     AlgoKahoot3(List<String> nombreJugadores, Jugadores jugadores, Turno turno){
 
         this.jugadores= jugadores;
-        List<ModificadorPuntaje> modificadores= FabricaModificadores.obtenerListaModificadoresPuntaje();
+        List<ModificadorPuntaje> modificadores= FabricaModificadores.crearListaModificadoresPuntaje();
         jugadores.agregar(nombreJugadores,modificadores);
 
 //        this.controlador = controlador;

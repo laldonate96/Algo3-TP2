@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.testEntrega3;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,15 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
@@ -53,7 +49,7 @@ public class TurnosTest {
         vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock");
 
 
-        List<ModificadorPuntaje> modificadores = FabricaModificadores.obtenerListaModificadoresPuntaje();
+        List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
         jugador1 = new Jugador("un jugador", modificadores);
         jugador2 = new Jugador("otro jugador", modificadores);
 

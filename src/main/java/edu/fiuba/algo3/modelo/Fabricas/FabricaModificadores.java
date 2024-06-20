@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FabricaModificadores {
-    public static List<ModificadorPuntaje> obtenerListaModificadoresPuntaje() {
+    public static List<ModificadorPuntaje> crearListaModificadoresPuntaje() {
         List<ModificadorPuntaje> listaModificadores = new ArrayList<>();
         listaModificadores.add(new NuloPuntaje());
         listaModificadores.add(new Multiplicador(2));

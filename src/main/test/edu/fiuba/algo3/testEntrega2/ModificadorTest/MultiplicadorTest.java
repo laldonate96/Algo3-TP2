@@ -11,7 +11,6 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
-import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
@@ -25,7 +24,6 @@ import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 
 public class MultiplicadorTest {
     private Jugador jugador1;
@@ -47,7 +45,7 @@ public class MultiplicadorTest {
     @BeforeEach
     public void setUp() {
 
-        List<ModificadorPuntaje> modificadores = FabricaModificadores.obtenerListaModificadoresPuntaje();
+        List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
 
 
 
