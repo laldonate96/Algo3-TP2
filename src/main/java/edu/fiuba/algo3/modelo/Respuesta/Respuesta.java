@@ -27,8 +27,6 @@ public class Respuesta {
         return opciones;
     }
 
-
-
     public int obtenerPuntaje() {
         return puntaje;
     }

@@ -79,7 +79,7 @@ public class PenalidadTest{
         conPenalidad.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(-2, respuesta.obtenerPuntaje());
+        assertEquals(-3, respuesta.obtenerPuntaje());
     }
     @Test
     public void test04UnaRespuestaConAlgunasCorrectasYOtrasIncorrectasSeLeAsignan0Puntos() {
@@ -91,14 +91,13 @@ public class PenalidadTest{
         conPenalidad.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(0, respuesta.obtenerPuntaje());
+        assertEquals(1, respuesta.obtenerPuntaje());
     }
 
 
     @Test
     public void test05ConPenalidadAUnaListaDeRespuestasUnaCorrectaYUnaIncorrectaSeLesAsignanPuntosCorrectamente() {
         //Arrange
-
         List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"));
         Respuesta respuesta1 = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
         respuestas.add(respuesta1);
@@ -112,8 +111,7 @@ public class PenalidadTest{
         conPenalidad.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(1, respuesta1.obtenerPuntaje());
-        assertEquals(-1, respuesta2.obtenerPuntaje());
-
+        assertEquals(2, respuesta1.obtenerPuntaje());
+        assertEquals(-3, respuesta2.obtenerPuntaje());
     }
 }

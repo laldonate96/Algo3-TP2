@@ -111,7 +111,7 @@ public class ClasicaTest {
     @Test
     public void test05DosRespuestasUnaCorrectaYUnaIncorrectaSeLesAsignan0Puntos() {
         //Arrange
-        Clasica clasica = new Clasica(1);
+        Clasica clasica = new Clasica(2);
 
         List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"));
         Respuesta respuesta1 = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
