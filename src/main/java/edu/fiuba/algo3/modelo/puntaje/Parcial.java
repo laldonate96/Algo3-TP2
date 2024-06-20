@@ -8,16 +8,15 @@ public class Parcial extends Puntaje {
 
     @Override
     public void asignarPuntaje(Respuesta respuesta) {
-        int puntosParciales = 0;
+        int correctas = 0;
+        int incorrectas = 0;
         for (Opcion opcion : respuesta.obtenerOpciones()) {
-            if (opcion.esCorrecta()) {
-                puntosParciales += puntaje;
-            } else {
-                return;
-            }
+            correctas += opcion.contarCorrecta();
+            incorrectas += opcion.contarIncorrecta();
         }
-
-        respuesta.asignarPuntaje(puntosParciales);
+        if (incorrectas == 0) {
+            respuesta.asignarPuntaje(correctas*puntaje);
+        }
     }
 }
 

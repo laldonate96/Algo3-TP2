@@ -15,9 +15,7 @@ public class Clasica extends Puntaje {
         int cantidadCorrectas=0;
 
         for (Opcion opcion : respuesta.obtenerOpciones()) {
-            if (opcion.esCorrecta()) {
-                cantidadCorrectas++;
-            }
+            cantidadCorrectas += opcion.contarCorrecta();
         }
 
         if(cantidadCorrectas==cantidadCorrectasEsperada) {
