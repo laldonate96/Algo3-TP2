@@ -39,14 +39,17 @@ public class GrupoTest {
         public void test03CambiarElEstadoConOtraIgualEstableceElEstadoEsperado() {
             opcionIncorrecta.actualizarEstado(opcionCorrecta);
 
-            assertEquals(1, opcionIncorrecta.contarCorrecta());
-            assertEquals(0, opcionIncorrecta.contarIncorrecta());
+            //Assert
+            assertEquals(0, opcionIncorrecta.contarCorrecta());
+            assertEquals(1, opcionIncorrecta.contarIncorrecta());
         }
         @Test
         public void test04CambiarElEstadoConOtraIncorrectaEstableceElEstadoIncorrecto() {
-            opcionCorrecta.actualizarEstado(opcionCorrecta);
-            assertEquals(0, opcionIncorrecta.contarCorrecta());
-            assertEquals(1, opcionIncorrecta.contarIncorrecta());
+            opcionCorrecta.actualizarEstado(opcionIncorrecta);
+
+            //Assert
+            assertEquals(1, opcionCorrecta.contarCorrecta());
+            assertEquals(0, opcionCorrecta.contarIncorrecta());
         }
 
         @Test

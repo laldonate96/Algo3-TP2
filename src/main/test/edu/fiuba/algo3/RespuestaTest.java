@@ -61,8 +61,9 @@ public class RespuestaTest {
         //Act
         respuesta.asignarPuntaje(1);
 
+
         //Assert
-        assertEquals(1, jugador.obtenerPuntaje());
+        assertEquals(1, respuesta.obtenerPuntaje());
     }
 
     @Test
@@ -75,6 +76,6 @@ public class RespuestaTest {
 
 
         //Assert
-        assertEquals(2, jugador.obtenerPuntaje());
+        assertEquals(2, respuesta.obtenerPuntaje());
     }
 }
