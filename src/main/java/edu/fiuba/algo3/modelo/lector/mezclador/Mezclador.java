@@ -5,7 +5,8 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
-public class Mezclador {
+public class Mezclador implements Filtro {
+    @Override
     public List<Pregunta> mezclarPreguntas(List<Pregunta> preguntas) {
         Collections.shuffle(preguntas);
         return preguntas;
