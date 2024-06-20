@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,12 +27,16 @@ public class TurnosTest {
 
     private VerdaderoFalso vof;
 
-
+    private  static NuloTurno nuloTurno;
 
     private Jugador jugador1;
     private Jugador jugador2;
+    private ModificadorPuntaje nulo;
 
-
+    @BeforeAll
+    public static void setUpClass() {
+        nuloTurno = new NuloTurno();
+    }
 
 
     @BeforeEach
@@ -49,6 +55,8 @@ public class TurnosTest {
 
 
         List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
+        nulo=modificadores.get(0);
+
         jugador1 = new Jugador("un jugador", modificadores);
         jugador2 = new Jugador("otro jugador", modificadores);
 
@@ -90,6 +98,7 @@ public class TurnosTest {
         List<String> respuestaJugador2 = List.of("Incorrecta");
 
         turno.asignarModificador(nuloTurno);
+
         turno.agregarRespuesta(respuestaJugador1,jugador1,nulo);
         turno.agregarRespuesta(respuestaJugador2,jugador2,nulo);
 
@@ -111,6 +120,8 @@ public class TurnosTest {
         List<String> respuestaJugadores = List.of("Correcta");
 
         turno.asignarModificador(nuloTurno);
+
+        Multiplicador multiplicador= new Multiplicador(2);
         turno.agregarRespuesta(respuestaJugadores,jugador1,multiplicador);
         turno.agregarRespuesta(respuestaJugadores,jugador2,nulo);
 
