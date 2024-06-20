@@ -15,14 +15,26 @@ public abstract class Opcion {
     protected abstract boolean equals(Ordenada ordenada);
     protected abstract boolean equals(Simple simple);
     protected abstract boolean equals(Grupo grupo);
-    public boolean esCorrecta() {
+    /*public boolean esCorrecta() {
         return estado.esCorrecta();
-    }
+    }*/
 
     public void actualizarEstado(Opcion opcion) {
         if (opcion.equals(this)) {
             this.estado=(opcion.estado);
         }
+    }
+
+    public int contarCorrecta(){
+        if (estado.esCorrecta()){
+            return 1;
+        } else return 0;
+    }
+
+    public int contarIncorrecta(){
+        if (estado.esCorrecta()){
+            return 0;
+        } else return 1;
     }
 
     public String obtenerTexto() {
