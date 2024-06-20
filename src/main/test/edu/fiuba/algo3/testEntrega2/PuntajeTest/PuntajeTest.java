@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
+
 
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.puntaje.Parcial;
@@ -22,9 +22,7 @@ import java.util.List;
 public class PuntajeTest {
 
     private Puntaje parcial;
-    private Puntaje conPenalidad;
     private List<Respuesta> respuestas;
-    private List<Opcion> opciones;
     private Jugador jugador;
 
     @BeforeEach
@@ -34,14 +32,13 @@ public class PuntajeTest {
         List<String> posicionesCorrectas= List.of("1", "2");
 
         respuestas=new ArrayList<>();
-        opciones= FabricaOpciones.crearListaSimple(opcionesTexto,posicionesCorrectas);
 
         //USAR UN MOCKITO
         jugador= new Jugador("jugador1", FabricaModificadores.obtenerListaModificadoresPuntaje());
 
 
         parcial = new Parcial();
-        conPenalidad = new ConPenalidad();
+
     }
 
     @Test

@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Estado;
 
 public class Ordenada extends Opcion {
-    private int posicion;
+    private final int posicion;
 
     public Ordenada(String texto, int posicion, Estado estado) {
         super(texto, estado);
@@ -31,8 +31,6 @@ public class Ordenada extends Opcion {
         return false;
     }
 
-    public boolean textoEstaContenidoYRespetaPosicion(String opcionElegida, int posicion) {
-        return (texto.equals(opcionElegida)) && (this.posicion == posicion);
-    }
+
 
 }

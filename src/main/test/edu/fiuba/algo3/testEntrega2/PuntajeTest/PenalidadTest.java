@@ -21,7 +21,6 @@ public class PenalidadTest{
 
     private Puntaje conPenalidad;
     private List<Respuesta> respuestas;
-    private List<Opcion> opciones;
     private Jugador jugador;
 
     @BeforeEach
@@ -31,7 +30,6 @@ public class PenalidadTest{
         List<String> posicionesCorrectas= List.of("1", "2");
 
         respuestas=new ArrayList<>();
-        opciones= FabricaOpciones.crearListaSimple(opcionesTexto,posicionesCorrectas);
 
         //USAR UN MOCKITO
         jugador= new Jugador("jugador1", FabricaModificadores.obtenerListaModificadoresPuntaje());

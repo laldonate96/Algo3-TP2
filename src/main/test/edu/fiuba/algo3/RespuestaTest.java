@@ -3,7 +3,7 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
+
 
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -41,10 +41,10 @@ public class RespuestaTest {
         modificadores.add(multiplicador);
         modificadores.add(nulo);
 
-        List<String> opcionesTexto= Arrays.asList("Correcta", "Incorrecta");
+
         List<String> posicionesCorrectas= List.of("1");
 
-        opcionesCorrectas= FabricaOpciones.crearListaSimple(List.of("Correcta"),posicionesCorrectas);
+        opcionesCorrectas= FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas);
 
 
 

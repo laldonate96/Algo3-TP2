@@ -14,8 +14,8 @@ import java.util.List;
 
 public class AlgoKahoot3 {
     //Podemos hacer una cola, seria mejor
-    private List<Pregunta> preguntas;
-    private Jugadores jugadores;
+    private final List<Pregunta> preguntas;
+    private final Jugadores jugadores;
     private Turno turnoActual;
     AlgoKahoot3(List<String> nombreJugadores, Jugadores jugadores, Turno turno){
 

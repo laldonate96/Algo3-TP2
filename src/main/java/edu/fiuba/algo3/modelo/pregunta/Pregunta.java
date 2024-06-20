@@ -39,17 +39,8 @@ public abstract class Pregunta {
         List<String> textoOpciones = new ArrayList<>();
         for(Opcion opcion:opciones){
             textoOpciones.add(opcion.obtenerTexto());
-        };
+        }
         return textoOpciones;
     }
 
-    public List<Opcion> crearCopiaOpciones(List<String> opcionesElegidas) {
-        List<Opcion> copiaOpciones = new ArrayList<>();
-        for (Opcion opcion: opciones){
-            for (String opcionElegida: opcionesElegidas){
-
-            }
-        }
-        return copiaOpciones;
-    }
 }

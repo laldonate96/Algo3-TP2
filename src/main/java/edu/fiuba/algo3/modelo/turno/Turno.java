@@ -28,13 +28,10 @@ public class Turno {
     private List<Respuesta> respuestas;
     private int turno;
     private Pregunta preguntaDelTurno;
-    private List<ModificadorPuntaje> modificadoresUsados;
+    private final List<ModificadorPuntaje> modificadoresUsados;
     private ModificadorTurno modificador;
 
-    public Turno(){
-        this.modificadoresUsados = new ArrayList<>();
-        this.turno=0;
-    }
+
     public Turno(Pregunta preguntaDelTurno){
         this.modificadoresUsados = new ArrayList<>();
         this.turno=0;
@@ -43,8 +40,7 @@ public class Turno {
     }
 
     public Turno nuevoTurno(Pregunta preguntaDelTurno) {
-        Turno nuevoTurno=new Turno(preguntaDelTurno);
-        return nuevoTurno;
+        return new Turno(preguntaDelTurno);
     }
 
     public void asignarModificador(ModificadorTurno modificadorTurno) {
@@ -54,8 +50,9 @@ public class Turno {
 
 
     public void agregarRespuesta(List<String> opcionesElegidas, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
-        List<Opcion> opcionesJugador=preguntaDelTurno.crearCopiaOpciones(opcionesElegidas);
+//        List<Opcion> opcionesJugador=preguntaDelTurno.crearCopiaOpciones(opcionesElegidas);
         Respuesta respuesta=new Respuesta(opcionesJugador, jugador, modificadorPuntaje);
+        respuestas.add(respuesta);
         modificador.actualizar(modificadorPuntaje,jugador);
         turno += 1;
     }

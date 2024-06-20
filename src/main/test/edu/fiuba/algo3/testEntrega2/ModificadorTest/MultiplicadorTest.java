@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
+import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 
 
@@ -28,43 +29,34 @@ import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 
 public class MultiplicadorTest {
     private Jugador jugador1;
-    private List<Opcion> opcionesPregunta;
     private List<Respuesta> respuestas;
 
     private Pregunta vofPenal;
     private static String opcionCorrectaTexto;
     private static String opcionIncorrectaTexto;
-    private static ConPenalidad conPenalidad;
-    private ModificadorPuntaje nulo;
-    List<ModificadorPuntaje> modificadores = new ArrayList<>();
+
+
 
     @BeforeAll
     public static void setUpClass() {
         opcionCorrectaTexto ="Verdadero";
         opcionIncorrectaTexto ="Falso";
-        conPenalidad = new ConPenalidad();
+
     }
 
     @BeforeEach
     public void setUp() {
-        nulo = new NuloPuntaje();
-        Multiplicador multiplicador1 = new Multiplicador(2);
-        Multiplicador multiplicador2 = new Multiplicador(3);
 
-        modificadores.add(nulo);
-
-        List<ModificadorPuntaje> modificadores = new ArrayList<>();
-        modificadores.add(multiplicador1);
-        modificadores.add(multiplicador2);
+        List<ModificadorPuntaje> modificadores = FabricaModificadores.obtenerListaModificadoresPuntaje();
 
 
 
         List<String> opcionesTexto= Arrays.asList(opcionCorrectaTexto, opcionIncorrectaTexto);
         List<String> posicionesCorrectas= List.of("1");
-        opcionesPregunta= FabricaOpciones.crearListaSimple(opcionesTexto,posicionesCorrectas);
-        Clasica clasica=new Clasica(1);
+        List<Opcion> opcionesPregunta = FabricaOpciones.crearListaSimple(opcionesTexto, posicionesCorrectas);
+
         ConPenalidad penalidad=new ConPenalidad();
-        vofPenal = new VerdaderoFalso("un enunciado",opcionesPregunta, penalidad,"Mock");
+        vofPenal = new VerdaderoFalso("un enunciado", opcionesPregunta, penalidad,"Mock");
 
 
         respuestas=new ArrayList<>();

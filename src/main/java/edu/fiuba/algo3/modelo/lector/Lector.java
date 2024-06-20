@@ -23,7 +23,7 @@ public class Lector {
     public static List<Pregunta> obtenerPreguntasDeJson(Mezclador mezclador) throws ArchivoInexistenteException {
         try {
             String datos = new String(Files.readAllBytes(Paths.get("preguntas/preguntas.json")));
-            ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
+            ArrayList<Pregunta> preguntas = new ArrayList<>();
             JSONArray arrayJson = new JSONArray(datos);
 
             Clasica clasica;
@@ -66,8 +66,7 @@ public class Lector {
                 }
                 preguntas.add(pregunta);
             }
-            List<Pregunta> preguntasMezcladas = mezclador.mezclarPreguntas(preguntas);
-            return preguntasMezcladas;
+            return mezclador.mezclarPreguntas(preguntas);
         } catch (NoSuchFileException e) {
             throw new ArchivoInexistenteException("El archivo de preguntas no existe: " + e.getMessage());
         } catch (IOException e) {

@@ -22,10 +22,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultipleChoiceTest {
     private Jugador jugador1;
-    private Jugador jugador2;
+
     private static Parcial parcial;
     private ModificadorPuntaje nulo;
-    private List<ModificadorPuntaje> modificadores;
     private List<Opcion> opciones;
     private List<Respuesta> respuestas;
 

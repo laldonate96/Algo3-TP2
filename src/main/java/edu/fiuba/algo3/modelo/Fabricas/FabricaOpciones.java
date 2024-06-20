@@ -62,5 +62,5 @@ public class FabricaOpciones {
         }
         return listaOpciones;
     }
-    public static void crearListaOpciones(){};
+    public static void crearListaOpciones(){}
 }

@@ -19,8 +19,7 @@ public class JugadorTest {
     private Jugador jugador;
     private ModificadorPuntaje multiplicador;
     private List<ModificadorPuntaje> modificadores;
-    private List<Opcion> opciones;
-    private Opcion opcion;
+
 
     @BeforeEach
     public void setUpClass() {
@@ -29,9 +28,6 @@ public class JugadorTest {
         modificadores = new ArrayList<>();
         modificadores.add(multiplicador);
         modificadores.add(nulo);
-        opcion = new Simple("Opcion 1", new Incorrecta());
-        opciones = new ArrayList<>();
-        opciones.add(opcion);
 
         jugador = new Jugador("Jugador 1", modificadores);
     }

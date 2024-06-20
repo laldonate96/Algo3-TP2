@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
+
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
@@ -21,8 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ClasicaTest {
 
 
-    private Puntaje clasica;
-    private List<Opcion> opciones;
     private List<Respuesta> respuestas;
     private Jugador jugador;
 
@@ -36,9 +34,9 @@ public class ClasicaTest {
 
         //USAR UN MOCKITO
         jugador= new Jugador("jugador1", FabricaModificadores.obtenerListaModificadoresPuntaje());
-        opciones= FabricaOpciones.crearListaSimple(opcionesTexto,posicionesCorrectas);
     }
 
+    @Test
     public void test01UnaRespuestaConUnaCorrectaSeLeAsignaUnPunto() {
         //Arrange
         Clasica clasica = new Clasica(1);

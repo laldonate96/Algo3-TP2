@@ -15,8 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ModificadorPuntajeTest {
 
-    private Opcion opcion1;
-    private Opcion opcion2;
     private ModificadorPuntaje multiplicadorDos;
     private ModificadorPuntaje multiplicadorTres;
     private ModificadorPuntaje nulo;

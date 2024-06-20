@@ -6,6 +6,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
@@ -27,14 +28,10 @@ public class TurnosTest {
 
 
     private VerdaderoFalso vof;
-    private VerdaderoFalso vofPenal;
     private ModificadorPuntaje nulo;
     private ModificadorPuntaje multiplicador;
 
 
-    private List<Opcion> opciones;
-    private List<Respuesta> respuestas;
-    private List<ModificadorPuntaje> modificadores;
     private Jugador jugador1;
     private Jugador jugador2;
     private NuloTurno nuloTurno;
@@ -48,28 +45,19 @@ public class TurnosTest {
 
         List<String> opcionesTexto= Arrays.asList("Correcta", "Incorrecta");
         List<String> posicionesCorrectas= List.of("1");
-        opciones= FabricaOpciones.crearListaSimple(opcionesTexto,posicionesCorrectas);
+        List<Opcion> opciones = FabricaOpciones.crearListaSimple(opcionesTexto, posicionesCorrectas);
 
         Clasica clasica = new Clasica(1);
         ConPenalidad penalidad=new ConPenalidad();
 
-        vof = new VerdaderoFalso("un enunciado",opciones, clasica,"Mock");
-
-        vofPenal = new VerdaderoFalso("un enunciado",opciones, penalidad,"Mock");
-
-        modificadores = new ArrayList<>(); // Inicializando la lista de modificadores
-        multiplicador = new Multiplicador(2);
-        nulo = new NuloPuntaje();
-        modificadores.add(nulo);
-        modificadores.add(multiplicador);
-
-        nuloTurno=new NuloTurno();
+        vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock");
 
 
+        List<ModificadorPuntaje> modificadores = FabricaModificadores.obtenerListaModificadoresPuntaje();
         jugador1 = new Jugador("un jugador", modificadores);
         jugador2 = new Jugador("otro jugador", modificadores);
 
-        respuestas=new ArrayList<>();
+
         
 
     }

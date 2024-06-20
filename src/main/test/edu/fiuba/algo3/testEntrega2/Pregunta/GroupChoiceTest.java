@@ -32,7 +32,6 @@ public class GroupChoiceTest {
     static List<String> miembrosGrupo2;
     private static Clasica clasica;
     private ModificadorPuntaje nulo;
-    private List<ModificadorPuntaje> modificadores;
     //USAR MOCKITO
     private List<Opcion> opcionesCorrectas;
     private List<Respuesta> respuestas;
@@ -48,7 +47,7 @@ public class GroupChoiceTest {
 
     @BeforeEach
     public void setUp() {
-        modificadores = FabricaModificadores.obtenerListaModificadoresPuntaje();
+        List<ModificadorPuntaje> modificadores = FabricaModificadores.obtenerListaModificadoresPuntaje();
         nulo = modificadores.get(0);
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);

@@ -28,7 +28,4 @@ public class Simple extends Opcion {
         return false;
     }
 
-    public boolean textoEstaContenido(List<String> opcionesElegidas) {
-        return opcionesElegidas.contains(texto);
-    }
 }

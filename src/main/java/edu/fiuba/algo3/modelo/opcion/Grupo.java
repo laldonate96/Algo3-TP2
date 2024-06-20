@@ -10,9 +10,7 @@ public class Grupo extends Opcion {
         this.nombreGrupo = nombreGrupo;
     }
 
-    protected String obtenerGrupo() {
-        return nombreGrupo;
-    }
+
 
 
     @Override
@@ -32,7 +30,5 @@ public class Grupo extends Opcion {
         return this.texto.equals(grupo.texto) && this.nombreGrupo.equals(grupo.nombreGrupo);
     }
 
-    public boolean contiene(String texto,String grupo){
-        return (texto.equals(this.texto) && this.nombreGrupo.equals( grupo));
-    }
+
 }

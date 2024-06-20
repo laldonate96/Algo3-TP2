@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Multiplicador extends ModificadorPuntaje {
     private final int factorDeMultiplicacion;
-    private boolean usado;
+
 
     public Multiplicador(int factorDeMultiplicacion){
         this.factorDeMultiplicacion = factorDeMultiplicacion;
-        this.usado=false;
+
     }
 
     @Override

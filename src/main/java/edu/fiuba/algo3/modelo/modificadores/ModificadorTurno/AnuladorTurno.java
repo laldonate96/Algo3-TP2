@@ -10,20 +10,30 @@ import java.util.List;
 public class AnuladorTurno implements ModificadorTurno {
 
     ModificadorPuntaje modificadorReferencia;
-    int cantidadLlamados;
     int cantidadCorrectas;
     List<Jugador> jugadoresProtegidos;
 
     public AnuladorTurno(ModificadorPuntaje modificadorReferencia) {
         jugadoresProtegidos = new ArrayList<>();
         this.modificadorReferencia = modificadorReferencia;
+        cantidadCorrectas=0;
     }
 
 
     @Override
     public void modificarPuntajes(List<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
-            if ((jugadoresProtegidos.size() == 1) && (respuesta.perteneceA(jugadoresProtegidos.get(0)))) {
+            if (respuesta.esCorrecta()) {
+                cantidadCorrectas++;
+                if (cantidadCorrectas > 1) {
+                    break;
+                }
+            }
+
+        }
+
+        for (Respuesta respuesta : respuestas) {
+            if ((cantidadCorrectas==1) &(jugadoresProtegidos.size() == 1) && (respuesta.perteneceA(jugadoresProtegidos.get(0)))) {
                 respuesta.multiplicarPuntaje(1);
             } else {
                 respuesta.multiplicarPuntaje(0);

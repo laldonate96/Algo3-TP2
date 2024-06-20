@@ -19,7 +19,7 @@ public class Respuesta {
     }
 
     public void asignarPuntaje(int puntaje) {
-        puntaje = modificadorPuntaje.modificarPuntaje(puntaje);
+        this.puntaje = modificadorPuntaje.modificarPuntaje(puntaje);
 
     }
 
