@@ -72,7 +72,7 @@
     {
       "ID": 7,
       "Tema": "DEPORTES",
-      "Tipo": "Ordered choice",
+      "Tipo": "Ordered Choice",
       "Pregunta": "Ordene las siguientes superficies de juego de tenis de acuerdo a su velocidad, de LENTAS a RAPIDAS",
       "Respuesta": "3,2,1",
       "Opcion 1": "Carpeta sintética",
@@ -195,7 +195,7 @@
     {
       "ID": 17,
       "Tema": "COMPUTACION",
-      "Tipo": "Ordered choice",
+      "Tipo": "Ordered Choice",
       "Pregunta": "Ordene cronológicamente los siguientes lenguajes de programación, de los más ANTIGUOS a los más MODERNOS",
       "Respuesta": "1,3,4,6,5,2",
       "Opcion 1": "COBOL",

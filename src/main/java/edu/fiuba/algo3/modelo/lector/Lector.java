@@ -36,7 +36,6 @@ public class Lector {
                 JSONObject preguntaJson = (JSONObject) obj;
                 Pregunta pregunta = null;
                 String tipoPregunta = preguntaJson.getString("Tipo");
-                System.out.println(tipoPregunta);
 
                 switch (tipoPregunta) {
                     case "Verdadero Falso Simple":
@@ -57,7 +56,7 @@ public class Lector {
                         parser = new ParserMChoice();
                         pregunta = parser.parsearPregunta(preguntaJson, conPenalidad);
                         break;
-                    case "Multiple Choice Parcial":
+                    case "Multiple Choice Puntaje Parcial":
                         parser = new ParserMChoice();
                         pregunta = parser.parsearPregunta(preguntaJson, parcial);
                         break;

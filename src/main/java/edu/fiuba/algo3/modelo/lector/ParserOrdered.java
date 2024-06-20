@@ -27,7 +27,6 @@ public class ParserOrdered implements LectorParser {
                 contenidoOpciones.add(preguntaJson.getString(opcionKey));
             }
         }
-        System.out.println("Todo bien");
         List<Opcion> opciones=FabricaOpciones.crearListaOrdenada(contenidoOpciones,posicionesCorrectas);
         return FabricaPreguntas.crearPreguntaOrdered(enunciado, opciones, puntaje, categoria);
     }
