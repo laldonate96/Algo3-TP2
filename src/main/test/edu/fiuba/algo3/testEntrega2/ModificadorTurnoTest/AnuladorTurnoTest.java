@@ -97,7 +97,7 @@ public class AnuladorTurnoTest {
     }
 
     @Test
-    public void test04LosNJugadoresUsanUnAnuladorYNingunoRecibePuntos() {
+    public void test04Los5JugadoresUsanUnAnuladorYNingunoRecibePuntos() {
         //Arrange
         Jugador jugador2 = mock(Jugador.class);
         Jugador jugador3 = mock(Jugador.class);

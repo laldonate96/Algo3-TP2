@@ -12,30 +12,22 @@ public class AnuladorTurno implements ModificadorTurno {
     ModificadorPuntaje modificadorReferencia;
     int cantidadCorrectas;
     List<Jugador> jugadoresProtegidos;
+    private int factorDeMultiplicacion;
 
     public AnuladorTurno(ModificadorPuntaje modificadorReferencia) {
         jugadoresProtegidos = new ArrayList<>();
         this.modificadorReferencia = modificadorReferencia;
         cantidadCorrectas=0;
+        factorDeMultiplicacion =1;
     }
 
 
     @Override
     public void modificarPuntajes(List<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
-            if (respuesta.esCorrecta()) {
-                cantidadCorrectas++;
-                if (cantidadCorrectas > 1) {
-                    break;
-                }
-            }
-
-        }
-
-        for (Respuesta respuesta : respuestas) {
             if(respuesta.esCorrecta()) {
-                if ((cantidadCorrectas == 1) & (jugadoresProtegidos.size() == 1) && (respuesta.perteneceA(jugadoresProtegidos.get(0)))) {
-                    respuesta.multiplicarPuntaje(1);
+                if (respuesta.perteneceA(jugadoresProtegidos.get(0))) {
+                    respuesta.multiplicarPuntaje(factorDeMultiplicacion);
                 } else {
                     respuesta.multiplicarPuntaje(0);
                 }
@@ -46,7 +38,9 @@ public class AnuladorTurno implements ModificadorTurno {
 
     private void usarModificador(Jugador jugadorActivo) {
         jugadoresProtegidos.add(jugadorActivo);
-
+        if(jugadoresProtegidos.size()>1){
+            factorDeMultiplicacion =0;
+        }
     }
 
     public void usar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo) {
