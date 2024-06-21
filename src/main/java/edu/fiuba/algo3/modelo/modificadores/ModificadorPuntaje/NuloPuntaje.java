@@ -21,7 +21,7 @@ public class NuloPuntaje extends ModificadorPuntaje {
 
     @Override
     public boolean equals(ModificadorPuntaje modificadorPuntaje) {
-        return false;
+        return modificadorPuntaje.equals(this);
     }
 
     @Override
