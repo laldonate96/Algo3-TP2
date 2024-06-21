@@ -12,12 +12,6 @@ public abstract class Opcion {
     }
 
     public abstract boolean equals(Opcion opcion);
-    protected abstract boolean equals(Ordenada ordenada);
-    protected abstract boolean equals(Simple simple);
-    protected abstract boolean equals(Grupo grupo);
-    /*public boolean esCorrecta() {
-        return estado.esCorrecta();
-    }*/
 
     public void actualizarEstado(Opcion opcion) {
         if (opcion.equals(this)) {
