@@ -18,14 +18,7 @@ public class Grupo extends Opcion {
         return opcion.equals(this);
     }
 
-    protected boolean equals(Ordenada ordenada) {
-        return false;
-    }
-
-    protected boolean equals(Simple simple) {
-        return false;
-    }
-
+    @Override
     protected boolean equals(Grupo grupo) {
         return this.texto.equals(grupo.texto) && this.nombreGrupo.equals(grupo.nombreGrupo);
     }

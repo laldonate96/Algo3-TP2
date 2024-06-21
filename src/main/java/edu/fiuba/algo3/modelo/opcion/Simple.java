@@ -16,16 +16,9 @@ public class Simple extends Opcion {
         return opcion.equals(this);
     }
 
-    protected boolean equals(Ordenada ordenada) {
-        return false;
-    }
-
+    @Override
     protected boolean equals(Simple simple) {
         return this.texto.equals(simple.obtenerTexto());
-    }
-
-    protected boolean equals(Grupo grupo) {
-        return false;
     }
 
 }

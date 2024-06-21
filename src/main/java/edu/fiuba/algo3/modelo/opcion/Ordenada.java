@@ -19,18 +19,9 @@ public class Ordenada extends Opcion {
         return opcion.equals(this);
     }
 
+    @Override
     protected boolean equals(Ordenada ordenada) {
         return this.texto.equals(ordenada.obtenerTexto()) && this.posicion == ordenada.obtenerPosicion();
     }
-
-    protected boolean equals(Simple simple) {
-        return false;
-    }
-
-    protected boolean equals(Grupo grupo) {
-        return false;
-    }
-
-
 
 }

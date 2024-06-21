@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.opcion;
 
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.AnuladorPuntaje;
 import edu.fiuba.algo3.modelo.opcion.estado.Estado;
 
 public abstract class Opcion {
@@ -12,6 +13,16 @@ public abstract class Opcion {
     }
 
     public abstract boolean equals(Opcion opcion);
+
+    protected boolean equals(Grupo grupo){
+        return false;
+    }
+    protected boolean equals(Simple simple){
+        return false;
+    }
+    protected boolean equals(Ordenada ordenada){
+        return false;
+    }
 
     public void actualizarEstado(Opcion opcion) {
         if (opcion.equals(this)) {
