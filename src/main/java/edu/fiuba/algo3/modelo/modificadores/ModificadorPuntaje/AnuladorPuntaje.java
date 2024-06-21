@@ -15,9 +15,6 @@ public class AnuladorPuntaje extends ModificadorPuntaje {
         return puntaje;
     }
 
-
-
-
     @Override
     public boolean equals(ModificadorPuntaje modificadorPuntaje) {
         return modificadorPuntaje.equals(this);
@@ -26,20 +23,5 @@ public class AnuladorPuntaje extends ModificadorPuntaje {
     @Override
     protected boolean equals(AnuladorPuntaje anulador) {
         return true;
-    }
-
-    @Override
-    protected boolean equals(ExclusividadPuntaje exclusividad) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(Multiplicador multiplicador) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(NuloPuntaje nulo) {
-        return false;
     }
 }

@@ -25,21 +25,6 @@ public class NuloPuntaje extends ModificadorPuntaje {
     }
 
     @Override
-    protected boolean equals(AnuladorPuntaje anulador) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(ExclusividadPuntaje exclusividad) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(Multiplicador multiplicador) {
-        return false;
-    }
-
-    @Override
     protected boolean equals(NuloPuntaje nulo) {
         return true;
     }

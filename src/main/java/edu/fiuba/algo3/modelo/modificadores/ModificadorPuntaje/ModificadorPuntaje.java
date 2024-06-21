@@ -21,10 +21,18 @@ public abstract class ModificadorPuntaje {
 
     public abstract boolean equals(ModificadorPuntaje modificadorPuntaje);
 
-    protected abstract boolean equals(AnuladorPuntaje anulador);
-    protected abstract boolean equals(ExclusividadPuntaje exclusividad);
-    protected abstract boolean equals(Multiplicador multiplicador);
-    protected abstract boolean equals(NuloPuntaje nulo);
+    protected boolean equals(AnuladorPuntaje anulador){
+        return false;
+    }
+    protected boolean equals(ExclusividadPuntaje exclusividad){
+        return false;
+    }
+    protected boolean equals(Multiplicador multiplicador){
+        return false;
+    }
+    protected boolean equals(NuloPuntaje nulo){
+        return false;
+    }
 
 
 }

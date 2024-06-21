@@ -16,21 +16,9 @@ public class Multiplicador extends ModificadorPuntaje {
         return puntos*this.factorDeMultiplicacion;
     }
 
-
-
     @Override
     public boolean equals(ModificadorPuntaje modificadorPuntaje) {
         return modificadorPuntaje.equals(this);
-    }
-
-    @Override
-    protected boolean equals(AnuladorPuntaje anulador) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(ExclusividadPuntaje exclusividad) {
-        return false;
     }
 
     @Override
@@ -38,8 +26,4 @@ public class Multiplicador extends ModificadorPuntaje {
         return (multiplicador.factorDeMultiplicacion==factorDeMultiplicacion);
     }
 
-    @Override
-    protected boolean equals(NuloPuntaje nulo) {
-        return false;
-    }
 }
