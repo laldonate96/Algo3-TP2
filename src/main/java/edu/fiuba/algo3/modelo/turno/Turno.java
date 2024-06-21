@@ -51,7 +51,7 @@ public class Turno {
 
     public void agregarRespuesta(List<String> opcionesElegidas, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
         List<Opcion> opcionesJugador = List.of();
-//        opcionesJugador = preguntaDelTurno.crearCopiaOpciones(opcionesElegidas);
+
         Respuesta respuesta=new Respuesta(opcionesJugador, jugador, modificadorPuntaje);
         respuestas.add(respuesta);
         modificador.usar(modificadorPuntaje,jugador);
