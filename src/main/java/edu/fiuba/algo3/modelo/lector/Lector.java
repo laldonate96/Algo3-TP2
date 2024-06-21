@@ -13,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import edu.fiuba.algo3.excepciones.ArchivoInexistenteException;
-import edu.fiuba.algo3.modelo.lector.mezclador.Mezclador;
+import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
@@ -21,7 +21,7 @@ import edu.fiuba.algo3.modelo.puntaje.Parcial;
 
 public class Lector {
 
-    public static List<Pregunta> obtenerPreguntasDeJson(Mezclador mezclador) throws ArchivoInexistenteException {
+    public static List<Pregunta> obtenerPreguntasDeJson(MezclaSinRepetirCategoria mezclador) throws ArchivoInexistenteException {
         try {
             String datos = new String(Files.readAllBytes(Paths.get("preguntas/preguntas.json")));
             ArrayList<Pregunta> preguntas = new ArrayList<>();

@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.jugador.Jugadores;
 import edu.fiuba.algo3.modelo.lector.Lector;
-import edu.fiuba.algo3.modelo.lector.mezclador.Mezclador;
+import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
@@ -27,7 +27,7 @@ public class AlgoKahoot3 {
         turnoActual=turno;
 
 
-        preguntas = Lector.obtenerPreguntasDeJson(new Mezclador());
+        preguntas = Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria());
 
     }
 
