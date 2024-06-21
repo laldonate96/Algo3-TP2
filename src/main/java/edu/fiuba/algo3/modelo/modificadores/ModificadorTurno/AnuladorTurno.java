@@ -33,10 +33,12 @@ public class AnuladorTurno implements ModificadorTurno {
         }
 
         for (Respuesta respuesta : respuestas) {
-            if ((cantidadCorrectas==1) &(jugadoresProtegidos.size() == 1) && (respuesta.perteneceA(jugadoresProtegidos.get(0)))) {
-                respuesta.multiplicarPuntaje(1);
-            } else {
-                respuesta.multiplicarPuntaje(0);
+            if(respuesta.esCorrecta()) {
+                if ((cantidadCorrectas == 1) & (jugadoresProtegidos.size() == 1) && (respuesta.perteneceA(jugadoresProtegidos.get(0)))) {
+                    respuesta.multiplicarPuntaje(1);
+                } else {
+                    respuesta.multiplicarPuntaje(0);
+                }
             }
 
         }
@@ -47,15 +49,12 @@ public class AnuladorTurno implements ModificadorTurno {
 
     }
 
-    public void actualizar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo) {
+    public void usar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo) {
         jugadorActivo.usar(modificadorPuntaje);
         if (modificadorPuntaje.equals(modificadorReferencia)) {
             usarModificador(jugadorActivo);
         }
-
-
     }
-
 }
 
 

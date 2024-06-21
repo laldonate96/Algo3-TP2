@@ -7,9 +7,9 @@ import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaj
 import java.util.List;
 
 public interface ModificadorTurno {
+
      void modificarPuntajes(List<Respuesta> respuestas);
 
 
-
-    void actualizar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo);
+    void usar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo);
 }

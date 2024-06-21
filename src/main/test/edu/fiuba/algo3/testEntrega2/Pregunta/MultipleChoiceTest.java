@@ -58,6 +58,7 @@ public class MultipleChoiceTest {
                 opciones,       parcial, "Tema"
         );
 
+
         List<Opcion> opcionesJugador=FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1", "2"));
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
         respuestas.add(respuesta);
@@ -66,7 +67,7 @@ public class MultipleChoiceTest {
         pregunta.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(2, jugador1.obtenerPuntaje());
+        assertEquals(2, respuesta.obtenerPuntaje());
     }
 
     @Test
@@ -86,7 +87,7 @@ public class MultipleChoiceTest {
         pregunta.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(0, jugador1.obtenerPuntaje());
+        assertEquals(0, respuesta.obtenerPuntaje());
 
     }
 }

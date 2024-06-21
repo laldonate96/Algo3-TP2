@@ -16,7 +16,7 @@ public class NuloTurno implements ModificadorTurno {
     }
 
     @Override
-    public void actualizar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo) {
+    public void usar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo) {
         jugadorActivo.usar(modificadorPuntaje);
     }
 }

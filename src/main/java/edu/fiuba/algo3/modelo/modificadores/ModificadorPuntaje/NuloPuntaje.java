@@ -9,7 +9,10 @@ public class NuloPuntaje extends ModificadorPuntaje {
     }
 
     @Override
-    public void usar() { }
+    public void usar() {
+
+    }
+
 
     @Override
     public void actualizar(List<ModificadorPuntaje> modificadores) {

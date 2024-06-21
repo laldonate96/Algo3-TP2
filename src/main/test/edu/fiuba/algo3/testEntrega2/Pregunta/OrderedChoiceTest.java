@@ -24,7 +24,6 @@ public class OrderedChoiceTest {
 
 
     private Jugador jugador1;
-    private Jugador jugador2;
     private static Clasica clasica;
     private static ModificadorPuntaje nulo;
 
@@ -45,7 +44,6 @@ public class OrderedChoiceTest {
         nulo = modificadores.get(0);
 
         jugador1 = new Jugador("Jugador 1", modificadores);
-        jugador2 = new Jugador("Jugador 2", modificadores);
 
         List<String> opcionesTexto= List.of("Opcion 1", "Opcion 2", "Opcion 3");
         List<String> ordenCorrecto = List.of("3", "2", "1");
@@ -80,7 +78,7 @@ public class OrderedChoiceTest {
         pregunta.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(1, jugador2.obtenerPuntaje());
+        assertEquals(1, respuesta.obtenerPuntaje());
     }
 
     @Test
@@ -102,6 +100,6 @@ public class OrderedChoiceTest {
         //Act
         pregunta.asignarPuntajes(respuestas);
         //Assert
-        assertEquals(0, jugador1.obtenerPuntaje());
+        assertEquals(0, respuesta.obtenerPuntaje());
     }
 }

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje;
 
-import java.util.List;
+
 
 public class Multiplicador extends ModificadorPuntaje {
     private final int factorDeMultiplicacion;
@@ -8,7 +8,7 @@ public class Multiplicador extends ModificadorPuntaje {
 
     public Multiplicador(int factorDeMultiplicacion){
         this.factorDeMultiplicacion = factorDeMultiplicacion;
-
+        this.usos=1;
     }
 
     @Override
@@ -16,15 +16,7 @@ public class Multiplicador extends ModificadorPuntaje {
         return puntos*this.factorDeMultiplicacion;
     }
 
-    @Override
-    public void usar() {
 
-    }
-
-    @Override
-    public void actualizar(List<ModificadorPuntaje> modificadores) {
-        modificadores.remove(this);
-    }
 
     @Override
     public boolean equals(ModificadorPuntaje modificadorPuntaje) {

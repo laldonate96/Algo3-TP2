@@ -54,7 +54,7 @@ public class Turno {
 //        opcionesJugador = preguntaDelTurno.crearCopiaOpciones(opcionesElegidas);
         Respuesta respuesta=new Respuesta(opcionesJugador, jugador, modificadorPuntaje);
         respuestas.add(respuesta);
-        modificador.actualizar(modificadorPuntaje,jugador);
+        modificador.usar(modificadorPuntaje,jugador);
         turno += 1;
     }
 

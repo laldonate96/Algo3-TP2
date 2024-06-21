@@ -1,11 +1,12 @@
 package edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje;
 
-import java.util.List;
+
 
 public class ExclusividadPuntaje extends ModificadorPuntaje {
-    int usos;
-    public ExclusividadPuntaje(){
-        usos=2;
+
+
+    public ExclusividadPuntaje() {
+        this.usos = 2;
     }
 
     @Override
@@ -13,16 +14,7 @@ public class ExclusividadPuntaje extends ModificadorPuntaje {
         return puntaje;
     }
 
-    @Override
-    public void usar() {
-        usos--;
-    }
 
-    @Override
-    public void actualizar(List<ModificadorPuntaje> modificadores) {
-        if (usos==0)
-            modificadores.remove(this);
-    }
 
     @Override
     public boolean equals(ModificadorPuntaje modificadorPuntaje) {

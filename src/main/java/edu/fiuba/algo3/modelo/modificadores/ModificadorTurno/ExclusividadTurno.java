@@ -50,7 +50,7 @@ public class ExclusividadTurno implements ModificadorTurno {
 
 
     @Override
-    public void actualizar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo) {
+    public void usar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo) {
         jugadorActivo.usar(modificadorPuntaje);
         if(jugadorActivo.tieneModificador(modificadorPuntaje) && modificadorPuntaje.equals(modificadorDereferencia)){
             usarModificador();
