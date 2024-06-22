@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.vista.vistaJugadores;
 
+import java.util.List;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
@@ -20,6 +22,11 @@ public class VistaJugadores {
     public ListView<String> mostrarJugadores(){
         this.listaDeJugadores.setItems(jugadores);
         return listaDeJugadores;
+    }
+
+    public List<String> obtenerJugadores(){
+        List<String> nombresDeJugadores = this.listaDeJugadores.getItems();
+        return nombresDeJugadores;
     }
 
 }

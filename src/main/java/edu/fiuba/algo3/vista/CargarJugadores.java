@@ -1,12 +1,14 @@
 package edu.fiuba.algo3.vista;
 
+import java.util.List;
+
 import edu.fiuba.algo3.vista.alertas.NombreNoIngresado;
+import edu.fiuba.algo3.vista.botones.Boton;
 import edu.fiuba.algo3.vista.vistaJugadores.VistaJugadores;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -30,9 +32,9 @@ public class CargarJugadores extends Application {
 
         inputJugador = new TextField();
 
-        Button botonJugar = new Button("Jugar");
+        Boton botonJugar = new Boton("Jugar", "button");
 
-        Button botonAgregar = new Button("Agregar Jugador");
+        Boton botonAgregar = new Boton("Agregar Jugador", "button");
         botonAgregar.setOnAction(event -> agregarJugador());
 
         ListView<String> jugadores = vistaJugadores.mostrarJugadores();
@@ -60,6 +62,12 @@ public class CargarJugadores extends Application {
         } else{
             NombreNoIngresado nombreNoIngresado = new NombreNoIngresado();
             nombreNoIngresado.mostrarAlerta();
+        }
+    }
+    public void jugar(){
+        List<String> listaDeNombres = vistaJugadores.obtenerJugadores();
+        if (!listaDeNombres.isEmpty()) {
+            
         }
     }
 }

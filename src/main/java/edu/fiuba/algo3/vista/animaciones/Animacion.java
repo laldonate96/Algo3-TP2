@@ -3,7 +3,15 @@ import javafx.scene.text.Text;
 
 
 public abstract class Animacion {
-    public void aplicarAnimacion(int tiempo, Text texto){
+    protected int duracion;
+    protected Text texto;
+
+    public Animacion(int duracion, Text texto){
+        this.duracion = duracion;
+        this.texto = texto;
+    }
+
+    public void aplicarAnimacion(){
 
     };
 }
