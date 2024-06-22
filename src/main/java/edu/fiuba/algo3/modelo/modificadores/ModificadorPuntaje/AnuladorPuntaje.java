@@ -1,21 +1,18 @@
 package edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje;
 
-import java.util.List;
+
 
 public class AnuladorPuntaje extends ModificadorPuntaje {
+
+
+
+    public AnuladorPuntaje() {
+        usos=1;
+    }
+
     @Override
     public int modificarPuntaje(int puntaje) {
-        return 0;
-    }
-
-    @Override
-    public void usar() {
-
-    }
-
-    @Override
-    public void actualizar(List<ModificadorPuntaje> modificadores) {
-
+        return puntaje;
     }
 
     @Override
@@ -26,20 +23,5 @@ public class AnuladorPuntaje extends ModificadorPuntaje {
     @Override
     protected boolean equals(AnuladorPuntaje anulador) {
         return true;
-    }
-
-    @Override
-    protected boolean equals(ExclusividadPuntaje exclusividad) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(Multiplicador multiplicador) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(NuloPuntaje nulo) {
-        return false;
     }
 }

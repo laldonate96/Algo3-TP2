@@ -4,9 +4,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
-import edu.fiuba.algo3.modelo.opciones.opcion.Simple;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
+
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,8 +17,7 @@ public class JugadorTest {
     private Jugador jugador;
     private ModificadorPuntaje multiplicador;
     private List<ModificadorPuntaje> modificadores;
-    private List<Opcion> opciones;
-    private Opcion opcion;
+
 
     @BeforeEach
     public void setUpClass() {
@@ -29,9 +26,6 @@ public class JugadorTest {
         modificadores = new ArrayList<>();
         modificadores.add(multiplicador);
         modificadores.add(nulo);
-        opcion = new Simple("Opcion 1", new Incorrecta());
-        opciones = new ArrayList<>();
-        opciones.add(opcion);
 
         jugador = new Jugador("Jugador 1", modificadores);
     }

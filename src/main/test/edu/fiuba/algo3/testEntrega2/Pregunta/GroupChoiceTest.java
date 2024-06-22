@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.testEntrega2.Pregunta;
 
 
-import edu.fiuba.algo3.modelo.Respuestas.RespuestasConcretas;
+import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 
-import edu.fiuba.algo3.modelo.modificadores.Modificadores;
-
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.fiuba.algo3.testEntrega2.mocks.GruposMock;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,10 +31,10 @@ public class GroupChoiceTest {
     static List<String> miembrosGrupo1;
     static List<String> miembrosGrupo2;
     private static Clasica clasica;
-    private ModificadorPuntaje modificadorPuntaje;
-    private List<ModificadorPuntaje> modificadores;
-    private GruposMock opcionesCorrectas;
-    private RespuestasConcretas respuestas;
+    private ModificadorPuntaje nulo;
+    //USAR MOCKITO
+    private List<Opcion> opcionesCorrectas;
+    private List<Respuesta> respuestas;
 
     @BeforeAll
     public static void setUpClass() {
@@ -47,18 +47,19 @@ public class GroupChoiceTest {
 
     @BeforeEach
     public void setUp() {
-        modificadores = Modificadores.obtenerListaModificadoresPuntaje();
-        modificadorPuntaje= modificadores.getFirst();
+        List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
+        nulo = modificadores.get(0);
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);
 
         List<List<String>> miembrosPorGrupos=new ArrayList<>();
         miembrosPorGrupos.add(miembrosGrupo1);
         miembrosPorGrupos.add(miembrosGrupo2);
-        opcionesCorrectas=new GruposMock(grupos,miembrosPorGrupos);
+        //USAR MOCKITO
+        opcionesCorrectas= FabricaOpciones.crearListaGrupo(grupos,miembrosPorGrupos);
 
 
-        respuestas= new RespuestasConcretas();
+        respuestas= new ArrayList<>();
 
 
     }
@@ -74,8 +75,8 @@ public class GroupChoiceTest {
                 clasica,
                 "Animales"
         );
-
-        respuestas.agregar(opcionesCorrectas,jugador1, modificadorPuntaje);
+        Respuesta respuesta= new Respuesta(opcionesCorrectas,jugador1, nulo);
+        respuestas.add(respuesta);
 
         //Act
         pregunta.asignarPuntajes(respuestas);
@@ -95,9 +96,11 @@ public class GroupChoiceTest {
                 "Animales"
         );
 
-        GruposMock opcionesJugador = opcionesCorrectas.crearCopiaMock(miembrosGrupo2, List.of(""));
-        respuestas.agregar(opcionesJugador,jugador1, modificadorPuntaje);
 
+        List<Opcion> opcionesJugador=new ArrayList<>();
+//        opcionesJugador = opcionesCorrectas.crearCopiaMock(miembrosGrupo2, List.of(""));
+        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
+        respuestas.add(respuesta);
 
         //Act
         pregunta.asignarPuntajes(respuestas);
@@ -117,8 +120,11 @@ public class GroupChoiceTest {
                 clasica,
                 "Animales"
         );
-        GruposMock opcionesJugador = opcionesCorrectas.crearCopiaMock(miembrosGrupo1, List.of("Reja"));
-        respuestas.agregar(opcionesJugador,jugador1, modificadorPuntaje);
+        List<Opcion> opcionesJugador=new ArrayList<>();
+//        opcionesJugador = opcionesCorrectas.crearCopiaMock(miembrosGrupo2, List.of(""));
+        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
+        respuestas.add(respuesta);
+
 
         //Act
         pregunta.asignarPuntajes(respuestas);
@@ -139,8 +145,11 @@ public class GroupChoiceTest {
                 "Animales"
         );
 
-        GruposMock opcionesJugador = opcionesCorrectas.crearCopiaMock(List.of("Perro"), List.of("Tiburon"));
-        respuestas.agregar(opcionesJugador,jugador1, modificadorPuntaje);
+        List<Opcion> opcionesJugador=new ArrayList<>();
+//        opcionesJugador = opcionesCorrectas.crearCopiaMock(miembrosGrupo2, List.of(""));
+        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
+        respuestas.add(respuesta);
+
 
 
         //Act
