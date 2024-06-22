@@ -1,0 +1,65 @@
+package edu.fiuba.algo3.vista;
+
+import edu.fiuba.algo3.vista.alertas.NombreNoIngresado;
+import edu.fiuba.algo3.vista.vistaJugadores.VistaJugadores;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class CargarJugadores extends Application {
+    private VistaJugadores vistaJugadores = new VistaJugadores();
+    private TextField inputJugador;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        stage.setTitle("Agreguen los jugadores");
+
+        Label jugadoresLabel = new Label("Agregar Jugador:");
+        jugadoresLabel.getStyleClass().add("jugadoresLabel");
+
+        inputJugador = new TextField();
+
+        Button botonJugar = new Button("Jugar");
+
+        Button botonAgregar = new Button("Agregar Jugador");
+        botonAgregar.setOnAction(event -> agregarJugador());
+
+        ListView<String> jugadores = vistaJugadores.mostrarJugadores();
+
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(20));
+        layout.getChildren().addAll(jugadoresLabel, inputJugador, jugadores,botonAgregar, botonJugar);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout, 800, 500);
+
+        // Utiliza el recurso CSS correctamente
+        String css = getClass().getResource("src/css/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void agregarJugador() {
+        String nombreJugador = inputJugador.getText().trim();
+        if (!nombreJugador.isEmpty()) {
+            vistaJugadores.agregarJugador(nombreJugador);
+            inputJugador.clear();
+        } else{
+            NombreNoIngresado nombreNoIngresado = new NombreNoIngresado();
+            nombreNoIngresado.mostrarAlerta();
+        }
+    }
+}

@@ -3,61 +3,27 @@
 .root {
     -fx-padding: 0;
     -fx-margin: 0;
-    -fx-font-family: 'Comic Sans';
-    -fx-display: flex;
-    -fx-text-align: center;
-    -fx-justify-column: center;
-    -fx-flex-direction: column;
-    -fx-flex-wrap: wrap;
+    -fx-font-family: 'Comic Sans MS';
+    -fx-background-color: #2C3E50;
 }
 
-.label-style {
-    -fx-font-size: 14px;
-    -fx-text-fill: #131111;
+
+.label{
+    -fx-text-fill: #ECF0F1;
 }
 
-.text-field {
-    -fx-background-color: #dcdcdc;
-    -fx-padding: 5px;
-    -fx-border-radius: 5px;
+.jugadoresLabel{
+    -fx-font-size: 20px;
 }
 
-.text-area {
-    -fx-background-color: #acacac;
-    -fx-padding: 5px;
-    -fx-border-radius: 5px;
+.primeraVentanaTitulo {
+    -fx-font-size: 25px;
+    -fx-fill: #ECF0F1; 
 }
-
-.button{
+.button {
     -fx-padding: 20px;
     -fx-font-size: 14px;
-    -fx-padding: 10px 20px;
     -fx-border-radius: 5px;
-}
-
-.titulo-label {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333;
-    -fx-padding: 10px 0;
-}
-
-.checkbox {
-    -fx-padding: 5px;
-}
-
-.enviar-button {
-    -fx-background-color: #15de0a;
-}
-
-.modificador-button{
-    -fx-background-color: #0a1cde;
-}
-
-.form-grid {
-    -fx-background-color: #f0f0f0;
-    -fx-border-color: #ccc;
-    -fx-border-width: 1px;
-    -fx-border-radius: 5px;
-    -fx-padding: 20px;
+    -fx-background-color: #2ECC71;
+    -fx-text-fill: white; 
 }

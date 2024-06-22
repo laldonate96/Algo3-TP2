@@ -1,48 +1,50 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.vista.animaciones.Titilante;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-public class inicioDelJuego extends Application {
+public class InicioDelJuego extends Application {
+    public void abrirCargaJugadores() {
+        CargarJugadores cargarJugadores = new CargarJugadores();
+            try {
+                cargarJugadores.start(new Stage());
+            } catch (Exception e) {
+                
+            }
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
 
-    public void start(Stage stage) throws Exception {
-        stage.setTitle("Bienvenido a algo kahoot");
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Text titulo = new Text("Bienvenido a algohoot");
+        titulo.getStyleClass().add("primeraVentanaTitulo");
+        Titilante titilante = new Titilante();
+        titilante.aplicarAnimacion(1, titulo); 
 
-        Label label = new Label("Agregar Jugador:");
-        label.getStyleClass().add("label-style");
-        
-        TextField inputJugador = new TextField();
-        TextArea jugadoresGuardados = new TextArea();
-        jugadoresGuardados.setEditable(false); 
+        Button botonJugar = new Button("Jugar");
+        botonJugar.getStyleClass().add("botonJugar");
+        botonJugar.setOnAction(event -> abrirCargaJugadores());
 
-        Button botonJugar = new Button();
-        botonJugar.setText("Jugar");
-        
-        
-        VBox layout = new VBox(10); 
-        layout.setPadding(new Insets(20)); 
-        layout.getChildren().addAll(label, inputJugador, jugadoresGuardados, botonJugar);
-        layout.setAlignment(Pos.CENTER);
-        
-        Scene scene = new Scene(layout, 400, 350);
-        stage.setScene(scene);
+        VBox root = new VBox(20);
+        root.getChildren().addAll(titulo, botonJugar);
+        root.setAlignment(Pos.CENTER);
 
-
+        Scene gameScene = new Scene(root, 800, 500);
         String css = this.getClass().getResource("src/css/style.css").toExternalForm();
-        scene.getStylesheets().add(css);
+        gameScene.getStylesheets().add(css);
 
-        stage.show();
+        primaryStage.setTitle("Algohoot");
+        primaryStage.setScene(gameScene);
+        primaryStage.show();
     }
 }

@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CargarJugadores",
+            "request": "launch",
+            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.CargarJugadores",
+            "projectName": "tp2"
+        },
+        {
+            "type": "java",
+            "name": "InicioDelJuego",
+            "request": "launch",
+            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.InicioDelJuego",
+            "projectName": "tp2"
+        },
+        {
+            "type": "java",
             "name": "PreguntaLayout",
             "request": "launch",
             "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.PreguntaLayout",
