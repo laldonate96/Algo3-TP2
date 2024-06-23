@@ -18,7 +18,7 @@ import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaj
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
-import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
+
 import edu.fiuba.algo3.modelo.turno.Turno;
 
 public class TurnosTest {
@@ -32,6 +32,7 @@ public class TurnosTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private ModificadorPuntaje nulo;
+    private Turno turno;
 
     @BeforeAll
     public static void setUpClass() {
@@ -61,14 +62,14 @@ public class TurnosTest {
         jugador2 = new Jugador("otro jugador", modificadores);
 
 
-        
+        turno = new Turno();
 
     }
 
     @Test
     public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYseLespidePuntos(){
        //arrange
-        Turno turno = new Turno(vof);
+        turno.establecerPregunta(vof);
 
 
         List<String> respuestaJugador1 = List.of("Correcta");
@@ -91,7 +92,7 @@ public class TurnosTest {
     @Test
     public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaYseLespidePuntos(){
         //arrange
-        Turno turno = new Turno(vof);
+        turno.establecerPregunta(vof);
 
 
         List<String> respuestaJugador1 = List.of("Correcta");
@@ -114,7 +115,8 @@ public class TurnosTest {
     @Test
     public void test03seJuegaUnTurnoConUnaPreguntaVoFPenalizadaConMultiplicadorYseLespidePuntos(){
        //arrange
-        Turno turno = new Turno(vof);
+
+        turno.establecerPregunta(vof);
 
 
         List<String> respuestaJugadores = List.of("Correcta");

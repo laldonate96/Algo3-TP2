@@ -24,9 +24,6 @@ public class AlgoHoot3 {
         jugadores.agregar(nombreJugadores,modificadores);
 
         preguntas = Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria());
-        
-        turnoActual= new Turno(preguntas.get(0));  
-
     }
 
     public static AlgoHoot3 obtenerInstancia(List<String> nombreJugadores, Jugadores jugadores) {
@@ -38,9 +35,9 @@ public class AlgoHoot3 {
 
 
 
-    public void IniciarTurno() {
-        turnoActual=turnoActual.nuevoTurno(preguntas.remove(0));
-
+    public void IniciarTurno(Turno nuevoTurno) {
+        turnoActual=nuevoTurno;
+        turnoActual.establecerPregunta(preguntas.remove(0));
     }
 
 
