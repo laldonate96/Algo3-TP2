@@ -25,11 +25,12 @@ public class Pregunta {
         puntaje.asignarPuntajes(respuestas);
     }
 
-
-
-
     public String obtenerCategoria() {
         return categoria;
+    }
+
+    public String obtenerEnunciado() {
+        return enunciado;
     }
 
     public List<String> obtenerOpciones() {

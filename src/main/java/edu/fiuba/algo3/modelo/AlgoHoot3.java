@@ -30,46 +30,41 @@ public class AlgoHoot3 {
         return instancia;
     }
 
-
     public void asignarJugadores(List<Jugador> jugadores) {
         this.jugadores= jugadores;
     }
 
-
-
-
     public int pasarRonda(Turno nuevoTurno) {
         turnoActual = nuevoTurno;
-        jugadorActual=jugadores.get(0);
-        turnoActual.establecerPregunta(preguntas.remove(0));
+        jugadorActual = jugadores.get(0);
+        turnoActual.establecerPregunta(preguntas.get(rondas));
         rondas++;
         return rondas;
     }
 
-
-    public void pasarTurno(List<String> opcionesElegida, ModificadorPuntaje modificadorPuntaje) {
-        turnoActual.agregarRespuesta(opcionesElegida, jugadorActual, modificadorPuntaje);
+    public void pasarTurno(List<String> opcionesElegidas, ModificadorPuntaje modificadorPuntaje) {
+        turnoActual.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
+        this.turnoActual.pasarTurno();
         rondas++;
     }
 
-
-
-
-
-    public void jugar(){
-
+    public void jugarTurno(){
+        
     }
 
     public int obtenerRonda(){
         return this.rondas;
     }
 
+    public Pregunta obtenerPreguntaDeRondaActual() {
+        return preguntas.get(rondas);
+    }
+
     public void asignarModificadorTurno(ModificadorTurno modificadorTurno){
         turnoActual.asignarModificador(modificadorTurno);
     }
 
-
-     public void crearRespuestaJugador(List<String> opcionesElegida, Jugador jugador, ModificadorPuntaje modificadorPuntaje){
+    public void crearRespuestaJugador(List<String> opcionesElegida, Jugador jugador, ModificadorPuntaje modificadorPuntaje){
         turnoActual.agregarRespuesta(opcionesElegida, jugador, modificadorPuntaje);
     }
 

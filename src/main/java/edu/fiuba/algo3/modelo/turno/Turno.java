@@ -25,27 +25,27 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
 public class Turno {
     private final List<Respuesta> respuestas;
-//    private int turno;
+    private int indexJugadorActual;
     private Pregunta preguntaDelTurno;
 //    private final List<ModificadorPuntaje> modificadoresUsados;
     private ModificadorTurno modificador;
 
-
     public Turno(){
-
-
+        this.indexJugadorActual = 0;
         this.respuestas = new ArrayList<>();
     }
+
     public void establecerPregunta(Pregunta preguntaDelTurno) {
         this.preguntaDelTurno = preguntaDelTurno;
     }
-
 
     public void asignarModificador(ModificadorTurno modificadorTurno) {
         this.modificador = modificadorTurno;
     }
 
-
+    public void pasarTurno() {
+        this.indexJugadorActual++;
+    }
 
     public void agregarRespuesta(List<String> opcionesElegidas, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
         List<Opcion> opcionesJugador = List.of();
@@ -55,7 +55,6 @@ public class Turno {
         modificador.usar(modificadorPuntaje,jugador);
 
     }
-
 
     public void asignarPuntajes() {
         preguntaDelTurno.asignarPuntajes(respuestas);
