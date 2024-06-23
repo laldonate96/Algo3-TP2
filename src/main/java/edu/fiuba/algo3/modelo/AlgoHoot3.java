@@ -12,14 +12,14 @@ import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Turno;
 
-public class AlgoKahoot3 {
+public class AlgoHoot3 {
     //Podemos hacer una cola, seria mejor
     private final List<Pregunta> preguntas;
     private final Jugadores jugadores;
     private Turno turnoActual;
-    private static AlgoKahoot3 instancia;
+    private static AlgoHoot3 instancia;
 
-    private AlgoKahoot3(List<String> nombreJugadores, Jugadores jugadores){
+    private AlgoHoot3(List<String> nombreJugadores, Jugadores jugadores){
         this.jugadores = jugadores;
         List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
         jugadores.agregar(nombreJugadores,modificadores);
@@ -30,9 +30,9 @@ public class AlgoKahoot3 {
 
     }
 
-    public static AlgoKahoot3 obtenerInstancia(List<String> nombreJugadores, Jugadores jugadores) {
+    public static AlgoHoot3 obtenerInstancia(List<String> nombreJugadores, Jugadores jugadores) {
         if (instancia == null) {
-            instancia = new AlgoKahoot3(nombreJugadores, jugadores);
+            instancia = new AlgoHoot3(nombreJugadores, jugadores);
         }
         return instancia;
     }
