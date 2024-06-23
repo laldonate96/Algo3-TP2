@@ -98,7 +98,7 @@ public class ExclusividadTurnoTest {
     }
 
     @Test
-    public void test03MultiplesLlamadosSinAsignarExclusividadNoMultiplicanElEfecto() {
+    public void test04MultiplesLlamadosSinAsignarExclusividadNoMultiplicanElEfecto() {
         //Arrange
         modificadorPuntaje = mock(AnuladorPuntaje.class);
         exclusividad.usar(modificadorPuntaje, jugador);
@@ -120,20 +120,18 @@ public class ExclusividadTurnoTest {
 
     public void test04RecibeDosRespuestasCorrectasYAnulaLosPuntosDeAmbas() {
         //Arrange
-        modificadorPuntaje = mock(AnuladorPuntaje.class);
         exclusividad.usar(modificadorPuntaje, jugador);
 
-        Respuesta respuestaMock2 = mock(Respuesta.class);
-        respuestaMock2.asignarPuntaje(14);
-        respuestas.add(respuestaMock2);
+        respuesta2.asignarPuntaje(1);
+        respuestas = new ArrayList<>();
+        respuestas.add(respuesta);
+        respuestas.add(respuesta2);
 
         //Act
         exclusividad.modificarPuntajes(respuestas);
 
-
-        //Assert
-        //assertEquals(0, respuestaMock.obtenerPuntaje());
-        //assertEquals(0, respuestaMock2.obtenerPuntaje());
+        assertEquals(0, respuesta.obtenerPuntaje());
+        assertEquals(0, respuesta2.obtenerPuntaje());
     }
 
     @Test

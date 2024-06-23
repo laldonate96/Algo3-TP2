@@ -40,12 +40,6 @@ public class Jugador {
         return this.tieneNombre(jugador.nombre);
     }
 
-    public boolean tieneModificador(ModificadorPuntaje modificadorPuntaje) {
-        return modificadores.contains(modificadorPuntaje);
-    }
-
-
-
     private ModificadorPuntaje buscarModificador(ModificadorPuntaje modificadorReferencia) {
         int contador=0;
         ModificadorPuntaje modificadorPuntaje= new NuloPuntaje();
