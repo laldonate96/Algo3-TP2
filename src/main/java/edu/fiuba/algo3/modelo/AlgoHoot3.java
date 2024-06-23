@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.Iterator;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -16,7 +17,9 @@ public class AlgoHoot3 {
     private Turno turnoActual;
     private static AlgoHoot3 instancia;
     private int rondas;
+    private Iterator<Jugador> iteradorJugadores;
     private Jugador jugadorActual;
+
 
     private AlgoHoot3(){
         this.rondas = 0;
@@ -36,21 +39,27 @@ public class AlgoHoot3 {
 
     public int pasarRonda(Turno nuevoTurno) {
         turnoActual = nuevoTurno;
-        jugadorActual = jugadores.get(0);
+        iteradorJugadores = jugadores.iterator();
+        jugadorActual = iteradorJugadores.next();
         turnoActual.establecerPregunta(preguntas.get(rondas));
         rondas++;
         return rondas;
     }
 
-    public void pasarTurno(List<String> opcionesElegidas, ModificadorPuntaje modificadorPuntaje) {
+    public void jugarTurno(List<String> opcionesElegidas, ModificadorPuntaje modificadorPuntaje) {
+
         turnoActual.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
         this.turnoActual.pasarTurno();
-        rondas++;
+
+        jugadorActual=iteradorJugadores.next();
+
     }
 
-    public void jugarTurno(){
-        
+    public boolean quedanJugadores(){
+        return iteradorJugadores.hasNext();
     }
+
+
 
     public int obtenerRonda(){
         return this.rondas;
