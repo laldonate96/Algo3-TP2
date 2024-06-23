@@ -1,35 +1,42 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.List;
+
+import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.jugador.Jugadores;
 import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
-import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Turno;
-
-import java.util.List;
 
 public class AlgoKahoot3 {
     //Podemos hacer una cola, seria mejor
     private final List<Pregunta> preguntas;
     private final Jugadores jugadores;
     private Turno turnoActual;
-    AlgoKahoot3(List<String> nombreJugadores, Jugadores jugadores, Turno turno){
+    private static AlgoKahoot3 instancia;
 
-        this.jugadores= jugadores;
-        List<ModificadorPuntaje> modificadores= FabricaModificadores.crearListaModificadoresPuntaje();
+    private AlgoKahoot3(List<String> nombreJugadores, Jugadores jugadores){
+        this.jugadores = jugadores;
+        List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
         jugadores.agregar(nombreJugadores,modificadores);
 
-//        this.controlador = controlador;
-        turnoActual=turno;
-
-
         preguntas = Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria());
+        
+        turnoActual= new Turno(preguntas.getFirst());  
 
     }
+
+    public static AlgoKahoot3 obtenerInstancia(List<String> nombreJugadores, Jugadores jugadores) {
+        if (instancia == null) {
+            instancia = new AlgoKahoot3(nombreJugadores, jugadores);
+        }
+        return instancia;
+    }
+
 
 
     public void IniciarTurno() {
