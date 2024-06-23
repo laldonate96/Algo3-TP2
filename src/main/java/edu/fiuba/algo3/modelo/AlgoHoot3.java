@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
@@ -13,31 +12,49 @@ import edu.fiuba.algo3.modelo.turno.Turno;
 
 public class AlgoHoot3 {
     private final List<Pregunta> preguntas;
-    private final List<Jugador> jugadores;
+    private List<Jugador> jugadores;
     private Turno turnoActual;
     private static AlgoHoot3 instancia;
     private int rondas;
+    private Jugador jugadorActual;
 
-    private AlgoHoot3(List<Jugador> jugadores){
-        this.jugadores = jugadores;
+    private AlgoHoot3(){
         this.rondas = 0;
         preguntas = Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria());
     }
 
-    public static AlgoHoot3 obtenerInstancia(List<Jugador> jugadores) {
+    public static AlgoHoot3 obtenerInstancia() {
         if (instancia == null) {
-            instancia = new AlgoHoot3(jugadores);
+            instancia = new AlgoHoot3();
         }
         return instancia;
     }
 
 
+    public void asignarJugadores(List<Jugador> jugadores) {
+        this.jugadores= jugadores;
+    }
 
-    public void pasarRonda(Turno nuevoTurno) {
+
+
+
+    public int pasarRonda(Turno nuevoTurno) {
         turnoActual = nuevoTurno;
+        jugadorActual=jugadores.get(0);
         turnoActual.establecerPregunta(preguntas.remove(0));
         rondas++;
+        return rondas;
     }
+
+
+    public void pasarTurno(List<String> opcionesElegida, ModificadorPuntaje modificadorPuntaje) {
+        turnoActual.agregarRespuesta(opcionesElegida, jugadorActual, modificadorPuntaje);
+        rondas++;
+    }
+
+
+
+
 
     public void jugar(){
 
@@ -60,5 +77,7 @@ public class AlgoHoot3 {
         turnoActual.asignarPuntajes();
     }
 
-
+    public Jugador obtenerJugadorActual() {
+        return jugadorActual;
+    }
 }
