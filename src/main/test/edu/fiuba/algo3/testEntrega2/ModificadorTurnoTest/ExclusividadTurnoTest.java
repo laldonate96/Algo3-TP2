@@ -103,8 +103,8 @@ public class ExclusividadTurnoTest {
         Respuesta respuestaMock2 = mock(Respuesta.class);
         respuestaMock2.asignarPuntaje(14);
         respuestas.add(respuestaMock2);
-        //Act
 
+        //Act
         exclusividad.modificarPuntajes(respuestas);
 
 
