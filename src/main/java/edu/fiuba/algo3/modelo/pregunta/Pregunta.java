@@ -26,9 +26,6 @@ public abstract class Pregunta {
     }
 
 
-//    protected void asignarPuntaje(List<Respuesta> respuestas) {
-//        puntaje.asignarPuntaje(respuesta);
-//    }
 
 
     public String obtenerCategoria() {

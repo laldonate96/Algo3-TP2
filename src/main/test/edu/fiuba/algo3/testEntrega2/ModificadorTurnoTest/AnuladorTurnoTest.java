@@ -45,6 +45,10 @@ public class AnuladorTurnoTest {
         when(respuestaMock.perteneceA(jugador)).thenReturn(true);
 
         modificadorPuntaje=mock(AnuladorPuntaje.class);
+
+
+
+
         anulador.usar(modificadorPuntaje,jugador);
 
         //Act

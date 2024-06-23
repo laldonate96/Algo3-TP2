@@ -13,7 +13,6 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Turno;
 
 public class AlgoHoot3 {
-    //Podemos hacer una cola, seria mejor
     private final List<Pregunta> preguntas;
     private final Jugadores jugadores;
     private Turno turnoActual;
