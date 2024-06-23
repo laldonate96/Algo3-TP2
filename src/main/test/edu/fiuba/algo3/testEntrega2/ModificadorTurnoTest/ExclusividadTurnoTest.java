@@ -73,7 +73,19 @@ public class ExclusividadTurnoTest {
     }
 
     @Test
-    public void test02UnJugadorRespodeBienYConMultiplesLlamadosYSeTriplicaElPuntajeDeSuRespuesta() {
+    public void test02UnJugadorRespodeBienYElMismoUsaLaExclusividadSeDuplicaElPuntajeDeSuRespuesta() {
+        //Arrange
+        exclusividad.usar(modificadorPuntaje, jugador);
+
+        //Act
+        exclusividad.modificarPuntajes(respuestas);
+
+        //Assert
+        assertEquals(20, respuesta.obtenerPuntaje());
+    }
+
+    @Test
+    public void test03UnJugadorRespodeBienYConMultiplesLlamadosYSeTriplicaElPuntajeDeSuRespuesta() {
         //Arrange
         exclusividad.usar(modificadorPuntaje, jugador);
         exclusividad.usar(modificadorPuntaje, jugador2);
