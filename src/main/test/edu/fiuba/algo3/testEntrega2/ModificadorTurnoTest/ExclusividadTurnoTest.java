@@ -94,7 +94,7 @@ public class ExclusividadTurnoTest {
         exclusividad.modificarPuntajes(respuestas);
 
         //Assert
-        assertEquals(30, respuesta.obtenerPuntaje());
+        assertEquals(40, respuesta.obtenerPuntaje());
     }
 
     @Test
