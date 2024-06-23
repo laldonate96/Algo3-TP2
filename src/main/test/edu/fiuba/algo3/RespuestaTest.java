@@ -27,7 +27,6 @@ public class RespuestaTest {
     private List<Opcion> opcionesCorrectas;
 
 
-
     @BeforeAll
     public static void setUpClass(){
         nulo=new NuloPuntaje();
