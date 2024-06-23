@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Parcial;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -53,7 +52,7 @@ public class MultipleChoiceTest {
     public void test01Asigna2PuntosAUnJugadorQueRespondio2Correctas() {
 
 
-        Pregunta pregunta = new VerdaderoFalso(
+        Pregunta pregunta = new Pregunta(
             "¿Cuáles de las siguientes opciones son opcionesPregunta?",
                 opciones,       parcial, "Tema"
         );
@@ -74,7 +73,7 @@ public class MultipleChoiceTest {
     public void test02Asigna0PuntosAJugadorQueRespondioMal() {
 
 
-        Pregunta pregunta = new VerdaderoFalso(
+        Pregunta pregunta = new Pregunta(
                 "¿Cuáles de las siguientes opciones son opcionesPregunta?",
                 opciones,       parcial, "Tema"
         );

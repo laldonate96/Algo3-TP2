@@ -21,7 +21,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 
 public class GroupChoiceTest {
     private Jugador jugador1;
@@ -69,12 +68,13 @@ public class GroupChoiceTest {
     public void test01GroupChoiceAsignaPuntajeCorrectoAJugadorQueRespondeCorrectamente(){
         //Arrange
 
-        Pregunta pregunta = new GroupChoice(
+        Pregunta pregunta = new Pregunta(
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,
                 "Animales"
-        );
+        ) {
+        };
         Respuesta respuesta= new Respuesta(opcionesCorrectas,jugador1, nulo);
         respuestas.add(respuesta);
 
@@ -89,7 +89,7 @@ public class GroupChoiceTest {
     public void test02Asigna0PuntosAJugadorQueRespondeConUnaIncorrecta() {
         //Arrange
 
-        Pregunta pregunta = new GroupChoice(
+        Pregunta pregunta = new Pregunta(
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,
@@ -114,7 +114,7 @@ public class GroupChoiceTest {
     public void test03Asigna0PuntosAJugadorQueRespondeConUnaIncorrectaYDosCorrectas() {
         //Arrange
 
-         Pregunta pregunta = new GroupChoice(
+         Pregunta pregunta = new Pregunta(
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,
@@ -138,7 +138,7 @@ public class GroupChoiceTest {
     public void test04Asigna0PuntosAJugadorQueRespondeConDosCorrectasSiendo3Opciones() {
         //Arrange
 
-        Pregunta pregunta = new GroupChoice(
+        Pregunta pregunta = new Pregunta(
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,

@@ -13,13 +13,13 @@ public class TurnoVista extends Application{
         launch(args);
     }
     public void mostrarTurno(int ronda, Jugador jugador){
-        this.turnoActual = turno;
+        //this.turnoActual = turno;
         this.jugadorActual = jugador;
     }
     @Override
          public void start(Stage stage) throws Exception {
             stage.setTitle(this.jugadorActual.obtenerNombre());
-            Text turno = new Text()
+            Text turno = new Text();
         }
 
 }

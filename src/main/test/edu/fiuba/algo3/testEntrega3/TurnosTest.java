@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,6 @@ import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
-import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 
 import edu.fiuba.algo3.modelo.turno.Turno;
@@ -25,7 +25,7 @@ public class TurnosTest {
 
 
 
-    private VerdaderoFalso vof;
+    private Pregunta vof;
 
     private  static NuloTurno nuloTurno;
 
@@ -52,7 +52,7 @@ public class TurnosTest {
         Clasica clasica = new Clasica(1);
 
 
-        vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock");
+        vof = new Pregunta("un enunciado", opciones, clasica,"Mock");
 
 
         List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();

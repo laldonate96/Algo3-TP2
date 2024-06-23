@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Pregunta {
+public class Pregunta {
     protected String categoria;
     protected String enunciado;
     protected List<Opcion> opciones;

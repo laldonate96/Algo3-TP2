@@ -18,7 +18,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 
 public class OrderedChoiceTest {
 
@@ -56,7 +55,7 @@ public class OrderedChoiceTest {
     public void test01OrderedChoiceAsignaPuntajeCorrectoAJugadorQueRespondeCorrectamente(){
         //Arrange
 
-        Pregunta pregunta = new OrderedChoice(
+        Pregunta pregunta = new Pregunta(
                 "Ordenar las siguientes opciones",
                 opciones,
                 clasica,
@@ -85,7 +84,7 @@ public class OrderedChoiceTest {
     public void test02OrderedChoiceAsignaPuntajeCorrectoAJugadorQueRespondeIncorrectamente() {
         //Arrange
 
-        Pregunta pregunta = new OrderedChoice(
+        Pregunta pregunta = new Pregunta(
                 "Ordenar las siguientes opciones",
                 opciones,
                 clasica,
