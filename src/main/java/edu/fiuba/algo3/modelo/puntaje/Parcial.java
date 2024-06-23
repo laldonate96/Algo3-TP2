@@ -1,23 +1,21 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
 public class Parcial extends Puntaje {
 
-
     @Override
     public void asignarPuntaje(Respuesta respuesta) {
-        int puntosParciales = 0;
+        int correctas = 0;
+        int incorrectas = 0;
         for (Opcion opcion : respuesta.obtenerOpciones()) {
-            if (opcion.esCorrecta()) {
-                puntosParciales += puntaje;
-            } else {
-                return;
-            }
+            correctas += opcion.contarCorrecta();
+            incorrectas += opcion.contarIncorrecta();
         }
-
-        respuesta.asignarPuntaje(puntosParciales);
+        if (incorrectas == 0) {
+            respuesta.asignarPuntaje(correctas*puntaje);
+        }
     }
 }
 

@@ -3,14 +3,13 @@ package edu.fiuba.algo3.modelo.turno;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
 
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
     /*
      class Turno {
     - turno :Int
@@ -26,26 +25,22 @@ import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
      */
 
 public class Turno {
-    private Respuestas respuestas;
+    private final List<Respuesta> respuestas;
     private int turno;
-    private Pregunta preguntaDelTurno;
-    private List<ModificadorPuntaje> modificadoresUsados;
+    private final Pregunta preguntaDelTurno;
+    private final List<ModificadorPuntaje> modificadoresUsados;
     private ModificadorTurno modificador;
 
-    public Turno(){
+
+    public Turno(Pregunta preguntaDelTurno){
         this.modificadoresUsados = new ArrayList<>();
         this.turno=0;
-    }
-    public Turno(Pregunta preguntaDelTurno, Respuestas respuestas){
-        this.modificadoresUsados = new ArrayList<>();
-        this.turno=0;
-        this.respuestas=respuestas;
+        this.respuestas=new ArrayList<>();
         this.preguntaDelTurno=preguntaDelTurno;
     }
 
-    public Turno nuevoTurno(Pregunta preguntaDelTurno, Respuestas respuestas) {
-        Turno nuevoTurno=new Turno(preguntaDelTurno,respuestas);
-        return nuevoTurno;
+    public Turno nuevoTurno(Pregunta preguntaDelTurno) {
+        return new Turno(preguntaDelTurno);
     }
 
     public void asignarModificador(ModificadorTurno modificadorTurno) {
@@ -55,9 +50,11 @@ public class Turno {
 
 
     public void agregarRespuesta(List<String> opcionesElegidas, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
-        Opciones opcionesJugador=preguntaDelTurno.crearCopiaOpciones(opcionesElegidas);
-        respuestas.agregar(opcionesJugador, jugador, modificadorPuntaje);
-        modificador.actualizar(modificadorPuntaje,jugador);
+        List<Opcion> opcionesJugador = List.of();
+
+        Respuesta respuesta=new Respuesta(opcionesJugador, jugador, modificadorPuntaje);
+        respuestas.add(respuesta);
+        modificador.usar(modificadorPuntaje,jugador);
         turno += 1;
     }
 
@@ -65,6 +62,10 @@ public class Turno {
     public void asignarPuntajes() {
         preguntaDelTurno.asignarPuntajes(respuestas);
         modificador.modificarPuntajes(respuestas);
-        respuestas.sumarPuntajes();
+
+        for(Respuesta respuesta:respuestas){
+            respuesta.sumarPuntaje();
+        }
+
     }
 }

@@ -9,31 +9,19 @@ public class NuloPuntaje extends ModificadorPuntaje {
     }
 
     @Override
-    public void usar() { }
+    public void usar() {
+
+    }
+
 
     @Override
     public void actualizar(List<ModificadorPuntaje> modificadores) {
-        return;
+
     }
 
     @Override
     public boolean equals(ModificadorPuntaje modificadorPuntaje) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(AnuladorPuntaje anulador) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(ExclusividadPuntaje exclusividad) {
-        return false;
-    }
-
-    @Override
-    protected boolean equals(Multiplicador multiplicador) {
-        return false;
+        return modificadorPuntaje.equals(this);
     }
 
     @Override

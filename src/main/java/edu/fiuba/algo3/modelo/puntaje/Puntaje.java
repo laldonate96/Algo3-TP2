@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
-import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
 import java.util.List;
 
@@ -15,9 +14,5 @@ public abstract class Puntaje {
             asignarPuntaje(respuesta);
         }
     }
-    public void asignarPuntajes(Respuestas respuestas) {
-        for (Respuesta respuesta : respuestas) {
-            asignarPuntaje(respuesta);
-        }
-    }
+
 }

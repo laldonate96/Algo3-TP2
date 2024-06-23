@@ -1,19 +1,19 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import edu.fiuba.algo3.modelo.Respuestas.Respuestas;
-import edu.fiuba.algo3.modelo.opciones.Opciones;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
-import edu.fiuba.algo3.modelo.Respuestas.respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Pregunta {
     protected String categoria;
     protected String enunciado;
-    protected Opciones opciones;
+    protected List<Opcion> opciones;
     protected Puntaje puntaje;
 
-    public Pregunta(String enunciado, Opciones opciones, Puntaje puntaje, String categoria) {
+    public Pregunta(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
         this.enunciado = enunciado;
         this.opciones = opciones;
         this.puntaje = puntaje;
@@ -24,10 +24,7 @@ public abstract class Pregunta {
 
         puntaje.asignarPuntajes(respuestas);
     }
-    public void asignarPuntajes(Respuestas respuestas) {
 
-        puntaje.asignarPuntajes(respuestas);
-    }
 
 //    protected void asignarPuntaje(List<Respuesta> respuestas) {
 //        puntaje.asignarPuntaje(respuesta);
@@ -39,10 +36,11 @@ public abstract class Pregunta {
     }
 
     public List<String> obtenerOpciones() {
-        return opciones.obtenerListaStrings();
+        List<String> textoOpciones = new ArrayList<>();
+        for(Opcion opcion:opciones){
+            textoOpciones.add(opcion.obtenerTexto());
+        }
+        return textoOpciones;
     }
 
-    public Opciones crearCopiaOpciones(List<String> opcionesElegidas) {
-        return opciones.crearCopia(opcionesElegidas);
-    }
 }

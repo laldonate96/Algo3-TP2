@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.testEntrega2.OpcionTest;
 
 
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opciones.opcion.estado.Incorrecta;
-import edu.fiuba.algo3.modelo.opciones.opcion.Grupo;
-import edu.fiuba.algo3.modelo.opciones.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opciones.opcion.Ordenada;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,25 +24,32 @@ public class GrupoTest {
         @Test
         public void test01SiSeleAsignaEstadoCorrectaEsCorrecta() {
             //Assert
-            assertTrue(opcionCorrecta.esCorrecta());
+            assertEquals(1, opcionCorrecta.contarCorrecta());
+            assertEquals(0, opcionCorrecta.contarIncorrecta());
         }
 
         @Test
         public void test02SiSeleAsignaEstadoIncorrectaNoEsCorrecta() {
             //Assert
-            assertFalse(opcionIncorrecta.esCorrecta());
+            assertEquals(0, opcionIncorrecta.contarCorrecta());
+            assertEquals(1, opcionIncorrecta.contarIncorrecta());
         }
 
         @Test
         public void test03CambiarElEstadoConOtraIgualEstableceElEstadoEsperado() {
             opcionIncorrecta.actualizarEstado(opcionCorrecta);
 
-            assertTrue(opcionIncorrecta.esCorrecta());
+            //Assert
+            assertEquals(1, opcionIncorrecta.contarCorrecta());
+            assertEquals(0, opcionIncorrecta.contarIncorrecta());
         }
         @Test
         public void test04CambiarElEstadoConOtraIncorrectaEstableceElEstadoIncorrecto() {
-            opcionCorrecta.actualizarEstado(opcionCorrecta);
-            assertFalse(opcionIncorrecta.esCorrecta());
+            opcionCorrecta.actualizarEstado(opcionIncorrecta);
+
+            //Assert
+            assertEquals(0, opcionCorrecta.contarCorrecta());
+            assertEquals(1, opcionCorrecta.contarIncorrecta());
         }
 
         @Test
