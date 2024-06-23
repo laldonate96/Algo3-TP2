@@ -26,7 +26,7 @@ public class AlgoHoot3 {
 
         preguntas = Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria());
         
-        turnoActual= new Turno(preguntas.getFirst());  
+        turnoActual= new Turno(preguntas.get(0));  
 
     }
 
