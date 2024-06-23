@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.jugador;
 
 import java.util.List;
 
-import edu.fiuba.algo3.excepciones.ModificadorInexistenteException;
+import edu.fiuba.algo3.modelo.excepciones.ModificadorInexistenteException;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 

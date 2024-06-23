@@ -14,9 +14,6 @@ public class LectorTest {
     @Test
     public void test01LectorLeeCorrectamenteArchivoJson() {
         List<Pregunta> preguntas = Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria());
-        for (Pregunta pregunta : preguntas) {
-            System.out.println(pregunta.obtenerCategoria());
-        }
         assertEquals(25, preguntas.size());
     }
 }

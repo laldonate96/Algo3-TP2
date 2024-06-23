@@ -10,7 +10,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import edu.fiuba.algo3.excepciones.ArchivoInexistenteException;
+import edu.fiuba.algo3.modelo.excepciones.ArchivoInexistenteException;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaPreguntas;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
