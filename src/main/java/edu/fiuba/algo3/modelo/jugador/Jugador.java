@@ -61,6 +61,10 @@ public class Jugador {
         }
         return modificadorPuntaje;
     }
+
+    public String obtenerNombre(){
+        return this.nombre;
+    }
 }
 
 

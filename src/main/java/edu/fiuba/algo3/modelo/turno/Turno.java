@@ -3,13 +3,12 @@ package edu.fiuba.algo3.modelo.turno;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
-
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
     /*
      class Turno {
     - turno :Int
@@ -35,15 +34,15 @@ public class Turno {
     public Turno(){
 
 
-        this.respuestas=new ArrayList<>();
+        this.respuestas = new ArrayList<>();
     }
     public void establecerPregunta(Pregunta preguntaDelTurno) {
-        this.preguntaDelTurno=preguntaDelTurno;
+        this.preguntaDelTurno = preguntaDelTurno;
     }
 
 
     public void asignarModificador(ModificadorTurno modificadorTurno) {
-        this.modificador=modificadorTurno;
+        this.modificador = modificadorTurno;
     }
 
 

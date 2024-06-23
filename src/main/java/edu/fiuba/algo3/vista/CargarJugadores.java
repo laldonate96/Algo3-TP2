@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import java.util.List;
 
+import edu.fiuba.algo3.controlador.ManejoDeJuego;
 import edu.fiuba.algo3.vista.alertas.NombreNoIngresado;
 import edu.fiuba.algo3.vista.botones.Boton;
 import edu.fiuba.algo3.vista.vistaJugadores.VistaJugadores;
@@ -17,8 +18,9 @@ import javafx.stage.Stage;
 
 public class CargarJugadores extends Application {
     private VistaJugadores vistaJugadores = new VistaJugadores();
+    private Stage ventanaPrincipal;
     private TextField inputJugador;
-
+    private ManejoDeJuego manejoDeJuego ;
     public static void main(String[] args) {
         launch(args);
     }
@@ -67,7 +69,11 @@ public class CargarJugadores extends Application {
     public void jugar(){
         List<String> listaDeNombres = vistaJugadores.obtenerJugadores();
         if (!listaDeNombres.isEmpty()) {
-            
+            manejoDeJuego.iniciarJuego(listaDeNombres);
+            this.ventanaPrincipal.close();
+        }
+        else{
+            // poner un exception
         }
     }
 }
