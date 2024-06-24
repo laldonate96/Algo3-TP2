@@ -230,7 +230,7 @@ Turno "1" o-- "*" Jugador
 Turno "1" o-down "0..*" ModificadorTurno
 Turno *-l- Pregunta
 Jugador "1" <-d- Respuesta
-Respuesta .l.> Pregunta
+Pregunta ..> Respuesta
 Puntaje .u.> Respuesta
 Opcion *-r- Estado
 Respuesta -> Opcion:"1..*"

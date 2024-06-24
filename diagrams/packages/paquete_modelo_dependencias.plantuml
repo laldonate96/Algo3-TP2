@@ -1,17 +1,53 @@
 @startuml
 
-!include ../classes/herencia.plantuml!WITHOUTNOTES
 
-package JUnit {
-        class Test
+package jugador{
 }
 
-package java.lang {
-        class String
+package lector{
+}
+package lector.mezclador{
 }
 
-Test --> Localize: "<<instantiate>>"
-Localize -> String: " # esContent"
-Localize -> String: " # usContent"
+package Fabricas{}
 
+package modificadores.ModificadorPuntaje{
+}
+namespace modificadores.ModificadorTurno{
+}
+
+
+package Pregunta{
+}
+
+package Puntaje{
+}
+
+package Respuesta{
+
+}
+
+package opcion{
+}
+
+package opcion.estado{
+}
+package turno{
+}
+
+
+
+turno ..>ModificadorTurno
+Pregunta ..> Puntaje
+Respuesta ..>ModificadorPuntaje
+Respuesta .r.>opcion
+Respuesta ..>jugador
+Pregunta ..>Respuesta
+lector ..>Fabricas
+turno .r.>Pregunta
+Puntaje ..>Respuesta
+lector .>Pregunta
+jugador ..>ModificadorPuntaje
+ModificadorTurno .up.>jugador
+ModificadorTurno ..>Respuesta
 @enduml
