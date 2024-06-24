@@ -29,7 +29,7 @@ public class MultipleChoiceVista implements OpcionesVista {
     public void mostrarOpciones(List<Opcion> opcionesRecibidas, Pane contenedor) {
         opciones = opcionesRecibidas;
         checkBoxsOpciones = new ArrayList<>();
-        for(Opcion opcion : opcionesRecibidas){
+        for(Opcion opcion : opciones){
             CheckBox checkBoxOpcion = new CheckBox(opcion.obtenerTexto());
             checkBoxsOpciones.add(checkBoxOpcion);
             contenedor.getChildren().addAll(checkBoxOpcion);
