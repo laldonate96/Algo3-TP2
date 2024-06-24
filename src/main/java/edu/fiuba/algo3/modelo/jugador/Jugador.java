@@ -25,17 +25,16 @@ public class Jugador {
         return puntaje;
     }
 
-
     public void usar(ModificadorPuntaje modificadorReferencia){
         ModificadorPuntaje modificadorBuscado = buscarModificador(modificadorReferencia);
         modificadorBuscado.usar();
         modificadorBuscado.actualizar(modificadores);
     }
 
-
     public boolean tieneNombre(String buscado) {
         return nombre.equals(buscado);
     }
+
     public boolean equals(Jugador jugador){
         return this.tieneNombre(jugador.nombre);
     }

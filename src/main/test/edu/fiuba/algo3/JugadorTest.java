@@ -1,9 +1,7 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.*;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,24 +16,27 @@ public class JugadorTest {
     private ModificadorPuntaje multiplicador;
     private List<ModificadorPuntaje> modificadores;
 
-
     @BeforeEach
     public void setUpClass() {
         multiplicador = new Multiplicador(2);
         NuloPuntaje nulo = new NuloPuntaje();
+        AnuladorPuntaje anulador = new AnuladorPuntaje();
+        ExclusividadPuntaje exclusividad = new ExclusividadPuntaje();
         modificadores = new ArrayList<>();
         modificadores.add(multiplicador);
+        modificadores.add(exclusividad);
+        modificadores.add(anulador);
         modificadores.add(nulo);
 
         jugador = new Jugador("Jugador 1", modificadores);
     }
-
 
     @Test
     public void test01JugadorNuevoNoTienePuntos() {
         //Assert
         assertEquals(0, jugador.obtenerPuntaje());
     }
+
     @Test
     public void test02SumarPuntajeSumaLosPuntosAsignados() {
         //Act
@@ -51,8 +52,9 @@ public class JugadorTest {
         jugador.usar(multiplicador);
 
         //Assert
-        assertEquals(1, modificadores.size());
+        assertEquals(3, modificadores.size());
     }
+
     @Test
     public void test04UsarUnModificadorNuloNoLoRemueveDeLaListaDeModificadoresDelJugador() {
         //Arrange
@@ -62,9 +64,33 @@ public class JugadorTest {
         jugador.usar(nulo);
 
         //Assert
-        assertEquals(2, modificadores.size());
+        assertEquals(4, modificadores.size());
     }
 
+    @Test
+    public void test05UsarUnModificadorExclusividadLoRemueveDeLaListaDeModificadoresDelJugador() {
+        //Arrange
+        ExclusividadPuntaje exclusividad = new ExclusividadPuntaje();
+
+        //Act
+        jugador.usar(exclusividad);
+        jugador.usar(exclusividad);
+
+        //Assert
+        assertEquals(3, modificadores.size());
+    }
+
+    @Test
+    public void test06UsarUnModificadorAnuladorLoRemueveDeLaListaDeModificadoresDelJugador() {
+        //Arrange
+        AnuladorPuntaje anulador = new AnuladorPuntaje();
+
+        //Act
+        jugador.usar(anulador);
+
+        //Assert
+        assertEquals(3, modificadores.size());
+    }
 }
 
 
