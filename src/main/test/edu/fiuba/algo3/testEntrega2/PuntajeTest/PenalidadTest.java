@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,7 +42,7 @@ public class PenalidadTest{
         //Arrange
 
 
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1"),List.of("1"));
+        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1"),List.of("1"), new Correcta());
         Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
         respuestas.add(respuesta);
 
@@ -57,7 +58,7 @@ public class PenalidadTest{
     public void test02UnaRespuestaConMultiplesCorrectasSeLeAsigna1Punto() {
         //Arrange
 
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"));
+        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"),  new Correcta());
         Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
         respuestas.add(respuesta);
         //Act
@@ -71,7 +72,7 @@ public class PenalidadTest{
     @Test
     public void test03ConPenalidadAUnaRespuestaConVariasIncorrectasSeLeAsignanPuntosCorrectamente() {
         //Arrange
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"));
+        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"),  new Correcta());
         Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
         respuestas.add(respuesta);
 
@@ -84,7 +85,7 @@ public class PenalidadTest{
     @Test
     public void test04UnaRespuestaConAlgunasCorrectasYOtrasIncorrectasSeLeAsignan0Puntos() {
         //Arrange
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2","Opcion 3"),List.of("1","2"));
+        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2","Opcion 3"),List.of("1","2"), new Correcta());
         Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
         respuestas.add(respuesta);
         //Act
@@ -98,12 +99,12 @@ public class PenalidadTest{
     @Test
     public void test05ConPenalidadAUnaListaDeRespuestasUnaCorrectaYUnaIncorrectaSeLesAsignanPuntosCorrectamente() {
         //Arrange
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"));
+        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"),  new Correcta());
         Respuesta respuesta1 = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
         respuestas.add(respuesta1);
 
         Jugador jugador2= new Jugador("USAR MOCKITO", FabricaModificadores.crearListaModificadoresPuntaje());
-        List<Opcion> opcionesJugador2 = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"));
+        List<Opcion> opcionesJugador2 = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"),  new Correcta());
         Respuesta respuesta2 = new Respuesta(opcionesJugador2,jugador2,new NuloPuntaje());
         respuestas.add(respuesta2);
 

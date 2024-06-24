@@ -27,7 +27,6 @@ public class Turno {
     private final List<Respuesta> respuestas;
     private int indexJugadorActual;
     private Pregunta preguntaDelTurno;
-//    private final List<ModificadorPuntaje> modificadoresUsados;
     private ModificadorTurno modificador;
 
     public Turno(){
@@ -47,13 +46,23 @@ public class Turno {
         this.indexJugadorActual++;
     }
 
-    public void agregarRespuesta(List<String> opcionesElegidas, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
-        List<Opcion> opcionesJugador = List.of();
+    public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
+        
+        validarOpciones(opcionesJugador,preguntaDelTurno.obtenerOpciones());
 
         Respuesta respuesta=new Respuesta(opcionesJugador, jugador, modificadorPuntaje);
+        
         respuestas.add(respuesta);
         modificador.usar(modificadorPuntaje,jugador);
 
+    }
+
+    private void validarOpciones(List<Opcion> opcionesJugador, List<Opcion> opcionesPregunta) {
+        for (Opcion opcionPregunta:opcionesPregunta) {
+            for (Opcion opcion : opcionesJugador) {
+                opcion.actualizarEstado(opcionPregunta);
+            }
+        }
     }
 
     public void asignarPuntajes() {

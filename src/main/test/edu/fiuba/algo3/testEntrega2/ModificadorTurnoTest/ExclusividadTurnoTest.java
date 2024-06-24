@@ -10,6 +10,7 @@ import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ExclusividadTurno;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class ExclusividadTurnoTest {
         exclusividad = new ExclusividadTurno(new ExclusividadPuntaje());
 
         List<String> posicionesCorrectas= List.of("1");
-        opcionesCorrectas = FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas);
+        opcionesCorrectas = FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas, new Correcta());
         modificadorPuntaje = new ExclusividadPuntaje();
         modificadores = new ArrayList<>();
         modificadores.add(modificadorPuntaje);

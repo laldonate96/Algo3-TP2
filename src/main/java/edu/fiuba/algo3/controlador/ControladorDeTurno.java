@@ -6,6 +6,6 @@ public class ControladorDeTurno {
     public void jugarTurno() {
         AlgoHoot3 algoHoot = AlgoHoot3.obtenerInstancia();
 
-        algoHoot.jugarTurno();
+//        algoHoot.jugarTurno();
     }
 }

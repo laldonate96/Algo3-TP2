@@ -3,6 +3,7 @@ package edu.fiuba.algo3.testEntrega2.Pregunta;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
@@ -48,7 +49,7 @@ public class OrderedChoiceTest {
         List<String> ordenCorrecto = List.of("3", "2", "1");
 
         respuestas=new ArrayList<>();
-        opciones= FabricaOpciones.crearListaOrdenada(opcionesTexto, ordenCorrecto);
+        opciones= FabricaOpciones.crearListaOrdenada(opcionesTexto, ordenCorrecto, new Correcta());
     }
 
     @Test

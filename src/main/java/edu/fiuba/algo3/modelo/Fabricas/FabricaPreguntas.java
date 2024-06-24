@@ -15,19 +15,9 @@ public class FabricaPreguntas {
         return (opcionesCorrectas.size());
     }
 
-    public static Pregunta crearPreguntaVOF(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
+    public static Pregunta crearPregunta(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
         return new Pregunta(enunciado, opciones, puntaje, categoria);
     }
 
-    public static Pregunta crearPreguntaMChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new Pregunta(enunciado, opciones, puntaje, categoria);
-    }
 
-    public static Pregunta crearPreguntaGroup(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new Pregunta(enunciado, opciones, puntaje, categoria);
-    }
-
-    public static Pregunta crearPreguntaOrdered(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new Pregunta(enunciado, opciones, puntaje, categoria);
-    }
 }

@@ -10,6 +10,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,7 +44,7 @@ public class RespuestaTest {
 
         List<String> posicionesCorrectas= List.of("1");
 
-        opcionesCorrectas= FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas);
+        opcionesCorrectas= FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas, new Correcta());
 
 
 

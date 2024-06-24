@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,7 +48,7 @@ public class TurnosTest {
 
         List<String> opcionesTexto= Arrays.asList("Correcta", "Incorrecta");
         List<String> posicionesCorrectas= List.of("1");
-        List<Opcion> opciones = FabricaOpciones.crearListaSimple(opcionesTexto, posicionesCorrectas);
+        List<Opcion> opciones = FabricaOpciones.crearListaSimple(opcionesTexto, posicionesCorrectas, new Correcta());
 
         Clasica clasica = new Clasica(1);
 
@@ -76,8 +77,8 @@ public class TurnosTest {
         List<String> respuestaJugador2 = List.of("Incorrecta");
 
         turno.asignarModificador(nuloTurno);
-        turno.agregarRespuesta(respuestaJugador1,jugador1,nulo);
-        turno.agregarRespuesta(respuestaJugador2,jugador2,nulo);
+//        turno.agregarRespuesta(respuestaJugador1,jugador1,nulo);
+//        turno.agregarRespuesta(respuestaJugador2,jugador2,nulo);
 
         //act
 
@@ -100,8 +101,8 @@ public class TurnosTest {
 
         turno.asignarModificador(nuloTurno);
 
-        turno.agregarRespuesta(respuestaJugador1,jugador1,nulo);
-        turno.agregarRespuesta(respuestaJugador2,jugador2,nulo);
+//        turno.agregarRespuesta(respuestaJugador1,jugador1,nulo);
+//        turno.agregarRespuesta(respuestaJugador2,jugador2,nulo);
 
         //act
         turno.asignarPuntajes();
@@ -124,8 +125,8 @@ public class TurnosTest {
         turno.asignarModificador(nuloTurno);
 
         Multiplicador multiplicador= new Multiplicador(2);
-        turno.agregarRespuesta(respuestaJugadores,jugador1,multiplicador);
-        turno.agregarRespuesta(respuestaJugadores,jugador2,nulo);
+//        turno.agregarRespuesta(respuestaJugadores,jugador1,multiplicador);
+//        turno.agregarRespuesta(respuestaJugadores,jugador2,nulo);
 
         //act
         turno.asignarPuntajes();

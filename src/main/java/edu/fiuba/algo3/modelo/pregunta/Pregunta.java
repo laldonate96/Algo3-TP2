@@ -33,12 +33,9 @@ public class Pregunta {
         return enunciado;
     }
 
-    public List<String> obtenerOpciones() {
-        List<String> textoOpciones = new ArrayList<>();
-        for(Opcion opcion:opciones){
-            textoOpciones.add(opcion.obtenerTexto());
-        }
-        return textoOpciones;
+    public List<Opcion> obtenerOpciones() {
+
+        return opciones;
     }
 
 }

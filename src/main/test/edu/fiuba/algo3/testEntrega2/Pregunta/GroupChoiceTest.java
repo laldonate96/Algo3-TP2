@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 
@@ -54,8 +55,8 @@ public class GroupChoiceTest {
         List<List<String>> miembrosPorGrupos=new ArrayList<>();
         miembrosPorGrupos.add(miembrosGrupo1);
         miembrosPorGrupos.add(miembrosGrupo2);
-        //USAR MOCKITO
-        opcionesCorrectas= FabricaOpciones.crearListaGrupo(grupos,miembrosPorGrupos);
+
+        opcionesCorrectas= FabricaOpciones.crearListaGrupo(grupos,miembrosPorGrupos, new Correcta());
 
 
         respuestas= new ArrayList<>();

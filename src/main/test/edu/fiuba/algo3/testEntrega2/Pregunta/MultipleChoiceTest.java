@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Parcial;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
@@ -44,7 +45,7 @@ public class MultipleChoiceTest {
         List<String> posicionesCorrectas= List.of("1", "2");
 
         respuestas=new ArrayList<>();
-        opciones= FabricaOpciones.crearListaSimple(opcionesTexto,posicionesCorrectas);
+        opciones= FabricaOpciones.crearListaSimple(opcionesTexto,posicionesCorrectas, new Correcta());
 
     }
 
@@ -58,7 +59,7 @@ public class MultipleChoiceTest {
         );
 
 
-        List<Opcion> opcionesJugador=FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1", "2"));
+        List<Opcion> opcionesJugador=FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1", "2"), new Correcta());
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
         respuestas.add(respuesta);
 
@@ -78,7 +79,7 @@ public class MultipleChoiceTest {
                 opciones,       parcial, "Tema"
         );
 
-        List<Opcion> opcionesJugador=FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 3"),List.of("1"));
+        List<Opcion> opcionesJugador=FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 3"),List.of("1"), new Correcta());
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
         respuestas.add(respuesta);
 
