@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+
 import edu.fiuba.algo3.modelo.opcion.estado.Estado;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 

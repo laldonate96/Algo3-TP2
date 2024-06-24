@@ -25,12 +25,10 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
 public class Turno {
     private final List<Respuesta> respuestas;
-    private int indexJugadorActual;
     private Pregunta preguntaDelTurno;
     private ModificadorTurno modificador;
 
     public Turno(){
-        this.indexJugadorActual = 0;
         this.respuestas = new ArrayList<>();
     }
 
@@ -43,7 +41,6 @@ public class Turno {
     }
 
     public void pasarTurno() {
-        this.indexJugadorActual++;
     }
 
     public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
