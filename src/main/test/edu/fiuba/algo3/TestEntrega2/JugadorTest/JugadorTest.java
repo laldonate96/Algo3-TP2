@@ -1,12 +1,15 @@
 package edu.fiuba.algo3.TestEntrega2.JugadorTest;
 
+import edu.fiuba.algo3.modelo.excepciones.ModificadorInexistenteException;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.*;
 
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +93,23 @@ public class JugadorTest {
 
         //Assert
         assertEquals(3, modificadores.size());
+    }
+
+    @Test
+    public void test07UsarUnModificadorQueNoEstaEnLaListaLanzaExcepcion() {
+        //Arrange
+        AnuladorPuntaje anulador = new AnuladorPuntaje();
+
+        //Act
+        jugador.usar(anulador);
+
+        //Assert
+
+        ModificadorInexistenteException thrown = Assertions.assertThrows(ModificadorInexistenteException.class, () -> {
+            jugador.usar(anulador);
+        });
+
+        Assertions.assertEquals("El jugador Jugador 1 no posee el modificador usado.", thrown.getMessage());
     }
 }
 

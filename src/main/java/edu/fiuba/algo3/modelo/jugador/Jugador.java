@@ -49,8 +49,8 @@ public class Jugador {
                 modificadorPuntaje = modificadores.get(contador);
                 contador++;
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ModificadorInexistenteException("El jugador"+ nombre+ "no posee el modificador usado." );
+        } catch (IndexOutOfBoundsException e) {
+            throw new ModificadorInexistenteException("El jugador "+ nombre+ " no posee el modificador usado.");
         }
         return modificadorPuntaje;
     }
