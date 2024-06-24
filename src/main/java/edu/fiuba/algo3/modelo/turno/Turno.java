@@ -9,19 +9,6 @@ import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaj
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
-    /*
-     class Turno {
-    - turno :Int
-    - respuestasPorTurno <Jugador>
-    - preguntaDelTurno: Pregunta
-    - modificadoresUsados<Modificador>
-    - usarModificador(modificador :Modificador)
-    ---
-    + {static} Turno()
-    + asignarPreguntaDelTurno(pregunta :Pregunta)
-    + responderPorTurno(respuestasPorTurno<Respuestas>)
-}
-     */
 
 public class Turno {
     private final List<Respuesta> respuestas;
@@ -41,6 +28,7 @@ public class Turno {
     }
 
     public void pasarTurno() {
+        
     }
 
     public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
