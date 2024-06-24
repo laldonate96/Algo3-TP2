@@ -153,6 +153,9 @@ abstract class Opcion {
     +contarCorrecta():int
     +contarIncorrecta():int
     +obtenerTexto(): String
+    # equals(ordenada: Ordenada)): Bool
+    # equals(simple: Simple)): Bool
+    # equals(grupo: Grupo): Bool
 }
 
 class Ordenada extends Opcion {
@@ -160,10 +163,15 @@ class Ordenada extends Opcion {
     ---
     +Ordered([super], posicion: int)
     +obtenerPosicion(): int
+    + equals(opcion: Opcion)): Bool
+    + equals(ordenada: Ordenada)): Bool
 }
 
 class Simple extends Opcion {
+    ---
     +Simple([super])
+    + equals(opcion: Opcion)): Bool
+    + equals(simple: Simple)): Bool
 }
 
 class Grupo extends Opcion {
@@ -171,6 +179,8 @@ class Grupo extends Opcion {
     ---
     +Grupo([super], nombreGrupo: String)
     +obtenerGrupo(): String
+    + equals(opcion: Opcion)): Bool
+    + equals(grupo: Grupo): Bool
 }
 
 interface Estado {
