@@ -15,11 +15,12 @@ public class FabricaOpciones {
 
     public static List<Opcion> crearListaGrupo(List<String> grupos, List<List<String>> contenidoOpcionesPorGrupo, Estado estadoIndicado) {
         Grupo opcion;
-        String nombreGrupo;
+        List<String> contenidoOpciones;
         List<Opcion> listaOpciones = new ArrayList<>();
 
-        for(List<String> contenidoOpciones:contenidoOpcionesPorGrupo){
-            nombreGrupo=grupos.remove(0);
+
+        for(String nombreGrupo:grupos){
+            contenidoOpciones=contenidoOpcionesPorGrupo.remove(0);
             for(String contenidoOpcion:contenidoOpciones){
                 opcion = new Grupo(contenidoOpcion, nombreGrupo,estadoIndicado);
                 listaOpciones.add(opcion);

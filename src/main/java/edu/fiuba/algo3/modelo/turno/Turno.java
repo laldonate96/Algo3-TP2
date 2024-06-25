@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
@@ -17,6 +18,7 @@ public class Turno {
 
     public Turno(){
         this.respuestas = new ArrayList<>();
+        this.modificador= new NuloTurno();
     }
 
     public void establecerPregunta(Pregunta preguntaDelTurno) {
@@ -27,9 +29,6 @@ public class Turno {
         this.modificador = modificadorTurno;
     }
 
-    public void pasarTurno() {
-        
-    }
 
     public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
         

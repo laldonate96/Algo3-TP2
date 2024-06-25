@@ -32,23 +32,16 @@ public class TurnosTest {
     private Pregunta vof;
     private Pregunta vofp;
 
-    private  static NuloTurno nuloTurno;
 
     private Jugador jugador1;
     private Jugador jugador2;
     private ModificadorPuntaje nulo;
-    private ModificadorTurno anulador;
     private ModificadorPuntaje anuladorPuntaje;
     private Turno turno;
     private List<ModificadorPuntaje> modificadores;
     private List<String> opcionesJugador1;
     private List<String> opcionesJugador2;
 
-
-    @BeforeAll
-    public static void setUpClass() {
-        nuloTurno = new NuloTurno();
-    }
 
 
     @BeforeEach
@@ -90,7 +83,7 @@ public class TurnosTest {
 
         turno.establecerPregunta(vof);
 
-        turno.asignarModificador(nuloTurno);
+
         turno.agregarRespuesta(opcionJugador1,jugador1,nulo);
         turno.agregarRespuesta(opcionJugador2,jugador2,nulo);
 
@@ -119,7 +112,7 @@ public class TurnosTest {
         turno.establecerPregunta(vofp);
 
 
-        turno.asignarModificador(nuloTurno);
+
         turno.agregarRespuesta(opcionJugador1,jugador1,nulo);
         turno.agregarRespuesta(opcionJugador2,jugador2,nulo);
 
@@ -148,7 +141,7 @@ public class TurnosTest {
         turno.establecerPregunta(vofp);
 
 
-        turno.asignarModificador(nuloTurno);
+
 
         Multiplicador multiplicador= new Multiplicador(2);
 
@@ -180,7 +173,7 @@ public class TurnosTest {
 
         turno.establecerPregunta(vof);
 
-        anulador = new AnuladorTurno(anuladorPuntaje);
+        ModificadorTurno anulador = new AnuladorTurno(anuladorPuntaje);
 
         turno.asignarModificador(anulador);
 

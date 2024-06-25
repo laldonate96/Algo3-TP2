@@ -106,7 +106,7 @@ public class PuntajeTest {
         Respuesta respuesta1 = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
         respuestas.add(respuesta1);
 
-        Jugador jugador2= new Jugador("USAR MOCKITO", FabricaModificadores.crearListaModificadoresPuntaje());
+        Jugador jugador2= new Jugador("Jose", FabricaModificadores.crearListaModificadoresPuntaje());
         List<Opcion> opcionesJugador2 = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"), new Correcta());
         Respuesta respuesta2 = new Respuesta(opcionesJugador2,jugador2,new NuloPuntaje());
         respuestas.add(respuesta2);

@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Turno;
@@ -39,17 +40,17 @@ public class AlgoHoot3 {
     }
 
     public int pasarRonda(Turno nuevoTurno) {
+        rondas++;
         turnoActual = nuevoTurno;
         iteradorJugadores = jugadores.iterator();
         jugadorActual = iteradorJugadores.next();
-        turnoActual.establecerPregunta(preguntas.get(rondas));
-        rondas++;
+        turnoActual.establecerPregunta(preguntas.get(rondas-1));
+
         return rondas;
     }
 
     public void jugarTurno(List<Opcion> opcionesElegidas, ModificadorPuntaje modificadorPuntaje) {
         turnoActual.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
-        this.turnoActual.pasarTurno();
         jugadorActual=iteradorJugadores.next();
         if (!iteradorJugadores.hasNext()){
             asignarPuntajes();
@@ -66,7 +67,7 @@ public class AlgoHoot3 {
     }
 
     public Pregunta obtenerPreguntaDeRondaActual() {
-        return preguntas.get(rondas);
+        return preguntas.get(rondas-1);
     }
 
     public void asignarModificadorTurno(ModificadorTurno modificadorTurno){
