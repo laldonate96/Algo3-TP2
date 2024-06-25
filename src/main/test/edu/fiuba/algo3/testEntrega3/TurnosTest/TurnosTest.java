@@ -54,7 +54,6 @@ public class TurnosTest {
     @BeforeEach
     public void setUp(){
 
-
         List<String> opcionesTexto= Arrays.asList("Correcta", "Incorrecta");
         List<String> posicionesCorrectas= List.of("1");
         List<Opcion> opciones = FabricaOpciones.crearListaSimple(opcionesTexto, posicionesCorrectas, new Correcta());
@@ -66,14 +65,12 @@ public class TurnosTest {
         vofp = new Pregunta("un enunciado", opciones, penalidad,"Mock");
 
         modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
-//        for (ModificadorPuntaje modificador: modificadores){
-//            System.out.println(modificador);
-//        }
+
         nulo= modificadores.get(0);
         anuladorPuntaje = modificadores.get(4);
-//        jugador1 = new Jugador("un jugador", modificadores);
-//        jugador2 = new Jugador("otro jugador", modificadores);
 
+        jugador1 = new Jugador("un jugador", modificadores);
+        jugador2 = new Jugador("otro jugador", modificadores);
 
         turno = new Turno();
 
@@ -90,16 +87,8 @@ public class TurnosTest {
         List<String> posicion2= List.of();
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
-        jugador1 = new Jugador("un jugador", modificadores);
-        jugador2 = new Jugador("otro jugador", modificadores);
 
         turno.establecerPregunta(vof);
-
-
-//        List<String> respuestaJugador1 = List.of("Correcta");
-//        List<String> respuestaJugador2 = List.of("Incorrecta");
-
-
 
         turno.asignarModificador(nuloTurno);
         turno.agregarRespuesta(opcionJugador1,jugador1,nulo);
@@ -126,14 +115,9 @@ public class TurnosTest {
         List<String> posicion2= List.of();
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
-        jugador1 = new Jugador("un jugador", modificadores);
-        jugador2 = new Jugador("otro jugador", modificadores);
 
         turno.establecerPregunta(vofp);
 
-
-//        List<String> respuestaJugador1 = List.of("Correcta");
-//        List<String> respuestaJugador2 = List.of("Incorrecta");
 
         turno.asignarModificador(nuloTurno);
         turno.agregarRespuesta(opcionJugador1,jugador1,nulo);
@@ -160,13 +144,9 @@ public class TurnosTest {
         List<String> posicion2= List.of();
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
-        jugador1 = new Jugador("un jugador", modificadores);
-        jugador2 = new Jugador("otro jugador", modificadores);
 
         turno.establecerPregunta(vofp);
 
-
-//        List<String> respuestaJugadores = List.of("Correcta");
 
         turno.asignarModificador(nuloTurno);
 
@@ -197,27 +177,24 @@ public class TurnosTest {
         List<String> posicion2= List.of();
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
-        jugador1 = new Jugador("un jugador", modificadores);
-        jugador2 = new Jugador("otro jugador", modificadores);
 
         turno.establecerPregunta(vof);
 
         anulador = new AnuladorTurno(anuladorPuntaje);
-//        List<String> respuestaJugadores = List.of("Correcta");
 
         turno.asignarModificador(anulador);
 
 
 
         turno.agregarRespuesta(opcionJugador1,jugador1,nulo);
-        turno.agregarRespuesta(opcionJugador2,jugador2,nulo);
+        turno.agregarRespuesta(opcionJugador2,jugador2,anuladorPuntaje);
 
         //act
         turno.asignarPuntajes();
 
         // assert
 
-        assertEquals(1, jugador1.obtenerPuntaje());
+        assertEquals(0, jugador1.obtenerPuntaje());
         assertEquals(0, jugador2.obtenerPuntaje());
 
 
