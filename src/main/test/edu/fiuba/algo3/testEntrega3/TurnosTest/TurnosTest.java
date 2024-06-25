@@ -15,13 +15,13 @@ import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
+
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 
 import edu.fiuba.algo3.modelo.turno.Turno;
@@ -38,7 +38,6 @@ public class TurnosTest {
     private ModificadorPuntaje nulo;
     private ModificadorPuntaje anuladorPuntaje;
     private Turno turno;
-    private List<ModificadorPuntaje> modificadores;
     private List<String> opcionesJugador1;
     private List<String> opcionesJugador2;
 
@@ -57,7 +56,7 @@ public class TurnosTest {
         vof = new Pregunta("un enunciado", opciones, clasica,"Mock");
         vofp = new Pregunta("un enunciado", opciones, penalidad,"Mock");
 
-        modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
+        List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
 
         nulo= modificadores.get(0);
         anuladorPuntaje = modificadores.get(4);
@@ -72,11 +71,11 @@ public class TurnosTest {
     @Test
     public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYseLespidePuntos(){
        //arrange
-        opcionesJugador1 = Arrays.asList("Correcta");
+        opcionesJugador1 = List.of("Correcta");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1, posicion1, new Correcta());
 
-        opcionesJugador2 = Arrays.asList("Incorrecta");
+        opcionesJugador2 = List.of("Incorrecta");
         List<String> posicion2= List.of();
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
@@ -100,11 +99,11 @@ public class TurnosTest {
     @Test
     public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaYseLespidePuntos(){
         //arrange
-        opcionesJugador1 = Arrays.asList("Correcta");
+        opcionesJugador1 = List.of("Correcta");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1, posicion1, new Correcta());
 
-        opcionesJugador2 = Arrays.asList("Incorrecta");
+        opcionesJugador2 = List.of("Incorrecta");
         List<String> posicion2= List.of();
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
@@ -129,11 +128,11 @@ public class TurnosTest {
     public void test03seJuegaUnTurnoConUnaPreguntaVoFPenalizadaConMultiplicadorYseLespidePuntos(){
        //arrange
 
-        opcionesJugador1 = Arrays.asList("Correcta");
+        opcionesJugador1 = List.of("Correcta");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1, posicion1, new Correcta());
 
-        opcionesJugador2 = Arrays.asList("Incorrecta");
+        opcionesJugador2 = List.of("Incorrecta");
         List<String> posicion2= List.of();
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
@@ -162,11 +161,11 @@ public class TurnosTest {
     public void test04seJuegaUnTurnoConUnaPreguntaVoFClasicaConAnuladorYseLespidePuntos(){
         //arrange
 
-        opcionesJugador1 = Arrays.asList("Correcta");
+        opcionesJugador1 = List.of("Correcta");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1, posicion1, new Correcta());
 
-        opcionesJugador2 = Arrays.asList("Incorrecta");
+        opcionesJugador2 = List.of("Incorrecta");
         List<String> posicion2= List.of();
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 

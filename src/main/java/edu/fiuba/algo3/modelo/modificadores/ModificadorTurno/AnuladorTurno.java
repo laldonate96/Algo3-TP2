@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class AnuladorTurno implements ModificadorTurno {

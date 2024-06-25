@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Turno;
