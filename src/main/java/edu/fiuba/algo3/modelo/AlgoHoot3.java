@@ -61,8 +61,6 @@ public class AlgoHoot3 {
         return iteradorJugadores.hasNext();
     }
 
-
-
     public int obtenerRonda(){
         return this.rondas;
     }
