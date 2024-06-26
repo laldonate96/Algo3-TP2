@@ -12,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -27,7 +28,8 @@ public class CargarJugadores extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("Agreguen los jugadores");
+        this.ventanaPrincipal = stage;
+        ventanaPrincipal.setTitle("Agreguen los jugadores");
 
         Label jugadoresLabel = new Label("Agregar Jugador:");
         jugadoresLabel.getStyleClass().add("jugadoresLabel");
@@ -47,7 +49,14 @@ public class CargarJugadores extends Application {
         layout.getChildren().addAll(jugadoresLabel, inputJugador, botonAgregar, jugadores, botonJugar);
         layout.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(layout, 800, 500);  
+        Toolbar toolbar = new Toolbar();
+        VBox toolbarBox = toolbar.mostrarToolbar(ventanaPrincipal);
+
+        BorderPane root = new BorderPane();
+        root.setTop(toolbarBox);
+        root.setCenter(layout);
+
+        Scene scene = new Scene(root, 800, 500);  
 
         // Utiliza el recurso CSS correctamente
         String css = getClass().getResource("src/css/style.css").toExternalForm();

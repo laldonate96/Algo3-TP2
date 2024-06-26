@@ -5,6 +5,7 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
@@ -30,7 +31,7 @@ public class VistaPrueba extends Application {
        // List<Opcion> opciones = FabricaOpciones.crearListaGrupo(contenidoOpciones, posicionesDeCorrectas, new Correcta());
 
         List<Opcion> opciones = FabricaOpciones.crearListaOrdenada(contenidoOpciones, ordenCorrecto, new Correcta());
-        Pregunta pregunta = new Pregunta("texto", opciones, new Clasica(1) , "categoria");
+        Pregunta pregunta = new OrderedChoice("texto", opciones, new Clasica(1) , "categoria");
 
         VBox contenedor = new VBox();
 
