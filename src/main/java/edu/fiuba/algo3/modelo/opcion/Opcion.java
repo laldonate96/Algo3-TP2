@@ -30,15 +30,11 @@ public abstract class Opcion {
     }
 
     public int contarCorrecta(){
-        if (estado.esCorrecta()){
-            return 1;
-        } else return 0;
+        return estado.contarCorrecta();
     }
 
     public int contarIncorrecta(){
-        if (estado.esCorrecta()){
-            return 0;
-        } else return 1;
+        return estado.contarIncorrecta();
     }
 
     public String obtenerTexto() {
