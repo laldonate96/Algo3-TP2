@@ -7,9 +7,12 @@ import edu.fiuba.algo3.vista.botones.Boton;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.net.URL;
 
 public class InicioDelJuego extends Application {
     private Stage ventanaPrincipal;
@@ -40,14 +43,28 @@ public class InicioDelJuego extends Application {
 
         Boton botonJugar = new Boton("Jugar", "botonJugar");
         botonJugar.setOnAction(event -> abrirCargaJugadores());
-        
-        VBox root = new VBox(20);
-        root.getChildren().addAll(titulo, botonJugar);
-        root.setAlignment(Pos.CENTER);
+
+        VBox centerBox = new VBox(20);
+        centerBox.getChildren().addAll(titulo, botonJugar);
+        centerBox.setAlignment(Pos.CENTER);
+
+        Toolbar toolbar = new Toolbar();
+        VBox toolbarBox = toolbar.mostrarToolbar(primaryStage);
+
+        BorderPane root = new BorderPane();
+        root.setTop(toolbarBox);
+        root.setCenter(centerBox);
 
         Scene escenaDelJuego = new Scene(root, 800, 500);
-        String css = this.getClass().getResource("src/css/style.css").toExternalForm();
-        escenaDelJuego.getStylesheets().add(css);
+
+        String cssPath = "src/css/style.css";
+        URL cssURL = this.getClass().getResource(cssPath);
+        if (cssURL != null) {
+            String css = cssURL.toExternalForm();
+            escenaDelJuego.getStylesheets().add(css);
+        } else {
+            System.err.println("CSS file not found: " + cssPath);
+        }
 
         primaryStage.setTitle("Algohoot");
         primaryStage.setScene(escenaDelJuego);
