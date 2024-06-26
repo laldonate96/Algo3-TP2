@@ -45,7 +45,7 @@ public class EleccionGrupalVista implements OpcionesVista {
 
             opcionLabel.setOnDragEntered(event -> {
                 if (event.getGestureSource() != opcionLabel && event.getDragboard().hasString()) {
-                    opcionLabel.setStyle("-fx-background-color: yellow;");
+                    opcionLabel.setStyle("dragable;");
                 }
                 event.consume();
             });

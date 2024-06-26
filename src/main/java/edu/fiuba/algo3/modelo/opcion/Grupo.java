@@ -23,5 +23,10 @@ public class Grupo extends Opcion {
         return this.texto.equals(grupo.texto) && this.nombreGrupo.equals(grupo.nombreGrupo);
     }
 
+    @Override
+    public String obtenerTipo() {
+        return "Grupo";
+    }
+
 
 }

@@ -20,7 +20,7 @@
     -fx-font-size: 25px;
     -fx-fill: #ECF0F1; 
 }
-.button {
+.button{
     -fx-padding: 20px;
     -fx-font-size: 14px;
     -fx-border-radius: 5px;
@@ -40,3 +40,22 @@
     -fx-text-fill: #000000; 
     -fx-margin: 0px;
 }
+
+.dragable{
+    -fx-text-fill: #e8ff1c;
+}
+
+.botonJugador{   
+    -fx-padding: 20px;
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #F1C40F;
+    -fx-text-fill: #2980b9; 
+    -fx-margin: 10px;
+}
+
+.botonJugador:hover{
+    -fx-background-color: #E74C3C;
+    -fx-text-fill: #2C3E50; 
+}
+
