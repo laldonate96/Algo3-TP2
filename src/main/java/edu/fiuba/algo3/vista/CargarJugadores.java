@@ -49,7 +49,7 @@ public class CargarJugadores extends Application {
 
         Scene scene = new Scene(layout, 800, 500);  
 
-        // Utiliza el recurso CSS correctamente
+
         String css = getClass().getResource("src/css/style.css").toExternalForm();
         scene.getStylesheets().add(css);
 

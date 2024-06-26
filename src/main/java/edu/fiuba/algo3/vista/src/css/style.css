@@ -4,7 +4,9 @@
     -fx-padding: 0;
     -fx-margin: 0;
     -fx-font-family: 'Comic Sans MS';
-    -fx-background-color: #2C3E50;
+    -fx-background-image: url("src\main\java\edu\fiuba\algo3\vista\src\img\background.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
 }
 
 
