@@ -9,19 +9,19 @@ import edu.fiuba.algo3.modelo.turno.Turno;
 import edu.fiuba.algo3.vista.PreguntaVista;
 
 public class ControladorDeTurno {
-    public void iniciarTurnoJugador(Turno turno) {
-        AlgoHoot3 algoHoot = AlgoHoot3.obtenerInstancia();
+   public void iniciarTurnoJugador(Turno turno) {
+       AlgoHoot3 algoHoot = AlgoHoot3.obtenerInstancia();
 
-        algoHoot.pasarRonda(turno);
+       algoHoot.pasarRonda(turno);
 
-        PreguntaVista preguntaVista = new PreguntaVista(algoHoot.obtenerPreguntaDeRondaActual(), algoHoot.obtenerJugadorActual());
-    }
+       //PreguntaVista preguntaVista = new PreguntaVista(algoHoot.obtenerPreguntaDeRondaActual(), algoHoot.obtenerJugadorActual());
+   }
 
-    public void responderPregunta(List<Opcion> opcionesElegidas, ModificadorPuntaje modificadorPuntaje) {
-        AlgoHoot3 algoHoot = AlgoHoot3.obtenerInstancia();
+   public void responderPregunta(List<Opcion> opcionesElegidas, ModificadorPuntaje modificadorPuntaje) {
+       AlgoHoot3 algoHoot = AlgoHoot3.obtenerInstancia();
 
-        algoHoot.jugarTurno(opcionesElegidas, modificadorPuntaje);
+       algoHoot.jugarTurno(opcionesElegidas, modificadorPuntaje);
 
-        PreguntaVista preguntaVista = new PreguntaVista(algoHoot.obtenerPreguntaDeRondaActual(), algoHoot.obtenerJugadorActual());
-    }
+       //PreguntaVista preguntaVista = new PreguntaVista(algoHoot.obtenerPreguntaDeRondaActual(), algoHoot.obtenerJugadorActual());
+   }
 }

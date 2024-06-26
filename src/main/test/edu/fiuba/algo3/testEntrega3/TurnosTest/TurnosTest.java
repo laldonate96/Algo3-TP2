@@ -14,6 +14,7 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
+import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -53,8 +54,8 @@ public class TurnosTest {
         Clasica clasica = new Clasica(1);
         ConPenalidad penalidad= new ConPenalidad();
 
-        vof = new Pregunta("un enunciado", opciones, clasica,"Mock");
-        vofp = new Pregunta("un enunciado", opciones, penalidad,"Mock");
+        vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock");
+        vofp = new VerdaderoFalso("un enunciado", opciones, penalidad,"Mock");
 
         List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
 

@@ -29,8 +29,16 @@
 }
 
 .button:hover {
-    
     -fx-background-color: #2980b9;
+}
+
+.botonToolbar{
+    -fx-padding: 5px;
+    -fx-font-size: 10px;
+    -fx-border-radius: 0px;
+    -fx-background-color: #e4e4e1;
+    -fx-text-fill: #000000; 
+    -fx-margin: 0px;
 }
 
 .dragable{

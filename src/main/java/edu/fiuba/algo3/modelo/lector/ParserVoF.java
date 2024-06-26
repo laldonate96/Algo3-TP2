@@ -25,6 +25,6 @@ public class ParserVoF implements LectorParser {
 
         List<Opcion> opciones=FabricaOpciones.crearListaSimple(contenidoOpciones,posicionesCorrectas, new Correcta());
         
-        return FabricaPreguntas.crearPregunta(enunciado, opciones, puntaje, categoria);
+        return FabricaPreguntas.crearPreguntaVerdaderoFalso(enunciado, opciones, puntaje, categoria);
     }
 }

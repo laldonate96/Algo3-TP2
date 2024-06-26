@@ -29,6 +29,6 @@ public class ParserMChoice implements LectorParser {
         }
         List<Opcion> opciones=FabricaOpciones.crearListaSimple(contenidoOpciones,posicionesCorrectas, new Correcta());
 
-        return FabricaPreguntas.crearPregunta(enunciado, opciones, puntaje, categoria);
+        return FabricaPreguntas.crearPreguntaMultipleChoice(enunciado, opciones, puntaje, categoria);
     }
 }

@@ -6,6 +6,9 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Toolbar",
+            "request": "launch",
+            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.Toolbar",
             "name": "PreguntaVista",
             "request": "launch",
             "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.PreguntaVista",

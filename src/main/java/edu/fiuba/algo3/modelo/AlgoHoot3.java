@@ -54,6 +54,7 @@ public class AlgoHoot3 {
         if (!iteradorJugadores.hasNext()){
             asignarPuntajes();
             iteradorJugadores = jugadores.iterator();
+            this.pasarRonda(new Turno());
         }
     }
 

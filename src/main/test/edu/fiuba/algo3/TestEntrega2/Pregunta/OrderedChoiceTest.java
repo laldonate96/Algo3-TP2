@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
@@ -56,7 +57,7 @@ public class OrderedChoiceTest {
     public void test01OrderedChoiceAsignaPuntajeCorrectoAJugadorQueRespondeCorrectamente(){
         //Arrange
 
-        Pregunta pregunta = new Pregunta(
+        Pregunta pregunta = new OrderedChoice(
                 "Ordenar las siguientes opciones",
                 opciones,
                 clasica,
@@ -85,7 +86,7 @@ public class OrderedChoiceTest {
     public void test02OrderedChoiceAsignaPuntajeCorrectoAJugadorQueRespondeIncorrectamente() {
         //Arrange
 
-        Pregunta pregunta = new Pregunta(
+        Pregunta pregunta = new OrderedChoice(
                 "Ordenar las siguientes opciones",
                 opciones,
                 clasica,
