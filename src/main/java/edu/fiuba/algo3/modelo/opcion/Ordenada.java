@@ -24,4 +24,9 @@ public class Ordenada extends Opcion {
         return this.texto.equals(ordenada.obtenerTexto()) && this.posicion == ordenada.obtenerPosicion();
     }
 
+    @Override
+    public String obtenerTipo() {
+        return "Ordenada";
+    }
+
 }

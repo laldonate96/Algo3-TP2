@@ -11,7 +11,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,6 +20,7 @@ public class CargarJugadores extends Application {
     private Stage ventanaPrincipal;
     private TextField inputJugador;
     private ControladorDeJuego controladorDeJuego;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -33,26 +33,28 @@ public class CargarJugadores extends Application {
         jugadoresLabel.getStyleClass().add("jugadoresLabel");
 
         inputJugador = new TextField();
+        inputJugador.setMaxWidth(300);  
 
         Boton botonJugar = new Boton("Jugar", "button");
 
         Boton botonAgregar = new Boton("Agregar Jugador", "button");
         botonAgregar.setOnAction(event -> agregarJugador());
 
-        ListView<String> jugadores = vistaJugadores.mostrarJugadores();
+        VBox jugadores = vistaJugadores.mostrarJugadores();
 
         VBox layout = new VBox(10);
-        layout.setPadding(new Insets(20));
-        layout.getChildren().addAll(jugadoresLabel, inputJugador, jugadores,botonAgregar, botonJugar);
+        layout.setPadding(new Insets(20)); 
+        layout.getChildren().addAll(jugadoresLabel, inputJugador, botonAgregar, jugadores, botonJugar);
         layout.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(layout, 800, 500);
+        Scene scene = new Scene(layout, 800, 500);  
 
         // Utiliza el recurso CSS correctamente
         String css = getClass().getResource("src/css/style.css").toExternalForm();
         scene.getStylesheets().add(css);
 
         stage.setScene(scene);
+        stage.setResizable(false);  
         stage.show();
     }
 
@@ -61,18 +63,18 @@ public class CargarJugadores extends Application {
         if (!nombreJugador.isEmpty()) {
             vistaJugadores.agregarJugador(nombreJugador);
             inputJugador.clear();
-        } else{
+        } else {
             NombreNoIngresado nombreNoIngresado = new NombreNoIngresado();
             nombreNoIngresado.mostrarAlerta();
         }
     }
-    public void jugar(){
+
+    public void jugar() {
         List<String> listaDeNombres = vistaJugadores.obtenerJugadores();
         if (!listaDeNombres.isEmpty()) {
             controladorDeJuego.iniciarJuego(listaDeNombres);
             this.ventanaPrincipal.close();
-        }
-        else{
+        } else {
             // poner un exception
         }
     }

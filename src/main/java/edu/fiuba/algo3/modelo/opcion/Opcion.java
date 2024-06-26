@@ -45,6 +45,6 @@ public abstract class Opcion {
         
         return texto;
     }
-
+    public abstract  String obtenerTipo();
 
 }
