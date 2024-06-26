@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 
@@ -93,7 +94,7 @@ public class GroupChoiceTest {
     public void test02Asigna0PuntosAJugadorQueRespondeConUnaIncorrecta() {
         //Arrange
 
-        Pregunta pregunta = new Pregunta(
+        Pregunta pregunta = new GroupChoice(
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,
@@ -118,7 +119,7 @@ public class GroupChoiceTest {
     public void test03Asigna0PuntosAJugadorQueRespondeConUnaIncorrectaYDosCorrectas() {
         //Arrange
 
-         Pregunta pregunta = new Pregunta(
+         Pregunta pregunta = new GroupChoice(
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,
@@ -142,7 +143,7 @@ public class GroupChoiceTest {
     public void test04Asigna0PuntosAJugadorQueRespondeConDosCorrectasSiendo3Opciones() {
         //Arrange
 
-        Pregunta pregunta = new Pregunta(
+        Pregunta pregunta = new GroupChoice(
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,

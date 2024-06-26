@@ -29,7 +29,7 @@ public class ParserOrdered implements LectorParser {
             }
         }
         List<Opcion> opciones=FabricaOpciones.crearListaOrdenada(contenidoOpciones,posicionesCorrectas, new Correcta());
-        return FabricaPreguntas.crearPregunta(enunciado, opciones, puntaje, categoria);
+        return FabricaPreguntas.crearPreguntaOrderedChoice(enunciado, opciones, puntaje, categoria);
     }
     
 }

@@ -48,7 +48,7 @@ public class ParserGroup implements LectorParser {
         }
 
         List<Opcion> opciones=FabricaOpciones.crearListaGrupo(nombresGrupos,contenidoOpcionesPorGrupo, new Correcta());
-        return FabricaPreguntas.crearPregunta(enunciado, opciones, puntaje, categoria);
+        return FabricaPreguntas.crearPreguntaGroupChoice(enunciado, opciones, puntaje, categoria);
     }
     
 }
