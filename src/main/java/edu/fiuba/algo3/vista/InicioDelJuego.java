@@ -68,6 +68,7 @@ public class InicioDelJuego extends Application {
 
         primaryStage.setTitle("Algohoot");
         primaryStage.setScene(escenaDelJuego);
+        primaryStage.setResizable(false);  
         primaryStage.show();
     }
 }

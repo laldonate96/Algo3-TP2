@@ -9,13 +9,23 @@ public class Toolbar {
 
 	public VBox mostrarToolbar(Stage stage) 
 	{ 
-        Button button1 = new Boton("FullScreen", "botonToolbar"); 
+        Button button1 = new Boton("FullScreen", "botonToolbar");
+        button1.setOnAction(e -> fullscreen(stage)); 
         Button button2 = new Boton("Musica", "botonToolbar");
         Button button3 = new Boton("Ver", "botonToolbar");
         Button button4 = new Boton("Salir", "botonToolbar");
+        button4.setOnAction(e -> cerrarJuego(stage));
         ToolBar toolbar = new ToolBar(button1, button2, button3, button4); 
         VBox vbox = new VBox(toolbar); 
 
         return vbox;
 	}
+
+    public void cerrarJuego(Stage stage) {
+        stage.close();
+    }
+
+    public void fullscreen(Stage stage) {
+        stage.setFullScreen(true);
+    }
 } 
