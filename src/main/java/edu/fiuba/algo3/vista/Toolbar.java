@@ -6,10 +6,11 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage; 
 
 public class Toolbar { 
+    private Button button1 = new Boton("FullScreen", "botonToolbar");
 
 	public VBox mostrarToolbar(Stage stage) 
 	{ 
-        Button button1 = new Boton("FullScreen", "botonToolbar");
+        //Button button1 = new Boton("FullScreen", "botonToolbar");
         button1.setOnAction(e -> fullscreen(stage)); 
         Button button2 = new Boton("Musica", "botonToolbar");
         Button button3 = new Boton("Ver", "botonToolbar");
@@ -26,7 +27,13 @@ public class Toolbar {
     }
 
     public void fullscreen(Stage stage) {
-        stage.setResizable(true);
-        stage.setFullScreen(true);
+        if (stage.isFullScreen()) {
+            stage.setFullScreen(false);
+            button1.setText("FullScreen");
+        }
+        else {           
+            stage.setFullScreen(true);
+            button1.setText("Exit FullScreen");
+        }
     }
 } 

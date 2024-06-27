@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -23,6 +24,7 @@ public class CargarJugadores extends Application {
     private TextField inputJugador;
     private ControladorDeJuego controladorDeJuego;
     private int MAX_CARACTERES = 25;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -37,10 +39,10 @@ public class CargarJugadores extends Application {
 
         inputJugador = new TextField();
         inputJugador.setMaxWidth(300);
-        
+
         TextFormatter<String> formatearTexto = new TextFormatter<>(change -> {
             if (change.isAdded() && change.getControlNewText().length() > MAX_CARACTERES) {
-                return null; 
+                return null;
             }
             return change;
         });
@@ -48,15 +50,20 @@ public class CargarJugadores extends Application {
         inputJugador.setTextFormatter(formatearTexto);
 
         Boton botonJugar = new Boton("Jugar", "button");
-
         Boton botonAgregar = new Boton("Agregar Jugador", "button");
+
         botonAgregar.setOnAction(event -> agregarJugador());
+        botonJugar.setOnAction(event -> jugar());
 
         VBox jugadores = vistaJugadores.mostrarJugadores();
 
+        HBox buttonLayout = new HBox(10);
+        buttonLayout.setAlignment(Pos.CENTER);
+        buttonLayout.getChildren().addAll(botonAgregar, botonJugar);
+
         VBox layout = new VBox(10);
-        layout.setPadding(new Insets(20)); 
-        layout.getChildren().addAll(jugadoresLabel, inputJugador, botonAgregar, jugadores, botonJugar);
+        layout.setPadding(new Insets(20));
+        layout.getChildren().addAll(jugadoresLabel, inputJugador, buttonLayout, jugadores);
         layout.setAlignment(Pos.CENTER);
 
         Toolbar toolbar = new Toolbar();
@@ -66,14 +73,13 @@ public class CargarJugadores extends Application {
         root.setTop(toolbarBox);
         root.setCenter(layout);
 
-        Scene scene = new Scene(root, 800, 500);  
-
+        Scene scene = new Scene(root, 800, 500);
 
         String css = getClass().getResource("src/css/style.css").toExternalForm();
         scene.getStylesheets().add(css);
 
         stage.setScene(scene);
-        stage.setResizable(false);  
+        stage.setResizable(false);
         stage.show();
     }
 
