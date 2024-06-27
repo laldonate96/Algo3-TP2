@@ -4,8 +4,6 @@ package edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje;
 
 public class AnuladorPuntaje extends ModificadorPuntaje {
 
-
-
     public AnuladorPuntaje() {
         usos=1;
     }
