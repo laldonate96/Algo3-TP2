@@ -6,6 +6,7 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
+import edu.fiuba.algo3.modelo.lector.mezclador.Mezclador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
@@ -22,14 +23,21 @@ public class AlgoHoot3 {
     private Jugador jugadorActual;
 
 
-    private AlgoHoot3(){
+    private AlgoHoot3(Mezclador mezclador){
         this.rondas = 0;
-        preguntas = Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria());
+        preguntas = Lector.obtenerPreguntasDeJson(mezclador);
     }
 
     public static AlgoHoot3 obtenerInstancia() {
         if (instancia == null) {
-            instancia = new AlgoHoot3();
+            instancia = new AlgoHoot3(new MezclaSinRepetirCategoria());
+        }
+        return instancia;
+    }
+
+    public static AlgoHoot3 obtenerInstancia(Mezclador mezclador) {
+        if (instancia == null) {
+            instancia = new AlgoHoot3(mezclador);
         }
         return instancia;
     }
@@ -73,8 +81,6 @@ public class AlgoHoot3 {
     public void asignarModificadorTurno(ModificadorTurno modificadorTurno){
         turnoActual.asignarModificador(modificadorTurno);
     }
-
-
 
     public void asignarPuntajes(){
         turnoActual.asignarPuntajes();

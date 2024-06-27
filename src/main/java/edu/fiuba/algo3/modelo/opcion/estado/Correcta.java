@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo.opcion.estado;
 
-public class Correcta implements Estado {
+public class Correcta extends Estado {
     @Override
-    public boolean esCorrecta() {
-        return true;
+    public int contarCorrecta() {
+        return 1;
     }
 }
