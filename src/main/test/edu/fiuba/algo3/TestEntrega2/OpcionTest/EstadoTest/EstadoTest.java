@@ -9,13 +9,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EstadoTest { 
-    /*
+
     @Test
     public void test01CorectaDevuelveQueEsCorrecta() {
         //Arrange
         Estado estado = new Correcta();
         //Assert
-        assertTrue(estado.esCorrecta());
+        assertEquals(estado.contarCorrecta(), 1);
+        assertEquals(estado.contarIncorrecta(), 0);
     }
 
     @Test
@@ -23,6 +24,7 @@ public class EstadoTest {
         //Arrange
         Estado estado = new Incorrecta();
         //Assert
-        assertFalse(estado.esCorrecta());
-    }*/
+        assertEquals(estado.contarIncorrecta(), 1);
+        assertEquals(estado.contarCorrecta(), 0);
+    }
 }
