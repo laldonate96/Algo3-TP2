@@ -12,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,7 +22,7 @@ public class CargarJugadores extends Application {
     private Stage ventanaPrincipal;
     private TextField inputJugador;
     private ControladorDeJuego controladorDeJuego;
-
+    private int MAX_CARACTERES = 25;
     public static void main(String[] args) {
         launch(args);
     }
@@ -35,7 +36,16 @@ public class CargarJugadores extends Application {
         jugadoresLabel.getStyleClass().add("jugadoresLabel");
 
         inputJugador = new TextField();
-        inputJugador.setMaxWidth(300);  
+        inputJugador.setMaxWidth(300);
+        
+        TextFormatter<String> formatearTexto = new TextFormatter<>(change -> {
+            if (change.isAdded() && change.getControlNewText().length() > MAX_CARACTERES) {
+                return null; 
+            }
+            return change;
+        });
+
+        inputJugador.setTextFormatter(formatearTexto);
 
         Boton botonJugar = new Boton("Jugar", "button");
 
