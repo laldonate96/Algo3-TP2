@@ -61,3 +61,21 @@
     -fx-text-fill: #2C3E50; 
 }
 
+.botonModificador{
+    -fx-padding: 5px;
+    -fx-font-size: 20px;
+    -fx-background-color: #F1C40F;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-margin: 0px;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+}
+
+.botonModificador:hover{
+    -fx-background-color: #B84C3C;
+    -fx-text-fill: #000000;
+
+}
+
