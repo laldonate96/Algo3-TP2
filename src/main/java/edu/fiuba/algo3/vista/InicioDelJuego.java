@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.Reproductor;
 import edu.fiuba.algo3.vista.alertas.Alerta;
 import edu.fiuba.algo3.vista.alertas.AlgoSalioMal;
 import edu.fiuba.algo3.vista.animaciones.Titilante;
@@ -34,6 +35,8 @@ public class InicioDelJuego extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Reproductor reproductor = new Reproductor();
+        reproductor.reproducir();
         this.ventanaPrincipal = primaryStage;
 
         Text titulo = new Text("Bienvenido a Algohoot");

@@ -26,6 +26,7 @@ public class Toolbar {
     }
 
     public void fullscreen(Stage stage) {
+        stage.setResizable(true);
         stage.setFullScreen(true);
     }
 } 
