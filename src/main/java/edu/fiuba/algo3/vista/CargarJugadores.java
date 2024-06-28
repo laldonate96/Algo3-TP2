@@ -24,6 +24,11 @@ public class CargarJugadores extends Application {
     private TextField inputJugador;
     private ControladorDeJuego controladorDeJuego;
     private int MAX_CARACTERES = 25;
+    private Toolbar toolbar;
+
+    public CargarJugadores(Toolbar toolbar) {
+        this.toolbar = toolbar;
+    }
 
     public static void main(String[] args) {
         launch(args);
@@ -66,7 +71,6 @@ public class CargarJugadores extends Application {
         layout.getChildren().addAll(jugadoresLabel, inputJugador, buttonLayout, jugadores);
         layout.setAlignment(Pos.CENTER);
 
-        Toolbar toolbar = new Toolbar();
         VBox toolbarBox = toolbar.mostrarToolbar(ventanaPrincipal);
 
         BorderPane root = new BorderPane();

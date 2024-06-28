@@ -17,9 +17,10 @@ import java.net.URL;
 
 public class InicioDelJuego extends Application {
     private Stage ventanaPrincipal;
+    private Toolbar toolbar = new Toolbar();
 
     public void abrirCargaJugadores() {
-        CargarJugadores cargarJugadores = new CargarJugadores();
+        CargarJugadores cargarJugadores = new CargarJugadores(toolbar);
         try {
             cargarJugadores.start(new Stage());
             ventanaPrincipal.close();
@@ -35,8 +36,6 @@ public class InicioDelJuego extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Reproductor reproductor = new Reproductor();
-        reproductor.reproducir();
         this.ventanaPrincipal = primaryStage;
 
         Text titulo = new Text("Bienvenido a Algohoot");
@@ -51,8 +50,7 @@ public class InicioDelJuego extends Application {
         centerBox.getChildren().addAll(titulo, botonJugar);
         centerBox.setAlignment(Pos.CENTER);
 
-        Toolbar toolbar = new Toolbar();
-        VBox toolbarBox = toolbar.mostrarToolbar(primaryStage);
+        VBox toolbarBox = this.toolbar.mostrarToolbar(primaryStage);
 
         BorderPane root = new BorderPane();
         root.setTop(toolbarBox);

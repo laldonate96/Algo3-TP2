@@ -83,6 +83,10 @@
     -fx-text-fill: black;
 }
 
+.menu-button:hover {
+    -fx-background-color: #2980b9;
+}
+
 .menu-item .label {
     -fx-text-fill: black;
 }
