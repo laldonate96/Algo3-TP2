@@ -14,12 +14,11 @@ public class Reproductor {
     public void reproducir() {
         try {
             String mediaPath = Paths.get(path).toUri().toString();
-            System.out.println("Media path: " + mediaPath);
             Media musica = new Media(mediaPath);
             MediaPlayer mediaPlayer = new MediaPlayer(musica);
             mediaPlayer.play();
         } catch (Exception e) {
-            e.printStackTrace(); // Log the error details
+            e.printStackTrace();
         }
     }
 }

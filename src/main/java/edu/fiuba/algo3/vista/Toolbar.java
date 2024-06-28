@@ -13,7 +13,6 @@ public class Toolbar {
         button1.setOnAction(e -> fullscreen(stage)); 
         MenuButton button2 = new MenuButton("Musica");
         button2.getItems().addAll(new MenuItem("Tema 1"), new MenuItem("Tema 2"));
-        button2.setStyle("botonToolbar");
         Button button3 = new Boton("Ver", "botonToolbar");
         Button button4 = new Boton("Salir", "botonToolbar");
         button4.setOnAction(e -> cerrarJuego(stage));

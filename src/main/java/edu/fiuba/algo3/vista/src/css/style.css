@@ -49,8 +49,8 @@
 }
 
 .botonJugador{   
-    -fx-padding: 20px;
-    -fx-font-size: 20px;
+    -fx-padding: 5px;
+    -fx-font-size: 15px;
     -fx-border-radius: 5px;
     -fx-background-color: #2980b9;
     -fx-text-fill: #F1C40F; 
@@ -79,3 +79,10 @@
 
 }
 
+.menu-button .label {
+    -fx-text-fill: black;
+}
+
+.menu-item .label {
+    -fx-text-fill: black;
+}
