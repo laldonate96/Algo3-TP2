@@ -66,7 +66,7 @@ public class InicioDelJuego extends Application {
             String css = cssURL.toExternalForm();
             escenaDelJuego.getStylesheets().add(css);
         } else {
-            System.err.println("CSS file not found: " + cssPath);
+            System.err.println("Archivo CSS no encontrado: " + cssPath);
         }
 
         primaryStage.setTitle("Algohoot");
