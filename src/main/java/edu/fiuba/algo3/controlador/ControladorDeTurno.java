@@ -3,7 +3,7 @@ package edu.fiuba.algo3.controlador;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.AlgoHoot3;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.turno.Turno;
 import javafx.event.ActionEvent;

@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Multiplicador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Anulador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Modificador;
+import edu.fiuba.algo3.modelo.Modificador.Multiplicador;
+import edu.fiuba.algo3.modelo.Modificador.Anulador;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
@@ -21,8 +21,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
-
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 
 import edu.fiuba.algo3.modelo.turno.Turno;
@@ -37,7 +35,7 @@ public class TurnosTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private Modificador nulo;
-    private Modificador anuladorPuntaje;
+    private Modificador anulador;
     private Turno turno;
     private List<String> opcionesJugador1;
     private List<String> opcionesJugador2;
@@ -57,13 +55,9 @@ public class TurnosTest {
         vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock");
         vofp = new VerdaderoFalso("un enunciado", opciones, penalidad,"Mock");
 
-        List<Modificador> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
 
-        nulo= modificadores.get(0);
-        anuladorPuntaje = modificadores.get(4);
-
-        jugador1 = new Jugador("un jugador", modificadores);
-        jugador2 = new Jugador("otro jugador", modificadores);
+        jugador1 = new Jugador("un jugador", FabricaModificadores.crearListaModificadores());
+        jugador2 = new Jugador("otro jugador", FabricaModificadores.crearListaModificadores());
 
         turno = new Turno();
 
@@ -84,8 +78,11 @@ public class TurnosTest {
         turno.establecerPregunta(vof);
 
 
-        turno.agregarRespuesta(opcionJugador1,jugador1,nulo);
-        turno.agregarRespuesta(opcionJugador2,jugador2,nulo);
+        Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
+        Modificador nuloJugador2 =jugador2.obtenerModificadores().get(0);
+
+        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador1);
+        turno.agregarRespuesta(opcionJugador2,jugador2,nuloJugador2);
 
         //act
 
@@ -112,9 +109,11 @@ public class TurnosTest {
         turno.establecerPregunta(vofp);
 
 
+        Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
+        Modificador nuloJugador2 =jugador2.obtenerModificadores().get(0);
 
-        turno.agregarRespuesta(opcionJugador1,jugador1,nulo);
-        turno.agregarRespuesta(opcionJugador2,jugador2,nulo);
+        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador1);
+        turno.agregarRespuesta(opcionJugador2,jugador2,nuloJugador2);
 
         //act
         turno.asignarPuntajes();
@@ -143,17 +142,16 @@ public class TurnosTest {
 
 
 
-        Multiplicador multiplicador= new Multiplicador(2);
-
+        Modificador multiplicador= jugador1.obtenerModificadores().get(1);
+        Modificador nuloJugador2 =jugador2.obtenerModificadores().get(0);
 
         turno.agregarRespuesta(opcionJugador1,jugador1,multiplicador);
-        turno.agregarRespuesta(opcionJugador2,jugador2,nulo);
+        turno.agregarRespuesta(opcionJugador2,jugador2,nuloJugador2);
 
         //act
         turno.asignarPuntajes();
 
         // assert
-        
         assertEquals(2, jugador1.obtenerPuntaje());
         assertEquals(-1, jugador2.obtenerPuntaje());
     }
@@ -173,14 +171,14 @@ public class TurnosTest {
 
         turno.establecerPregunta(vof);
 
-        Modificador anulador = new Anulador(anuladorPuntaje);
-
-        turno.asignarModificador(anulador);
 
 
 
-        turno.agregarRespuesta(opcionJugador1,jugador1,nulo);
-        turno.agregarRespuesta(opcionJugador2,jugador2,anuladorPuntaje);
+        Modificador nuloJugador1 =jugador1.obtenerModificadores().get(0);
+        Modificador anulador= jugador2.obtenerModificadores().get(5);
+
+        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador1);
+        turno.agregarRespuesta(opcionJugador2,jugador2,anulador);
 
         //act
         turno.asignarPuntajes();

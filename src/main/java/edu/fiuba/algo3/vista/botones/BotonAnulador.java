@@ -3,8 +3,8 @@ package edu.fiuba.algo3.vista.botones;
 
 import edu.fiuba.algo3.controlador.ControladorActivarBoton;
 import edu.fiuba.algo3.controlador.ControladorUsoDeModificadores;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 

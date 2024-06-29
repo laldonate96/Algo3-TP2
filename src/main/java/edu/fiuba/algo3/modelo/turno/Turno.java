@@ -5,9 +5,8 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Modificador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Nulo;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
+import edu.fiuba.algo3.modelo.Modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
@@ -25,19 +24,19 @@ public class Turno {
         this.preguntaDelTurno = preguntaDelTurno;
     }
 
-    public void asignarModificador(Modificador modificador) {
-        this.modificador = modificador;
-    }
 
 
     public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, Modificador modificador) {
         
         validarOpciones(opcionesJugador,preguntaDelTurno.obtenerOpciones());
 
-        Respuesta respuesta=new Respuesta(opcionesJugador, jugador, modificador);
-        
+        Respuesta respuesta=new Respuesta(opcionesJugador, jugador);
         respuestas.add(respuesta);
-        this.modificador.usar(modificador,jugador);
+
+        this.modificador.agregarModificador(modificador);
+
+        jugador.usar(modificador);
+
 
     }
 

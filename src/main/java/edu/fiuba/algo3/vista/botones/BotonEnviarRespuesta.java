@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista.botones;
 
 import edu.fiuba.algo3.controlador.ControladorDeTurno;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.turno.Turno;
 import javafx.animation.Animation;

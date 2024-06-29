@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 
 
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
@@ -11,7 +12,6 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Parcial;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class MultipleChoiceTest {
 
     @BeforeEach
     public void setUp() {
-        List<Modificador> modificadores= FabricaModificadores.crearListaModificadoresPuntaje();
+        List<Modificador> modificadores= FabricaModificadores.crearListaModificadores();
 
         nulo = modificadores.get(0);
 
@@ -61,7 +61,7 @@ public class MultipleChoiceTest {
 
 
         List<Opcion> opcionesJugador=FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1", "2"), new Correcta());
-        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
+        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
         //Act
@@ -81,7 +81,7 @@ public class MultipleChoiceTest {
         );
 
         List<Opcion> opcionesJugador=FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 3"),List.of("1"), new Correcta());
-        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1, nulo);
+        Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
         //Act
@@ -91,4 +91,5 @@ public class MultipleChoiceTest {
         assertEquals(0, respuesta.obtenerPuntaje());
 
     }
+    //TESTEAR E IMPLEMENTAR FUNCIONAMIENTO CON CIERTOS MODIFICADORES
 }

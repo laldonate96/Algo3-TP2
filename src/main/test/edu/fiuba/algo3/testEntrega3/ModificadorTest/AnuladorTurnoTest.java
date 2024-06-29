@@ -1,12 +1,10 @@
-package edu.fiuba.algo3.testEntrega3.ModificadorTurnoTest;
+package edu.fiuba.algo3.testEntrega3.ModificadorTest;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Anulador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Anulador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Modificador;
+import edu.fiuba.algo3.modelo.Modificador.Anulador;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,44 +27,46 @@ public class AnuladorTurnoTest {
 
     @BeforeEach
     public void setUp() {
-        anulador = new Anulador(new Anulador());
+        anulador = new Anulador();
 
         List<String> posicionesCorrectas= List.of("1");
         opcionesCorrectas = FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas, new Correcta());
-        modificador = new Anulador();
-        modificadores = new ArrayList<>();
-        modificadores.add(modificador);
 
+        modificador = anulador;
+        modificadores = new ArrayList<>();
         jugador = new Jugador("Jugador1", modificadores);
 
         modificador = new Anulador();
-        modificadores = new ArrayList<>();
-        modificadores.add(modificador);
-        jugador2 = new Jugador("Jugador2", modificadores);
+        List<Modificador> modificadores2 = new ArrayList<>();
+        modificadores2.add(modificador);
+        jugador2 = new Jugador("Jugador2", modificadores2);
 
-        respuesta = new Respuesta(opcionesCorrectas, jugador, modificador);
-        respuesta.asignarPuntaje(10);
+        respuesta = new Respuesta(opcionesCorrectas, jugador);
+        respuesta.asignarPuntaje(1);
 
         respuestas = new ArrayList<>();
+
+        modificadores.add(modificador);
+        modificadores.add(anulador);
         respuestas.add(respuesta);
     }
 
     @Test
     public void test01LaRespuestaCorrectaDeUnJugadorQueUsoElAnuladorNoEsModificada() {
         //Arrange
-        anulador.usar(modificador,jugador);
+        anulador.establecerDuenio(jugador);
 
         //Act
         anulador.modificarPuntajes(respuestas);
 
         //Assert
-        assertEquals(10, respuesta.obtenerPuntaje());
+        assertEquals(1, respuesta.obtenerPuntaje());
     }
 
     @Test
     public void test02LaRespuestaCorrectaDeUnJugadorQueNoUsoElAnuladorEsModificada() {
         //Arrange
-        anulador.usar(modificador,jugador2);
+        anulador.establecerDuenio(jugador2);
 
         //Act
         anulador.modificarPuntajes(respuestas);
@@ -78,22 +78,36 @@ public class AnuladorTurnoTest {
     @Test
     public void test03Los5JugadoresUsanUnAnuladorYNingunoRecibePuntos() {
         //Arrange
+        anulador.establecerDuenio(jugador);
+        anulador.agregarModificador(modificador);
+
         modificadores = new ArrayList<>();
-        modificadores.add(new Anulador());
+        modificador= new Anulador();
+        modificadores.add(anulador);
+        anulador.agregarModificador(modificador);
         Jugador jugador3 = new Jugador("Jugador3", modificadores);
+
         modificadores = new ArrayList<>();
-        modificadores.add(new Anulador());
+        modificador= new Anulador();
+        modificadores.add(anulador);
+        anulador.agregarModificador(modificador);
+
         Jugador jugador4 = new Jugador("Jugador4", modificadores);
+
         modificadores = new ArrayList<>();
-        modificadores.add(new Anulador());
+        modificador= new Anulador();
+        modificadores.add(anulador);
+        anulador.agregarModificador(modificador);
+
         Jugador jugador5 = new Jugador("Jugador5", modificadores);
 
-        Respuesta respuesta2 = new Respuesta(opcionesCorrectas, jugador, modificador);
-        Respuesta respuesta3 = new Respuesta(opcionesCorrectas, jugador, modificador);
-        Respuesta respuesta4 = new Respuesta(opcionesCorrectas, jugador, modificador);
-        Respuesta respuesta5 = new Respuesta(opcionesCorrectas, jugador, modificador);
+        Respuesta respuesta2 = new Respuesta(opcionesCorrectas, jugador);
+        Respuesta respuesta3 = new Respuesta(opcionesCorrectas, jugador);
+        Respuesta respuesta4 = new Respuesta(opcionesCorrectas, jugador);
+        Respuesta respuesta5 = new Respuesta(opcionesCorrectas, jugador);
 
         ArrayList<Jugador> jugadores = new ArrayList<>();
+
         jugadores.add(jugador);
         jugadores.add(jugador2);
         jugadores.add(jugador3);
@@ -106,11 +120,6 @@ public class AnuladorTurnoTest {
         respuestas.add(respuesta4);
         respuestas.add(respuesta5);
 
-        for (int i = 0; i < 5; i++) {
-            respuestas.get(i).asignarPuntaje(1);
-            anulador.usar(modificador, jugadores.get(i));
-        }
-
         //Act
         anulador.modificarPuntajes(respuestas);
 
@@ -118,5 +127,15 @@ public class AnuladorTurnoTest {
         for (Respuesta respuesta:respuestas) {
             assertEquals(0, respuesta.obtenerPuntaje());
         }
+    }
+
+    @Test
+    public void test04SeBorraAlActualizar() {
+        //Act
+        int tamanioEsperado= modificadores.size()-1;
+        anulador.actualizar(modificadores);
+
+        //Assert
+        assertEquals(tamanioEsperado, modificadores.size());
     }
 }

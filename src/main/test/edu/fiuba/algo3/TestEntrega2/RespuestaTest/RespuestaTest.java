@@ -1,17 +1,15 @@
 package edu.fiuba.algo3.TestEntrega2.RespuestaTest;
 
+import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 
 
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Nulo;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Multiplicador;
 
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,24 +20,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RespuestaTest {
-    private static Multiplicador multiplicador;
+
     private Jugador jugador;
-    private static Nulo nulo;
+
     private List<Opcion> opcionesCorrectas;
 
 
-    @BeforeAll
-    public static void setUpClass(){
-        nulo=new Nulo();
-        multiplicador = new Multiplicador(2);
-    }
 
     @BeforeEach
     public void setUp() {
 
-        List<Modificador> modificadores = new ArrayList<>();
-        modificadores.add(multiplicador);
-        modificadores.add(nulo);
+        List<Modificador> modificadores = FabricaModificadores.crearListaModificadores();
 
 
         List<String> posicionesCorrectas= List.of("1");
@@ -54,9 +45,9 @@ public class RespuestaTest {
 
 
     @Test
-    public void test01AsignarPuntajePasaLosPuntosAsignadosConModificadorNulo() {
+    public void test01AsignarPuntajePasaLosPuntosAsignados() {
         //Arrange
-        Respuesta respuesta = new Respuesta(opcionesCorrectas, jugador, nulo);
+        Respuesta respuesta = new Respuesta(opcionesCorrectas, jugador);
 
         //Act
         respuesta.asignarPuntaje(1);
@@ -67,15 +58,20 @@ public class RespuestaTest {
     }
 
     @Test
-    public void test02AsignarPuntajePasaLosPuntosEsperadosConModificadorNoNulo() {
+    public void test02MultiplicarPuntajeAsignaLosPuntosEsperados() {
         //Arrange
-        Respuesta respuesta = new Respuesta(opcionesCorrectas, jugador, multiplicador);
+        Respuesta respuesta = new Respuesta(opcionesCorrectas, jugador);
 
         //Act
         respuesta.asignarPuntaje(1);
+        respuesta.multiplicarPuntaje(2);
 
 
         //Assert
         assertEquals(2, respuesta.obtenerPuntaje());
     }
+
+    //TESTEAR: SUMAR PUNTAJE, ES CORRECTA, PERTENECE A
+
+
 }

@@ -1,32 +1,31 @@
-package edu.fiuba.algo3.modelo.modificadores.ModificadorTurno;
+package edu.fiuba.algo3.modelo.Modificador;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
 
 
 import java.util.List;
 
-public class Anulador implements Modificador {
+public class Anulador extends Modificador {
 
-    Modificador modificadorReferencia;
     private int factorDeMultiplicacion;
     private Jugador jugadorProtegido;
+    private int llamados;
+    private Modificador siguiente;
 
-    public Anulador(Modificador modificadorReferencia) {
-        this.modificadorReferencia = modificadorReferencia;
-        cantidadLlamados=0;
+    public Anulador() {
+        llamados=1;
         factorDeMultiplicacion =1;
+        siguiente=new Nulo();
     }
 
 
     @Override
     public void modificarPuntajes(List<Respuesta> respuestas) {
-        int llamados=calcularLlamados();
-        if(cantidadLlamados>1){
+
+        if(llamados>1){
             factorDeMultiplicacion =0;
         }
-
 
         for (Respuesta respuesta : respuestas) {
             if(respuesta.esCorrecta()) {
@@ -41,15 +40,25 @@ public class Anulador implements Modificador {
     }
 
     private void usarModificador(Jugador jugadorActivo) {
+        jugadorProtegido=jugadorActivo;
+
     }
 
-    public void usar(Jugador jugadorActivo) {
+    public void establecerDuenio(Jugador jugadorActivo) {
         jugadorProtegido=jugadorActivo;
     }
 
     @Override
     public void agregarModificador(Modificador modificador) {
+        if( esIgual(modificador)){
+            llamados++;
+        } else {
+            siguiente.agregarModificador(modificador);
+        }
+    }
 
+    private boolean esIgual(Modificador modificador) {
+        return modificador.getClass().equals(this.getClass());
     }
 }
 
