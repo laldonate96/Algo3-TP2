@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.*;
 
 
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Multiplicador;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,15 +17,15 @@ import java.util.List;
 
 public class JugadorTest {
     private Jugador jugador;
-    private ModificadorPuntaje multiplicador;
-    private List<ModificadorPuntaje> modificadores;
+    private Modificador multiplicador;
+    private List<Modificador> modificadores;
 
     @BeforeEach
     public void setUpClass() {
         multiplicador = new Multiplicador(2);
-        NuloPuntaje nulo = new NuloPuntaje();
-        AnuladorPuntaje anulador = new AnuladorPuntaje();
-        ExclusividadPuntaje exclusividad = new ExclusividadPuntaje();
+        Nulo nulo = new Nulo();
+        Anulador anulador = new Anulador();
+        Exclusividad exclusividad = new Exclusividad();
         modificadores = new ArrayList<>();
         modificadores.add(multiplicador);
         modificadores.add(exclusividad);
@@ -61,7 +62,7 @@ public class JugadorTest {
     @Test
     public void test04UsarUnModificadorNuloNoLoRemueveDeLaListaDeModificadoresDelJugador() {
         //Arrange
-        NuloPuntaje nulo = new NuloPuntaje();
+        Nulo nulo = new Nulo();
 
         //Act
         jugador.usar(nulo);
@@ -73,7 +74,7 @@ public class JugadorTest {
     @Test
     public void test05UsarUnModificadorExclusividadLoRemueveDeLaListaDeModificadoresDelJugador() {
         //Arrange
-        ExclusividadPuntaje exclusividad = new ExclusividadPuntaje();
+        Exclusividad exclusividad = new Exclusividad();
 
         //Act
         jugador.usar(exclusividad);
@@ -86,7 +87,7 @@ public class JugadorTest {
     @Test
     public void test06UsarUnModificadorAnuladorLoRemueveDeLaListaDeModificadoresDelJugador() {
         //Arrange
-        AnuladorPuntaje anulador = new AnuladorPuntaje();
+        Anulador anulador = new Anulador();
 
         //Act
         jugador.usar(anulador);
@@ -98,7 +99,7 @@ public class JugadorTest {
     @Test
     public void test07UsarUnModificadorQueNoEstaEnLaListaLanzaExcepcion() {
         //Arrange
-        AnuladorPuntaje anulador = new AnuladorPuntaje();
+        Anulador anulador = new Anulador();
 
         //Act
         jugador.usar(anulador);

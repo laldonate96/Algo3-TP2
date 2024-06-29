@@ -11,7 +11,7 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Parcial;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class MultipleChoiceTest {
     private Jugador jugador1;
 
     private static Parcial parcial;
-    private ModificadorPuntaje nulo;
+    private Modificador nulo;
     private List<Opcion> opciones;
     private List<Respuesta> respuestas;
 
@@ -36,7 +36,7 @@ public class MultipleChoiceTest {
 
     @BeforeEach
     public void setUp() {
-        List<ModificadorPuntaje> modificadores= FabricaModificadores.crearListaModificadoresPuntaje();
+        List<Modificador> modificadores= FabricaModificadores.crearListaModificadoresPuntaje();
 
         nulo = modificadores.get(0);
 

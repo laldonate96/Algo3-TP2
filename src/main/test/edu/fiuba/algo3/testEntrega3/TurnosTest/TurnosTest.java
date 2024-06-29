@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.AnuladorTurno;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Anulador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
@@ -21,7 +21,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
 
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 
@@ -36,8 +36,8 @@ public class TurnosTest {
 
     private Jugador jugador1;
     private Jugador jugador2;
-    private ModificadorPuntaje nulo;
-    private ModificadorPuntaje anuladorPuntaje;
+    private Modificador nulo;
+    private Modificador anuladorPuntaje;
     private Turno turno;
     private List<String> opcionesJugador1;
     private List<String> opcionesJugador2;
@@ -57,7 +57,7 @@ public class TurnosTest {
         vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock");
         vofp = new VerdaderoFalso("un enunciado", opciones, penalidad,"Mock");
 
-        List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
+        List<Modificador> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
 
         nulo= modificadores.get(0);
         anuladorPuntaje = modificadores.get(4);
@@ -173,7 +173,7 @@ public class TurnosTest {
 
         turno.establecerPregunta(vof);
 
-        ModificadorTurno anulador = new AnuladorTurno(anuladorPuntaje);
+        Modificador anulador = new Anulador(anuladorPuntaje);
 
         turno.asignarModificador(anulador);
 

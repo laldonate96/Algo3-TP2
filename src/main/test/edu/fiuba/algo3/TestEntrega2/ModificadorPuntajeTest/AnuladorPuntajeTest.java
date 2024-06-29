@@ -3,7 +3,7 @@ package edu.fiuba.algo3.TestEntrega2.ModificadorPuntajeTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.AnuladorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Anulador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +11,17 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
 
 public class AnuladorPuntajeTest {
 
-    private ModificadorPuntaje anulador;
-    private List<ModificadorPuntaje> modificadores;
+    private Modificador anulador;
+    private List<Modificador> modificadores;
 
 
     @BeforeEach
     public void setUp() {
-        anulador = new AnuladorPuntaje();
+        anulador = new Anulador();
         modificadores = new ArrayList<>();
         modificadores.add(anulador);
 

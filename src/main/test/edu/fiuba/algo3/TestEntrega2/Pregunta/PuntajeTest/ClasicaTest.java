@@ -3,7 +3,7 @@ package edu.fiuba.algo3.TestEntrega2.Pregunta.PuntajeTest;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Nulo;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 
 
@@ -41,7 +41,7 @@ public class ClasicaTest {
         Clasica clasica = new Clasica(1);
 
         List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1"),List.of("1"),  new Correcta());
-        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
+        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new Nulo());
         respuestas.add(respuesta);
 
 
@@ -59,7 +59,7 @@ public class ClasicaTest {
 
 
         List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"),  new Correcta());
-        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
+        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new Nulo());
         respuestas.add(respuesta);
 
 
@@ -79,7 +79,7 @@ public class ClasicaTest {
 
 
         List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"),  new Correcta());
-        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
+        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new Nulo());
         respuestas.add(respuesta);
 
 
@@ -98,7 +98,7 @@ public class ClasicaTest {
 
 
         List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2","Opcion 3"),List.of("1","2"),  new Correcta());
-        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
+        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new Nulo());
         respuestas.add(respuesta);
 
 
@@ -115,12 +115,12 @@ public class ClasicaTest {
         Clasica clasica = new Clasica(2);
 
         List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"),  new Correcta());
-        Respuesta respuesta1 = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
+        Respuesta respuesta1 = new Respuesta(opcionesJugador,jugador,new Nulo());
         respuestas.add(respuesta1);
 
         Jugador jugador2= new Jugador("USAR MOCKITO", FabricaModificadores.crearListaModificadoresPuntaje());
         List<Opcion> opcionesJugador2 = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"),  new Correcta());
-        Respuesta respuesta2 = new Respuesta(opcionesJugador2,jugador2,new NuloPuntaje());
+        Respuesta respuesta2 = new Respuesta(opcionesJugador2,jugador2,new Nulo());
         respuestas.add(respuesta2);
 
 
@@ -142,7 +142,7 @@ public class ClasicaTest {
 
         //USAR MOCKITO ACA TAMBIEN
         List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1"),List.of("1"),  new Correcta());
-        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new NuloPuntaje());
+        Respuesta respuesta = new Respuesta(opcionesJugador,jugador,new Nulo());
         respuestas.add(respuesta);
 
         //Act

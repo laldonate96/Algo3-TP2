@@ -3,15 +3,15 @@ package edu.fiuba.algo3.modelo.jugador;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.excepciones.ModificadorInexistenteException;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Nulo;
 
 public class Jugador {
     private int puntaje;
     private final String nombre;
-    private final List<ModificadorPuntaje> modificadores;
+    private final List<Modificador> modificadores;
 
-    public Jugador(String nombre, List<ModificadorPuntaje> modificadores) {
+    public Jugador(String nombre, List<Modificador> modificadores) {
         this.nombre = nombre;
         this.puntaje = 0;
         this.modificadores = modificadores;
@@ -25,8 +25,8 @@ public class Jugador {
         return puntaje;
     }
 
-    public void usar(ModificadorPuntaje modificadorReferencia){
-        ModificadorPuntaje modificadorBuscado = buscarModificador(modificadorReferencia);
+    public void usar(Modificador modificadorReferencia){
+        Modificador modificadorBuscado = buscarModificador(modificadorReferencia);
         modificadorBuscado.usar();
         modificadorBuscado.actualizar(modificadores);
     }
@@ -39,20 +39,20 @@ public class Jugador {
         return this.tieneNombre(jugador.nombre);
     }
 
-    private ModificadorPuntaje buscarModificador(ModificadorPuntaje modificadorReferencia) {
+    private Modificador buscarModificador(Modificador modificadorReferencia) {
         int contador=0;
-        ModificadorPuntaje modificadorPuntaje= new NuloPuntaje();
+        Modificador modificador = new Nulo();
 
 
         try {
-            while (!modificadorPuntaje.equals(modificadorReferencia)) {
-                modificadorPuntaje = modificadores.get(contador);
+            while (!modificador.equals(modificadorReferencia)) {
+                modificador = modificadores.get(contador);
                 contador++;
             }
         } catch (IndexOutOfBoundsException e) {
             throw new ModificadorInexistenteException("El jugador "+ nombre+ " no posee el modificador usado.");
         }
-        return modificadorPuntaje;
+        return modificador;
     }
 
     public String obtenerNombre(){

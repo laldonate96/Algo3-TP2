@@ -9,8 +9,8 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Nulo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class OrderedChoiceTest {
 
     private Jugador jugador1;
     private static Clasica clasica;
-    private static ModificadorPuntaje nulo;
+    private static Modificador nulo;
 
     private List<Respuesta> respuestas;
     private List<Opcion> opciones;
@@ -34,13 +34,13 @@ public class OrderedChoiceTest {
     @BeforeAll
     public static void setUpClass() {
         clasica= new Clasica(3);
-        nulo=new NuloPuntaje();
+        nulo=new Nulo();
     }
 
     @BeforeEach
     public void setUp() {
 
-        List<ModificadorPuntaje> modificadores= FabricaModificadores.crearListaModificadoresPuntaje();
+        List<Modificador> modificadores= FabricaModificadores.crearListaModificadoresPuntaje();
 
         nulo = modificadores.get(0);
 

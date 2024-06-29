@@ -3,24 +3,27 @@ package edu.fiuba.algo3.modelo.modificadores.ModificadorTurno;
 
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
 
 import java.util.List;
 
 
 
-public class ExclusividadTurno implements ModificadorTurno {
-    private final ModificadorPuntaje modificadorDereferencia;
+public class Exclusividad implements Modificador {
+    private final Modificador modificadorDereferencia;
+    private final Modificador otroModificador;
     private int llamados;
     private int cantidadRespuestasCorrectas;
     private int factorDeMultiplicacion;
 
 
-    public ExclusividadTurno(ModificadorPuntaje modificadorDereferencia) {
+    public Exclusividad(Modificador modificadorDereferencia) {
         llamados = 0;
         cantidadRespuestasCorrectas = 0;
         this.modificadorDereferencia= modificadorDereferencia;
-
+        Nulo modificadorSiguiente=new Nulo();
+        modificadorSiguiente.establecerAnterior(this);
+        otroModificador=modificadorSiguiente;
         factorDeMultiplicacion =2;
     }
 
@@ -41,17 +44,31 @@ public class ExclusividadTurno implements ModificadorTurno {
         }
     }
 
+    @Override
+    public void usar(Jugador jugadorActivo) {
+
+    }
+
+    @Override
+    public void agregarModificador(Modificador modificador) {
+        if( modificador.equals(this)){
+            llamados++;
+        } else {
+            otroModificador.agregarModificador(modificador);
+        }
+    }
+
 
     private void usarModificador() {
-        llamados++;
+
     }
 
 
 
     @Override
-    public void usar(ModificadorPuntaje modificadorPuntaje, Jugador jugadorActivo) {
-        jugadorActivo.usar(modificadorPuntaje);
-        if(modificadorPuntaje.equals(modificadorDereferencia)){
+    public void usar(Modificador modificador, Jugador jugadorActivo) {
+        jugadorActivo.usar(modificador);
+        if(modificador.equals(modificadorDereferencia)){
             usarModificador();
         }
     }

@@ -5,10 +5,10 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 
 
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Nulo;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Multiplicador;
 
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import org.junit.jupiter.api.BeforeAll;
@@ -24,20 +24,20 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RespuestaTest {
     private static Multiplicador multiplicador;
     private Jugador jugador;
-    private static NuloPuntaje nulo;
+    private static Nulo nulo;
     private List<Opcion> opcionesCorrectas;
 
 
     @BeforeAll
     public static void setUpClass(){
-        nulo=new NuloPuntaje();
+        nulo=new Nulo();
         multiplicador = new Multiplicador(2);
     }
 
     @BeforeEach
     public void setUp() {
 
-        List<ModificadorPuntaje> modificadores = new ArrayList<>();
+        List<Modificador> modificadores = new ArrayList<>();
         modificadores.add(multiplicador);
         modificadores.add(nulo);
 

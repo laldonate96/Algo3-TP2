@@ -13,13 +13,13 @@ import org.junit.jupiter.api.Test;
 
 public class ExclusividadPuntajeTest {
 
-    private ModificadorPuntaje exclusividad;
-    private List<ModificadorPuntaje> modificadores;
+    private Modificador exclusividad;
+    private List<Modificador> modificadores;
 
 
     @BeforeEach
     public void setUp() {
-        exclusividad = new ExclusividadPuntaje();
+        exclusividad = new Exclusividad();
         modificadores = new ArrayList<>();
         modificadores.add(exclusividad);
 

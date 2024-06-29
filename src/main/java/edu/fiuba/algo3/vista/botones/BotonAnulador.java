@@ -4,7 +4,7 @@ package edu.fiuba.algo3.vista.botones;
 import edu.fiuba.algo3.controlador.ControladorActivarBoton;
 import edu.fiuba.algo3.controlador.ControladorUsoDeModificadores;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 
@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 
 public class BotonAnulador extends Button {
 
-    public BotonAnulador(Jugador jugador, ModificadorPuntaje modificador, String claseCSSDeBoton){
+    public BotonAnulador(Jugador jugador, Modificador modificador, String claseCSSDeBoton){
         super();
         this.setText("A");
         this.setMinHeight(100);

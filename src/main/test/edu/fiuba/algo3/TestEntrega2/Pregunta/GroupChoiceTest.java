@@ -12,7 +12,7 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +35,7 @@ public class GroupChoiceTest {
     static List<String> miembrosGrupo1;
     static List<String> miembrosGrupo2;
     private static Clasica clasica;
-    private ModificadorPuntaje nulo;
+    private Modificador nulo;
     //USAR MOCKITO
     private List<Opcion> opcionesCorrectas;
     private List<Respuesta> respuestas;
@@ -51,7 +51,7 @@ public class GroupChoiceTest {
 
     @BeforeEach
     public void setUp() {
-        List<ModificadorPuntaje> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
+        List<Modificador> modificadores = FabricaModificadores.crearListaModificadoresPuntaje();
         nulo = modificadores.get(0);
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);

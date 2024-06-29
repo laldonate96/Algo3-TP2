@@ -9,14 +9,14 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Multiplicador;
 
 public class MultiplicadorPuntajeTest {
 
-    private ModificadorPuntaje multiplicadorDos;
-    private ModificadorPuntaje multiplicadorTres;
-    private List<ModificadorPuntaje> modificadores;
+    private Modificador multiplicadorDos;
+    private Modificador multiplicadorTres;
+    private List<Modificador> modificadores;
 
 
     @BeforeEach

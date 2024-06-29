@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.TestEntrega2.ModificadorPuntajeTest;
 
 
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Nulo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class NuloPuntajeTest {
 
 
-    private ModificadorPuntaje nulo;
-    private List<ModificadorPuntaje> modificadores;
+    private Modificador nulo;
+    private List<Modificador> modificadores;
 
 
     @BeforeEach
     public void setUp() {
-        nulo = new NuloPuntaje();
+        nulo = new Nulo();
         modificadores = new ArrayList<>();
         modificadores.add(nulo);
     }

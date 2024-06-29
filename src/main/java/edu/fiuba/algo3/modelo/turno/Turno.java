@@ -5,39 +5,39 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.NuloTurno;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Modificador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
 public class Turno {
     private final List<Respuesta> respuestas;
     private Pregunta preguntaDelTurno;
-    private ModificadorTurno modificador;
+    private Modificador modificador;
 
     public Turno(){
         this.respuestas = new ArrayList<>();
-        this.modificador= new NuloTurno();
+        this.modificador= new Nulo();
     }
 
     public void establecerPregunta(Pregunta preguntaDelTurno) {
         this.preguntaDelTurno = preguntaDelTurno;
     }
 
-    public void asignarModificador(ModificadorTurno modificadorTurno) {
-        this.modificador = modificadorTurno;
+    public void asignarModificador(Modificador modificador) {
+        this.modificador = modificador;
     }
 
 
-    public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, ModificadorPuntaje modificadorPuntaje) {
+    public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, Modificador modificador) {
         
         validarOpciones(opcionesJugador,preguntaDelTurno.obtenerOpciones());
 
-        Respuesta respuesta=new Respuesta(opcionesJugador, jugador, modificadorPuntaje);
+        Respuesta respuesta=new Respuesta(opcionesJugador, jugador, modificador);
         
         respuestas.add(respuesta);
-        modificador.usar(modificadorPuntaje,jugador);
+        this.modificador.usar(modificador,jugador);
 
     }
 

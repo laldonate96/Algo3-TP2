@@ -1,14 +1,12 @@
 package edu.fiuba.algo3.vista;
 
-import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
 //import edu.fiuba.algo3.controlador.ControladorUsoDeModificadorDePuntaje;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.Multiplicador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.turno.Turno;
@@ -18,7 +16,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class VistaPrueba2 extends Application {
