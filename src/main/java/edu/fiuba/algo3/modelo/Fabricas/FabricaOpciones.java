@@ -17,14 +17,15 @@ public class FabricaOpciones {
         Grupo opcion;
         List<String> contenidoOpciones;
         List<Opcion> listaOpciones = new ArrayList<>();
-
+        int contador = 0;
 
         for(String nombreGrupo:grupos){
-            contenidoOpciones=contenidoOpcionesPorGrupo.remove(0);
+            contenidoOpciones=contenidoOpcionesPorGrupo.get(contador);
             for(String contenidoOpcion:contenidoOpciones){
                 opcion = new Grupo(contenidoOpcion, nombreGrupo,estadoIndicado);
                 listaOpciones.add(opcion);
             }
+            contador++;
         }
         return listaOpciones;
 
