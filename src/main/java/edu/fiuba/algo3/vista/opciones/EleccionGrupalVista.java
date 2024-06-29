@@ -14,23 +14,24 @@ import javafx.scene.layout.Pane;
 
 public class EleccionGrupalVista implements OpcionesVista {
 
-    private List<Spinner<Grupo>> spinners;
+    private List<Spinner<String>> spinners;
 
-    private List<Grupo> obtenerGrupos(List<Opcion> opciones) {
-        List<Grupo> grupos = new ArrayList<>();
+    private List<String> obtenerGrupos(List<Opcion> opciones) {
+        List<String> grupo = new ArrayList<>();
         for (Opcion opcion : opciones) {
             if (opcion instanceof Grupo) {
-                grupos.add((Grupo) opcion);
+                Grupo grupoOpcion = (Grupo) opcion;
+                grupo.add(grupoOpcion.obtenerGrupo());
             }
         }
-        return grupos;
+        return grupo;
     }
 
     @Override
     public void mostrarOpciones(List<Opcion> opciones, Pane contenedor) {
         spinners = new ArrayList<>();
         
-        ObservableList<Grupo> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
+        ObservableList<String> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
 
         for (Opcion opcion : opciones) {
             if (opcion instanceof Grupo) {
@@ -38,11 +39,11 @@ public class EleccionGrupalVista implements OpcionesVista {
 
                 Label opcionLabel = new Label(opcion.obtenerTexto());
                 
-                Spinner<Grupo> grupoSpinner = new Spinner<>();
+                Spinner<String> grupoSpinner = new Spinner<>();
 
-                SpinnerValueFactory<Grupo> listaGrupoSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(observableListGrupo);
+                SpinnerValueFactory<String> listaGrupoSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(observableListGrupo);
                 grupoSpinner.setValueFactory(listaGrupoSpinner);
-                grupoSpinner.getValueFactory().setValue(grupo);
+                grupoSpinner.getValueFactory().setValue(grupo.obtenerGrupo());
 
                 spinners.add(grupoSpinner);
 
@@ -54,10 +55,6 @@ public class EleccionGrupalVista implements OpcionesVista {
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
-        List<Opcion> opcionesSeleccionadas = new ArrayList<>();
-        for (Spinner<Grupo> spinner : spinners) {
-            opcionesSeleccionadas.add(spinner.getValue());
-        }
-        return opcionesSeleccionadas;
+        return null;
     }
 }
