@@ -29,6 +29,7 @@ public class FabricaOpciones {
         return listaOpciones;
 
     }
+
     public static  List<Opcion> crearListaOrdenada(List<String> contenidoOpciones, List<String> ordenCorrecto, Estado estadoIndicado ) {
 
         int posicionEnLista;
@@ -46,7 +47,6 @@ public class FabricaOpciones {
         }
         return listaOpciones;
     }
-
 
     public static List<Opcion> crearListaSimple(List<String> contenidoOpciones, List<String> posicionesDeCorrectas, Estado estado){
 
