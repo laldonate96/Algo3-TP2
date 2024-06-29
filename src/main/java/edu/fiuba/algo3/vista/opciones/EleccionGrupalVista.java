@@ -5,6 +5,7 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
@@ -16,6 +17,7 @@ import javafx.scene.layout.HBox;
 public class EleccionGrupalVista implements OpcionesVista {
 
     private List<Spinner<String>> spinners;
+    private List<Grupo> opcionesOriginales;
 
     private List<String> obtenerGrupos(List<Opcion> opciones) {
         List<String> grupo = new ArrayList<>();
@@ -55,6 +57,18 @@ public class EleccionGrupalVista implements OpcionesVista {
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
-        return null;
+          List<Opcion> opcionesDelJugador = new ArrayList<>();
+        
+        for (int i = 0; i < spinners.size(); i++) {
+            Spinner<String> spinner = spinners.get(i);
+            String grupoSeleccionado = spinner.getValue();
+
+            Grupo opcionOriginal = opcionesOriginales.get(i);
+            Grupo opcionNueva = new Grupo(opcionOriginal.obtenerTexto(), grupoSeleccionado, new Correcta());
+            
+            opcionesDelJugador.add(opcionNueva);
+        }
+        
+        return opcionesDelJugador;
     }
 }
