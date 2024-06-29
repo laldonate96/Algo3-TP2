@@ -78,3 +78,10 @@
     -fx-text-fill: #e4e4e1;
 }
 
+.menu-button .label {
+    -fx-text-fill: black;
+}
+
+.menu-item .label {
+    -fx-text-fill: black;
+}

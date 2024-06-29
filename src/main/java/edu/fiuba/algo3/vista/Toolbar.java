@@ -10,14 +10,14 @@ public class Toolbar {
 
 	public VBox mostrarToolbar(Stage stage) 
 	{ 
-        //Button button1 = new Boton("FullScreen", "botonToolbar");
         button1.setOnAction(e -> fullscreen(stage)); 
-        Button button2 = new Boton("Musica", "botonToolbar");
+        MenuButton button2 = new MenuButton("Musica");
+        button2.getItems().addAll(new MenuItem("Tema 1"), new MenuItem("Tema 2"));
         Button button3 = new Boton("Ver", "botonToolbar");
         Button button4 = new Boton("Salir", "botonToolbar");
         button4.setOnAction(e -> cerrarJuego(stage));
         ToolBar toolbar = new ToolBar(button1, button2, button3, button4); 
-        VBox vbox = new VBox(toolbar); 
+        VBox vbox = new VBox(toolbar);
 
         return vbox;
 	}
