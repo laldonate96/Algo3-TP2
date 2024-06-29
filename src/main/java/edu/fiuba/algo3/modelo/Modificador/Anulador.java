@@ -19,9 +19,14 @@ public class Anulador extends Modificador {
         siguiente=new Nulo();
     }
 
-
     @Override
     public void modificarPuntajes(List<Respuesta> respuestas) {
+        this.aplicarModificador(respuestas);
+        siguiente.modificarPuntajes(respuestas);
+    }
+
+
+    private void aplicarModificador(List<Respuesta> respuestas) {
 
         if(llamados>1){
             factorDeMultiplicacion =0;
@@ -35,14 +40,9 @@ public class Anulador extends Modificador {
                     respuesta.multiplicarPuntaje(0);
                 }
             }
-
         }
     }
 
-    private void usarModificador(Jugador jugadorActivo) {
-        jugadorProtegido=jugadorActivo;
-
-    }
 
     public void establecerDuenio(Jugador jugadorActivo) {
         jugadorProtegido=jugadorActivo;

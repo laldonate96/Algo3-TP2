@@ -53,7 +53,7 @@ public class Exclusividad extends Modificador {
 
     @Override
     public void agregarModificador(Modificador modificador) {
-        if( esIgual(modificador)){
+        if( esIgual(modificador) ){
             llamados++;
         } else {
             siguiente.agregarModificador(modificador);
@@ -65,9 +65,6 @@ public class Exclusividad extends Modificador {
     }
 
 
-    private void usarModificador() {
-
-    }
 
 
 
