@@ -19,9 +19,5 @@ public class Simple extends Opcion {
         return this.texto.equals(simple.obtenerTexto());
     }
 
-    @Override
-    public String obtenerTipo() {
-        return "Simple";
-    }
 
 }

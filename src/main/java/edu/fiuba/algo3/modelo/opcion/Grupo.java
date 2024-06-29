@@ -10,9 +10,6 @@ public class Grupo extends Opcion {
         this.nombreGrupo = nombreGrupo;
     }
 
-
-
-
     @Override
     public boolean equals(Opcion opcion) {
         return opcion.equals(this);
@@ -23,9 +20,8 @@ public class Grupo extends Opcion {
         return this.texto.equals(grupo.texto) && this.nombreGrupo.equals(grupo.nombreGrupo);
     }
 
-    @Override
-    public String obtenerTipo() {
-        return "Grupo";
+    public String obtenerGrupo(){
+        return this.nombreGrupo;
     }
 
 

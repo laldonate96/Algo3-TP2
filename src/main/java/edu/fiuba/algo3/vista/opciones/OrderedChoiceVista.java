@@ -8,17 +8,15 @@ import javafx.scene.layout.Pane;
 
 public class OrderedChoiceVista implements OpcionesVista {
     private List<Opcion> opciones;
+    private List<InputEvent> selectores;
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador(){
-        return new ArrayList<>();
+        
     }
 
     @Override
     public void mostrarOpciones(List<Opcion> opcionesRecibidas, Pane contenedor) {
-        opciones = opcionesRecibidas;
 
-        //hacer que se puedan arrastrar, y que el orden -vertical- defina la posicion en la lista opciones
-        //opción facil: con botones con flechitas. Opcion difícil: drag and drop.
     }
 }
