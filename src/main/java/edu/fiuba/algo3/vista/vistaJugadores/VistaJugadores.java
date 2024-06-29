@@ -9,12 +9,11 @@ import edu.fiuba.algo3.vista.alertas.RepetirNombre;
 import edu.fiuba.algo3.vista.botones.Boton;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class VistaJugadores {
-    private static final int MAX_JUGADORES = 5;
+
     private List<String> listaDeJugadores;
     private VBox contenedor;
 
@@ -24,10 +23,7 @@ public class VistaJugadores {
     }
 
     public void agregarJugador(String jugador){
-        if (listaDeJugadores.size() >= MAX_JUGADORES) {
-            Alerta maxJugadores = new MaximoDeJugadoresAlcanzados();
-            maxJugadores.mostrarAlerta();
-        } else if (this.listaDeJugadores.contains(jugador)){
+        if (this.listaDeJugadores.contains(jugador)){
             Alerta repetirNombre = new RepetirNombre();
             repetirNombre.mostrarAlerta();
         } else {
@@ -49,10 +45,8 @@ public class VistaJugadores {
         for (String jugador : this.listaDeJugadores) {
             Boton botonJugador = new Boton(jugador, "botonJugador");
             botonJugador.setOnAction(event -> eliminarJugador(jugador));
-            
-            botonJugador.setPrefWidth(150); 
             botonJugador.setMaxWidth(200);   
-            HBox.setHgrow(botonJugador, Priority.NEVER); 
+            VBox.setVgrow(botonJugador, Priority.NEVER); 
             
             VBox.setMargin(botonJugador, new Insets(10, 0, 10, 0));  
             

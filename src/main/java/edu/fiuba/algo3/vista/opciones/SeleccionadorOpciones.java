@@ -3,29 +3,36 @@ package edu.fiuba.algo3.vista.opciones;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.vista.alertas.Alerta;
 import edu.fiuba.algo3.vista.alertas.AlgoSalioMal;
 import javafx.scene.layout.Pane;
 
 public class SeleccionadorOpciones {
-    public static void seleccionarVistaOpciones(List<Opcion> opciones, String tipoPregunta, Pane pane){
+    public static void seleccionarVistaOpciones(List<Opcion> opciones, Pregunta pregunta, Pane pane){
+        String preguntaString = pregunta.getClass().toString();
+        String tipoPregunta = preguntaString.substring(preguntaString.lastIndexOf('.') + 1);
         switch (tipoPregunta) {
-            case "Simple":
-                SimpleVista simpleVista = new SimpleVista();
-                simpleVista.mostrarOpciones(opciones, pane);
+            case "VerdaderoFalso":
+                VerdaderoOFalsoVista verdaderoOFalsoVista = new VerdaderoOFalsoVista();
+                verdaderoOFalsoVista.mostrarOpciones(opciones, pane);
                 break;
-            case "Grupo":
-                EleccionGrupalVista eleccionGrupalVista = new EleccionGrupalVista();
-                eleccionGrupalVista.mostrarOpciones(opciones, pane);
+            case "MultipleChoice":
+                MultipleChoiceVista multipleChoiceVista = new MultipleChoiceVista();
+                multipleChoiceVista.mostrarOpciones(opciones, pane);
                 break;
-            case "Ordenada":
+            case "OrderedChoice":
                 OrderedChoiceVista orderedChoiceVista = new OrderedChoiceVista();
                 orderedChoiceVista.mostrarOpciones(opciones, pane);
+                break;
+            case "GroupChoice":
+                EleccionGrupalVista eleccionGrupalVista = new EleccionGrupalVista();
+                eleccionGrupalVista.mostrarOpciones(opciones, pane);    
                 break;
             default:
                 Alerta alerta = new AlgoSalioMal();
                 alerta.mostrarAlerta();
-                 break;
+                break;
         }
     }
 }

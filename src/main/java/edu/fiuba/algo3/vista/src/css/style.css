@@ -64,8 +64,8 @@
 .botonModificador{
     -fx-padding: 5px;
     -fx-font-size: 20px;
-    -fx-background-color: #F1C40F;
-    -fx-text-fill: #000000;
+    -fx-background-color: #2980b9;
+    -fx-text-fill: #F1C40F;
     -fx-background-radius: 50%;
     -fx-border-radius: 50%;
     -fx-margin: 0px;
@@ -75,8 +75,7 @@
 
 .botonModificador:hover{
     -fx-background-color: #B84C3C;
-    -fx-text-fill: #000000;
-
+    -fx-text-fill: #e4e4e1;
 }
 
 .menu-button .label {
