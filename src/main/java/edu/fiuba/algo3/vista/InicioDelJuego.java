@@ -22,7 +22,11 @@ public class InicioDelJuego extends Application {
     public void abrirCargaJugadores() {
         CargarJugadores cargarJugadores = new CargarJugadores(toolbar);
         try {
-            cargarJugadores.start(new Stage());
+            Stage stageNuevo = new Stage();
+            if (ventanaPrincipal.isFullScreen()) {
+                stageNuevo.setFullScreen(true);
+            }
+            cargarJugadores.start(stageNuevo);
             ventanaPrincipal.close();
         } catch (Exception e) {
             Alerta algoSalioMal = new AlgoSalioMal();
@@ -69,7 +73,6 @@ public class InicioDelJuego extends Application {
 
         primaryStage.setTitle("Algohoot");
         primaryStage.setScene(escenaDelJuego);
-        primaryStage.setResizable(false);  
         primaryStage.show();
     }
 }

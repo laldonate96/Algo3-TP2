@@ -27,6 +27,6 @@ public class ControladorMusica {
     }
 
     public void ajustarVolumen(double volumen) {
-        reproductor.establecerVolumen(volumen);
+        reproductor.ajustarVolumen(volumen);
     }
 }

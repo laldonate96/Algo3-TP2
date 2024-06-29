@@ -83,7 +83,6 @@ public class CargarJugadores extends Application {
         scene.getStylesheets().add(css);
 
         stage.setScene(scene);
-        stage.setResizable(false);
         stage.show();
     }
 

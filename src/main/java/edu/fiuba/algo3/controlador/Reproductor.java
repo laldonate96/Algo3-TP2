@@ -7,6 +7,7 @@ import javafx.scene.media.MediaPlayer;
 public class Reproductor {
     private String tema;
     private MediaPlayer mediaPlayer;
+    private double volumen = 0.1;
 
     public Reproductor() {
         tema = "recursos/musica/Tema 1.mp3";
@@ -17,6 +18,12 @@ public class Reproductor {
         String mediaPath = Paths.get(tema).toUri().toString();
         Media musica = new Media(mediaPath);
         mediaPlayer = new MediaPlayer(musica);
+        mediaPlayer.setVolume(volumen);
+
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.seek(mediaPlayer.getStartTime());
+            mediaPlayer.play();
+        });
     }
 
     public void reproducir() {
@@ -35,6 +42,7 @@ public class Reproductor {
             mediaPlayer.stop();
         }
         inicializarMediaPlayer();
+        mediaPlayer.play();
     }
 
     public void detener() {
@@ -50,19 +58,19 @@ public class Reproductor {
     public void pausar() {
         try {
             if (mediaPlayer != null) {
-                mediaPlayer.pause();
-            }
-            if (mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
-                mediaPlayer.play();
-            } else {
-                mediaPlayer.pause();
+                if (mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
+                    mediaPlayer.play();
+                } else {
+                    mediaPlayer.pause();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void establecerVolumen(double volume) {
+    public void ajustarVolumen(double volume) {
+        this.volumen = volume;
         if (mediaPlayer != null) {
             mediaPlayer.setVolume(volume);
         }

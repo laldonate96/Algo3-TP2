@@ -85,6 +85,11 @@
 
 .menu-button:hover {
     -fx-background-color: #2980b9;
+    -fx-cursor: hand;
+}
+
+.menu-item {
+    -fx-cursor: hand;
 }
 
 .menu-item .label {
