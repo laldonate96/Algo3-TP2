@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.Pane;
 
-public class SimpleVista implements OpcionesVista {
+public class MultipleChoiceVista implements OpcionesVista {
     private List<CheckBox> checkBoxsOpciones;
     private List<Opcion> opciones;
     
