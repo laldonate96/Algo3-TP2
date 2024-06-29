@@ -15,5 +15,6 @@ public class ControladorActivarBoton implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         this.boton.setStyle("-fx-background-color: grey;");
+        this.boton.setDisable(true);
     }
 }

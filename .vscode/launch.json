@@ -6,9 +6,20 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Toolbar",
+            "name": "VistaPrueba2",
             "request": "launch",
-            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.Toolbar",
+            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.VistaPrueba2",
+            "projectName": "tp2"
+        },
+        {
+            "type": "java",
+            "name": "TurnoVista",
+            "request": "launch",
+            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.TurnoVista",
+            "projectName": "tp2"
+        },
+        {
+            "type": "java",
             "name": "PreguntaVista",
             "request": "launch",
             "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.PreguntaVista",
@@ -40,20 +51,6 @@
             "name": "PreguntaLayout",
             "request": "launch",
             "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.PreguntaLayout",
-            "projectName": "tp2"
-        },
-        {
-            "type": "java",
-            "name": "inicioDelJuego",
-            "request": "launch",
-            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.inicioDelJuego",
-            "projectName": "tp2"
-        },
-        {
-            "type": "java",
-            "name": "verdaderoOFalso",
-            "request": "launch",
-            "mainClass": "edu.fiuba.algo3/edu.fiuba.algo3.vista.verdaderoOFalso",
             "projectName": "tp2"
         },
         {

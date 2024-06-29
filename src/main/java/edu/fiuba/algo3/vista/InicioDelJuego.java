@@ -17,11 +17,16 @@ import java.net.URL;
 
 public class InicioDelJuego extends Application {
     private Stage ventanaPrincipal;
+    private Toolbar toolbar = new Toolbar();
 
     public void abrirCargaJugadores() {
-        CargarJugadores cargarJugadores = new CargarJugadores();
+        CargarJugadores cargarJugadores = new CargarJugadores(toolbar);
         try {
-            cargarJugadores.start(new Stage());
+            Stage stageNuevo = new Stage();
+            if (ventanaPrincipal.isFullScreen()) {
+                stageNuevo.setFullScreen(true);
+            }
+            cargarJugadores.start(stageNuevo);
             ventanaPrincipal.close();
         } catch (Exception e) {
             Alerta algoSalioMal = new AlgoSalioMal();
@@ -35,8 +40,6 @@ public class InicioDelJuego extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Reproductor reproductor = new Reproductor();
-        reproductor.reproducir();
         this.ventanaPrincipal = primaryStage;
 
         Text titulo = new Text("Bienvenido a Algohoot");
@@ -51,8 +54,7 @@ public class InicioDelJuego extends Application {
         centerBox.getChildren().addAll(titulo, botonJugar);
         centerBox.setAlignment(Pos.CENTER);
 
-        Toolbar toolbar = new Toolbar();
-        VBox toolbarBox = toolbar.mostrarToolbar(primaryStage);
+        VBox toolbarBox = this.toolbar.mostrarToolbar(primaryStage);
 
         BorderPane root = new BorderPane();
         root.setTop(toolbarBox);
@@ -66,12 +68,11 @@ public class InicioDelJuego extends Application {
             String css = cssURL.toExternalForm();
             escenaDelJuego.getStylesheets().add(css);
         } else {
-            System.err.println("CSS file not found: " + cssPath);
+            System.err.println("Archivo CSS no encontrado: " + cssPath);
         }
 
         primaryStage.setTitle("Algohoot");
         primaryStage.setScene(escenaDelJuego);
-        primaryStage.setResizable(false);  
         primaryStage.show();
     }
 }
