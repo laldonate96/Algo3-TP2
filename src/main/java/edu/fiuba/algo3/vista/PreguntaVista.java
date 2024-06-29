@@ -45,11 +45,12 @@ public class PreguntaVista extends Application{
 
         Text enunciado = new Text();
         enunciado.getStyleClass().add("enunciado");
+        enunciado.setWrappingWidth(600);
 
         Animacion maquinaDeEscribir = new MaquinaDeEscribir(2, enunciado, pregunta.obtenerEnunciado());
         maquinaDeEscribir.aplicarAnimacion();
 
-        HBox centerBox = new HBox(20);
+        VBox centerBox = new VBox(20);
         centerBox.getChildren().addAll(enunciado);
         centerBox.setAlignment(Pos.CENTER);
 
