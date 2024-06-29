@@ -5,7 +5,7 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.GridPane;
 
 public class VerdaderoOFalsoVista implements OpcionesVista {
 
@@ -25,7 +25,7 @@ public class VerdaderoOFalsoVista implements OpcionesVista {
     }
 
     @Override
-    public void mostrarOpciones(List<Opcion> opciones, Pane contenedor) {
+    public void mostrarOpciones(List<Opcion> opciones, GridPane contenedor) {
         this.opciones = opciones;
         opcion1 = new CheckBox(opciones.get(0).obtenerTexto());
         opcion2 = new CheckBox(opciones.get(1).obtenerTexto());
@@ -42,6 +42,7 @@ public class VerdaderoOFalsoVista implements OpcionesVista {
             }
         });
 
-        contenedor.getChildren().addAll(opcion1, opcion2);
+        contenedor.add(opcion1, 0, 0);
+        contenedor.add(opcion2, 0, 1);
     }
 }

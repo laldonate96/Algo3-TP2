@@ -6,8 +6,8 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class OrderedChoiceVista implements OpcionesVista {
@@ -24,7 +24,7 @@ public class OrderedChoiceVista implements OpcionesVista {
     }
 
     @Override
-    public void mostrarOpciones(List<Opcion> opcionesRecibidas, Pane contenedor) {
+    public void mostrarOpciones(List<Opcion> opcionesRecibidas, GridPane contenedor) {
         opciones = opcionesRecibidas;
         selectores = new ArrayList<>();
         int cantidadOpciones = opciones.size();

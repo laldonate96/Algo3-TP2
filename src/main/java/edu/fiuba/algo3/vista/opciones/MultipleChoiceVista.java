@@ -5,7 +5,7 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.GridPane;
 
 public class MultipleChoiceVista implements OpcionesVista {
     private List<CheckBox> checkBoxsOpciones;
@@ -23,7 +23,7 @@ public class MultipleChoiceVista implements OpcionesVista {
     }
 
     @Override
-    public void mostrarOpciones(List<Opcion> opcionesRecibidas, Pane contenedor) {
+    public void mostrarOpciones(List<Opcion> opcionesRecibidas, GridPane contenedor) {
         opciones = opcionesRecibidas;
         checkBoxsOpciones = new ArrayList<>();
         for(Opcion opcion : opciones){

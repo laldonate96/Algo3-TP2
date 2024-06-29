@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.GridPane;
 
 public class EleccionGrupalVista implements OpcionesVista {
 
@@ -28,7 +28,7 @@ public class EleccionGrupalVista implements OpcionesVista {
     }
 
     @Override
-    public void mostrarOpciones(List<Opcion> opciones, Pane contenedor) {
+    public void mostrarOpciones(List<Opcion> opciones, GridPane contenedor) {
         spinners = new ArrayList<>();
         
         ObservableList<String> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));

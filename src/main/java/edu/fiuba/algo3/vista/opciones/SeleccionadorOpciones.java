@@ -6,10 +6,10 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.vista.alertas.Alerta;
 import edu.fiuba.algo3.vista.alertas.AlgoSalioMal;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.GridPane;
 
 public class SeleccionadorOpciones {
-    public static void seleccionarVistaOpciones(List<Opcion> opciones, Pregunta pregunta, Pane pane){
+    public static void seleccionarVistaOpciones(List<Opcion> opciones, Pregunta pregunta, GridPane pane){
         String preguntaString = pregunta.getClass().toString();
         String tipoPregunta = preguntaString.substring(preguntaString.lastIndexOf('.') + 1);
         switch (tipoPregunta) {
