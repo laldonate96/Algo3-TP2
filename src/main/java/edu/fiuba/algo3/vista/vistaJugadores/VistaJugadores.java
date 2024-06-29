@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.fiuba.algo3.vista.alertas.Alerta;
-import edu.fiuba.algo3.vista.alertas.MaximoDeJugadoresAlcanzados;
 import edu.fiuba.algo3.vista.alertas.RepetirNombre;
 import edu.fiuba.algo3.vista.botones.Boton;
 import javafx.geometry.Insets;

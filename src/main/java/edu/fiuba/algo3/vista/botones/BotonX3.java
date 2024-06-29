@@ -16,7 +16,6 @@ public class BotonX3 extends Button {
         super();
         this.setText("X3");
         this.setMinHeight(100);
-//        this.setStyle("-fx-background-color: red;");
         this.getStyleClass().add(claseCSSDeBoton);
         this.setOnMouseEntered(event -> this.setCursor(Cursor.HAND));
         this.setOnMouseExited(event -> this.setCursor(Cursor.DEFAULT));

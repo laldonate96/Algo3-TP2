@@ -6,12 +6,13 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
+import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class VistaPrueba extends Application {
@@ -23,14 +24,16 @@ public class VistaPrueba extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        List<String> grupos = List.of("a", "b");
-        List<List<String>> opcionesGrupo = List.of(List.of("opcion1"), List.of("opcion2"));
+        List<String> opcionesOrdered = List.of("opcion1", "opcion2");
 
-        List<Opcion> opciones = FabricaOpciones.crearListaGrupo(grupos, opcionesGrupo, new Correcta());
-        Pregunta pregunta = new GroupChoice("pepe", opciones, new Clasica(1), "categoria");
+        List<Opcion> opciones = FabricaOpciones.crearListaOrdenada(opcionesOrdered, List.of("2", "1"), new Correcta());
+        Pregunta pregunta = new OrderedChoice("pepe", opciones, new Clasica(1), "categoria");
+
+        System.out.println("prueba");
+
+        GridPane contenedor = new GridPane();
 
 
-        VBox contenedor = new VBox();
 
         SeleccionadorOpciones.seleccionarVistaOpciones(opciones, pregunta, contenedor);
 

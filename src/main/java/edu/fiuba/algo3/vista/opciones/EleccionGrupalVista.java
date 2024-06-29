@@ -5,59 +5,70 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 public class EleccionGrupalVista implements OpcionesVista {
 
-    private List<Spinner<Grupo>> spinners;
+    private List<Spinner<String>> spinners;
+    private List<Grupo> opcionesOriginales;
 
-    private List<Grupo> obtenerGrupos(List<Opcion> opciones) {
-        List<Grupo> grupos = new ArrayList<>();
+    private List<String> obtenerGrupos(List<Opcion> opciones) {
+        List<String> grupos = new ArrayList<>();
         for (Opcion opcion : opciones) {
-            if (opcion instanceof Grupo) {
-                grupos.add((Grupo) opcion);
+            if (opcion instanceof Grupo && !grupos.contains(((Grupo) opcion).obtenerGrupo())){
+                Grupo grupoOpcion = (Grupo) opcion;
+                grupos.add(grupoOpcion.obtenerGrupo());
             }
         }
         return grupos;
     }
 
     @Override
-    public void mostrarOpciones(List<Opcion> opciones, Pane contenedor) {
-        spinners = new ArrayList<>();
-        
-        ObservableList<Grupo> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
+    public void mostrarOpciones(List<Opcion> opciones, GridPane contenedor) {
+        ObservableList<String> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
 
         for (Opcion opcion : opciones) {
             if (opcion instanceof Grupo) {
                 Grupo grupo = (Grupo) opcion;
 
                 Label opcionLabel = new Label(opcion.obtenerTexto());
+                opcionLabel.getStyleClass().add("labelOpcion");
                 
-                Spinner<Grupo> grupoSpinner = new Spinner<>();
+                Spinner<String> grupoSpinner = new Spinner<>();
 
-                SpinnerValueFactory<Grupo> listaGrupoSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(observableListGrupo);
+                SpinnerValueFactory<String> listaGrupoSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(observableListGrupo);
                 grupoSpinner.setValueFactory(listaGrupoSpinner);
-                grupoSpinner.getValueFactory().setValue(grupo);
+                grupoSpinner.getValueFactory().setValue(grupo.obtenerGrupo());
 
-                spinners.add(grupoSpinner);
+                HBox hbox = new HBox(10);
+                hbox.getChildren().addAll(grupoSpinner, opcionLabel);
 
-                contenedor.getChildren().add(opcionLabel);
-                contenedor.getChildren().add(grupoSpinner);
+                contenedor.add(hbox, 0, opciones.indexOf(opcion));
             }
         }
     }
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
-        List<Opcion> opcionesSeleccionadas = new ArrayList<>();
-        for (Spinner<Grupo> spinner : spinners) {
-            opcionesSeleccionadas.add(spinner.getValue());
+          List<Opcion> opcionesDelJugador = new ArrayList<>();
+
+        for (int i = 0; i < spinners.size(); i++) {
+            Spinner<String> spinner = spinners.get(i);
+            String grupoSeleccionado = spinner.getValue();
+
+            Grupo opcionOriginal = opcionesOriginales.get(i);
+            Grupo opcionNueva = new Grupo(opcionOriginal.obtenerTexto(), grupoSeleccionado, new Correcta());
+
+            opcionesDelJugador.add(opcionNueva);
         }
-        return opcionesSeleccionadas;
+
+        return opcionesDelJugador;
     }
 }

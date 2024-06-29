@@ -6,9 +6,8 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 public class OrderedChoiceVista implements OpcionesVista {
     private List<Spinner<Integer>> selectores;
@@ -24,23 +23,19 @@ public class OrderedChoiceVista implements OpcionesVista {
     }
 
     @Override
-    public void mostrarOpciones(List<Opcion> opcionesRecibidas, Pane contenedor) {
+    public void mostrarOpciones(List<Opcion> opcionesRecibidas, GridPane contenedor) {
         opciones = opcionesRecibidas;
-        selectores = new ArrayList<>();
         int cantidadOpciones = opciones.size();
-        VBox vbox = new VBox(10); 
 
         for (Opcion opcion : opciones) {
             Label labelOpcion = new Label(opcion.obtenerTexto()); 
+            labelOpcion.getStyleClass().add("labelOpcion");
             Spinner<Integer> spinnerOpcion = new Spinner<>(1, cantidadOpciones, 1);
-            selectores.add(spinnerOpcion);
-
+            
             HBox hbox = new HBox(10);
-            hbox.getChildren().addAll(labelOpcion, spinnerOpcion);
+            hbox.getChildren().addAll(spinnerOpcion, labelOpcion);
 
-            vbox.getChildren().add(hbox);
+            contenedor.add(hbox, 0, opciones.indexOf(opcion));
         }
-
-        contenedor.getChildren().add(vbox);
     }
 }

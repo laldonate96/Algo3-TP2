@@ -23,6 +23,7 @@
     -fx-font-size: 25px;
     -fx-fill: #ECF0F1; 
 }
+
 .button{
     -fx-padding: 20px;
     -fx-font-size: 14px;
@@ -95,3 +96,23 @@
     -fx-text-fill: black;
 }
 
+.check-box .text {
+    -fx-font-size: 15px;
+    -fx-fill: #2ECC71;
+    -fx-font-weight: bold;
+}
+
+.enunciado{
+    -fx-font-size: 20px;
+    -fx-fill: #F1C40F; 
+}
+
+.labelOpcion .text{
+    -fx-font-size: 15px;
+    -fx-fill: #2ECC71; 
+}
+
+.spinner{
+    -fx-font-size: 15px;
+    -fx-text-fill: #2ECC71; 
+}
