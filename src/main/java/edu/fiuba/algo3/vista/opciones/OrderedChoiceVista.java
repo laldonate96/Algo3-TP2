@@ -33,7 +33,7 @@ public class OrderedChoiceVista implements OpcionesVista {
             Spinner<Integer> spinnerOpcion = new Spinner<>(1, cantidadOpciones, 1);
             
             HBox hbox = new HBox(10);
-            hbox.getChildren().addAll(labelOpcion, spinnerOpcion);
+            hbox.getChildren().addAll(spinnerOpcion, labelOpcion);
 
             contenedor.add(hbox, 0, opciones.indexOf(opcion));
         }

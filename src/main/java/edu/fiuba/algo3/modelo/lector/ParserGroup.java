@@ -43,10 +43,9 @@ public class ParserGroup implements LectorParser {
                     contenidoOpciones.add(preguntaJson.getString(opcionKey));
                 }
             }
-
             contenidoOpcionesPorGrupo.add(contenidoOpciones);
+            contenidoOpciones = new ArrayList<>();
         }
-
         List<Opcion> opciones=FabricaOpciones.crearListaGrupo(nombresGrupos,contenidoOpcionesPorGrupo, new Correcta());
         return FabricaPreguntas.crearPreguntaGroupChoice(enunciado, opciones, puntaje, categoria);
     }

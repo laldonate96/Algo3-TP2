@@ -6,6 +6,9 @@ import java.util.List;
 import org.json.JSONObject;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
+import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
+import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
@@ -21,14 +24,14 @@ public class FabricaPreguntas {
     }
 
     public static Pregunta crearPreguntaMultipleChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new VerdaderoFalso(enunciado, opciones, puntaje, categoria);
+        return new MultipleChoice(enunciado, opciones, puntaje, categoria);
     }
 
     public static Pregunta crearPreguntaOrderedChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new VerdaderoFalso(enunciado, opciones, puntaje, categoria);
+        return new OrderedChoice(enunciado, opciones, puntaje, categoria);
     }
 
     public static Pregunta crearPreguntaGroupChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new VerdaderoFalso(enunciado, opciones, puntaje, categoria);
+        return new GroupChoice(enunciado, opciones, puntaje, categoria);
     }
 }
