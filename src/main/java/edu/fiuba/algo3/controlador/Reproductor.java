@@ -61,4 +61,10 @@ public class Reproductor {
             e.printStackTrace();
         }
     }
+
+    public void establecerVolumen(double volume) {
+        if (mediaPlayer != null) {
+            mediaPlayer.setVolume(volume);
+        }
+    }
 }

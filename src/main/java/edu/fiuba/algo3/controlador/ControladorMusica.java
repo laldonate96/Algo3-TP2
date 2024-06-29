@@ -25,4 +25,8 @@ public class ControladorMusica {
         reproductor.establecerTema(tema);
         reproductor.reproducir();
     }
+
+    public void ajustarVolumen(double volumen) {
+        reproductor.establecerVolumen(volumen);
+    }
 }

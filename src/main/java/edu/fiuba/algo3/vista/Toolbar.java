@@ -22,8 +22,14 @@ public class Toolbar {
         MenuItem item3 = new MenuItem("Tema 2");
         item3.setOnAction(e -> controladorMusica.cambiarMusica("recursos/musica/Tema 2.mp3"));
         MenuItem item4 = new MenuItem("Tema 3");
+        Slider sliderVolumen = new Slider(0, 1, 0.5);
+        sliderVolumen.valueProperty().addListener((observable, oldValue, newValue) -> {
+            controladorMusica.ajustarVolumen(newValue.doubleValue());
+        });
+        CustomMenuItem sliderMenuItem = new CustomMenuItem(sliderVolumen);
+        sliderMenuItem.setHideOnClick(false);
         item4.setOnAction(e -> controladorMusica.cambiarMusica("recursos/musica/Tema 3.mp3"));
-        button2.getItems().addAll(item1, item2, item3, item4);
+        button2.getItems().addAll(item1, item2, item3, item4, sliderMenuItem);
         Button button3 = new Boton("Ver", "botonToolbar");
         Button button4 = new Boton("Salir", "botonToolbar");
         button4.setOnAction(e -> cerrarJuego(stage));
