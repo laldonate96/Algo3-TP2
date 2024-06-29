@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
 import java.util.List;
 
 public abstract class Puntaje {
     protected int puntaje = 1;
+    protected List<Modificador> validos;
 
     public abstract void asignarPuntaje(Respuesta respuesta);
 
@@ -15,4 +17,7 @@ public abstract class Puntaje {
         }
     }
 
+    public boolean modificadorEsValido(Modificador modificador) {
+     return validos.contains(modificador);
+    }
 }

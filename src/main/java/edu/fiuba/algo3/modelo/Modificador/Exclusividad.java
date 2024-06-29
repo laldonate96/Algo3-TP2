@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class Exclusividad extends Modificador {
-    private final Modificador siguiente;
+
     private int llamados;
 
     private int factorDeMultiplicacion;
@@ -48,7 +48,7 @@ public class Exclusividad extends Modificador {
 
     @Override
     public void establecerDuenio(Jugador jugadorActivo) {
-
+        duenio=jugadorActivo;
     }
 
     @Override
@@ -59,6 +59,7 @@ public class Exclusividad extends Modificador {
             siguiente.agregarModificador(modificador);
         }
     }
+
 
     private boolean esIgual(Modificador modificador) {
         return modificador.getClass().equals(this.getClass());

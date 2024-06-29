@@ -9,7 +9,7 @@ public class Nulo extends Modificador {
 
 
 
-    private Modificador siguiente;
+
 
     public Nulo() {
         siguiente = null;
@@ -39,5 +39,15 @@ public class Nulo extends Modificador {
 
     @Override
     public void actualizar(List<Modificador> modificadores) {
+    }
+
+    @Override
+    protected List<String> guardarModificadores(List<String> listaUsados) {
+
+        if (siguiente == null) {
+            return listaUsados;
+        } else {
+            return super.guardarModificadores(listaUsados);
+        }
     }
 }

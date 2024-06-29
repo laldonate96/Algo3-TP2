@@ -40,6 +40,8 @@ public class Turno {
 
     }
 
+
+
     private void validarOpciones(List<Opcion> opcionesJugador, List<Opcion> opcionesPregunta) {
         for (Opcion opcionPregunta:opcionesPregunta) {
             for (Opcion opcion : opcionesJugador) {

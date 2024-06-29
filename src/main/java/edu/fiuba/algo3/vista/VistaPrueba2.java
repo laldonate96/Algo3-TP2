@@ -15,7 +15,7 @@ import edu.fiuba.algo3.vista.opciones.VerdaderoOFalsoVista;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class VistaPrueba2 extends Application {
@@ -35,7 +35,6 @@ public class VistaPrueba2 extends Application {
         List<Opcion> opciones = FabricaOpciones.crearListaSimple(contenidoOpciones, posicionesDeCorrectas, new Correcta());
 
 
-        HBox contenedor = new HBox();
 
         Button boton1= new BotonEnviarRespuesta(new Turno(),opciones,new Multiplicador(1));
         Button boton2= new BotonAnulador(new Jugador("pjepe", List.of(new Multiplicador(1))),new Multiplicador(1),"botonModificador");
@@ -43,7 +42,12 @@ public class VistaPrueba2 extends Application {
         Button boton4= new BotonX2(new Jugador("pope", List.of(new Multiplicador(1))),new Multiplicador(1),"botonModificador");
         Button boton5= new BotonX3(new Jugador("ppejjjjpe", List.of(new Multiplicador(1))),new Multiplicador(1),"botonModificador");
         Button boton6= new BotonExclusividad(new Jugador("bpepe", List.of(new Multiplicador(1))),new Multiplicador(1),"botonModificador");
-        contenedor.getChildren().addAll(boton1,boton2,boton3,boton6,boton4,boton5);
+
+        GridPane contenedor = new GridPane();
+        List<Button> listaBotones= List.of(boton1,boton2,boton3,boton4,boton5, boton6);
+        for (Button boton: listaBotones){
+            contenedor.add(boton,0,listaBotones.indexOf(boton));
+        }
 
         VerdaderoOFalsoVista verdaderoOFalsoVista = new VerdaderoOFalsoVista();
         verdaderoOFalsoVista.mostrarOpciones(opciones, contenedor);

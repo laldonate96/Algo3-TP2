@@ -5,7 +5,7 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
+
 import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
@@ -35,7 +35,7 @@ public class VistaPrueba extends Application {
 
 
 
-        SeleccionadorOpciones.seleccionarVistaOpciones(opciones, pregunta, contenedor);
+        SeleccionadorOpciones.seleccionarVistaOpciones(pregunta, contenedor);
 
         Scene scene = new Scene(contenedor, 300, 200);
 

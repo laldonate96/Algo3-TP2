@@ -3,12 +3,12 @@ package edu.fiuba.algo3.modelo;
 import java.util.Iterator;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
 import edu.fiuba.algo3.modelo.lector.mezclador.Mezclador;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorTurno.ModificadorTurno;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Turno;
@@ -56,7 +56,7 @@ public class AlgoHoot3 {
         return rondas;
     }
 
-    public void jugarTurno(List<Opcion> opcionesElegidas, ModificadorPuntaje modificadorPuntaje) {
+    public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificadorPuntaje) {
         turnoActual.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
         // jugadorActual=iteradorJugadores.next();
         // if (!iteradorJugadores.hasNext()){
@@ -86,5 +86,9 @@ public class AlgoHoot3 {
 
     public Jugador obtenerJugadorActual() {
         return jugadorActual;
+    }
+
+    public Jugador victorioso(){
+        return new Jugador("Tu vieja", FabricaModificadores.crearListaModificadores());
     }
 }

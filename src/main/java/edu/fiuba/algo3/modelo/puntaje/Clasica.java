@@ -10,6 +10,7 @@ public class Clasica extends Puntaje {
         cantidadCorrectasEsperada= cantidadCorrectasPregunta;
     }
 
+
     @Override
     public void asignarPuntaje(Respuesta respuesta) {
         int cantidadCorrectas=0;

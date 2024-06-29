@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Multiplicador extends Modificador {
     private final int factorDeMultiplicacion;
-    private Jugador duenio;
-    private Modificador siguiente;
+
+
 
 
     public Multiplicador(int factorDeMultiplicacion){
@@ -37,11 +37,18 @@ public class Multiplicador extends Modificador {
         duenio=jugadorActivo;
     }
 
+    public boolean tieneFactor(int factorDeMultiplicacion){
+        return this.factorDeMultiplicacion==factorDeMultiplicacion;
+    }
+
     @Override
     public void agregarModificador(Modificador modificador) {
         siguiente.agregarModificador(modificador);
     }
 
-
-
+    @Override
+    protected List<String> guardarModificadores(List<String> listaUsados) {
+        listaUsados.add(this.getClass() + " por " + factorDeMultiplicacion + " por el jugador " + duenio.obtenerNombre() + "\n");
+        return siguiente.guardarModificadores(listaUsados);
+    }
 }

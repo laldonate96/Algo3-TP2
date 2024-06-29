@@ -9,9 +9,8 @@ import java.util.List;
 public class Anulador extends Modificador {
 
     private int factorDeMultiplicacion;
-    private Jugador jugadorProtegido;
     private int llamados;
-    private Modificador siguiente;
+
 
     public Anulador() {
         llamados=1;
@@ -34,7 +33,7 @@ public class Anulador extends Modificador {
 
         for (Respuesta respuesta : respuestas) {
             if(respuesta.esCorrecta()) {
-                if (respuesta.perteneceA(jugadorProtegido)) {
+                if (respuesta.perteneceA(duenio)) {
                     respuesta.multiplicarPuntaje(factorDeMultiplicacion);
                 } else {
                     respuesta.multiplicarPuntaje(0);
@@ -45,7 +44,7 @@ public class Anulador extends Modificador {
 
 
     public void establecerDuenio(Jugador jugadorActivo) {
-        jugadorProtegido=jugadorActivo;
+        duenio=jugadorActivo;
     }
 
     @Override
@@ -56,6 +55,7 @@ public class Anulador extends Modificador {
             siguiente.agregarModificador(modificador);
         }
     }
+
 
     private boolean esIgual(Modificador modificador) {
         return modificador.getClass().equals(this.getClass());
