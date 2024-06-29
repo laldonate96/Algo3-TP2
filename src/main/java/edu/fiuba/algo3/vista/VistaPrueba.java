@@ -24,9 +24,10 @@ public class VistaPrueba extends Application {
     @Override
     public void start(Stage primaryStage) {
     
-        List<String> contenidoOpciones = List.of("Verdadero", "Falso","Falso");
+        List<String> grupos = List.of("a", "b");
+        List<List<String>> opciones = List.of(List.of());
 
-        List<Opcion> opciones = FabricaOpciones.crearListaSimple(contenidoOpciones, List.of("0"), new Correcta());
+        List<Opcion> opciones = FabricaOpciones.crearListaGrupo(contenidoOpciones, contenidoOpcionesPorGrupo, estadoIndicado)
         Pregunta pregunta = new MultipleChoice("pepe", opciones, new Clasica(1), "categoria");
         
         VBox contenedor = new VBox();
