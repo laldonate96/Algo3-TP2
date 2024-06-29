@@ -10,41 +10,54 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 public class EleccionGrupalVista implements OpcionesVista {
-    private List<Spinner<String>> selectores;
-    private List<Opcion> opciones;
+
+    private List<Spinner<Grupo>> spinners;
+
+    private List<Grupo> obtenerGrupos(List<Opcion> opciones) {
+        List<Grupo> grupos = new ArrayList<>();
+        for (Opcion opcion : opciones) {
+            if (opcion instanceof Grupo) {
+                grupos.add((Grupo) opcion);
+            }
+        }
+        return grupos;
+    }
+
+    @Override
+    public void mostrarOpciones(List<Opcion> opciones, Pane contenedor) {
+        spinners = new ArrayList<>();
+        
+        ObservableList<Grupo> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
+
+        for (Opcion opcion : opciones) {
+            if (opcion instanceof Grupo) {
+                Grupo grupo = (Grupo) opcion;
+
+                Label opcionLabel = new Label(opcion.obtenerTexto());
+                
+                Spinner<Grupo> grupoSpinner = new Spinner<>();
+
+                SpinnerValueFactory<Grupo> listaGrupoSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(observableListGrupo);
+                grupoSpinner.setValueFactory(listaGrupoSpinner);
+                grupoSpinner.getValueFactory().setValue(grupo);
+
+                spinners.add(grupoSpinner);
+
+                contenedor.getChildren().add(opcionLabel);
+                contenedor.getChildren().add(grupoSpinner);
+            }
+        }
+    }
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
         List<Opcion> opcionesSeleccionadas = new ArrayList<>();
-        for (Spinner<String> selector : selectores) {
-            opcionesSeleccionadas.add(opciones.get(selector.getValue() - 1));
+        for (Spinner<Grupo> spinner : spinners) {
+            opcionesSeleccionadas.add(spinner.getValue());
         }
         return opcionesSeleccionadas;
-    }
-
-    @Override
-    public void mostrarOpciones(List<Opcion> opcionesRecibidas, Pane contenedor) {
-        opciones = opcionesRecibidas;
-        selectores = new ArrayList<>();
-        int cantidadOpciones = opciones.size();
-        VBox vbox = new VBox(10); 
-
-        for (Opcion opcion : opciones) {
-            Label labelOpcion = new Label(opcion.obtenerTexto()); 
-            Spinner<String> spinnerOpcion = new Spinner<>(1, cantidadOpciones, 1);
-            selectores.add(spinnerOpcion);
-
-            HBox hbox = new HBox(10);
-            hbox.getChildren().addAll(labelOpcion, spinnerOpcion);
-
-            vbox.getChildren().add(hbox);
-        }
-
-        contenedor.getChildren().add(vbox);
     }
 }
