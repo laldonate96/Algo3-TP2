@@ -106,3 +106,13 @@
     -fx-font-size: 20px;
     -fx-fill: #F1C40F; 
 }
+
+.labelOpcion .text{
+    -fx-font-size: 15px;
+    -fx-fill: #2ECC71; 
+}
+
+.spinner{
+    -fx-font-size: 15px;
+    -fx-text-fill: #2ECC71; 
+}

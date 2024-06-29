@@ -29,6 +29,7 @@ public class OrderedChoiceVista implements OpcionesVista {
 
         for (Opcion opcion : opciones) {
             Label labelOpcion = new Label(opcion.obtenerTexto()); 
+            labelOpcion.getStyleClass().add("labelOpcion");
             Spinner<Integer> spinnerOpcion = new Spinner<>(1, cantidadOpciones, 1);
             
             HBox hbox = new HBox(10);
