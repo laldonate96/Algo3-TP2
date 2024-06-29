@@ -5,9 +5,8 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
+import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;
@@ -23,15 +22,17 @@ public class VistaPrueba extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-    
-        List<String> contenidoOpciones = List.of("Verdadero", "Falso","Falso");
 
-        List<Opcion> opciones = FabricaOpciones.crearListaSimple(contenidoOpciones, List.of("0"), new Correcta());
-        Pregunta pregunta = new MultipleChoice("pepe", opciones, new Clasica(1), "categoria");
-        
+        List<String> grupos = List.of("a", "b");
+        List<List<String>> opcionesGrupo = List.of(List.of("opcion1"), List.of("opcion2"));
+
+        List<Opcion> opciones = FabricaOpciones.crearListaGrupo(grupos, opcionesGrupo, new Correcta());
+        Pregunta pregunta = new GroupChoice("pepe", opciones, new Clasica(1), "categoria");
+
+
         VBox contenedor = new VBox();
 
-        SeleccionadorOpciones.seleccionarVistaOpciones(opciones, pregunta, contenedor);     
+        SeleccionadorOpciones.seleccionarVistaOpciones(opciones, pregunta, contenedor);
 
         Scene scene = new Scene(contenedor, 300, 200);
 

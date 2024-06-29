@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import java.util.List;
 
 import edu.fiuba.algo3.controlador.ControladorDeJuego;
+import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
 import edu.fiuba.algo3.vista.alertas.NombreNoIngresado;
 import edu.fiuba.algo3.vista.botones.Boton;
 import edu.fiuba.algo3.vista.vistaJugadores.VistaJugadores;
@@ -24,11 +25,8 @@ public class CargarJugadores extends Application {
     private TextField inputJugador;
     private ControladorDeJuego controladorDeJuego;
     private int MAX_CARACTERES = 26;
-    private Toolbar toolbar;
-
-    public CargarJugadores(Toolbar toolbar) {
-        this.toolbar = toolbar;
-    }
+    private ControladorVentanaNueva controladorVentanaNueva = new ControladorVentanaNueva();
+    private PreguntaVista preguntaVista = new PreguntaVista();
 
     public static void main(String[] args) {
         launch(args);
@@ -55,6 +53,7 @@ public class CargarJugadores extends Application {
         inputJugador.setTextFormatter(formatearTexto);
 
         Boton botonJugar = new Boton("Jugar", "button");
+        botonJugar.setOnAction(event -> controladorVentanaNueva.abrirVentanaNueva(preguntaVista, ventanaPrincipal));
         Boton botonAgregar = new Boton("Agregar Jugador", "button");
 
         botonAgregar.setOnAction(event -> agregarJugador());
@@ -71,7 +70,7 @@ public class CargarJugadores extends Application {
         layout.getChildren().addAll(jugadoresLabel, inputJugador, buttonLayout, jugadores);
         layout.setAlignment(Pos.CENTER);
 
-        VBox toolbarBox = toolbar.mostrarToolbar(ventanaPrincipal);
+        VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(ventanaPrincipal);
 
         BorderPane root = new BorderPane();
         root.setTop(toolbarBox);
