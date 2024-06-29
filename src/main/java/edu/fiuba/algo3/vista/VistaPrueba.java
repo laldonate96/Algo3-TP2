@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
@@ -26,11 +27,21 @@ public class VistaPrueba extends Application {
         List<String> grupos = List.of("a", "b");
         List<List<String>> opcionesGrupo = List.of(List.of("opcion1"), List.of("opcion2"));
 
-        List<Opcion> opciones = FabricaOpciones.crearListaGrupo(grupos, opcionesGrupo, new Correcta());
+        // Convertir las listas inmutables en listas mutables
+        List<String> gruposMutables = new ArrayList<>(grupos);
+        List<List<String>> opcionesGrupoMutables = new ArrayList<>();
+        for (List<String> grupo : opcionesGrupo) {
+            opcionesGrupoMutables.add(new ArrayList<>(grupo));
+        }
+
+        List<Opcion> opciones = FabricaOpciones.crearListaGrupo(gruposMutables, opcionesGrupoMutables, new Correcta());
         Pregunta pregunta = new GroupChoice("pepe", opciones, new Clasica(1), "categoria");
 
+        System.out.println("prueba");
 
         VBox contenedor = new VBox();
+
+
 
         SeleccionadorOpciones.seleccionarVistaOpciones(opciones, pregunta, contenedor);
 
