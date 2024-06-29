@@ -40,6 +40,7 @@ public class EleccionGrupalVista implements OpcionesVista {
                 Grupo grupo = (Grupo) opcion;
 
                 Label opcionLabel = new Label(opcion.obtenerTexto());
+                opcionLabel.getStyleClass().add("labelOpcion");
                 
                 Spinner<String> grupoSpinner = new Spinner<>();
 
@@ -58,17 +59,17 @@ public class EleccionGrupalVista implements OpcionesVista {
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
           List<Opcion> opcionesDelJugador = new ArrayList<>();
-        
+
         for (int i = 0; i < spinners.size(); i++) {
             Spinner<String> spinner = spinners.get(i);
             String grupoSeleccionado = spinner.getValue();
 
             Grupo opcionOriginal = opcionesOriginales.get(i);
             Grupo opcionNueva = new Grupo(opcionOriginal.obtenerTexto(), grupoSeleccionado, new Correcta());
-            
+
             opcionesDelJugador.add(opcionNueva);
         }
-        
+
         return opcionesDelJugador;
     }
 }
