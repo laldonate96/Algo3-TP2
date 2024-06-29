@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
 import edu.fiuba.algo3.controlador.Reproductor;
 import edu.fiuba.algo3.vista.alertas.Alerta;
 import edu.fiuba.algo3.vista.alertas.AlgoSalioMal;
@@ -17,22 +18,8 @@ import java.net.URL;
 
 public class InicioDelJuego extends Application {
     private Stage ventanaPrincipal;
-    private Toolbar toolbar = new Toolbar();
-
-    public void abrirCargaJugadores() {
-        CargarJugadores cargarJugadores = new CargarJugadores(toolbar);
-        try {
-            Stage stageNuevo = new Stage();
-            if (ventanaPrincipal.isFullScreen()) {
-                stageNuevo.setFullScreen(true);
-            }
-            cargarJugadores.start(stageNuevo);
-            ventanaPrincipal.close();
-        } catch (Exception e) {
-            Alerta algoSalioMal = new AlgoSalioMal();
-            algoSalioMal.mostrarAlerta();
-        }
-    }
+    private CargarJugadores cargarJugadores = new CargarJugadores();
+    private ControladorVentanaNueva controladorVentanaNueva = new ControladorVentanaNueva();
 
     public static void main(String[] args) {
         launch(args);
@@ -48,13 +35,13 @@ public class InicioDelJuego extends Application {
         titilante.aplicarAnimacion();
 
         Boton botonJugar = new Boton("Jugar", "botonJugar");
-        botonJugar.setOnAction(event -> abrirCargaJugadores());
+        botonJugar.setOnAction(event -> controladorVentanaNueva.abrirVentanaNueva(cargarJugadores, ventanaPrincipal));
 
         VBox centerBox = new VBox(20);
         centerBox.getChildren().addAll(titulo, botonJugar);
         centerBox.setAlignment(Pos.CENTER);
 
-        VBox toolbarBox = this.toolbar.mostrarToolbar(primaryStage);
+        VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(primaryStage);
 
         BorderPane root = new BorderPane();
         root.setTop(toolbarBox);

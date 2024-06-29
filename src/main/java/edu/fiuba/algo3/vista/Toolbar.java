@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorMusica;
 import edu.fiuba.algo3.controlador.ControladorPantalla;
+import edu.fiuba.algo3.modelo.AlgoHoot3;
+import edu.fiuba.algo3.modelo.lector.mezclador.MezclaSinRepetirCategoria;
 import edu.fiuba.algo3.vista.botones.Boton;
 import javafx.scene.control.*; 
 import javafx.scene.layout.*; 
@@ -32,6 +34,16 @@ public class Toolbar {
         "- Ivan Fuschetto.\n" +
         "El juego fue desarrollado en el marco de la materia Algoritmos y Programación III.\n"
     );
+    private static Toolbar instancia;
+
+    private Toolbar() {};
+
+    public static Toolbar obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new Toolbar();
+        }
+        return instancia;
+    }
 
 	public VBox mostrarToolbar(Stage stage) 
 	{ 
