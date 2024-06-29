@@ -23,7 +23,7 @@ public class CargarJugadores extends Application {
     private Stage ventanaPrincipal;
     private TextField inputJugador;
     private ControladorDeJuego controladorDeJuego;
-    private int MAX_CARACTERES = 25;
+    private int MAX_CARACTERES = 26;
 
     public static void main(String[] args) {
         launch(args);
