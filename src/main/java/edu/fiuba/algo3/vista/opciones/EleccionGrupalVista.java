@@ -20,19 +20,18 @@ public class EleccionGrupalVista implements OpcionesVista {
     private List<Grupo> opcionesOriginales;
 
     private List<String> obtenerGrupos(List<Opcion> opciones) {
-        List<String> grupo = new ArrayList<>();
+        List<String> grupos = new ArrayList<>();
         for (Opcion opcion : opciones) {
-            if (opcion instanceof Grupo) {
+            if (opcion instanceof Grupo && !grupos.contains(((Grupo) opcion).obtenerGrupo())){
                 Grupo grupoOpcion = (Grupo) opcion;
-                grupo.add(grupoOpcion.obtenerGrupo());
+                grupos.add(grupoOpcion.obtenerGrupo());
             }
         }
-        return grupo;
+        return grupos;
     }
 
     @Override
     public void mostrarOpciones(List<Opcion> opciones, GridPane contenedor) {
-        
         ObservableList<String> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
 
         for (Opcion opcion : opciones) {
@@ -49,7 +48,7 @@ public class EleccionGrupalVista implements OpcionesVista {
                 grupoSpinner.getValueFactory().setValue(grupo.obtenerGrupo());
 
                 HBox hbox = new HBox(10);
-                hbox.getChildren().addAll(opcionLabel, grupoSpinner);
+                hbox.getChildren().addAll(grupoSpinner, opcionLabel);
 
                 contenedor.add(hbox, 0, opciones.indexOf(opcion));
             }

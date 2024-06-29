@@ -31,8 +31,8 @@ import javafx.stage.Stage;
 
 public class PreguntaVista extends Application{
     private Stage ventanaPrincipal;
-    // private Jugador jugador = new ControladorDeJugador().obtenerJugadorActual();
-    // private Pregunta pregunta = new ControladorDePregunta().mostrarPregunta();
+    //private Jugador jugador = new ControladorDeJugador().obtenerJugadorActual();
+    private Pregunta pregunta = new ControladorDePregunta().mostrarPregunta();
 
     public static void main(String[] args) {
         launch(args);
@@ -46,11 +46,6 @@ public class PreguntaVista extends Application{
         Text enunciado = new Text();
         enunciado.getStyleClass().add("enunciado");
 
-        List<String> opcionesOrdered = List.of("opcion1", "opcion2");
-
-        List<Opcion> opciones = FabricaOpciones.crearListaOrdenada(opcionesOrdered, List.of("2", "1"), new Correcta());
-        Pregunta pregunta = new OrderedChoice("pepe", opciones, new Clasica(1), "categoria");
-        //Pregunta pregunta = new VerdaderoFalso("Enunciado 1", opciones, new Clasica(1), "Categoria");
         Animacion maquinaDeEscribir = new MaquinaDeEscribir(2, enunciado, pregunta.obtenerEnunciado());
         maquinaDeEscribir.aplicarAnimacion();
 
@@ -62,7 +57,7 @@ public class PreguntaVista extends Application{
         contenedorOpciones.setVgap(10);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
-        SeleccionadorOpciones.seleccionarVistaOpciones(opciones, pregunta, contenedorOpciones);
+        SeleccionadorOpciones.seleccionarVistaOpciones(pregunta, contenedorOpciones);
 
         VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(ventanaPrincipal);
 
@@ -75,7 +70,7 @@ public class PreguntaVista extends Application{
         root.setTop(toolbarBox);
         root.setCenter(layout);
 
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 1280, 720);
 
         String css = getClass().getResource("src/css/style.css").toExternalForm();
         scene.getStylesheets().add(css);
