@@ -7,6 +7,7 @@ import edu.fiuba.algo3.controlador.ControladorDePregunta;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.opcion.estado.*;
@@ -42,8 +43,9 @@ public class PreguntaVista extends Application{
 
         Text enunciado = new Text();
         enunciado.getStyleClass().add("enunciado");
-        List<Opcion> opciones = FabricaOpciones.crearListaSimple(List.of("Verdadero", "Falso"), List.of(), new Correcta());
-        Pregunta pregunta = new VerdaderoFalso("Enunciado 1", opciones, new Clasica(1), "Categoria");
+        List<Opcion> opciones = FabricaOpciones.crearListaSimple(List.of("1", "2", "3"), List.of("1", "3"), new Correcta());
+        Pregunta pregunta = new MultipleChoice("pepe", opciones, new Clasica(1), "categoria");
+        //Pregunta pregunta = new VerdaderoFalso("Enunciado 1", opciones, new Clasica(1), "Categoria");
         Animacion maquinaDeEscribir = new MaquinaDeEscribir(2, enunciado, pregunta.obtenerEnunciado());
         maquinaDeEscribir.aplicarAnimacion();
 

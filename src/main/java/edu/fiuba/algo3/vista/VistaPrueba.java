@@ -12,6 +12,7 @@ import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -39,7 +40,7 @@ public class VistaPrueba extends Application {
 
         System.out.println("prueba");
 
-        VBox contenedor = new VBox();
+        GridPane contenedor = new GridPane();
 
 
 

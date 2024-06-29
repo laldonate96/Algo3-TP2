@@ -25,11 +25,9 @@ public class MultipleChoiceVista implements OpcionesVista {
     @Override
     public void mostrarOpciones(List<Opcion> opcionesRecibidas, GridPane contenedor) {
         opciones = opcionesRecibidas;
-        checkBoxsOpciones = new ArrayList<>();
         for(Opcion opcion : opciones){
             CheckBox checkBoxOpcion = new CheckBox(opcion.obtenerTexto());
-            checkBoxsOpciones.add(checkBoxOpcion);
-            contenedor.getChildren().addAll(checkBoxOpcion);
+            contenedor.add(checkBoxOpcion, 0, opciones.indexOf(opcion));
         }
     }
 }
