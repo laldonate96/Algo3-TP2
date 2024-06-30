@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 public class OrderedChoiceVista implements OpcionesVista {
-    private List<Spinner<Integer>> selectores;
+    private List<Spinner<Integer>> selectores = new ArrayList<>();
     private List<Opcion> opciones;
 
     @Override
@@ -36,6 +36,7 @@ public class OrderedChoiceVista implements OpcionesVista {
             hbox.getChildren().addAll(spinnerOpcion, labelOpcion);
 
             contenedor.add(hbox, 0, opciones.indexOf(opcion));
+            selectores.add(spinnerOpcion);
         }
     }
 }
