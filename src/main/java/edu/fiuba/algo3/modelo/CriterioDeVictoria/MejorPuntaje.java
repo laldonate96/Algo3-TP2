@@ -34,16 +34,13 @@ public class MejorPuntaje implements CriterioDeVictoria {
         this.jugadores=jugadores;
     }
 
-
     @Override
     public boolean terminoJuego(int rondasJugadas) {
         calcularGanador();
-        if(rondasJugadas>=limiteRondas){
+        if(rondasJugadas>limiteRondas){
             return true;
         } else {
             return ganador.obtenerPuntaje() > limitePuntos;
         }
-
-
     }
 }

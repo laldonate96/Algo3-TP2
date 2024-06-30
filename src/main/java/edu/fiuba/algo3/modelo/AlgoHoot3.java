@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Turno;
 
-
 public class AlgoHoot3 {
     private final List<Pregunta> preguntas;
     private List<Jugador> jugadores;
@@ -24,7 +22,6 @@ public class AlgoHoot3 {
     private Iterator<Jugador> iteradorJugadores;
     private Jugador jugadorActual;
     private CriterioDeVictoria criterio;
-
 
     private AlgoHoot3(Mezclador mezclador){
         this.rondas = 0;
@@ -48,7 +45,6 @@ public class AlgoHoot3 {
     public void iniciarAlgoHoot(List<Jugador> jugadores, Turno turno, CriterioDeVictoria criterio) {
         this.jugadores= jugadores;
         this.turno =turno;
-
         criterio.establecerJugadores(jugadores);
         this.criterio=criterio;
     }
@@ -58,22 +54,26 @@ public class AlgoHoot3 {
         iteradorJugadores = jugadores.iterator();
         jugadorActual = iteradorJugadores.next();
         turno.reiniciarTurno(obtenerPreguntaDeRondaActual());
-
         return rondas;
     }
 
     public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificadorPuntaje) {
         turno.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
+        if (terminoJuego()) {
+            asignarPuntajes();
+            return;
+        }
         if (terminoLaRonda()){
             asignarPuntajes();
             iteradorJugadores = jugadores.iterator();
             pasarRonda();
+            return;
         }
         jugadorActual=iteradorJugadores.next();
     }
 
     public boolean terminoLaRonda(){
-        return !iteradorJugadores.hasNext();
+        return !iteradorJugadores.hasNext() && !terminoJuego();
     }
 
     public int obtenerRonda(){
@@ -84,8 +84,6 @@ public class AlgoHoot3 {
         return preguntas.get(rondas-1);
     }
 
-
-
     public void asignarPuntajes(){
         turno.asignarPuntajes();
     }
@@ -94,12 +92,11 @@ public class AlgoHoot3 {
         return jugadorActual;
     }
 
-
     public boolean terminoJuego(){
         return criterio.terminoJuego(this.rondas);
     }
-    public Jugador victorioso(){
 
+    public Jugador victorioso(){
         return criterio.obtenerGanador();
     }
 }
