@@ -8,7 +8,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 
 public class MultipleChoiceVista implements OpcionesVista {
-    private List<CheckBox> checkBoxsOpciones;
+    private List<CheckBox> checkBoxsOpciones = new ArrayList<>();
     private List<Opcion> opciones;
     
     @Override
