@@ -116,3 +116,16 @@
     -fx-font-size: 15px;
     -fx-text-fill: #2ECC71; 
 }
+
+.nombreJugador {
+    -fx-font-size: 20px;
+    -fx-fill: #E74C3C; 
+    -fx-font-weight: bold;
+}
+
+.jugadorBox{
+    -fx-padding: 10px;
+    -fx-text-fill: #F1C40F; 
+    -fx-border-color: #F1C40F;
+    -fx-border-width: 2px;
+}

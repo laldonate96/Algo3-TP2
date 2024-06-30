@@ -15,6 +15,4 @@ public class FabricaModificadores {
         listaModificadores.add(new Anulador());
         return listaModificadores;
     }
-
-
 }
