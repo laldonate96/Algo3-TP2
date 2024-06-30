@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 public class CrearModificadores {
     public static void crearModificadores(Jugador jugador, HBox modificadoresBox) {
         for (Modificador modificador : jugador.obtenerModificadores()) {
+            //if(pregunta.modificadorEsValido(modificador)){}
             switch (modificador.getClass().getSimpleName()) {
                 case "Multiplicador":
                     if (((Multiplicador) modificador).tieneFactor(2)) {
