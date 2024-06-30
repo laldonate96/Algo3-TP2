@@ -5,7 +5,7 @@ import edu.fiuba.algo3.controlador.ControladorUsoDeModificadores;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
-public class BotonModificador extends Boton{
+public abstract class BotonModificador extends Boton{
     private Modificador modificador;
     private Jugador jugador;
 
