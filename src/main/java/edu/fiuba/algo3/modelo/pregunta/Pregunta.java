@@ -20,11 +20,9 @@ public abstract class Pregunta {
         this.opciones = opciones;
         this.puntaje = puntaje;
         this.categoria = categoria;
-
     }
 
     public void asignarPuntajes(List<Respuesta> respuestas) {
-
         puntaje.asignarPuntajes(respuestas);
     }
 
@@ -42,7 +40,6 @@ public abstract class Pregunta {
     }
 
     public List<Opcion> obtenerOpciones() {
-
         return opciones;
     }
 

@@ -17,7 +17,7 @@ public class ParserVoF implements LectorParser {
     public Pregunta parsearPregunta(JSONObject preguntaJson, Puntaje puntaje) {
         String enunciado = preguntaJson.getString("Pregunta");
         String categoria = preguntaJson.getString("Tema");
-        List<String> posicionesCorrectas =new ArrayList<>();
+        List<String> posicionesCorrectas = new ArrayList<>();
         posicionesCorrectas.add(preguntaJson.getString("Respuesta"));
         List<String> contenidoOpciones = new ArrayList<>();
         contenidoOpciones.add(preguntaJson.getString("Opcion 1"));
