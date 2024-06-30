@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
+import java.util.List;
+
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-
-
-import java.util.List;
 
 public abstract class Pregunta {
     protected String categoria;
@@ -42,5 +41,5 @@ public abstract class Pregunta {
     public List<Opcion> obtenerOpciones() {
         return opciones;
     }
-
+    
 }

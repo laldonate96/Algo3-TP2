@@ -6,13 +6,15 @@ import edu.fiuba.algo3.vista.alertas.AlgoSalioMal;
 import javafx.scene.layout.GridPane;
 
 public class SeleccionadorOpciones {
+    private OpcionesVista vista;
+    
     public static void seleccionarVistaOpciones(Pregunta pregunta, GridPane pane){
         String preguntaString = pregunta.getClass().toString();
         String tipoPregunta = preguntaString.substring(preguntaString.lastIndexOf('.') + 1);
         switch (tipoPregunta) {
             case "VerdaderoFalso":
-                VerdaderoOFalsoVista verdaderoOFalsoVista = new VerdaderoOFalsoVista();
-                verdaderoOFalsoVista.mostrarOpciones(pregunta.obtenerOpciones(), pane);
+                this.vista = new VerdaderoOFalsoVista();
+                this.vista.mostrarOpciones(pregunta.obtenerOpciones(), pane);
                 break;
             case "MultipleChoice":
                 MultipleChoiceVista multipleChoiceVista = new MultipleChoiceVista();

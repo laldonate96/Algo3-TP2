@@ -1,18 +1,16 @@
 package edu.fiuba.algo3.vista.botones;
 
-import java.util.List;
-
-import edu.fiuba.algo3.controlador.ControladorDeTurno;
-import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.vista.animaciones.AnimacionBotones;
+import edu.fiuba.algo3.vista.animaciones.BotonEnviar;
 
 public class BotonEnviarRespuesta extends Boton {
 
 
 
-public BotonEnviarRespuesta(List<Opcion> opcionesElegidas, Modificador modificador) {
+public BotonEnviarRespuesta() {
         super("Enviar", "button");
+        AnimacionBotones titilante = new BotonEnviar(1, this);
+        titilante.aplicarAnimacion();
         this.setMinHeight(30); 
-        this.setOnAction(new ControladorDeTurno(opcionesElegidas, modificador));
 }
 }
