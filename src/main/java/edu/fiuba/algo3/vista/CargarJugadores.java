@@ -6,6 +6,7 @@ import edu.fiuba.algo3.controlador.ControladorDeJuego;
 import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.vista.alertas.AlgoSalioMal;
+import edu.fiuba.algo3.vista.alertas.IngreseMasJugadores;
 import edu.fiuba.algo3.vista.alertas.NombreNoIngresado;
 import edu.fiuba.algo3.vista.alertas.NombresNoIngresados;
 import edu.fiuba.algo3.vista.botones.Boton;
@@ -107,6 +108,9 @@ public class CargarJugadores extends Application {
         } else if(listaDeNombres.isEmpty()){
             NombresNoIngresados nombresNoIngresados = new NombresNoIngresados();
             nombresNoIngresados.mostrarAlerta();
+        }else if(listaDeNombres.isEmpty()){
+            IngreseMasJugadores ingreseMasJugadores = new IngreseMasJugadores();
+            ingreseMasJugadores.mostrarAlerta();
         }else{
             AlgoSalioMal algoSalioMal = new AlgoSalioMal();
             algoSalioMal.mostrarAlerta();
