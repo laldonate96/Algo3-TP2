@@ -11,7 +11,7 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
 public class Turno {
-    private final List<Respuesta> respuestas;
+    private List<Respuesta> respuestas;
     private Pregunta preguntaDelTurno;
     private Modificador modificador;
 
@@ -61,4 +61,9 @@ public class Turno {
     }
 
 
+    public void reiniciarTurno(Pregunta pregunta) {
+        this.respuestas = new ArrayList<>();
+        this.modificador= new Nulo();
+        this.preguntaDelTurno=pregunta;
+    }
 }

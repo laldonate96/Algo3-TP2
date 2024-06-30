@@ -9,7 +9,6 @@ import edu.fiuba.algo3.modelo.Modificador.Multiplicador;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.turno.Turno;
 import edu.fiuba.algo3.vista.botones.BotonAnulador;
 import edu.fiuba.algo3.vista.botones.BotonEnviarRespuesta;
 import edu.fiuba.algo3.vista.botones.BotonExclusividad;
@@ -40,7 +39,7 @@ public class VistaPrueba2 extends Application {
         Jugador jugador = new Jugador("pepe", modificadores);
 
 
-        Button boton1= new BotonEnviarRespuesta(new Turno(),opciones,new Multiplicador(1));
+        Button boton1= new BotonEnviarRespuesta(opciones,new Multiplicador(1));
         Button boton2= new BotonAnulador(jugador);
         Button boton3= new BotonExclusividad(jugador);
         Button boton4= new BotonX2(jugador);

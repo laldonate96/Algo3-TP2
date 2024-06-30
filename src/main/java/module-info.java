@@ -7,5 +7,6 @@ module edu.fiuba.algo3 {
     requires org.json;
     requires java.desktop;
     requires javafx.media;
+    requires java.scripting;
     exports edu.fiuba.algo3;
 }
