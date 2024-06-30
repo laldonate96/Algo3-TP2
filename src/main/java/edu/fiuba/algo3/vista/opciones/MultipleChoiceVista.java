@@ -28,6 +28,7 @@ public class MultipleChoiceVista implements OpcionesVista {
         for(Opcion opcion : opciones){
             CheckBox checkBoxOpcion = new CheckBox(opcion.obtenerTexto());
             contenedor.add(checkBoxOpcion, 0, opciones.indexOf(opcion));
+            checkBoxsOpciones.add(checkBoxOpcion);
         }
     }
 }

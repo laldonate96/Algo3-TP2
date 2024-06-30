@@ -1,11 +1,19 @@
 package edu.fiuba.algo3.vista;
 
+import java.util.List;
+
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
 import edu.fiuba.algo3.controlador.ControladorDePregunta;
+import edu.fiuba.algo3.controlador.ControladorDeTurno;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
+import edu.fiuba.algo3.vista.alertas.Alerta;
+import edu.fiuba.algo3.vista.alertas.RespuestaNoIngresa;
 import edu.fiuba.algo3.vista.animaciones.Animacion;
 import edu.fiuba.algo3.vista.animaciones.MaquinaDeEscribir;
+import edu.fiuba.algo3.vista.botones.Boton;
+import edu.fiuba.algo3.vista.botones.BotonEnviarRespuesta;
 import edu.fiuba.algo3.vista.botones.CrearModificadores;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;
@@ -23,9 +31,20 @@ public class PreguntaVista extends Application {
     private Stage ventanaPrincipal;
     private Jugador jugador = new ControladorDeJugador().obtenerJugadorActual();
     private Pregunta pregunta = new ControladorDePregunta().mostrarPregunta();
-
+    private ControladorDeTurno controladorDeTurno;
+    private SeleccionadorOpciones seleccionadorOpciones = new SeleccionadorOpciones();
     public static void main(String[] args) {
         launch(args);
+    }
+    public void enviarRespuestas(){
+        List<Opcion> respuestas = seleccionadorOpciones.retornarOpcionesDelJugador();
+        if(!respuestas.isEmpty()){
+            controladorDeTurno = new ControladorDeTurno();
+            controladorDeTurno.responderPregunta(respuestas, jugador.obtenerModificadores().get(0));
+        }else{
+            Alerta RespuestaNoIngresa = new RespuestaNoIngresa();
+            RespuestaNoIngresa.mostrarAlerta();
+        }
     }
 
     @Override
@@ -64,13 +83,16 @@ public class PreguntaVista extends Application {
         contenedorOpciones.setVgap(10);
         contenedorOpciones.setAlignment(Pos.CENTER);
 
-        SeleccionadorOpciones.seleccionarVistaOpciones(pregunta, contenedorOpciones);
+        Boton botonResponder = new BotonEnviarRespuesta();
+        botonResponder.setOnAction(e -> this.enviarRespuestas());
+
+        this.seleccionadorOpciones.seleccionarVistaOpciones(pregunta, contenedorOpciones);
 
         VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(ventanaPrincipal);
 
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20));
-        layout.getChildren().addAll(jugadorBoxConBorde, centerBox, contenedorOpciones);
+        layout.getChildren().addAll(jugadorBoxConBorde, centerBox, contenedorOpciones, botonResponder);
         layout.setAlignment(Pos.CENTER);
 
         BorderPane root = new BorderPane();

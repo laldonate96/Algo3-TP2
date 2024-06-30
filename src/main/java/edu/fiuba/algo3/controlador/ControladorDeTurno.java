@@ -14,10 +14,7 @@ public class ControladorDeTurno implements EventHandler<ActionEvent> {
     private Modificador modificador;
 
 
-    public ControladorDeTurno( List<Opcion> opcionesElegidas, Modificador modificador) {
-        this.opcionesElegidas = opcionesElegidas;
-        this.modificador = modificador;
-    }
+  
 
     public void iniciarRondaJugador() {
         AlgoHoot3 algoHoot = AlgoHoot3.obtenerInstancia();
@@ -28,6 +25,8 @@ public class ControladorDeTurno implements EventHandler<ActionEvent> {
     }
 
     public void responderPregunta(List<Opcion> opcionesElegidas, Modificador modificador) {
+        this.opcionesElegidas = opcionesElegidas;
+        this.modificador = modificador;
         AlgoHoot3 algoHoot = AlgoHoot3.obtenerInstancia();
 
         algoHoot.jugarTurno(opcionesElegidas, modificador);
