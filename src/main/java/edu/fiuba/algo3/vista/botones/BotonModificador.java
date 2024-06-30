@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public abstract class BotonModificador extends Boton{
     private Modificador modificador;
+    
     private Jugador jugador;
 
     public BotonModificador(String texto, Jugador jugador, Modificador modificador, String claseCSSDeBoton){
