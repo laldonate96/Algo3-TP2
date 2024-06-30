@@ -15,13 +15,13 @@ public class VerdaderoOFalsoVista implements OpcionesVista {
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
-        List<Opcion> opcinesSeleccionadas = new ArrayList<>();
+        List<Opcion> opcionesSeleccionadas = new ArrayList<>();
         if (opcion1.isSelected()) {
-            opcinesSeleccionadas.add(opciones.get(0));
+            opcionesSeleccionadas.add(opciones.get(0));
         } else if (opcion2.isSelected()) {
-            opcinesSeleccionadas.add(opciones.get(1));
+            opcionesSeleccionadas.add(opciones.get(1));
         }
-        return opcinesSeleccionadas;
+        return opcionesSeleccionadas;
     }
 
     @Override

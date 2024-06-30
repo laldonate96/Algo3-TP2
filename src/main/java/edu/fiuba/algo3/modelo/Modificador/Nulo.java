@@ -7,10 +7,6 @@ import java.util.List;
 
 public class Nulo extends Modificador {
 
-
-
-
-
     public Nulo() {
         siguiente = null;
     }

@@ -5,6 +5,7 @@ import java.util.List;
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
 import edu.fiuba.algo3.controlador.ControladorDePregunta;
 import edu.fiuba.algo3.controlador.ControladorDeTurno;
+import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
@@ -33,6 +34,7 @@ public class PreguntaVista extends Application {
     private Pregunta pregunta = new ControladorDePregunta().mostrarPregunta();
     private ControladorDeTurno controladorDeTurno;
     private SeleccionadorOpciones seleccionadorOpciones = new SeleccionadorOpciones();
+    private ControladorVentanaNueva controladorVentanaNueva = new ControladorVentanaNueva();
     public static void main(String[] args) {
         launch(args);
     }
@@ -40,7 +42,9 @@ public class PreguntaVista extends Application {
         List<Opcion> respuestas = seleccionadorOpciones.retornarOpcionesDelJugador();
         if(!respuestas.isEmpty()){
             controladorDeTurno = new ControladorDeTurno();
-            controladorDeTurno.responderPregunta(respuestas, jugador.obtenerModificadores().get(0));
+            controladorDeTurno.responderPregunta(respuestas, jugador.obtenerModificadores().get(1));
+            controladorVentanaNueva.abrirVentanaNueva(new PreguntaVista(), ventanaPrincipal);
+
         }else{
             Alerta RespuestaNoIngresa = new RespuestaNoIngresa();
             RespuestaNoIngresa.mostrarAlerta();
