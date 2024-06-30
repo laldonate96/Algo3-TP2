@@ -108,7 +108,7 @@ public class CargarJugadores extends Application {
         } else if(listaDeNombres.isEmpty()){
             NombresNoIngresados nombresNoIngresados = new NombresNoIngresados();
             nombresNoIngresados.mostrarAlerta();
-        }else if(listaDeNombres.isEmpty()){
+        }else if(listaDeNombres.size() == 1){
             IngreseMasJugadores ingreseMasJugadores = new IngreseMasJugadores();
             ingreseMasJugadores.mostrarAlerta();
         }else{
