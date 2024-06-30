@@ -3,14 +3,18 @@ package edu.fiuba.algo3.vista;
 import java.net.URL;
 import java.util.List;
 
-//import edu.fiuba.algo3.controlador.ControladorUsoDeModificadorDePuntaje;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
-import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.Modificador.Multiplicador;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.turno.Turno;
-import edu.fiuba.algo3.vista.botones.*;
+import edu.fiuba.algo3.vista.botones.BotonAnulador;
+import edu.fiuba.algo3.vista.botones.BotonEnviarRespuesta;
+import edu.fiuba.algo3.vista.botones.BotonExclusividad;
+import edu.fiuba.algo3.vista.botones.BotonX2;
+import edu.fiuba.algo3.vista.botones.BotonX3;
 import edu.fiuba.algo3.vista.opciones.VerdaderoOFalsoVista;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -29,19 +33,19 @@ public class VistaPrueba2 extends Application {
 
         List<String> contenidoOpciones = List.of("Verdadero", "Falso");
         List<String> posicionesDeCorrectas = List.of("Verdadero");
-
+        List<Modificador> modificadores = List.of(new Multiplicador(2), new Multiplicador(3));
 
 
         List<Opcion> opciones = FabricaOpciones.crearListaSimple(contenidoOpciones, posicionesDeCorrectas, new Correcta());
-
+        Jugador jugador = new Jugador("pepe", modificadores);
 
 
         Button boton1= new BotonEnviarRespuesta(new Turno(),opciones,new Multiplicador(1));
-        Button boton2= new BotonAnulador(new Jugador("pjepe", List.of(new Multiplicador(1))),new Multiplicador(1),"botonModificador");
-        Button boton3= new BotonExclusividad(new Jugador("opepe", List.of(new Multiplicador(1))),new Multiplicador(1),"botonModificador");
-        Button boton4= new BotonX2(new Jugador("pope", List.of(new Multiplicador(1))),new Multiplicador(1),"botonModificador");
-        Button boton5= new BotonX3(new Jugador("ppejjjjpe", List.of(new Multiplicador(1))),new Multiplicador(1),"botonModificador");
-        Button boton6= new BotonExclusividad(new Jugador("bpepe", List.of(new Multiplicador(1))),new Multiplicador(1),"botonModificador");
+        Button boton2= new BotonAnulador(jugador);
+        Button boton3= new BotonExclusividad(jugador);
+        Button boton4= new BotonX2(jugador);
+        Button boton5= new BotonX3(jugador);
+        Button boton6= new BotonExclusividad(jugador);
 
         GridPane contenedor = new GridPane();
         List<Button> listaBotones= List.of(boton1,boton2,boton3,boton4,boton5, boton6);

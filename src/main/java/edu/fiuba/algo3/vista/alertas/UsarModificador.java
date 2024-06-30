@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.vista.alertas;
 
-import javafx.scene.control.Alert;
 
 public class UsarModificador extends Alerta{
     public UsarModificador(){

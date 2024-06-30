@@ -11,16 +11,16 @@ public class CrearModificadores {
             switch (modificador.getClass().getSimpleName()) {
                 case "Multiplicador":
                     if (((Multiplicador) modificador).tieneFactor(2)) {
-                        modificadoresBox.getChildren().add(new BotonX2(jugador, modificador, "botonModificador"));
+                        modificadoresBox.getChildren().add(new BotonX2(jugador));
                     } else if (((Multiplicador) modificador).tieneFactor(3)) {
-                        modificadoresBox.getChildren().add(new BotonX3(jugador, modificador, "botonModificador"));
+                        modificadoresBox.getChildren().add(new BotonX3(jugador));
                     }
                     break;
                 case "Exclusividad":
-                    modificadoresBox.getChildren().add(new BotonExclusividad(jugador, modificador, "botonModificador"));
+                    modificadoresBox.getChildren().add(new BotonExclusividad(jugador));
                     break;
                 case "Anulador":
-                    modificadoresBox.getChildren().add(new BotonAnulador(jugador, modificador, "botonModificador"));
+                    modificadoresBox.getChildren().add(new BotonAnulador(jugador));
                     break;
                 default:
                     break;
