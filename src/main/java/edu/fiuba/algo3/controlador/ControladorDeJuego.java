@@ -12,8 +12,6 @@ import edu.fiuba.algo3.modelo.turno.Turno;
 public class ControladorDeJuego {
     public void iniciarJuego(List<String> nombresDeJugadores) {
         
-
-
         List<Jugador> jugadores = FabricaJugadores.crearListaJugadores(nombresDeJugadores);
         
         AlgoHoot3 algoHoot = AlgoHoot3.obtenerInstancia();

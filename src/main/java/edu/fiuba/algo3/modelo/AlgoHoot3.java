@@ -51,6 +51,9 @@ public class AlgoHoot3 {
 
     public void pasarRonda() {
         rondas++;
+        for (Jugador jugador : jugadores) {
+            System.out.println(jugador.obtenerPuntaje());
+        }
         iteradorJugadores = jugadores.iterator();
         jugadorActual = iteradorJugadores.next();
         System.out.println("Ronda: "+rondas);
