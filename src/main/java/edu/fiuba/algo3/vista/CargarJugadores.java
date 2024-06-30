@@ -5,7 +5,9 @@ import java.util.List;
 import edu.fiuba.algo3.controlador.ControladorDeJuego;
 import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.vista.alertas.AlgoSalioMal;
 import edu.fiuba.algo3.vista.alertas.NombreNoIngresado;
+import edu.fiuba.algo3.vista.alertas.NombresNoIngresados;
 import edu.fiuba.algo3.vista.botones.Boton;
 import edu.fiuba.algo3.vista.vistaJugadores.VistaJugadores;
 import javafx.application.Application;
@@ -24,7 +26,7 @@ public class CargarJugadores extends Application {
     private VistaJugadores vistaJugadores = new VistaJugadores();
     private Stage ventanaPrincipal;
     private TextField inputJugador;
-    private ControladorDeJuego controladorDeJuego;
+    private ControladorDeJuego controladorDeJuego = new ControladorDeJuego();
     private int MAX_CARACTERES = 26;
     private ControladorVentanaNueva controladorVentanaNueva = new ControladorVentanaNueva();
     private List<Jugador> jugadores;
@@ -102,8 +104,12 @@ public class CargarJugadores extends Application {
         if (!listaDeNombres.isEmpty()) {
             controladorDeJuego.iniciarJuego(listaDeNombres);
             controladorVentanaNueva.abrirVentanaNueva(new PreguntaVista(), ventanaPrincipal);
-        } else {
-            // poner un exception
+        } else if(listaDeNombres.isEmpty()){
+            NombresNoIngresados nombresNoIngresados = new NombresNoIngresados();
+            nombresNoIngresados.mostrarAlerta();
+        }else{
+            AlgoSalioMal algoSalioMal = new AlgoSalioMal();
+            algoSalioMal.mostrarAlerta();
         }
     }
 }

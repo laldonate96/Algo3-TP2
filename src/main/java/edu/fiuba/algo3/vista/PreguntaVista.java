@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorDeJugador;
 import edu.fiuba.algo3.controlador.ControladorDePregunta;
-import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.vista.animaciones.Animacion;
 import edu.fiuba.algo3.vista.animaciones.MaquinaDeEscribir;
-import edu.fiuba.algo3.vista.botones.BotonEnviarRespuesta;
 import edu.fiuba.algo3.vista.botones.CrearModificadores;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;
@@ -22,7 +21,7 @@ import javafx.stage.Stage;
 
 public class PreguntaVista extends Application {
     private Stage ventanaPrincipal;
-    // private Jugador jugador = new ControladorDeJugador().obtenerJugadorActual();
+    private Jugador jugador = new ControladorDeJugador().obtenerJugadorActual();
     private Pregunta pregunta = new ControladorDePregunta().mostrarPregunta();
 
     public static void main(String[] args) {
@@ -34,7 +33,6 @@ public class PreguntaVista extends Application {
         this.ventanaPrincipal = stage;
         ventanaPrincipal.setTitle("AlgoHoot - Pregunta");
 
-        Jugador jugador = new Jugador("Lucas", FabricaModificadores.crearListaModificadores());
         Text nombreJugador = new Text(jugador.obtenerNombre());
         nombreJugador.getStyleClass().add("nombreJugador");
 
