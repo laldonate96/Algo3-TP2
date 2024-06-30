@@ -49,20 +49,21 @@ public class AlgoHoot3 {
         this.criterio=criterio;
     }
 
-    public int pasarRonda() {
+    public void pasarRonda() {
         rondas++;
         iteradorJugadores = jugadores.iterator();
         jugadorActual = iteradorJugadores.next();
+        System.out.println("Ronda: "+rondas);
+        System.out.println("terminoJuego: " + terminoJuego());
+        if (terminoJuego()) {
+            return;
+        }
         turno.reiniciarTurno(obtenerPreguntaDeRondaActual());
-        return rondas;
+        return;
     }
 
     public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificadorPuntaje) {
         turno.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
-        if (terminoJuego()) {
-            asignarPuntajes();
-            return;
-        }
         if (terminoLaRonda()){
             asignarPuntajes();
             iteradorJugadores = jugadores.iterator();

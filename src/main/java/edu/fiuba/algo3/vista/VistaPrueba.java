@@ -35,7 +35,8 @@ public class VistaPrueba extends Application {
 
 
 
-        SeleccionadorOpciones.seleccionarVistaOpciones(pregunta, contenedor);
+        SeleccionadorOpciones seleccionador = new SeleccionadorOpciones();
+        seleccionador.seleccionarVistaOpciones(pregunta, contenedor);
 
         Scene scene = new Scene(contenedor, 300, 200);
 
