@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.Comparator;
+
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
 
-import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
+import edu.fiuba.algo3.modelo.CriterioDeVictoria.CriterioDeVictoria;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.lector.Lector;
@@ -15,14 +14,16 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Turno;
 
+
 public class AlgoHoot3 {
     private final List<Pregunta> preguntas;
     private List<Jugador> jugadores;
-    private Turno turnoActual;
+    private Turno turno;
     private static AlgoHoot3 instancia;
     private int rondas;
     private Iterator<Jugador> iteradorJugadores;
     private Jugador jugadorActual;
+    private CriterioDeVictoria criterio;
 
 
     private AlgoHoot3(Mezclador mezclador){
@@ -44,32 +45,34 @@ public class AlgoHoot3 {
         return instancia;
     }
 
-    public void asignarJugadores(List<Jugador> jugadores) {
+    public void iniciarAlgoHoot(List<Jugador> jugadores, Turno turno, CriterioDeVictoria criterio) {
         this.jugadores= jugadores;
+        this.turno =turno;
+
+        criterio.establecerJugadores(jugadores);
+        this.criterio=criterio;
     }
 
-    public int pasarRonda(Turno nuevoTurno) {
+    public int pasarRonda() {
         rondas++;
-        turnoActual = nuevoTurno;
         iteradorJugadores = jugadores.iterator();
         jugadorActual = iteradorJugadores.next();
-        turnoActual.establecerPregunta(preguntas.get(rondas-1));
+        turno.reiniciarTurno(obtenerPreguntaDeRondaActual());
 
         return rondas;
     }
 
     public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificadorPuntaje) {
-        turnoActual.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
+        turno.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
         jugadorActual=iteradorJugadores.next();
-        if (!iteradorJugadores.hasNext()){
+        if (terminoLaRonda()){
             asignarPuntajes();
             iteradorJugadores = jugadores.iterator();
-            this.pasarRonda(new Turno());
         }
     }
 
-    public boolean quedanJugadores(){
-        return iteradorJugadores.hasNext();
+    public boolean terminoLaRonda(){
+        return !iteradorJugadores.hasNext();
     }
 
     public int obtenerRonda(){
@@ -83,18 +86,19 @@ public class AlgoHoot3 {
 
 
     public void asignarPuntajes(){
-        turnoActual.asignarPuntajes();
+        turno.asignarPuntajes();
     }
 
     public Jugador obtenerJugadorActual() {
         return jugadorActual;
     }
 
+
+    public boolean terminoJuego(){
+        return criterio.terminoJuego(this.rondas);
+    }
     public Jugador victorioso(){
-        Jugador ganador = jugadores.get(0);
-        for (Jugador jugador : jugadores){
-            ganador = ganador.obtenerMejorPuntuado(jugador);
-        }
-        return ganador;
+
+        return criterio.obtenerGanador();
     }
 }

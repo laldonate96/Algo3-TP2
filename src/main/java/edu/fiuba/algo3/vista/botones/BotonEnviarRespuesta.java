@@ -3,7 +3,6 @@ package edu.fiuba.algo3.vista.botones;
 import edu.fiuba.algo3.controlador.ControladorDeTurno;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.turno.Turno;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.scene.Cursor;
@@ -15,7 +14,7 @@ import java.util.List;
 public class BotonEnviarRespuesta extends Button {
 
 
-    public BotonEnviarRespuesta(Turno turno, List<Opcion> opcionesElegidas, Modificador modificador) {
+    public BotonEnviarRespuesta( List<Opcion> opcionesElegidas, Modificador modificador) {
         super();
         this.setText("Enviar");
         this.setMinHeight(30);
@@ -27,6 +26,6 @@ public class BotonEnviarRespuesta extends Button {
         titilante.play();
         this.setOnMouseEntered(event -> this.setCursor(Cursor.HAND));
         this.setOnMouseExited(event -> this.setCursor(Cursor.DEFAULT));
-        this.setOnAction(new ControladorDeTurno(turno, opcionesElegidas, modificador));
+        this.setOnAction(new ControladorDeTurno(opcionesElegidas, modificador));
     }
 }
