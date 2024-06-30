@@ -31,6 +31,13 @@ public class Jugador {
         return puntaje;
     }
 
+    public Jugador obtenerMejorPuntuado(Jugador otro){
+        if (otro.puntaje > puntaje){
+            return otro;
+        }
+        return this;
+    }
+
     public void usar(Modificador modificador) {
 
             if (!modificadores.contains(modificador)){

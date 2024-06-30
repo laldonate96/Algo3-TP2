@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
@@ -89,6 +91,10 @@ public class AlgoHoot3 {
     }
 
     public Jugador victorioso(){
-        return new Jugador("Tu vieja", FabricaModificadores.crearListaModificadores());
+        Jugador ganador = jugadores.get(0);
+        for (Jugador jugador : jugadores){
+            ganador = ganador.obtenerMejorPuntuado(jugador);
+        }
+        return ganador;
     }
 }
