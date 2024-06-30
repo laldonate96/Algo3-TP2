@@ -16,7 +16,7 @@ import javafx.scene.layout.HBox;
 
 public class EleccionGrupalVista implements OpcionesVista {
 
-    private List<Spinner<String>> spinners;
+    private List<Spinner<String>> spinners = new ArrayList<>();
     private List<Grupo> opcionesOriginales;
 
     private List<String> obtenerGrupos(List<Opcion> opciones) {
@@ -51,6 +51,7 @@ public class EleccionGrupalVista implements OpcionesVista {
                 hbox.getChildren().addAll(grupoSpinner, opcionLabel);
 
                 contenedor.add(hbox, 0, opciones.indexOf(opcion));
+                spinners.add(grupoSpinner);
             }
         }
     }

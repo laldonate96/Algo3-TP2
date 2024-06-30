@@ -26,12 +26,12 @@ public class ControladorDeTurno implements EventHandler<ActionEvent> {
 
         ControladorVentanaNueva ventanaNueva = new ControladorVentanaNueva();
 
+        algoHoot.jugarTurno(opcionesElegidas, modificador);
+
         if (algoHoot.terminoJuego()) {
             ventanaNueva.abrirVentanaNueva(new VistaPrueba(), stage);
             return;
         }
-
-        algoHoot.jugarTurno(opcionesElegidas, modificador);
 
         ventanaNueva.abrirVentanaNueva(new PreguntaVista(), stage);
     }

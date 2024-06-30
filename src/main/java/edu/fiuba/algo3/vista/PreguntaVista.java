@@ -31,7 +31,7 @@ import javafx.stage.Stage;
 public class PreguntaVista extends Application {
     private Stage ventanaPrincipal;
     private Jugador jugador = new ControladorDeJugador().obtenerJugadorActual();
-    private Pregunta pregunta = new ControladorDePregunta().mostrarPregunta();
+    private ControladorDePregunta controladorDePregunta = new ControladorDePregunta();
     private ControladorDeTurno controladorDeTurno;
     private SeleccionadorOpciones seleccionadorOpciones = new SeleccionadorOpciones();
     public static void main(String[] args) {
@@ -73,6 +73,7 @@ public class PreguntaVista extends Application {
         enunciado.getStyleClass().add("enunciado");
         enunciado.setWrappingWidth(600);
 
+        Pregunta pregunta = controladorDePregunta.mostrarPregunta();
         Animacion maquinaDeEscribir = new MaquinaDeEscribir(2, enunciado, pregunta.obtenerEnunciado());
         maquinaDeEscribir.aplicarAnimacion();
 

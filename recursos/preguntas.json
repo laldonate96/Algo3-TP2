@@ -1,22 +1,18 @@
 [
-    {
-      "ID": 3,
-      "Tema": "CIENCIAS",
-      "Tipo": "Verdadero Falso Simple",
-      "Pregunta": "El punto de ebullición del agua a 3300m del mar es 100 grados centígrados",
-      "Respuesta": "2",
-      "Opcion 1": "Verdadero",
-      "Opcion 2": "Falso",
-      "Texto respuesta": "En la altura, la temperatura de ebullición es menor por la mayor presión atmosférica"
-    },
-    {
-      "ID": 5,
-      "Tema": "COMPUTACION",
-      "Tipo": "Verdadero Falso Simple",
-      "Pregunta": "Smalltalk es un lenguaje de programación muerto",
-      "Respuesta": "2",
-      "Opcion 1": "Verdadero",
-      "Opcion 2": "Falso",
-      "Texto respuesta": "Eee...  no vimos nada!"
-    }
+  {
+    "ID": 18,
+    "Tema": "DEPORTES",
+    "Tipo": "Group Choice",
+    "Pregunta": "Asigne las siguientes leyendas del deporte nacional a disciplina grupales (Fútbol, Básquet, Voley, Rugby,) o individuales (atletismo, tenis, artes marciales, ajedrez, etc):",
+    "Respuesta": "A: 1,2,5; B:3,4,6",
+    "Opcion 1": "Lio Messi",
+    "Opcion 2": "Manu Ginóbili",
+    "Opcion 3": "Juan Martín del Potro",
+    "Opcion 4": "Miguel Najdorf",
+    "Opcion 5": "Hugo Conte",
+    "Opcion 6": "José Meolans",
+    "Grupo A": "Deportes Grupales",
+    "Grupo B": "Deportes Individuales",
+    "Texto respuesta": "say no more..."
+  }
 ]
