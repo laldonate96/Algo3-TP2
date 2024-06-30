@@ -6,8 +6,6 @@ import edu.fiuba.algo3.modelo.turno.Turno;
 
 public class ControladorDePregunta {
     public Pregunta mostrarPregunta() {
-        Turno turno = new Turno();
-        AlgoHoot3.obtenerInstancia().pasarRonda(turno);
         return AlgoHoot3.obtenerInstancia().obtenerPreguntaDeRondaActual();
     }
 }
