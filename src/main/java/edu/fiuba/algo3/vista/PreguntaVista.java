@@ -44,7 +44,6 @@ public class PreguntaVista extends Application {
             controladorDeTurno = new ControladorDeTurno();
             controladorDeTurno.responderPregunta(respuestas, jugador.obtenerModificadores().get(1));
             controladorVentanaNueva.abrirVentanaNueva(new PreguntaVista(), ventanaPrincipal);
-
         }else{
             Alerta RespuestaNoIngresa = new RespuestaNoIngresa();
             RespuestaNoIngresa.mostrarAlerta();
