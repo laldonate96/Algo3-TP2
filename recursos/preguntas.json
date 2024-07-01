@@ -20,5 +20,16 @@
     "Opcion 1": "Verdadero",
     "Opcion 2": "Falso",
     "Texto respuesta": "Eee...  no vimos nada!"
+  },
+  {
+    "ID": 6,
+    "Tema": "COMPUTACION",
+    "Tipo": "Verdadero Falso Penalidad",
+    "Pregunta": "En el plan viejo de la ingeniería en informática de la UBA, las materias de matemática, física, y química se podían promocionar con 6",
+    "Respuesta": "2",
+    "Opcion 1": "Verdadero",
+    "Opcion 2": "Falso",
+
+    "Texto respuesta": "Muy falso! Ninguna de esas materias fue, es ni será promocionable mientras exista. Disfruten los tiempos modernos y estudien lo que es central a su carrera!"
   }
 ]

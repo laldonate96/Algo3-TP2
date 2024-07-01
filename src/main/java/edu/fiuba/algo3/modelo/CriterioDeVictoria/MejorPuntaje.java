@@ -21,21 +21,7 @@ public class MejorPuntaje implements CriterioDeVictoria {
     }
 
     private void ordenarLista(){
-
-        int j;
-
-        Jugador jugador;
-
-        for (int i=1;i<listaOrdenadaJugadores.size();i++){
-            jugador=listaOrdenadaJugadores.get(i);
-            j=i-1;
-
-            while (j >= 0 && listaOrdenadaJugadores.get(j).tieneMejorPuntajeQue(jugador)) {
-                listaOrdenadaJugadores.set(j + 1, listaOrdenadaJugadores.get(j));
-                j = j - 1;
-            }
-            listaOrdenadaJugadores.set(j + 1,jugador);
-        }
+        listaOrdenadaJugadores.sort((j1, j2) -> j1.tieneMejorPuntajeQue(j2)?-1:1);
     }
 
     @Override
