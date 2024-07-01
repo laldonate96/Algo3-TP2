@@ -36,7 +36,7 @@ public class ExclusividadTurnoTest {
         exclusividad = new Exclusividad();
 
         List<String> posicionesCorrectas= List.of("1");
-        opcionesCorrectas = FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas, new Correcta());
+        opcionesCorrectas = new ArrayList<>(FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas, new Correcta()));
 
         List<Modificador> modificadoresJugadores = new ArrayList<>();
         modificadoresJugadores.add(new Exclusividad());

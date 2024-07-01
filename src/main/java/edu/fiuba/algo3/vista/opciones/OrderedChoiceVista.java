@@ -14,7 +14,7 @@ import javafx.scene.layout.HBox;
 
 public class OrderedChoiceVista implements OpcionesVista {
     private List<Spinner<Integer>> selectores = new ArrayList<>();
-    private List<Opcion> opciones;
+    private List<Ordenada> opciones;
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
@@ -24,11 +24,12 @@ public class OrderedChoiceVista implements OpcionesVista {
             opcionesSeleccionadas.add(opciones.get(selectores.indexOf(selector)).obtenerTexto());
             ordenSeleccionado.add(selector.getValue().toString());
         }
-        return FabricaOpciones.crearListaOrdenada(opcionesSeleccionadas, ordenSeleccionado, new Incorrecta());
+        List<Opcion> opcionesJugador=new ArrayList<>(FabricaOpciones.crearListaOrdenada(opcionesSeleccionadas, ordenSeleccionado, new Incorrecta()));
+        return opcionesJugador;
     }
 
-    @Override
-    public void mostrarOpciones(List<Opcion> opcionesRecibidas, GridPane contenedor) {
+
+    public void mostrarOpciones(List<Ordenada> opcionesRecibidas, GridPane contenedor) {
         opciones = opcionesRecibidas;
         int cantidadOpciones = opciones.size();
 

@@ -4,6 +4,7 @@ package edu.fiuba.algo3.modelo.lector;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import org.json.JSONObject;
 
@@ -21,7 +22,7 @@ public class ParserMChoice extends LectorParser {
 
         List<String> posicionesCorrectas = Arrays.asList(preguntaJson.getString("Respuesta").split("\\s*,\\s*"));
         List<String> contenidoOpciones=obtenerContenidoOpciones(preguntaJson,6);
-        List<Opcion> opciones=FabricaOpciones.crearListaSimple(contenidoOpciones,posicionesCorrectas, new Correcta());
+        List<Simple> opciones=FabricaOpciones.crearListaSimple(contenidoOpciones,posicionesCorrectas, new Correcta());
 
         return FabricaPreguntas.crearPreguntaMultipleChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }

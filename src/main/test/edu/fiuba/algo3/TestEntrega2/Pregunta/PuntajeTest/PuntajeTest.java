@@ -43,7 +43,7 @@ public class PuntajeTest {
     public void test01AUnaRespuestaConUnaCorrectaSeLeAsigna1Punto() {
         //Arrange
 
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1"),List.of("1"), new Correcta());
+        List<Opcion> opcionesJugador = new ArrayList<>(FabricaOpciones.crearListaSimple(List.of("Opcion 1"),List.of("1"), new Correcta()));
         Respuesta respuesta = new Respuesta(opcionesJugador,jugador);
         respuestas.add(respuesta);
 
@@ -57,7 +57,7 @@ public class PuntajeTest {
     @Test
     public void test02AUnaRespuestaConVariasCorrectasSeLeAsignan2Puntos() {
         //Arrange
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"), new Correcta());
+        List<Opcion> opcionesJugador =new ArrayList<>(FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"), new Correcta()));
         Respuesta respuesta = new Respuesta(opcionesJugador,jugador);
         respuestas.add(respuesta);
         //Act
@@ -70,7 +70,7 @@ public class PuntajeTest {
     @Test
     public void test03AUnaRespuestaConUnaIncorrectaSeLeAsignan0Puntos() {
         //Arrange
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"), new Correcta());
+        List<Opcion> opcionesJugador =new ArrayList<>(FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"), new Correcta()));
         Respuesta respuesta = new Respuesta(opcionesJugador,jugador);
         respuestas.add(respuesta);
 
@@ -87,7 +87,7 @@ public class PuntajeTest {
     @Test
     public void test04AUnaRespuestaConUnaCorrectaEIncorrectasSeLeAsignan0Puntos() {
         //Arrange
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2","Opcion 3"),List.of("1","2"), new Correcta());
+        List<Opcion> opcionesJugador =new ArrayList<>(FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2","Opcion 3"),List.of("1","2"), new Correcta()));
         Respuesta respuesta = new Respuesta(opcionesJugador,jugador);
         respuestas.add(respuesta);
 
@@ -101,12 +101,12 @@ public class PuntajeTest {
     @Test
     public void test05UnaListaDeRespuestasUnaCorrectaYUnaIncorrectaSeLesAsignan2Y0PuntosRespectivamente() {
         //Arrange
-        List<Opcion> opcionesJugador = FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"), new Correcta());
+        List<Opcion> opcionesJugador =new ArrayList<>(FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 2"),List.of("1","2"), new Correcta()));
         Respuesta respuesta1 = new Respuesta(opcionesJugador,jugador);
         respuestas.add(respuesta1);
 
         Jugador jugador2= new Jugador("Jose", FabricaModificadores.crearListaModificadores());
-        List<Opcion> opcionesJugador2 = FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"), new Correcta());
+        List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(List.of("Opcion 1n't", "Opcion 2n't","Opcion 3"),List.of("0"), new Correcta()));
         Respuesta respuesta2 = new Respuesta(opcionesJugador2,jugador2);
         respuestas.add(respuesta2);
 

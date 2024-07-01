@@ -90,5 +90,95 @@
     "Opcion 5": "Av. Brasil",
 
     "Texto respuesta": "A buscar el mapa"
+  },
+  {
+    "ID": 8,
+    "Tema": "COMPUTACION",
+    "Tipo": "Ordered Choice",
+    "Pregunta": "Ordene cronológicamente los siguientes lenguajes de programación, de los más ANTIGUOS a los más MODERNOS",
+    "Respuesta": "1,3,4,6,5,2",
+    "Opcion 1": "COBOL",
+    "Opcion 2": "Go",
+    "Opcion 3": "Smalltalk",
+    "Opcion 4": "C++",
+    "Opcion 5": "Java",
+    "Opcion 6": "Python",
+    "Texto respuesta": "COBOL(1959), Smalltalk (1972), C++ (1984), Python (1991), Java(1995), GO (2009)"
+  },
+  {
+    "ID": 9,
+    "Tema": "CIENCIAS",
+    "Tipo": "Verdadero Falso Simple",
+    "Pregunta": "El punto de ebullición del agua a 3300m del mar es 100 grados centígrados",
+    "Respuesta": "2",
+    "Opcion 1": "Verdadero",
+    "Opcion 2": "Falso",
+    "Texto respuesta": "En la altura, la temperatura de ebullición es menor por la mayor presión atmosférica"
+  },
+  {
+    "ID": 10,
+    "Tema": "CIENCIAS",
+    "Tipo": "Group Choice",
+    "Pregunta": "Asigne a los siguientes peces como mamiferos o Condrictrios, una de las clases de peces vertebrados viviparos que no tienen mamas:",
+    "Respuesta": "A: 1,3,6; B:2, 4,5",
+    "Opcion 1": "Delfin",
+    "Opcion 2": "Tiburon",
+     "Opcion 3": "Ballena",
+    "Opcion 4": "Pes Torpedo",
+    "Opcion 5": "Pez Sierra",
+    "Opcion 6": "Marsopa",
+    "Grupo A": "Mamifero",
+    "Grupo B": "Condrictrio",
+    "Texto respuesta": "A partir de este momento llevarás el nombre de... ¡Tiburoncín! \n ¡TIBURONCÍN! ¡U JA JA! \n ¡Bienvenido Hermano Tiburoncín! \n ¡TIBURONCÍN! ¡U JA JA! "
+  },
+  {
+    "ID": 11,
+    "Tema": "DEPORTES",
+    "Tipo": "Multiple Choice Puntaje Parcial",
+    "Pregunta": "Qué disciplinas no forman parte del DECATLON?",
+    "Respuesta": "3,5",
+    "Opcion 1": "Lanzamiento de disco",
+    "Opcion 2": "Salto en largo",
+    "Opcion 3": "Maratón",
+    "Opcion 4": "Lanzamiento de jabalina",
+    "Opcion 5": "Ciclismo",
+    "Texto respuesta": "Ni maratón ni ciclismo forman parte del decatlón."
+  },
+  {
+    "ID": 12,
+    "Tema": "ARTE",
+    "Tipo": "Multiple Choice Simple",
+    "Pregunta": "¿Cuál es el disco más vendido de la historia?",
+    "Respuesta": "4",
+    "Opcion 1": "Revolver (Los Beatles)",
+    "Opcion 2": "Greatest Hits (Queen)",
+    "Opcion 3": "mp3 (Emilia)",
+    "Opcion 4": "Thriller (Michael Jackson)",
+    "Opcion 5": "Back to Black (Amy Winehouse)",
+    "Texto respuesta": "El disco más vendido de la historia es Thriller, de Michael Jackson. Se estima que ha vendido entre 51 a 65 millones de álbumes."
+  },
+  {
+    "ID": 13,
+    "Tema": "HISTORIA",
+    "Tipo": "Verdadero Falso Penalidad",
+    "Pregunta": "Nueva Orleans en Luisiana, Estados Unidos, fue colonia española",
+    "Respuesta": "1",
+    "Opcion 1": "Verdadero",
+    "Opcion 2": "Falso",
+    "Texto respuesta": "Desde 1762 hasta 1800 los territorios en torno al río Misisipi fueron españoles."
+  },
+
+  {
+    "ID": 14,
+    "Tema": "CIENCIAS",
+    "Tipo": "Multiple Choice Penalidad",
+    "Pregunta": "Para la mecánica cuántica, la luz ¿es una partícula o una onda?",
+    "Respuesta": "4",
+    "Opcion 1": "Onda",
+    "Opcion 2": "Partícula",
+    "Opcion 3": "Ninguna",
+    "Opcion 4": "Ambas",
+    "Texto respuesta": "La luz se comporta como una partícula o como una onda, segun la mecánica cuántica"
   }
+
 ]

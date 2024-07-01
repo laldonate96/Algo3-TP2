@@ -13,10 +13,10 @@ import java.util.List;
 
 public class FabricaOpciones {
 
-    public static List<Opcion> crearListaGrupo(List<String> grupos, List<String> contenidoOpciones,List<String>  posicionesCorrectas,Estado estadoIndicado) {
+    public static List<Grupo> crearListaGrupo(List<String> grupos, List<String> contenidoOpciones,List<String>  posicionesCorrectas,Estado estadoIndicado) {
         Grupo opcion;
 
-        List<Opcion> listaOpciones = new ArrayList<>();
+        List<Grupo> listaOpciones = new ArrayList<>();
         int posicionBuscada;
         int posicionAnterior=Integer.parseInt(posicionesCorrectas.get(0));
         int grupoActual = 0;
@@ -39,12 +39,12 @@ public class FabricaOpciones {
 
     }
 
-    public static  List<Opcion> crearListaOrdenada(List<String> contenidoOpciones, List<String> ordenCorrecto, Estado estadoIndicado ) {
+    public static  List<Ordenada> crearListaOrdenada(List<String> contenidoOpciones, List<String> ordenCorrecto, Estado estadoIndicado ) {
 
         int posicionEnLista;
 
         String textoOpcion;
-        List<Opcion> listaOpciones = new ArrayList<>();
+        List<Ordenada> listaOpciones = new ArrayList<>();
 
         Ordenada opcion;
         for(int i=0; i<contenidoOpciones.size();i++){
@@ -58,10 +58,10 @@ public class FabricaOpciones {
         return listaOpciones;
     }
 
-    public static List<Opcion> crearListaSimple(List<String> contenidoOpciones, List<String> posicionesDeCorrectas, Estado estado){
+    public static List<Simple> crearListaSimple(List<String> contenidoOpciones, List<String> posicionesDeCorrectas, Estado estado){
 
         int posicion = 1;
-        List<Opcion> listaOpciones=new ArrayList<>();
+        List<Simple> listaOpciones=new ArrayList<>();
         Simple opcion;
         for (String contenidoOpcion : contenidoOpciones) {
             if (posicionesDeCorrectas.contains(String.valueOf(posicion))) {

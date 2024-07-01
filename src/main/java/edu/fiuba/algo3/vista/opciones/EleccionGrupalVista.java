@@ -17,28 +17,24 @@ import javafx.scene.layout.HBox;
 public class EleccionGrupalVista implements OpcionesVista {
 
     private List<Spinner<String>> spinners = new ArrayList<>();
-    private List<Opcion> opcionesOriginales;
+    private List<Grupo> opcionesOriginales;
 
-    private List<String> obtenerGrupos(List<Opcion> opciones) {
+    private List<String> obtenerGrupos(List<Grupo> opciones) {
         List<String> grupos = new ArrayList<>();
-        for (Opcion opcion : opciones) {
-            if (opcion instanceof Grupo && !grupos.contains(((Grupo) opcion).obtenerGrupo())){
-                Grupo grupoOpcion = (Grupo) opcion;
-                grupos.add(grupoOpcion.obtenerGrupo());
+        for (Grupo opcion : opciones) {
+            if (!grupos.contains(opcion.obtenerGrupo())){
+                grupos.add(opcion.obtenerGrupo());
             }
         }
         return grupos;
     }
 
-    @Override
-    public void mostrarOpciones(List<Opcion> opciones, GridPane contenedor) {
+
+    public void mostrarOpciones(List<Grupo> opciones, GridPane contenedor) {
         ObservableList<String> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
         opcionesOriginales = opciones;
 
-        for (Opcion opcion : opciones) {
-            if (opcion instanceof Grupo) {
-                Grupo grupo = (Grupo) opcion;
-
+        for (Grupo opcion : opciones) {
                 Label opcionLabel = new Label(opcion.obtenerTexto());
                 opcionLabel.getStyleClass().add("labelOpcion");
                 
@@ -46,14 +42,14 @@ public class EleccionGrupalVista implements OpcionesVista {
 
                 SpinnerValueFactory<String> listaGrupoSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(observableListGrupo);
                 grupoSpinner.setValueFactory(listaGrupoSpinner);
-                grupoSpinner.getValueFactory().setValue(grupo.obtenerGrupo());
+                grupoSpinner.getValueFactory().setValue(opcion.obtenerGrupo());
 
                 HBox hbox = new HBox(10);
                 hbox.getChildren().addAll(grupoSpinner, opcionLabel);
 
                 contenedor.add(hbox, 0, opciones.indexOf(opcion));
                 spinners.add(grupoSpinner);
-            }
+
         }
     }
 

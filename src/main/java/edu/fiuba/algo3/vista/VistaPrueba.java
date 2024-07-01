@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 
 import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
@@ -26,7 +27,7 @@ public class VistaPrueba extends Application {
 
         List<String> opcionesOrdered = List.of("opcion1", "opcion2");
 
-        List<Opcion> opciones = FabricaOpciones.crearListaOrdenada(opcionesOrdered, List.of("2", "1"), new Correcta());
+        List<Ordenada> opciones = FabricaOpciones.crearListaOrdenada(opcionesOrdered, List.of("2", "1"), new Correcta());
         Pregunta pregunta = new OrderedChoice("pepe", opciones, new Clasica(1), "categoria","Say no More" );
 
         System.out.println("prueba");

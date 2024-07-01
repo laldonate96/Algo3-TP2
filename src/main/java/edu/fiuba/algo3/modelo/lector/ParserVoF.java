@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.lector;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import org.json.JSONObject;
 
@@ -23,7 +24,7 @@ public class ParserVoF extends LectorParser {
 
         List<String> contenidoOpciones =obtenerContenidoOpciones(preguntaJson,2);
 
-        List<Opcion> opciones=FabricaOpciones.crearListaSimple(contenidoOpciones,posicionesCorrectas, new Correcta());
+        List<Simple> opciones=FabricaOpciones.crearListaSimple(contenidoOpciones,posicionesCorrectas, new Correcta());
         
         return FabricaPreguntas.crearPreguntaVerdaderoFalso(enunciado, opciones, puntaje, categoria,explicacion);
     }

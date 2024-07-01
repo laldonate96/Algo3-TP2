@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.testEntrega3.TurnosTest;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
@@ -36,25 +38,27 @@ public class TurnosTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private Turno turno;
-    private List<String> opcionesJugador1;
-    private List<String> opcionesJugador2;
+    private List<String> contenidoOpciones1;
+    private List<String> contenidoOpciones2;
     private Estado manejarVoF;
+    private ManejarVoF manejarVoFP;
 
 
     @BeforeEach
     public void setUp(){
 
-        List<String> opcionesTexto= Arrays.asList("Correcta", "Incorrecta");
+        List<String> opcionesTexto= Arrays.asList("A bloques", "Cortadas");
         List<String> posicionesCorrectas= List.of("1");
-        List<Opcion> opciones = FabricaOpciones.crearListaSimple(opcionesTexto, posicionesCorrectas, new Correcta());
+        List<Simple> opcionesPregunta = FabricaOpciones.crearListaSimple(opcionesTexto, posicionesCorrectas, new Correcta());
 
         Clasica clasica = new Clasica(1);
         ConPenalidad penalidad= new ConPenalidad();
-        manejarVoF=new ManejarVoF();
 
-        vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock", "Say no More");
-        vofp = new VerdaderoFalso("un enunciado", opciones, penalidad,"Mock","Say no More" );
 
+        vof = new VerdaderoFalso("Cuales son las mejores Papas Fritas", opcionesPregunta, clasica,"Mock", "Say no More");
+        vofp = new VerdaderoFalso("Cuales son las mejores Papas Fritas", opcionesPregunta, penalidad,"Mock","Say no More" );
+        manejarVoF=new ManejarVoF((VerdaderoFalso) vof);
+        manejarVoFP=new ManejarVoF((VerdaderoFalso)vofp);
 
         jugador1 = new Jugador("un jugador", FabricaModificadores.crearListaModificadores());
         jugador2 = new Jugador("otro jugador", FabricaModificadores.crearListaModificadores());
@@ -66,13 +70,13 @@ public class TurnosTest {
     @Test
     public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYseLespidePuntos(){
         //arrange
-        opcionesJugador1 = List.of("Correcta");
+        contenidoOpciones1 = List.of("A bloques");
         List<String> posicion1= List.of("1");
-        List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1, posicion1, new Correcta());
+        List<Opcion> opcionesJugador1= new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Incorrecta()));
 
-        opcionesJugador2 = List.of("Incorrecta");
+        contenidoOpciones2 = List.of("Cortadas");
         List<String> posicion2= List.of();
-        List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
+        List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2,posicion2, new Incorrecta()));
 
 
         turno.reiniciarTurno(vof,manejarVoF);
@@ -81,8 +85,8 @@ public class TurnosTest {
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
         Modificador nuloJugador2 =jugador2.obtenerModificadores().get(0);
 
-        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador1);
-        turno.agregarRespuesta(opcionJugador2,jugador2,nuloJugador2);
+        turno.agregarRespuesta(opcionesJugador1,jugador1,nuloJugador1);
+        turno.agregarRespuesta(opcionesJugador2,jugador2,nuloJugador2);
 
         //act
 
@@ -97,23 +101,23 @@ public class TurnosTest {
     @Test
     public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaYseLespidePuntos(){
         //arrange
-        opcionesJugador1 = List.of("Correcta");
+        contenidoOpciones1 = List.of("A bloques");
         List<String> posicion1= List.of("1");
-        List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1, posicion1, new Correcta());
+        List<Opcion> opcionesJugador1 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Incorrecta()));
 
-        opcionesJugador2 = List.of("Incorrecta");
+        contenidoOpciones2 = List.of("Cortadas");
         List<String> posicion2= List.of();
-        List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
+        List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2,posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(vofp,manejarVoF);
+        turno.reiniciarTurno(vofp,manejarVoFP);
 
 
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
         Modificador nuloJugador2 =jugador2.obtenerModificadores().get(0);
 
-        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador1);
-        turno.agregarRespuesta(opcionJugador2,jugador2,nuloJugador2);
+        turno.agregarRespuesta(opcionesJugador1,jugador1,nuloJugador1);
+        turno.agregarRespuesta(opcionesJugador2,jugador2,nuloJugador2);
 
         //act
         turno.asignarPuntajes();
@@ -128,16 +132,16 @@ public class TurnosTest {
     public void test03seJuegaUnTurnoConUnaPreguntaVoFPenalizadaConMultiplicadorYseLespidePuntos(){
         //arrange
 
-        opcionesJugador1 = List.of("Correcta");
+        contenidoOpciones1 = List.of("A bloques");
         List<String> posicion1= List.of("1");
-        List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1, posicion1, new Correcta());
+        List<Opcion> opcionesJugador1 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Incorrecta()));
 
-        opcionesJugador2 = List.of("Incorrecta");
+        contenidoOpciones2 = List.of("Cortadas");
         List<String> posicion2= List.of();
-        List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
+        List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2,posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(vofp,manejarVoF);
+        turno.reiniciarTurno(vofp,manejarVoFP);
 
 
 
@@ -145,8 +149,8 @@ public class TurnosTest {
         Modificador multiplicador= jugador1.obtenerModificadores().get(1);
         Modificador nuloJugador2 =jugador2.obtenerModificadores().get(0);
 
-        turno.agregarRespuesta(opcionJugador1,jugador1,multiplicador);
-        turno.agregarRespuesta(opcionJugador2,jugador2,nuloJugador2);
+        turno.agregarRespuesta(opcionesJugador1,jugador1,multiplicador);
+        turno.agregarRespuesta(opcionesJugador2,jugador2,nuloJugador2);
 
         //act
         turno.asignarPuntajes();
@@ -160,13 +164,13 @@ public class TurnosTest {
     public void test04seJuegaUnTurnoConUnaPreguntaVoFClasicaConAnuladorYseLespidePuntos(){
         //arrange
 
-        opcionesJugador1 = List.of("Correcta");
+        contenidoOpciones1 = List.of("A bloques");
         List<String> posicion1= List.of("1");
-        List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1, posicion1, new Correcta());
+        List<Opcion> opcionesJugador1 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Incorrecta()));
 
-        opcionesJugador2 = List.of("Incorrecta");
+        contenidoOpciones2 = List.of("Cortadas");
         List<String> posicion2= List.of();
-        List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
+        List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2,posicion2, new Incorrecta()));
 
 
         turno.reiniciarTurno(vof,manejarVoF);
@@ -177,8 +181,8 @@ public class TurnosTest {
         Modificador nuloJugador1 =jugador1.obtenerModificadores().get(0);
         Modificador anulador= jugador2.obtenerModificadores().get(5);
 
-        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador1);
-        turno.agregarRespuesta(opcionJugador2,jugador2,anulador);
+        turno.agregarRespuesta(opcionesJugador1,jugador1,nuloJugador1);
+        turno.agregarRespuesta(opcionesJugador2,jugador2,anulador);
 
         //act
         turno.asignarPuntajes();
@@ -195,16 +199,16 @@ public class TurnosTest {
     public void test05UsarUnTurnoYReiniciarloAsignaLosPuntosEsperados(){
         //arrange
 
-        opcionesJugador1 = List.of("Cortadas");
+        contenidoOpciones1 = List.of("Cortadas");
         List<String> posicion1= List.of("5");
-        List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1,posicion1, new Incorrecta());
+        List<Opcion> opcionesJugador1 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1,posicion1, new Incorrecta()));
 
-        opcionesJugador2 = List.of("Fritas");
+        contenidoOpciones2 = List.of("A bloques");
         List<String>  posicion2= List.of("1");
-        List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2, posicion2, new Correcta());
+        List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(vofp, manejarVoF);
+        turno.reiniciarTurno(vofp, manejarVoFP);
 
 
 
@@ -213,20 +217,20 @@ public class TurnosTest {
         Modificador multiplicador =jugador2.obtenerModificadores().get(1);
 
 
-        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador);
-        turno.agregarRespuesta(opcionJugador2,jugador2,multiplicador);
+        turno.agregarRespuesta(opcionesJugador1,jugador1,nuloJugador);
+        turno.agregarRespuesta(opcionesJugador2,jugador2,multiplicador);
 
 
         turno.asignarPuntajes();
         jugador2.obtenerPuntaje();
 
 
-        opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1,posicion1, new Incorrecta());
-        opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2, posicion2, new Correcta());
+        opcionesJugador1=new ArrayList<>( FabricaOpciones.crearListaSimple(contenidoOpciones1,posicion1, new Incorrecta()));
+        opcionesJugador2=new ArrayList<>( FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
 
-        turno.reiniciarTurno(vofp, manejarVoF);
+        turno.reiniciarTurno(vofp, manejarVoFP);
 
 
 
@@ -235,8 +239,8 @@ public class TurnosTest {
 
         multiplicador= jugador2.obtenerModificadores().get(1);
 
-        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador);
-        turno.agregarRespuesta(opcionJugador2,jugador2,multiplicador);
+        turno.agregarRespuesta(opcionesJugador1,jugador1,nuloJugador);
+        turno.agregarRespuesta(opcionesJugador2,jugador2,multiplicador);
 
         //act
         turno.asignarPuntajes();

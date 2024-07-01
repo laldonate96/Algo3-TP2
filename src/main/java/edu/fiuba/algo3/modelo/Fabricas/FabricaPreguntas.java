@@ -3,6 +3,9 @@ package edu.fiuba.algo3.modelo.Fabricas;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Ordenada;
+import edu.fiuba.algo3.modelo.opcion.Simple;
 import org.json.JSONObject;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
@@ -19,19 +22,19 @@ public class FabricaPreguntas {
         return (opcionesCorrectas.size());
     }
 
-    public static Pregunta crearPreguntaVerdaderoFalso(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
+    public static VerdaderoFalso crearPreguntaVerdaderoFalso(String enunciado, List<Simple> opciones, Puntaje puntaje, String categoria, String explicacion) {
         return new VerdaderoFalso(enunciado, opciones, puntaje, categoria,explicacion);
     }
 
-    public static Pregunta crearPreguntaMultipleChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
+    public static MultipleChoice crearPreguntaMultipleChoice(String enunciado, List<Simple> opciones, Puntaje puntaje, String categoria, String explicacion) {
         return new MultipleChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
 
-    public static Pregunta crearPreguntaOrderedChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
+    public static OrderedChoice crearPreguntaOrderedChoice(String enunciado, List<Ordenada> opciones, Puntaje puntaje, String categoria, String explicacion) {
         return new OrderedChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
 
-    public static Pregunta crearPreguntaGroupChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
+    public static GroupChoice crearPreguntaGroupChoice(String enunciado, List<Grupo> opciones, Puntaje puntaje, String categoria, String explicacion) {
         return new GroupChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
 }

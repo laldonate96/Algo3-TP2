@@ -33,7 +33,7 @@ public class FabricaOpcionesTest {
 
         //Act
 
-        List<Opcion> opcionesObtenidas = FabricaOpciones.crearListaOrdenada(contenidoOpciones,posicionesCorrectas, new Correcta());
+        List<Ordenada> opcionesObtenidas = FabricaOpciones.crearListaOrdenada(contenidoOpciones,posicionesCorrectas, new Correcta());
 
         //Assert
         assertEquals(opcionesEsperadas.size(), opcionesObtenidas.size());
@@ -54,7 +54,7 @@ public class FabricaOpcionesTest {
         Opcion opcion6 = new Grupo("d", "2", new Correcta());
 
         //Act
-        List<Opcion> opciones = FabricaOpciones.crearListaGrupo(List.of("1", "2"), List.of("x", "a","y", "z", "s", "d"),List.of("1","3","4","0","2","5","6"), new Correcta());
+        List<Grupo> opciones = FabricaOpciones.crearListaGrupo(List.of("1", "2"), List.of("x", "a","y", "z", "s", "d"),List.of("1","3","4","0","2","5","6"), new Correcta());
 
         //Assert
         assertEquals(6, opciones.size());
@@ -77,14 +77,17 @@ public class FabricaOpcionesTest {
         List<String> posicionesDeCorrectas = List.of("1","3");
 
         //Act
-        List<Opcion> opciones = FabricaOpciones.crearListaSimple(contenidoOpciones, posicionesDeCorrectas, new Correcta());
+        List<Simple> opciones = FabricaOpciones.crearListaSimple(contenidoOpciones, posicionesDeCorrectas, new Correcta());
 
         //Assert
         assertEquals(3, opciones.size());
+
         assertTrue(opcion1.equals(opciones.get(0)));
         assertEquals(1, opciones.get(0).contarCorrecta());
+
         assertTrue(opcion2.equals(opciones.get(1)));
         assertEquals(1, opciones.get(1).contarIncorrecta());
+
         assertTrue(opcion3.equals(opciones.get(2)));
         assertEquals(1, opciones.get(2).contarCorrecta());
     }

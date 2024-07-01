@@ -35,7 +35,7 @@ public class RespuestaTest {
 
         List<String> posicionesCorrectas= List.of("1");
 
-        opcionesCorrectas= FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas, new Correcta());
+        opcionesCorrectas= new ArrayList<>(FabricaOpciones.crearListaSimple(List.of("Correcta","Incorrecta"),posicionesCorrectas, new Correcta()));
 
 
 

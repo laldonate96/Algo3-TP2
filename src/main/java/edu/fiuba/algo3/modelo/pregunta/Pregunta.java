@@ -11,13 +11,12 @@ public abstract class Pregunta {
     protected String categoria;
     protected String enunciado;
     protected String explicacion;
-    protected List<Opcion> opciones;
+
     protected Puntaje puntaje;
 
 
-    public Pregunta(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
+    public Pregunta(String enunciado, Puntaje puntaje, String categoria, String explicacion) {
         this.enunciado = enunciado;
-        this.opciones = opciones;
         this.puntaje = puntaje;
         this.categoria = categoria;
         this.explicacion = explicacion;
@@ -38,12 +37,9 @@ public abstract class Pregunta {
     public String obtenerEnunciado() {
         return enunciado;
     }
-
-    public List<Opcion> obtenerOpciones() {
-        return opciones;
-    }
-
     public String obtenerExplicacion() {
         return explicacion;
     }
+
+
 }

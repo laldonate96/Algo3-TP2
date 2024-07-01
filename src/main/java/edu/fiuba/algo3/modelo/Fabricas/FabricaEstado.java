@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.Fabricas;
 
 import edu.fiuba.algo3.modelo.excepciones.PreguntaInexistenteException;
 
-import edu.fiuba.algo3.modelo.pregunta.Pregunta;
+import edu.fiuba.algo3.modelo.pregunta.*;
 import edu.fiuba.algo3.modelo.turno.Estado.*;
 
 
@@ -15,16 +15,16 @@ public class FabricaEstado {
 
         switch (nombrePregunta) {
             case "VerdaderoFalso":
-                estado = new ManejarVoF();
+                estado = new ManejarVoF((VerdaderoFalso) pregunta);
                 break;
             case "MultipleChoice":
-                estado= new ManejarMultipleC();
+                estado= new ManejarMultipleC((MultipleChoice) pregunta);
                 break;
             case "OrderedChoice":
-                estado=new ManejarOrderedC();
+                estado=new ManejarOrderedC((OrderedChoice) pregunta);
                 break;
             case "GroupChoice":
-                estado= new ManejarGrupC();
+                estado= new ManejarGroupChoice((GroupChoice) pregunta);
                 break;
             default:
                 throw new PreguntaInexistenteException();

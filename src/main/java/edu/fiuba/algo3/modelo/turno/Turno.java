@@ -27,7 +27,7 @@ public class Turno {
 
     public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, Modificador modificador) {
 
-        validarOpciones(opcionesJugador,preguntaDelTurno.obtenerOpciones());
+        estado.validarOpciones(opcionesJugador);
 
         Respuesta respuesta=new Respuesta(opcionesJugador, jugador);
         respuestas.add(respuesta);
@@ -43,13 +43,7 @@ public class Turno {
 
     }
 
-    private void validarOpciones(List<Opcion> opcionesJugador, List<Opcion> opcionesPregunta) {
-        for (Opcion opcionPregunta:opcionesPregunta) {
-            for (Opcion opcion : opcionesJugador) {
-                opcion.actualizarEstado(opcionPregunta);
-            }
-        }
-    }
+
 
     public void asignarPuntajes() {
         preguntaDelTurno.asignarPuntajes(respuestas);
@@ -70,5 +64,6 @@ public class Turno {
         this.respuestas = new ArrayList<>();
         this.modificador= new Nulo();
         this.preguntaDelTurno=pregunta;
+        this.estado=estado;
     }
 }

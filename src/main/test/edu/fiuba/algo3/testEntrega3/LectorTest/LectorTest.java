@@ -31,7 +31,7 @@ public class LectorTest {
 
     @Test
     public void test01UnArchivoJsonCon7PreguntasAlLeerseCreaUnaListaDe7Preguntas() {
-        assertEquals(7, preguntasLeidas.size());
+        assertEquals(14, preguntasLeidas.size());
     }
 //    @Test
 //    public void test02UnArchivoJsonCon7PreguntasAlLeerseCreaUnaListaDe7Preguntas() {
@@ -59,7 +59,7 @@ public class LectorTest {
 
         //Act
         OrderedChoice preguntaLeida = (OrderedChoice) preguntasLeidas.get(0);
-        List<Opcion> opcionesObtenidas = preguntaLeida.obtenerOpciones();
+        List<Ordenada> opcionesObtenidas = preguntaLeida.obtenerOpciones();
 
         //Assert
         assertEquals(categoriaEsperada, preguntaLeida.obtenerCategoria());
@@ -92,7 +92,7 @@ public class LectorTest {
 
         //Act
         GroupChoice preguntaLeida = (GroupChoice) preguntasLeidas.get(2);
-        List<Opcion> opcionesObtenidas = preguntaLeida.obtenerOpciones();
+        List<Grupo> opcionesObtenidas = preguntaLeida.obtenerOpciones();
 
         //Assert
         assertEquals(categoriaEsperada, preguntaLeida.obtenerCategoria());

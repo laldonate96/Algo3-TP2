@@ -3,13 +3,15 @@ package edu.fiuba.algo3.vista.opciones;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Simple;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 
 public class MultipleChoiceVista implements OpcionesVista {
     private List<CheckBox> checkBoxsOpciones = new ArrayList<>();
-    private List<Opcion> opciones;
+    private List<Simple> opciones;
     
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
@@ -22,8 +24,7 @@ public class MultipleChoiceVista implements OpcionesVista {
         return opcionesSeleccionadas;
     }
 
-    @Override
-    public void mostrarOpciones(List<Opcion> opcionesRecibidas, GridPane contenedor) {
+    public void mostrarOpciones(List<Simple> opcionesRecibidas, GridPane contenedor) {
         opciones = opcionesRecibidas;
         for(Opcion opcion : opciones){
             CheckBox checkBoxOpcion = new CheckBox(opcion.obtenerTexto());

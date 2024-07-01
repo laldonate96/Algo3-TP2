@@ -25,9 +25,7 @@ public class AlgoHoot3 {
     private CriterioDeVictoria criterio;
 
 
-    private AlgoHoot3(){
-        this.rondas = 0;
-    }
+    private AlgoHoot3(){}
 
     public static AlgoHoot3 obtenerInstancia() {
         if (instancia == null) {
@@ -36,6 +34,12 @@ public class AlgoHoot3 {
         return instancia;
     }
 
+
+    private void validarJugadores(List<Jugador> jugadores) {
+        if (jugadores.size()<2){
+            throw new CantidadDeJugadoresMenorADosException("Por favor ingrese al menos dos jugadores");
+        }
+    }
 
     public void iniciarAlgoHoot(List<Jugador> jugadores, Turno turno, CriterioDeVictoria criterio, List<Pregunta> preguntas) {
 
@@ -46,15 +50,17 @@ public class AlgoHoot3 {
 
         this.turno =turno;
 
+
         criterio.establecerJugadores(jugadores);
         this.criterio=criterio;
+
+        rondas=0;
+        jugadorActual=null;
+        iteradorJugadores=null;
+
     }
 
-    private void validarJugadores(List<Jugador> jugadores) {
-        if (jugadores.size()<2){
-            throw new CantidadDeJugadoresMenorADosException("Por favor ingrese al menos dos jugadores");
-        }
-    }
+
 
     public void pasarRonda() {
         rondas++;
