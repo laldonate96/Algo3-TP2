@@ -25,9 +25,8 @@ public abstract class Pregunta {
         puntaje.asignarPuntajes(respuestas);
     }
 
-    public  boolean modificadorEsValido(Modificador modificador){
+    public boolean modificadorEsValido(Modificador modificador){
         return puntaje.modificadorEsValido(modificador);
-
     }
 
     public String obtenerCategoria() {

@@ -19,7 +19,7 @@ public abstract class Puntaje {
 
     public boolean modificadorEsValido(Modificador modificador) {
         for (Modificador modificadorValido: validos){
-            if (modificador.getClass().equals(modificadorValido)) {
+            if (modificador.getClass().equals(modificadorValido.getClass())) {
                 return true;
             }
         }

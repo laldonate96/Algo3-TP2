@@ -1,9 +1,14 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
+import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
 public class Parcial extends Puntaje {
+
+    public Parcial(){
+        validos = FabricaModificadores.crearValidosNoPenalidad();
+    }
 
     @Override
     public void asignarPuntaje(Respuesta respuesta) {
