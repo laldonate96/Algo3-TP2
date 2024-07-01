@@ -11,7 +11,6 @@ import java.util.List;
 
 public abstract class Puntaje {
     protected int puntaje = 1;
-    protected List<Modificador> validos;
 
     public abstract void asignarPuntaje(Respuesta respuesta);
 

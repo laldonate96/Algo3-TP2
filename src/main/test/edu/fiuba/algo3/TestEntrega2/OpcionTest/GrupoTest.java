@@ -16,7 +16,6 @@ public class GrupoTest {
         opcion1 = new Grupo("Opcion 1", "Grupo 1", new Correcta());
     }
 
-
         @Test
         public void test01SinActualizarSuEstadoNoEsCorrectaNiIncorrecta() {
             //Assert
