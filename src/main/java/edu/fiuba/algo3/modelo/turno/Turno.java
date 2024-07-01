@@ -55,10 +55,6 @@ public class Turno {
 
     }
 
-    public List<String> mostrarModificadoresUsados() {
-        return modificador.mostrarModificadoresUsados();
-    }
-
 
     public void reiniciarTurno(Pregunta pregunta, Estado estado) {
         this.respuestas = new ArrayList<>();

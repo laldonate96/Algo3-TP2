@@ -34,17 +34,13 @@ public class Nulo extends Modificador {
     }
 
     @Override
-    public void actualizar(List<Modificador> modificadores) {
+    public Modificador actualizar(List<Modificador> modificadores) {
         siguiente=null;
+        return this;
     }
 
     @Override
-    protected List<String> guardarModificadores(List<String> listaUsados) {
-
-        if (siguiente == null) {
-            return listaUsados;
-        } else {
-            return super.guardarModificadores(listaUsados);
-        }
+    public String mostrarModificador() {
+        return "Modificador usado: Ninguno";
     }
 }

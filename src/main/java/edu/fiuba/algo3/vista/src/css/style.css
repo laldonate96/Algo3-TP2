@@ -107,6 +107,12 @@
     -fx-fill: #F1C40F; 
 }
 
+.explicacion{
+    -fx-font-size: 35;
+    -fx-fill: #E74C3C; 
+    -fx-font-weight: bold;
+}
+
 .labelOpcion .text{
     -fx-font-size: 15px;
     -fx-fill: #2ECC71; 
@@ -147,4 +153,15 @@
 .botonReset:hover{
     -fx-background-color: #B84C3C;
     -fx-text-fill: #e4e4e1;
+}
+
+.labelPostRonda {
+    -fx-font-size: 20px;
+    -fx-fill: #ECF0F1; 
+}
+
+.flechaPuntajeJugador {
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F1C40F;
 }

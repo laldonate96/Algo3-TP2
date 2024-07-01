@@ -9,6 +9,7 @@ public class Jugador {
     private int puntaje;
     private final String nombre;
     private final List<Modificador> modificadores;
+    private Modificador ultimoModificadorUsado;
 
     public Jugador(String nombre, List<Modificador> modificadores) {
         this.nombre = nombre;
@@ -39,7 +40,7 @@ public class Jugador {
         if (!modificadores.contains(modificador)) {
             throw new ModificadorInexistenteException("El jugador " + nombre + " no posee el modificador usado.");
         }
-        modificador.actualizar(modificadores);
+        this.ultimoModificadorUsado = modificador.actualizar(modificadores);
     }
 
     public List<Modificador> obtenerModificadores(){
@@ -57,6 +58,10 @@ public class Jugador {
 
     public String obtenerNombre(){
         return this.nombre;
+    }
+
+    public Modificador obtenerUltimoModificadorUsado(){
+        return ultimoModificadorUsado;
     }
 }
 

@@ -47,9 +47,8 @@ public class Multiplicador extends Modificador {
     }
 
     @Override
-    protected List<String> guardarModificadores(List<String> listaUsados) {
-        listaUsados.add(this.getClass() + " x" + factorDeMultiplicacion + " usado por " + duenio.obtenerNombre() + "\n");
-        return siguiente.guardarModificadores(listaUsados);
+    public String mostrarModificador(){
+        return "Modificador usado: Multiplicador" + " x" + factorDeMultiplicacion;
     }
 
     @Override

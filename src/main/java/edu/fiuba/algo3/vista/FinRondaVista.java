@@ -3,8 +3,10 @@ package edu.fiuba.algo3.vista;
 import java.util.List;
 
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
+import edu.fiuba.algo3.controlador.ControladorDePregunta;
 import edu.fiuba.algo3.controlador.ControladorDeTurno;
 import edu.fiuba.algo3.modelo.AlgoHoot3;
+import edu.fiuba.algo3.modelo.Modificador.Nulo;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.vista.botones.Boton;
 import javafx.application.Application;
@@ -14,11 +16,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class FinRondaVista extends Application {
     private ControladorDeJugador controladorDeJugador = new ControladorDeJugador();
     private ControladorDeTurno controladorDeTurno = new ControladorDeTurno();
+    private ControladorDePregunta controladorDePregunta = new ControladorDePregunta();
 
     public static void main(String[] args) {
         launch(args);
@@ -41,28 +45,34 @@ public class FinRondaVista extends Application {
             jugadorBox.setSpacing(20);
 
             Label nombreLabel = new Label(jugador.obtenerNombre());
-            Label puntajeLabel = new Label(String.valueOf(jugador.obtenerPuntaje()) + " puntos");
-
-            jugadorBox.getChildren().addAll(nombreLabel, puntajeLabel);
+            nombreLabel.getStyleClass().add("labelPostRonda");
+            Label puntajeLabel = new Label("Puntos: " + String.valueOf(jugador.obtenerPuntaje()));
+            puntajeLabel.getStyleClass().add("labelPostRonda");
+            Label flechaLabel = new Label("→");
+            flechaLabel.getStyleClass().add("flechaPuntajeJugador");
+            Label flechaLabel2 = new Label("→");
+            flechaLabel2.getStyleClass().add("flechaPuntajeJugador");
+            Label modificadorUsado = new Label(jugador.obtenerUltimoModificadorUsado().mostrarModificador());
+            modificadorUsado.getStyleClass().add("labelPostRonda");
+            
+            jugadorBox.getChildren().addAll(nombreLabel, flechaLabel, puntajeLabel, flechaLabel2, modificadorUsado);
             jugadoresBox.getChildren().add(jugadorBox);
         }
 
         VBox modificadoresBox = new VBox();
-        modificadoresBox.setAlignment(Pos.CENTER);
         modificadoresBox.setSpacing(10);
-
-        // for (String modificador : modificadores) {
-        //     Label modificadorLabel = new Label(modificador);
-        //     modificadoresBox.getChildren().add(modificadorLabel);
-        // }
 
         Boton botonSiguienteRonda = new Boton("Siguiente", "boton");
         botonSiguienteRonda.setOnAction(e -> controladorDeTurno.siguienteRonda(primaryStage));
 
+        Text explicacion = new Text(controladorDePregunta.mostrarPregunta().obtenerExplicacion());
+        explicacion.getStyleClass().add("explicacion");
+        explicacion.setWrappingWidth(1000);
+
         VBox mainBox = new VBox();
         mainBox.setAlignment(Pos.CENTER);
         mainBox.setSpacing(20);
-        mainBox.getChildren().addAll(jugadoresBox, botonSiguienteRonda);
+        mainBox.getChildren().addAll(explicacion, jugadoresBox, botonSiguienteRonda);
 
         BorderPane root = new BorderPane();
         root.setTop(toolbarBox);
@@ -71,7 +81,7 @@ public class FinRondaVista extends Application {
         Scene scene = new Scene(root, 1280, 720);
 
         try {
-            String css = getClass().getResource("/css/style.css").toExternalForm();
+            String css = getClass().getResource("src/css/style.css").toExternalForm();
             scene.getStylesheets().add(css);
         } catch (NullPointerException e) {
             System.err.println("Archivo CSS no encontrado: " + e.getMessage());
@@ -80,9 +90,5 @@ public class FinRondaVista extends Application {
         primaryStage.setTitle("Final de Ronda");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    public static List<String> mostrarModificadoresDeRonda() {
-        return AlgoHoot3.obtenerInstancia().mostrarModificadoresUsados();
     }
 }

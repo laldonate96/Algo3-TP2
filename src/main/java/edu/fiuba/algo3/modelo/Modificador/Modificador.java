@@ -18,17 +18,13 @@ public abstract class Modificador implements Usable {
 
     public abstract void agregarModificador(Modificador modificador);
 
-    public void actualizar(List<Modificador> modificadores){
+    public Modificador actualizar(List<Modificador> modificadores){
         modificadores.remove(this);
+        return this;
     }
 
-    public List<String> mostrarModificadoresUsados(){
-        List<String> modificadorUsados=new ArrayList<>();
-        return guardarModificadores(modificadorUsados);
-    }
-    protected List<String> guardarModificadores(List<String> listaUsados) {
-        listaUsados.add(this.getClass() + " usado por " + duenio.obtenerNombre() + ".\n");
-        return siguiente.guardarModificadores(listaUsados);
+    public String mostrarModificador(){
+        return "Modificador usado: " + this.getClass().getSimpleName();
     }
 
     @Override
