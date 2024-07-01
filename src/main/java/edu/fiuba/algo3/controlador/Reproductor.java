@@ -7,7 +7,7 @@ import javafx.scene.media.MediaPlayer;
 public class Reproductor {
     private String tema;
     private MediaPlayer mediaPlayer;
-    private double volumen = 0;
+    private double volumen = 0.1;
 
     public Reproductor() {
         tema = "recursos/musica/Tema 1.mp3";

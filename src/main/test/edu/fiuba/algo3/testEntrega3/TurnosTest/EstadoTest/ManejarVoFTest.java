@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
-import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 import edu.fiuba.algo3.modelo.turno.Estado.ManejarVoF;

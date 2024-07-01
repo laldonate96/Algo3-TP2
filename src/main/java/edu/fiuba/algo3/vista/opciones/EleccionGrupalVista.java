@@ -5,7 +5,6 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

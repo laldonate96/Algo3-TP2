@@ -5,8 +5,6 @@ import java.util.List;
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
 import edu.fiuba.algo3.controlador.ControladorDePregunta;
 import edu.fiuba.algo3.controlador.ControladorDeTurno;
-import edu.fiuba.algo3.modelo.AlgoHoot3;
-import edu.fiuba.algo3.modelo.Modificador.Nulo;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.vista.botones.Boton;
 import javafx.application.Application;
@@ -29,66 +27,70 @@ public class FinRondaVista extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(primaryStage);
+public void start(Stage primaryStage) throws Exception {
+    VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(primaryStage);
 
-        List<Jugador> jugadores = controladorDeJugador.obtenerJugadores();
-        //List<String> modificadores = mostrarModificadoresDeRonda();
+    List<Jugador> jugadores = controladorDeJugador.obtenerJugadores();
 
-        VBox jugadoresBox = new VBox();
-        jugadoresBox.setAlignment(Pos.CENTER);
-        jugadoresBox.setSpacing(10);
+    VBox jugadoresBox = new VBox();
+    jugadoresBox.setAlignment(Pos.CENTER);
+    jugadoresBox.setSpacing(10);
 
-        for (Jugador jugador : jugadores) {
-            HBox jugadorBox = new HBox();
-            jugadorBox.setAlignment(Pos.CENTER);
-            jugadorBox.setSpacing(20);
+    for (Jugador jugador : jugadores) {
+        HBox jugadorBox = new HBox();
+        jugadorBox.setAlignment(Pos.CENTER);
+        jugadorBox.setSpacing(20);
 
-            Label nombreLabel = new Label(jugador.obtenerNombre());
-            nombreLabel.getStyleClass().add("labelPostRonda");
-            Label puntajeLabel = new Label("Puntos: " + String.valueOf(jugador.obtenerPuntaje()));
-            puntajeLabel.getStyleClass().add("labelPostRonda");
-            Label flechaLabel = new Label("→");
-            flechaLabel.getStyleClass().add("flechaPuntajeJugador");
-            Label flechaLabel2 = new Label("→");
-            flechaLabel2.getStyleClass().add("flechaPuntajeJugador");
-            Label modificadorUsado = new Label(jugador.obtenerUltimoModificadorUsado().mostrarModificador());
-            modificadorUsado.getStyleClass().add("labelPostRonda");
-            
-            jugadorBox.getChildren().addAll(nombreLabel, flechaLabel, puntajeLabel, flechaLabel2, modificadorUsado);
-            jugadoresBox.getChildren().add(jugadorBox);
-        }
+        Label nombreLabel = new Label(jugador.obtenerNombre());
+        nombreLabel.getStyleClass().add("labelPostRonda");
 
-        VBox modificadoresBox = new VBox();
-        modificadoresBox.setSpacing(10);
+        Label puntajeLabel = new Label("Puntos: " + String.valueOf(jugador.obtenerPuntaje()));
+        puntajeLabel.getStyleClass().add("labelPostRonda");
 
-        Boton botonSiguienteRonda = new Boton("Siguiente", "boton");
-        botonSiguienteRonda.setOnAction(e -> controladorDeTurno.siguienteRonda(primaryStage));
+        Label flechaLabel = new Label("→");
+        flechaLabel.getStyleClass().add("flechaPuntajeJugador");
 
-        Text explicacion = new Text(controladorDePregunta.mostrarPregunta().obtenerExplicacion());
-        explicacion.getStyleClass().add("explicacion");
-        explicacion.setWrappingWidth(1000);
+        Label flechaLabel2 = new Label("→");
+        flechaLabel2.getStyleClass().add("flechaPuntajeJugador");
 
-        VBox mainBox = new VBox();
-        mainBox.setAlignment(Pos.CENTER);
-        mainBox.setSpacing(20);
-        mainBox.getChildren().addAll(explicacion, jugadoresBox, botonSiguienteRonda);
+        Label modificadorUsado = new Label(jugador.obtenerUltimoModificadorUsado().mostrarModificador());
+        modificadorUsado.getStyleClass().add("labelPostRonda");
 
-        BorderPane root = new BorderPane();
-        root.setTop(toolbarBox);
-        root.setCenter(mainBox);
-
-        Scene scene = new Scene(root, 1280, 720);
-
-        try {
-            String css = getClass().getResource("src/css/style.css").toExternalForm();
-            scene.getStylesheets().add(css);
-        } catch (NullPointerException e) {
-            System.err.println("Archivo CSS no encontrado: " + e.getMessage());
-        }
-
-        primaryStage.setTitle("Final de Ronda");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        jugadorBox.getChildren().addAll(nombreLabel, flechaLabel, puntajeLabel, flechaLabel2, modificadorUsado);
+        jugadoresBox.getChildren().add(jugadorBox);
     }
+
+    VBox modificadoresBox = new VBox();
+    modificadoresBox.setSpacing(10);
+
+    Boton botonSiguienteRonda = new Boton("Siguiente", "boton");
+    botonSiguienteRonda.setOnAction(e -> controladorDeTurno.siguienteRonda(primaryStage));
+
+    Text explicacion = new Text(controladorDePregunta.mostrarPregunta().obtenerExplicacion());
+    explicacion.getStyleClass().add("explicacion");
+    explicacion.setWrappingWidth(1000);
+
+    VBox mainBox = new VBox();
+    mainBox.setAlignment(Pos.CENTER);
+    mainBox.setSpacing(20);
+    mainBox.getChildren().addAll(explicacion, jugadoresBox, botonSiguienteRonda);
+
+    BorderPane root = new BorderPane();
+    root.setTop(toolbarBox);
+    root.setCenter(mainBox);
+
+    Scene scene = new Scene(root, 1280, 720);
+
+    try {
+        String css = getClass().getResource("src/css/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
+    } catch (NullPointerException e) {
+        System.err.println("Archivo CSS no encontrado: " + e.getMessage());
+    }
+
+    primaryStage.setTitle("Final de Ronda");
+    primaryStage.setScene(scene);
+    primaryStage.show();
+}
+
 }

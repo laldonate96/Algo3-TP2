@@ -3,7 +3,6 @@ package edu.fiuba.algo3.vista.opciones;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;

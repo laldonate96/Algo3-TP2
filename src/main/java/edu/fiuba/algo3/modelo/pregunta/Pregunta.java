@@ -4,7 +4,6 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 
 public abstract class Pregunta {

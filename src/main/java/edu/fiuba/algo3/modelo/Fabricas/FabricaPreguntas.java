@@ -8,11 +8,9 @@ import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import org.json.JSONObject;
 
-import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
 import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
-import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 

@@ -1,14 +1,9 @@
 package edu.fiuba.algo3.controlador;
 
-import java.util.List;
-
-import edu.fiuba.algo3.modelo.AlgoHoot3;
-//import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
-//import javafx.scene.control.Button;
 
 public class ControladorUsoDeModificadores implements EventHandler<ActionEvent> {
 
