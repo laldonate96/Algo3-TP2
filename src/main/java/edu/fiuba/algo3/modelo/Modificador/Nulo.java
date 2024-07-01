@@ -35,6 +35,7 @@ public class Nulo extends Modificador {
 
     @Override
     public void actualizar(List<Modificador> modificadores) {
+        siguiente=null;
     }
 
     @Override

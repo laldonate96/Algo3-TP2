@@ -17,7 +17,7 @@ public class ManejarGroupChoice implements Estado {
 
     private void validarOpcion(Opcion opcion) {
         if(!(opcion instanceof Grupo)){
-            throw new OpcionesIncorrectasException(" la pregunta asignada no acepta este tipo de opciones");
+            throw new OpcionesIncorrectasException(" La pregunta asignada no acepta este tipo de opciones");
         }
     }
 
