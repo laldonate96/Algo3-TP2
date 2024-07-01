@@ -17,23 +17,23 @@ public class CrearModificadores {
                 switch (modificador.getClass().getSimpleName()) {
                     case "Multiplicador":
                         if (((Multiplicador) modificador).tieneFactor(2)) {
-                            botones.add(new BotonX2(jugador, modificador, botones));
+                            botones.add(new BotonModificador("X2", jugador, modificador, "botonModificador", botones));
                             modificadoresBox.getChildren().add(botones.get(botones.size() - 1));
                         } else if (((Multiplicador) modificador).tieneFactor(3)) {
-                            botones.add(new BotonX3(jugador, modificador, botones));
+                            botones.add(new BotonModificador("X3", jugador, modificador, "botonModificador", botones));
                             modificadoresBox.getChildren().add(botones.get(botones.size() - 1));
                         }
                         break;
                     case "Exclusividad":
-                        botones.add(new BotonExclusividad(jugador, modificador, botones));
+                    botones.add(new BotonModificador("E", jugador, modificador, "botonModificador", botones));
                         modificadoresBox.getChildren().add(botones.get(botones.size() - 1));
                         break;
                     case "Anulador":
-                        botones.add(new BotonAnulador(jugador, modificador, botones));
+                    botones.add(new BotonModificador("A", jugador, modificador, "botonModificador", botones));
                         modificadoresBox.getChildren().add(botones.get(botones.size() - 1));
                         break;
                     case "Nulo":
-                        botones.add(new BotonNulo(jugador, modificador, botones));
+                    botones.add(new BotonModificador("", jugador, modificador, "botonReset", botones));
                         modificadoresBox.getChildren().add(botones.get(botones.size() - 1));
                         break;
                     default:

@@ -129,3 +129,22 @@
     -fx-border-color: #F1C40F;
     -fx-border-width: 2px;
 }
+
+.botonReset{
+    -fx-padding: 5px;
+    -fx-font-size: 20px;
+    -fx-background-color: #F1C40F;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-margin: 0px;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-background-image: url('file:src/main/java/edu/fiuba/algo3/vista/src/img/boton_reset.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.botonReset:hover{
+    -fx-background-color: #B84C3C;
+    -fx-text-fill: #e4e4e1;
+}
