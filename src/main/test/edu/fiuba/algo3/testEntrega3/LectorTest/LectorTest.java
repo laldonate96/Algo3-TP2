@@ -29,6 +29,11 @@ public class LectorTest {
     public void test01UnArchivoJsonCon7PreguntasAlLeerseCreaUnaListaDe7Preguntas() {
         assertEquals(7, preguntasLeidas.size());
     }
+//    @Test
+//    public void test02UnArchivoJsonCon7PreguntasAlLeerseCreaUnaListaDe7Preguntas() {
+//        preguntasLeidas = Lector.obtenerPreguntasDeJson(new MezclaNula(),("recursos/preguntas.json"));
+//        assertEquals(27, preguntasLeidas.size());
+//    }
 
     @Test
     public void test09999999UnaGroupChoiceLeidaEsIgualALaEsperada(){

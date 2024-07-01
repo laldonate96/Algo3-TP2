@@ -5,9 +5,9 @@ import java.util.List;
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
 import edu.fiuba.algo3.controlador.ControladorDePregunta;
 import edu.fiuba.algo3.controlador.ControladorDeTurno;
-import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
+
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.Modificador.Nulo;
+
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
@@ -18,7 +18,6 @@ import edu.fiuba.algo3.vista.animaciones.MaquinaDeEscribir;
 import edu.fiuba.algo3.vista.botones.Boton;
 import edu.fiuba.algo3.vista.botones.BotonEnviarRespuesta;
 import edu.fiuba.algo3.vista.botones.BotonModificador;
-import edu.fiuba.algo3.vista.botones.BotonNulo;
 import edu.fiuba.algo3.vista.botones.CrearModificadores;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;

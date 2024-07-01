@@ -8,7 +8,7 @@ public interface CriterioDeVictoria {
 
     void establecerJugadores(List<Jugador> jugadores);
 
-    Jugador obtenerGanador();
+    List<Jugador> jugadoresOrdenados();
 
     boolean terminoJuego(int rondasJugadas);
 

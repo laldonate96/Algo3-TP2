@@ -40,6 +40,7 @@ public class AlgoHoot3 {
     public void iniciarAlgoHoot(List<Jugador> jugadores, Turno turno, CriterioDeVictoria criterio, List<Pregunta> preguntas) {
 
         this.preguntas=preguntas;
+
         validarJugadores(jugadores);
         this.jugadores = jugadores;
 
@@ -71,8 +72,8 @@ public class AlgoHoot3 {
 
     }
 
-    public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificadorPuntaje) {
-        turno.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
+    public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificador) {
+        turno.agregarRespuesta(opcionesElegidas, jugadorActual, modificador);
         if (terminoLaRonda()){
             asignarPuntajes();
             iteradorJugadores = jugadores.iterator();
@@ -110,7 +111,7 @@ public class AlgoHoot3 {
         return criterio.terminoJuego(this.rondas);
     }
 
-    public Jugador victorioso(){
-        return criterio.obtenerGanador();
+    public List<Jugador> jugadoresOrdenadosPorCriterio(){
+        return criterio.jugadoresOrdenados();
     }
 }

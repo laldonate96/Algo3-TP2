@@ -2,13 +2,13 @@ package edu.fiuba.algo3.modelo.CriterioDeVictoria;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MejorPuntaje implements CriterioDeVictoria {
     private final int limitePuntos;
     private final int limiteRondas;
-    List<Jugador> jugadores;
-    private Jugador ganador;
+    List<Jugador> listaOrdenadaJugadores;
 
     public MejorPuntaje(int limiteRondas,int limitePuntos){
         this.limiteRondas=limiteRondas;
@@ -16,27 +16,37 @@ public class MejorPuntaje implements CriterioDeVictoria {
     }
 
     @Override
-    public Jugador obtenerGanador() {
-        return ganador;
+    public List<Jugador> jugadoresOrdenados() {
+        return listaOrdenadaJugadores;
     }
 
-    private void calcularGanador(){
-        ganador = jugadores.get(0);
-        for (Jugador jugador : jugadores){
-            if (!ganador.tieneMejorPuntajeQue(jugador)) {
-                ganador = jugador;
+    private void ordenarLista(){
+
+        int j;
+
+        Jugador jugador;
+
+        for (int i=1;i<listaOrdenadaJugadores.size();i++){
+            jugador=listaOrdenadaJugadores.get(i);
+            j=i-1;
+
+            while (j >= 0 && listaOrdenadaJugadores.get(j).tieneMejorPuntajeQue(jugador)) {
+                listaOrdenadaJugadores.add(j + 1, listaOrdenadaJugadores.get(j));
+                j = j - 1;
             }
+            listaOrdenadaJugadores.add(j + 1,jugador);
         }
     }
 
     @Override
     public void establecerJugadores(List<Jugador> jugadores) {
-        this.jugadores=jugadores;
+        this.listaOrdenadaJugadores=new ArrayList<>(jugadores);
     }
 
     @Override
     public boolean terminoJuego(int rondasJugadas) {
-        calcularGanador();
+        ordenarLista();
+        Jugador ganador = listaOrdenadaJugadores.get(0);
         if(rondasJugadas>limiteRondas){
             return true;
         } else {
