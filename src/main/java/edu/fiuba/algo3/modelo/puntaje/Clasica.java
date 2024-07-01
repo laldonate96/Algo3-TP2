@@ -15,7 +15,6 @@ public class Clasica extends Puntaje {
         validos = FabricaModificadores.crearValidosNoPenalidad();
     }
 
-
     @Override
     public void asignarPuntaje(Respuesta respuesta) {
         int cantidadCorrectas=0;
@@ -29,5 +28,10 @@ public class Clasica extends Puntaje {
         } else {
             respuesta.asignarPuntaje(0);
         }
+    }
+
+    @Override
+    public boolean modificadorEsValido(Modificador modificador) {
+        return modificador.usableSinPenalidad();
     }
 }

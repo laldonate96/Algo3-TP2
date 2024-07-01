@@ -60,15 +60,14 @@ public class Exclusividad extends Modificador {
         }
     }
 
-
     private boolean esIgual(Modificador modificador) {
         return modificador.getClass().equals(this.getClass());
     }
 
-
-
-
-
+    @Override
+    public boolean usableConPenalidad() {
+        return false;
+    }
 
 }
 

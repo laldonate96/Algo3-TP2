@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
 import java.util.List;
 
-public class Anulador extends Modificador {
+public class Anulador extends Modificador implements Usable{
 
     private int factorDeMultiplicacion;
     private int llamados;

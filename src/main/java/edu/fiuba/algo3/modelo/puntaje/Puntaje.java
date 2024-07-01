@@ -2,6 +2,10 @@ package edu.fiuba.algo3.modelo.puntaje;
 
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Ordenada;
+import edu.fiuba.algo3.modelo.opcion.Simple;
 
 import java.util.List;
 
@@ -17,13 +21,6 @@ public abstract class Puntaje {
         }
     }
 
-    public boolean modificadorEsValido(Modificador modificador) {
-        for (Modificador modificadorValido: validos){
-            if (modificador.getClass().equals(modificadorValido.getClass())) {
-                return true;
-            }
-        }
-        return false;
-    }
+    public abstract boolean modificadorEsValido(Modificador modificador);
 }
 

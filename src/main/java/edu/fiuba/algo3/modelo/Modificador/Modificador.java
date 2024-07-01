@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Modificador {
+public abstract class Modificador implements Usable {
     protected Jugador duenio;
     protected Modificador siguiente;
 
@@ -30,5 +30,15 @@ public abstract class Modificador {
     protected List<String> guardarModificadores(List<String> listaUsados) {
         listaUsados.add(this.getClass() + " por el jugador " + duenio.obtenerNombre() + "\n");
         return siguiente.guardarModificadores(listaUsados);
+    }
+
+    @Override
+    public boolean usableConPenalidad() {
+        return true;
+    }
+
+    @Override
+    public boolean usableSinPenalidad() {
+        return true;
     }
 }

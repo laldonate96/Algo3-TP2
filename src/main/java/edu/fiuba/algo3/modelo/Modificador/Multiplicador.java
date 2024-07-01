@@ -51,4 +51,9 @@ public class Multiplicador extends Modificador {
         listaUsados.add(this.getClass() + " por " + factorDeMultiplicacion + " por el jugador " + duenio.obtenerNombre() + "\n");
         return siguiente.guardarModificadores(listaUsados);
     }
+
+    @Override
+    public boolean usableSinPenalidad() {
+        return false;
+    }
 }
