@@ -24,7 +24,7 @@ public class ManejarMultipleC implements Estado {
         for (Simple opcionPregunta:pregunta.obtenerOpciones()) {
             for (Opcion opcion : opcionesJugador) {
                 validarOpcion(opcion);
-                ((Simple)opcion).actualizarEstado(opcionPregunta);
+                opcionPregunta.actualizarEstado((Simple) opcion);
             }
         }
 

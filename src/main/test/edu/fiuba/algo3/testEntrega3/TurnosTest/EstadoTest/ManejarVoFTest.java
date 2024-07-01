@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaPreguntas;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
@@ -33,7 +34,7 @@ public class ManejarVoFTest {
     public void test01ManejadorRecibeOpcionesCorrectasYLasValidaCorrectamente(){
         List<String> stringsContenido = List.of("Verdadero");
         List<String> stringsPosiciones = List.of("1");
-        List<Opcion> opciones = new ArrayList<>(FabricaOpciones.crearListaSimple(stringsContenido, stringsPosiciones, new Correcta()));
+        List<Opcion> opciones = new ArrayList<>(FabricaOpciones.crearListaSimple(stringsContenido, stringsPosiciones, new Incorrecta()));
 
         manejadorVoF.validarOpciones(opciones);
 
@@ -45,7 +46,7 @@ public class ManejarVoFTest {
     public void test02ManejadorRecibeOpcionesIncorrectasYLasValidaCorrectamente(){
         List<String> stringsContenido = List.of("Falso");
         List<String> stringsPosiciones = List.of("2");
-        List<Opcion> opciones = new ArrayList<>(FabricaOpciones.crearListaSimple(stringsContenido, stringsPosiciones, new Correcta()));
+        List<Opcion> opciones = new ArrayList<>(FabricaOpciones.crearListaSimple(stringsContenido, stringsPosiciones, new Incorrecta()));
 
         manejadorVoF.validarOpciones(opciones);
 
