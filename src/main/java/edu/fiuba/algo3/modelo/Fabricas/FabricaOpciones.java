@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.Fabricas;
 
 import edu.fiuba.algo3.modelo.opcion.Grupo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 
@@ -24,7 +23,6 @@ public class FabricaOpciones {
             posicionBuscada = Integer.parseInt(textoPosicion);
             if (posicionBuscada <posicionAnterior) {
                 grupoActual++;
-
             } else {
                 opcion = new Grupo(contenidoOpciones.get(posicionBuscada-1), grupos.get(grupoActual), estadoIndicado);
                 if(grupoActual>0){
@@ -48,7 +46,7 @@ public class FabricaOpciones {
 
         Ordenada opcion;
         for(int i=0; i<contenidoOpciones.size();i++){
-            posicionEnLista=Integer.parseInt(ordenCorrecto.get(i));
+            posicionEnLista=(ordenCorrecto.indexOf(String.valueOf(i+1)) + 1);
             textoOpcion=contenidoOpciones.get(i);
 
             opcion = new Ordenada(textoOpcion,posicionEnLista  ,estadoIndicado);

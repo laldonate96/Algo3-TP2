@@ -18,13 +18,13 @@ public class OrderedChoiceVista implements OpcionesVista {
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
-        List<String> opcionesSeleccionadas = new ArrayList<>();
-        List<String> ordenSeleccionado = new ArrayList<>();
+        List<Opcion> opcionesJugador = new ArrayList<>();
         for (Spinner<Integer> selector : selectores) {
-            opcionesSeleccionadas.add(opciones.get(selectores.indexOf(selector)).obtenerTexto());
-            ordenSeleccionado.add(selector.getValue().toString());
+            String texto = opciones.get(selectores.indexOf(selector)).obtenerTexto();
+            int posicion = Integer.parseInt(selector.getValue().toString());
+            opcionesJugador.add(new Ordenada(texto, posicion, new Incorrecta()));
         }
-        List<Opcion> opcionesJugador=new ArrayList<>(FabricaOpciones.crearListaOrdenada(opcionesSeleccionadas, ordenSeleccionado, new Incorrecta()));
+
         return opcionesJugador;
     }
 

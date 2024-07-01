@@ -6,6 +6,7 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
@@ -33,6 +34,7 @@ public class EleccionGrupalVista implements OpcionesVista {
     public void mostrarOpciones(List<Grupo> opciones, GridPane contenedor) {
         ObservableList<String> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
         opcionesOriginales = opciones;
+        String grupoDefault = opciones.get(0).obtenerGrupo();
 
         for (Grupo opcion : opciones) {
                 Label opcionLabel = new Label(opcion.obtenerTexto());
@@ -42,7 +44,7 @@ public class EleccionGrupalVista implements OpcionesVista {
 
                 SpinnerValueFactory<String> listaGrupoSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(observableListGrupo);
                 grupoSpinner.setValueFactory(listaGrupoSpinner);
-                grupoSpinner.getValueFactory().setValue(opcion.obtenerGrupo());
+                grupoSpinner.getValueFactory().setValue(grupoDefault);
 
                 HBox hbox = new HBox(10);
                 hbox.getChildren().addAll(grupoSpinner, opcionLabel);
@@ -62,11 +64,11 @@ public class EleccionGrupalVista implements OpcionesVista {
             String grupoSeleccionado = spinner.getValue();
 
             Opcion opcionOriginal = opcionesOriginales.get(i);
-            Grupo opcionNueva = new Grupo(opcionOriginal.obtenerTexto(), grupoSeleccionado, new Correcta());
+            Grupo opcionNueva = new Grupo(opcionOriginal.obtenerTexto(), grupoSeleccionado, new Incorrecta());
 
             opcionesDelJugador.add(opcionNueva);
         }
-
+        
         return opcionesDelJugador;
     }
 }
