@@ -18,7 +18,6 @@ import edu.fiuba.algo3.vista.animaciones.MaquinaDeEscribir;
 import edu.fiuba.algo3.vista.botones.Boton;
 import edu.fiuba.algo3.vista.botones.BotonEnviarRespuesta;
 import edu.fiuba.algo3.vista.botones.BotonModificador;
-import edu.fiuba.algo3.vista.botones.BotonNulo;
 import edu.fiuba.algo3.vista.botones.CrearModificadores;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;
