@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
-import edu.fiuba.algo3.modelo.Modificador.Multiplicador;
-import edu.fiuba.algo3.modelo.Modificador.Anulador;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
@@ -17,6 +15,9 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
 
+
+import edu.fiuba.algo3.modelo.turno.Estado.Estado;
+import edu.fiuba.algo3.modelo.turno.Estado.ManejarVoF;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,12 +35,10 @@ public class TurnosTest {
 
     private Jugador jugador1;
     private Jugador jugador2;
-    private Modificador nulo;
-    private Modificador anulador;
     private Turno turno;
     private List<String> opcionesJugador1;
     private List<String> opcionesJugador2;
-
+    private Estado manejarVoF;
 
 
     @BeforeEach
@@ -51,6 +50,7 @@ public class TurnosTest {
 
         Clasica clasica = new Clasica(1);
         ConPenalidad penalidad= new ConPenalidad();
+        manejarVoF=new ManejarVoF();
 
         vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock");
         vofp = new VerdaderoFalso("un enunciado", opciones, penalidad,"Mock");
@@ -65,7 +65,7 @@ public class TurnosTest {
 
     @Test
     public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYseLespidePuntos(){
-       //arrange
+        //arrange
         opcionesJugador1 = List.of("Correcta");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1, posicion1, new Correcta());
@@ -75,7 +75,7 @@ public class TurnosTest {
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
 
-        turno.establecerPregunta(vof);
+        turno.reiniciarTurno(vof,manejarVoF);
 
 
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
@@ -88,9 +88,9 @@ public class TurnosTest {
 
         turno.asignarPuntajes();
 
-        // assert   
+        // assert
 
-        assertEquals(0, jugador2.obtenerPuntaje());        
+        assertEquals(0, jugador2.obtenerPuntaje());
         assertEquals(1, jugador1.obtenerPuntaje());
     }
 
@@ -106,7 +106,7 @@ public class TurnosTest {
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
 
-        turno.establecerPregunta(vofp);
+        turno.reiniciarTurno(vofp,manejarVoF);
 
 
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
@@ -126,7 +126,7 @@ public class TurnosTest {
 
     @Test
     public void test03seJuegaUnTurnoConUnaPreguntaVoFPenalizadaConMultiplicadorYseLespidePuntos(){
-       //arrange
+        //arrange
 
         opcionesJugador1 = List.of("Correcta");
         List<String> posicion1= List.of("1");
@@ -137,7 +137,7 @@ public class TurnosTest {
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
 
-        turno.establecerPregunta(vofp);
+        turno.reiniciarTurno(vofp,manejarVoF);
 
 
 
@@ -169,7 +169,7 @@ public class TurnosTest {
         List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2,posicion2, new Incorrecta());
 
 
-        turno.establecerPregunta(vof);
+        turno.reiniciarTurno(vof,manejarVoF);
 
 
 
@@ -190,6 +190,70 @@ public class TurnosTest {
 
 
     }
+
+    @Test
+    public void test05UsarUnTurnoYReiniciarloAsignaLosPuntosEsperados(){
+        //arrange
+
+        opcionesJugador1 = List.of("Cortadas");
+        List<String> posicion1= List.of("5");
+        List<Opcion> opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1,posicion1, new Incorrecta());
+
+        opcionesJugador2 = List.of("Fritas");
+        List<String>  posicion2= List.of("1");
+        List<Opcion> opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2, posicion2, new Correcta());
+
+
+        turno.reiniciarTurno(vofp, manejarVoF);
+
+
+
+
+        Modificador nuloJugador= jugador1.obtenerModificadores().get(0);
+        Modificador multiplicador =jugador2.obtenerModificadores().get(1);
+
+
+        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador);
+        turno.agregarRespuesta(opcionJugador2,jugador2,multiplicador);
+
+
+        turno.asignarPuntajes();
+        jugador2.obtenerPuntaje();
+
+
+        opcionJugador1= FabricaOpciones.crearListaSimple(opcionesJugador1,posicion1, new Incorrecta());
+        opcionJugador2= FabricaOpciones.crearListaSimple(opcionesJugador2, posicion2, new Correcta());
+
+
+
+        turno.reiniciarTurno(vofp, manejarVoF);
+
+
+
+
+
+
+        multiplicador= jugador2.obtenerModificadores().get(1);
+
+        turno.agregarRespuesta(opcionJugador1,jugador1,nuloJugador);
+        turno.agregarRespuesta(opcionJugador2,jugador2,multiplicador);
+
+        //act
+        turno.asignarPuntajes();
+
+
+
+
+
+
+
+
+        jugador2.obtenerPuntaje();
+        // assert
+        assertEquals(-2, jugador1.obtenerPuntaje());
+        assertEquals(8, jugador2.obtenerPuntaje());
+    }
+
 
 
 

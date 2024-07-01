@@ -1,0 +1,94 @@
+[
+  {
+    "ID": 1,
+    "Tema": "CIENCIAS",
+    "Tipo": "Ordered Choice",
+    "Pregunta": "Ordene de MAYOR A MENOR los siguientes objetos hogareños según su nivel de radiación electromagnética emitido (el máximo recomendado es 100 microTeslas)",
+    "Respuesta": "2,1,4,3",
+    "Opcion 1": "Televisor de tubo CRT",
+    "Opcion 2": "Microondas",
+    "Opcion 3": "Imanes del delivery",
+    "Opcion 4": "Heladera",
+    "Texto respuesta": "El microondas emite a  3 cm entre 73 y 200µ, y a 30 cm entre 4 a 8 µT. "
+  },
+  {
+    "ID": 2,
+    "Tema": "COMPUTACION",
+    "Tipo": "Verdadero Falso Simple",
+    "Pregunta": "Smalltalk es un lenguaje de programación muerto",
+    "Respuesta": "2",
+    "Opcion 1": "Verdadero",
+    "Opcion 2": "Falso",
+    "Texto respuesta": "Eee...  no vimos nada!"
+  },
+  {
+    "ID": 3,
+    "Tema": "DEPORTES",
+    "Tipo": "Group Choice",
+    "Pregunta": "Asigne las siguientes leyendas del deporte nacional a disciplina grupales (Fútbol, Básquet, Voley, Rugby,) o individuales (atletismo, tenis, artes marciales, ajedrez, etc):",
+    "Respuesta": "A: 1,2,5; B:3,4,6",
+    "Opcion 1": "Lio Messi",
+    "Opcion 2": "Manu Ginóbili",
+    "Opcion 3": "Juan Martín del Potro",
+    "Opcion 4": "Miguel Najdorf",
+    "Opcion 5": "Hugo Conte",
+    "Opcion 6": "José Meolans",
+    "Grupo A": "Deportes Grupales",
+    "Grupo B": "Deportes Individuales",
+    "Texto respuesta": "say no more..."
+  },
+  {
+    "ID": 4,
+    "Tema": "ARTE",
+    "Tipo": "Multiple Choice Puntaje Parcial",
+    "Pregunta": "¿Qué películas fueron dirigidas por el cineasta estadounidense Francis Ford Coppola?",
+    "Respuesta": "1,5",
+    "Opcion 1": "El Gran Gatsby",
+    "Opcion 2": "Los Simuladores",
+    "Opcion 3": "Scarface",
+    "Opcion 4": "Blade Runner",
+    "Opcion 5": "El Padrino",
+    "Texto respuesta": "Coppola dirigió El Padrino y El Gran Gatsby en su version original (Sin Di Caprio)"
+  },
+  {
+    "ID": 5,
+    "Tema": "COMPUTACION",
+    "Tipo": "Multiple Choice Simple",
+    "Pregunta": "¿Cuál fue el aporte más conocido del científico inglés Edgard Codd a la computación?",
+    "Respuesta": "3",
+    "Opcion 1": "El disco rígido",
+    "Opcion 2": "El sistema operativo Solaris",
+    "Opcion 3": "Las bases de datos relacionales",
+    "Opcion 4": "El algoritmo quicksort",
+    "Opcion 5": "Los lenguajes tipados",
+
+    "Texto respuesta": "Edward Codd definió el modelo de datos relacional, y definió 12 reglas de ese modelo. Para más detalles, cursar Base de Datos próximamente... "
+  },
+
+  {
+    "ID": 6,
+    "Tema": "COMPUTACION",
+    "Tipo": "Verdadero Falso Penalidad",
+    "Pregunta": "En el plan viejo de la ingeniería en informática de la UBA, las materias de matemática, física, y química se podían promocionar con 6",
+    "Respuesta": "2",
+    "Opcion 1": "Verdadero",
+    "Opcion 2": "Falso",
+
+    "Texto respuesta": "Muy falso! Ninguna de esas materias fue, es ni será promocionable mientras exista. Disfruten los tiempos modernos y estudien lo que es central a su carrera!"
+  },
+
+  {
+    "ID": 7,
+    "Tema": "MISCELANEAS",
+    "Tipo": "Multiple Choice Penalidad",
+    "Pregunta": "¿Cuáles de las siguientes calles, avenidas o pasajes son del barrio de San Telmo, donde está ubicada la sede Paseo Colón de nuestra universidad?",
+    "Respuesta": "2,3,5",
+    "Opcion 1": "México",
+    "Opcion 2": "Carlos Calvo",
+    "Opcion 3": "San Lorenzo",
+    "Opcion 4": "Alicia Moreau de Justo",
+    "Opcion 5": "Av. Brasil",
+
+    "Texto respuesta": "A buscar el mapa"
+  }
+]

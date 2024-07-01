@@ -21,43 +21,43 @@
     "Opcion 4": "Ambas",
     "Texto respuesta": "La luz se comporta como una partícula o como una onda, segun la mecánica cuántica"
   },
-    {
-      "ID": 12,
-      "Tema": "NATURALEZA",
-      "Tipo": "Multiple Choice Simple",
-      "Pregunta": "¿Cuál es el animal terrestre más grande ?",
-      "Respuesta": "2",
-      "Opcion 1": "Tiranosaurio Rex",
-      "Opcion 2": "Elefante africano",
-      "Opcion 3": "Ballena franca austral",
-      "Opcion 4": "Godzilla",
-      "Opcion 5": "Vaca Hereford con esteroides",
-      "Texto respuesta": "El elefante africano alcanza un peso de hasta 7 toneladas, longitud de 10.6 m desde el tronco hasta la cola y altura promedio de 4.2 m al hombro."
-    },
-    {
-      "ID": 13,
-      "Tema": "CIENCIAS",
-      "Tipo": "Multiple Choice Simple",
-      "Pregunta": "¿Cuál es el gas más abundante en la atmósfera de la Tierra?",
-      "Respuesta": "3",
-      "Opcion 1": "Oxigeno ",
-      "Opcion 2": "Hidrogeno",
-      "Opcion 3": "Nitrogeno",
-      "Opcion 4": "Dióxido de carbono",
-      "Opcion 5": "Monóxido de carbono",
-      "Texto respuesta": "El 78% de la atmósfera es Nitrógeno"
-    },
-    {
-      "ID": 14,
-      "Tema": "SALUD",
-      "Tipo": "Multiple Choice Penalidad",
-      "Pregunta": "¿Cuál es el hueso de mayor en el cuerpo humano?",
-      "Respuesta": "3",
-      "Opcion 1": "El cráneo",
-      "Opcion 2": "la tibia",
-      "Opcion 3": "el fémur",
-      "Opcion 4": "los discos vertebrales",
-      "Opcion 5": "Todas son correctas",
-      "Texto respuesta": "El fémur es el hueso más largo."
-    }
+  {
+    "ID": 12,
+    "Tema": "NATURALEZA",
+    "Tipo": "Multiple Choice Simple",
+    "Pregunta": "¿Cuál es el animal terrestre más grande ?",
+    "Respuesta": "2",
+    "Opcion 1": "Tiranosaurio Rex",
+    "Opcion 2": "Elefante africano",
+    "Opcion 3": "Ballena franca austral",
+    "Opcion 4": "Godzilla",
+    "Opcion 5": "Vaca Hereford con esteroides",
+    "Texto respuesta": "El elefante africano alcanza un peso de hasta 7 toneladas, longitud de 10.6 m desde el tronco hasta la cola y altura promedio de 4.2 m al hombro."
+  },
+  {
+    "ID": 13,
+    "Tema": "CIENCIAS",
+    "Tipo": "Multiple Choice Simple",
+    "Pregunta": "¿Cuál es el gas más abundante en la atmósfera de la Tierra?",
+    "Respuesta": "3",
+    "Opcion 1": "Oxigeno ",
+    "Opcion 2": "Hidrogeno",
+    "Opcion 3": "Nitrogeno",
+    "Opcion 4": "Dióxido de carbono",
+    "Opcion 5": "Monóxido de carbono",
+    "Texto respuesta": "El 78% de la atmósfera es Nitrógeno"
+  },
+  {
+    "ID": 14,
+    "Tema": "SALUD",
+    "Tipo": "Multiple Choice Penalidad",
+    "Pregunta": "¿Cuál es el hueso de mayor en el cuerpo humano?",
+    "Respuesta": "3",
+    "Opcion 1": "El cráneo",
+    "Opcion 2": "la tibia",
+    "Opcion 3": "el fémur",
+    "Opcion 4": "los discos vertebrales",
+    "Opcion 5": "Todas son correctas",
+    "Texto respuesta": "El fémur es el hueso más largo."
+  }
 ]

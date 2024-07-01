@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.CriterioDeVictoria.MejorPuntaje;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaJugadores;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaNula;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
@@ -33,7 +34,10 @@ public class AlgoHootTest {
     @Test
     public void test01AlgoHoot(){
         //Arrange
-        AlgoHoot3 algoHoot3 = AlgoHoot3.obtenerInstancia(new MezclaNula());
+        AlgoHoot3 algoHoot3 = AlgoHoot3.obtenerInstancia();
+
+        algoHoot3.iniciarAlgoHoot(jugadores, new Turno(), new MejorPuntaje(3,14),Lector.obtenerPreguntasDeJson(new MezclaNula(),("recursos/test.json")));
+
 
         //Act
         int ronda = algoHoot3.obtenerRonda();
@@ -55,13 +59,11 @@ public class AlgoHootTest {
         List<Opcion> opcionesEsperadas = FabricaOpciones.crearListaOrdenada(opcionesString, ordenString, new Correcta());
 
         //Act
-        algoHoot3.iniciarAlgoHoot(jugadores, new Turno(), new MejorPuntaje(3,14));
-        ronda = algoHoot3.pasarRonda();
+        algoHoot3.pasarRonda();
 
         //Assert
         assertFalse(algoHoot3.terminoLaRonda());
 
-        assertEquals(1, ronda);
         assertEquals(algoHoot3.obtenerPreguntaDeRondaActual().obtenerEnunciado(), "Ordene de MAYOR A MENOR los siguientes objetos hogareños según su nivel de radiación electromagnética emitido (el máximo recomendado es 100 microTeslas)");
         assertEquals(algoHoot3.obtenerPreguntaDeRondaActual().obtenerCategoria(), "CIENCIAS");
         assertTrue(algoHoot3.obtenerPreguntaDeRondaActual().obtenerOpciones().get(0).equals(opcionesEsperadas.get(0)));
@@ -70,7 +72,6 @@ public class AlgoHootTest {
         assertTrue(algoHoot3.obtenerPreguntaDeRondaActual().obtenerOpciones().get(3).equals(opcionesEsperadas.get(3)));
         assertTrue(algoHoot3.obtenerJugadorActual().equals(jugadores.get(0)));
 
-        //
 
     }
 

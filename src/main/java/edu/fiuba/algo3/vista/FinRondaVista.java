@@ -1,14 +1,6 @@
 package edu.fiuba.algo3.vista;
 
-import java.util.List;
 
-import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-
-import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
-import edu.fiuba.algo3.modelo.pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -30,7 +22,7 @@ public class FinRondaVista extends Application {
         GridPane contenedor = new GridPane();
 
         SeleccionadorOpciones seleccionador = new SeleccionadorOpciones();
-        seleccionador.seleccionarVistaOpciones(pregunta, contenedor);
+//        seleccionador.seleccionarVistaOpciones(pregunta, contenedor);
 
         Scene scene = new Scene(contenedor, 300, 200);
 
