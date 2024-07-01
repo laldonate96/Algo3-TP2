@@ -1,7 +1,10 @@
 package edu.fiuba.algo3.modelo.turno.Estado;
 
 
+import edu.fiuba.algo3.modelo.excepciones.OpcionesDeTamanioInvalidoException;
 import edu.fiuba.algo3.modelo.excepciones.OpcionesIncorrectasException;
+import edu.fiuba.algo3.modelo.excepciones.OpcionesInexistentesException;
+
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
@@ -22,10 +25,22 @@ public class ManejarVoF implements Estado {
     }
 
     public void validarOpciones(List<Opcion> opcionesJugador) {
+
         validarOpcion(opcionesJugador.get(0));
+        boolean textoExistente=false;
+
+        if( opcionesJugador.size()>1){
+            throw new OpcionesDeTamanioInvalidoException(" La respuesta del usuario al Verdadero o Falso contiene mas de una opcion elegida.");
+        }
         Simple opcionJugador=(Simple) opcionesJugador.get(0);
         for (Simple opcionPregunta:pregunta.obtenerOpciones()) {
-            opcionPregunta.actualizarEstado(opcionJugador);
+            if(opcionPregunta.tieneIgualTexto(opcionJugador)) {
+                textoExistente=true;
+                opcionPregunta.actualizarEstado(opcionJugador);
+            }
+        }
+        if (!textoExistente){
+            throw new OpcionesInexistentesException(" La respuesta del usuario al Verdadero O Falso contiene opciones inexistentes");
         }
     }
 

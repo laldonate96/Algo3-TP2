@@ -26,6 +26,7 @@ public class ManejarGroupChoice implements Estado {
     public void validarOpciones(List<Opcion> opcionesJugador) {
         Grupo opcion;
         Grupo opcionPregunta;
+
         for (int i=0; i< opcionesJugador.size();i++) {
             validarOpcion(opcionesJugador.get(i));
             opcion = (Grupo) opcionesJugador;

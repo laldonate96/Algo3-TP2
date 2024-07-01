@@ -30,5 +30,7 @@ public class Simple extends Opcion {
     }
 
 
-
+    public boolean tieneIgualTexto(Simple opcionJugador) {
+        return this.texto.equals(opcionJugador.texto);
+    }
 }

@@ -74,11 +74,11 @@ public class TurnosTest {
         manejarVoF=new ManejarVoF((VerdaderoFalso) verdaderoOFalso);
 
 
-        List<String> contenidoOpciones1 = List.of("Correcta");
+        List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionesJugador1= new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Incorrecta()));
 
-        List<String> contenidoOpciones2 = List.of("Incorrecta");
+        List<String> contenidoOpciones2 = List.of("Falso");
         List<String> posicion2= List.of();
         List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2,posicion2, new Incorrecta()));
 
@@ -108,11 +108,11 @@ public class TurnosTest {
         verdaderoOFalsoPenalidad = preguntasTest.get(5);
         manejarVoFP=new ManejarVoF((VerdaderoFalso) verdaderoOFalsoPenalidad);
 
-        List<String> contenidoOpciones1 = List.of("Correcta");
+        List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionesJugador1 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Correcta()));
 
-        List<String> contenidoOpciones2 = List.of("Incorrecta");
+        List<String> contenidoOpciones2 = List.of("Falso");
         List<String> posicion2= List.of();
         List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2,posicion2, new Incorrecta()));
 
@@ -142,11 +142,11 @@ public class TurnosTest {
         verdaderoOFalsoPenalidad = preguntasTest.get(5);
         manejarVoFP=new ManejarVoF((VerdaderoFalso) verdaderoOFalsoPenalidad);
 
-        List<String> contenidoOpciones1 = List.of("Correcta");
+        List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionesJugador1 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Correcta()));
 
-        List<String> contenidoOpciones2 = List.of("Incorrecta");
+        List<String> contenidoOpciones2 = List.of("Falso");
         List<String> posicion2= List.of();
         List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2,posicion2, new Incorrecta()));
 
@@ -176,11 +176,11 @@ public class TurnosTest {
         verdaderoOFalso = preguntasTest.get(1);
         manejarVoF=new ManejarVoF((VerdaderoFalso) verdaderoOFalso);
 
-        List<String> contenidoOpciones1 = List.of("Correcta");
+        List<String> contenidoOpciones1 = List.of("Falso");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionesJugador1 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Correcta()));
 
-        List<String> contenidoOpciones2 = List.of("Incorrecta");
+        List<String> contenidoOpciones2 = List.of("Falso");
         List<String> posicion2= List.of();
         List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2,posicion2, new Incorrecta()));
 
@@ -202,7 +202,7 @@ public class TurnosTest {
         // assert
 
         assertEquals(0, jugador1.obtenerPuntaje());
-        assertEquals(0, jugador2.obtenerPuntaje());
+        assertEquals(1, jugador2.obtenerPuntaje());
 
 
     }
@@ -213,11 +213,11 @@ public class TurnosTest {
         verdaderoOFalsoPenalidad = preguntasTest.get(5);
         manejarVoFP=new ManejarVoF((VerdaderoFalso) verdaderoOFalsoPenalidad);
 
-        List<String> contenidoOpciones1 = List.of("Correcta");
+        List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1= List.of("1");
         List<Opcion> opcionesJugador1 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Correcta()));
 
-        List<String> contenidoOpciones2 = List.of("Incorrecta");
+        List<String> contenidoOpciones2 = List.of("Falso");
         List<String> posicion2= List.of();
         List<Opcion> opcionesJugador2 =new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2,posicion2, new Incorrecta()));
 

@@ -21,4 +21,5 @@ public abstract class Opcion {
         return texto;
     }
 
+
 }
