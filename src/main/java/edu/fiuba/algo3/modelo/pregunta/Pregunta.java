@@ -9,28 +9,15 @@ import java.util.List;
 public abstract class Pregunta {
     protected String enunciado;
     protected List<Opcion> opciones;
-    protected Puntaje Puntaje;
+    protected Puntaje puntaje;
 
-    public Pregunta(String enunciado, List<Opcion> opciones, Puntaje Puntaje) {
+    public Pregunta(String enunciado, List<Opcion> opciones, Puntaje puntaje) {
         this.enunciado = enunciado;
         this.opciones = opciones;
-        this.Puntaje = Puntaje;
+        this.puntaje = puntaje;
     }
 
     public void asignarPuntajes(List<Respuesta> respuestas) {
-        for (Respuesta respuesta : respuestas) {
-            verificarOpciones(respuesta);
-            asignarPuntaje(respuesta);
-        }
-    }
-
-    public void asignarPuntaje(Respuesta respuesta) {
-        Puntaje.asignarPuntaje(respuesta);
-    }
-
-    public void verificarOpciones(Respuesta respuesta) {
-        for (Opcion opcionPregunta : opciones) {
-            respuesta.validarOpcion(opcionPregunta);
-        }
+        puntaje.asignarPuntajes(respuestas);
     }
 }

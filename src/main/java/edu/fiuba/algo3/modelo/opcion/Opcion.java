@@ -1,37 +1,33 @@
 package edu.fiuba.algo3.modelo.opcion;
 
 import edu.fiuba.algo3.modelo.estado.Estado;
-import edu.fiuba.algo3.modelo.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.opcion.visitor.OpcionVisitor;
 
-public class Opcion {
-    private Estado estado;
-    private String texto;
-
-    public Opcion(String texto) {
-        this.texto = texto;
-        this.estado = new Incorrecta();
-    }
-
+public abstract class Opcion implements OpcionVisitor {
+    protected Estado estado;
+    protected String texto;
+    
     public Opcion(String texto, Estado estado) {
         this.texto = texto;
         this.estado = estado;
     }
 
-    private boolean equals(Opcion opcion){
-        return (this.texto).equals(opcion.texto);
+    protected boolean equals(Opcion opcion) {
+        return opcion.aceptar(this);
     }
-
-    public void cambiarEstado(Estado estado) {
-        this.estado = estado;
-    }
+    public abstract boolean aceptar(OpcionVisitor visitor);
 
     public boolean esCorrecta() {
         return estado.esCorrecta();
     }
 
-    public void ActualizarEstado(Opcion opcion) {
+    public void actualizarEstado(Opcion opcion) {
         if (opcion.equals(this)) {
-            this.cambiarEstado(opcion.estado);
+            this.estado = opcion.estado;
         }
+    }
+
+    protected String obtenerTexto() {
+        return texto;
     }
 }

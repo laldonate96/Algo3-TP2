@@ -1,0 +1,169 @@
+@startuml diagrama de clases
+skinparam classAttributeIconSize 0
+title Diagrama de clases
+
+class Jugador{
+    - nombre: String
+    - puntaje: int
+    - modificadores: List<Modificador>
+    ---
+    + Jugador(nombre: String, modificadores: List<Modificador>)
+    + sumarPuntaje(puntaje: int)
+    + obtenerPuntaje(): int
+    + responder(opciones: List<Opcion>, opcionesPregunta: List<Opcion>, modificador: Modificador)
+}
+
+interface Modificador {
+    + modificarPuntaje(puntaje: int): int
+    + usar()
+    + equals(modificador: Modificador): Bool
+    + tieneUsos(): Bool
+}
+
+class Multiplicador {
+    - factorDeMultiplicacion: int
+    - usos: int
+    ---
+    + Multiplicador(factor: int)
+    + modificarPuntaje(puntaje: int): int
+    + usar()
+    + equals(modificador: Modificador): Bool
+    + tieneUsos(): Bool
+}
+
+class Nulo {
+    ---
+    + Nulo()
+    + modificarPuntaje(puntaje: int): int
+    + usar()
+    + equals(modificador: Modificador): Bool
+    + tieneUsos(): Bool
+}
+
+interface Respuesta {
+    + sumarPuntaje(puntaje: int)
+    + obtenerOpciones(): List<Opcion>
+    + validarOpcion(opcion: Opcion)
+}
+
+Class RespuestaConcreta {
+    - opciones: List<Opcion>
+    - jugador: Jugador
+    - modificador: Modificador
+    ---
+    + Respuesta(opciones: List<Opcion>,jugador: Jugador )
+    + sumarPuntaje(puntaje: int)
+    + obtenerOpciones(): List<Opcion>
+    + validarOpcion(opcion: Opcion)
+}
+
+ abstract class Puntaje {
+     # puntaje: int
+     + asignarPuntaje(respuesta: Respuesta)
+}
+
+class Clasica extends Puntaje{
+     + asignarPuntaje([super])
+}
+
+class ConPenalidad extends Puntaje{
+     + asignarPuntaje([super])
+}
+
+abstract class Pregunta {
+    # enunciado: String
+    # opciones: List<Opcion>
+    # puntaje: Puntaje
+    ---
+    + Pregunta(enunciado: String, opciones: List<Opcion>, puntaje: Puntaje )
+    + asignarPuntajes(respuestas: List<Respuesta>)
+}
+
+class VerdaderoFalso extends Pregunta {
+    +VerdaderoOFalso([super])
+}
+
+class MultipleChoice extends Pregunta {
+    +MultipleChoice([super])
+}
+
+class OrderedChoice extends Pregunta {
+    +OrderedChoice([super])
+}
+
+class GroupChoice extends Pregunta {
+    +GroupChoice([super])
+}
+
+abstract class Opcion {
+    #texto: String
+    #estado: Estado
+    #equals(opcion: Opcion): Bool
+    ---
+    +Opcion(texto: String, estado: Estado)
+    +equals(opcion: Opcion): Bool
+    +aceptar(OpcionVisitor visitor)
+    +esCorrecta(): Bool
+    +actualizarEstado(estado: Estado)
+    +obtenerTexto(): String
+}
+
+class Ordered extends Opcion {
+    -posicion: int
+    ---
+    +Ordered([super], posicion: int)
+    +obtenerPosicion(): int
+}
+
+class Simple extends Opcion {
+    +Simple([super])
+}
+
+class Grupo extends Opcion {
+    -nombreGrupo: String
+    ---
+    +Grupo([super], nombreGrupo: String)
+    +obtenerGrupo(): String
+}
+
+interface Estado {
+    + esCorrecta()
+}
+
+class Correcta implements Estado {
+    + esCorrecta()
+}
+
+class Incorrecta implements Estado {
+    + esCorrecta()
+}
+
+interface OpcionVisitor {
+    + visitar(opcion: Simple)
+    + visitar(opcion: Ordered)
+    + visitar(opcion: Grupo)
+}
+
+class OpcionEsVisitor {
+    -opcion: Opcion
+    ---
+    + OpcionEsVisitor(opcion: Opcion)
+    + visitar(opcion: Simple)
+    + visitar(opcion: Ordered)
+    + visitar(opcion: Grupo)
+}
+
+Jugador "1" <-d- Respuesta
+Respuesta .l.> Pregunta
+Puntaje .u.> Respuesta
+Opcion *-r- Estado
+Respuesta -> Opcion:"1..*"
+Opcion .u.|> OpcionVisitor
+OpcionEsVisitor .l.|> OpcionVisitor
+RespuestaConcreta ..|> Respuesta
+Jugador -l> Modificador: "1..*"
+Multiplicador .u.|> Modificador
+Nulo .u.|> Modificador
+RespuestaConcreta --> Modificador
+
+@enduml
