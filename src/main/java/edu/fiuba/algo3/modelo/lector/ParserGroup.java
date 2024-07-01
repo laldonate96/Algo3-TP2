@@ -6,6 +6,7 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import org.json.JSONObject;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
@@ -49,7 +50,7 @@ public class ParserGroup extends LectorParser {
 
 
         List<Grupo> opciones=FabricaOpciones.crearListaGrupo(nombresGrupos,contenidoOpciones,posicionesCorrectas, new Correcta());
-        return FabricaPreguntas.crearPreguntaGroupChoice(enunciado, opciones, puntaje, categoria,explicacion);
+        return FabricaPreguntas.crearPreguntaGroupChoice(enunciado, opciones, new Clasica(opciones.size()), categoria,explicacion);
     }
 
 

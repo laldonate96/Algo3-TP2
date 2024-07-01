@@ -15,13 +15,11 @@ public class ManejarOrderedC implements Estado {
         this.pregunta=pregunta;
     }
 
-
     private void validarOpcion(Opcion opcion) {
         if(!(opcion instanceof Ordenada)){
             throw new OpcionesIncorrectasException(" la pregunta asignada no acepta este tipo de opciones");
         }
     }
-
 
     public void validarOpciones(List<Opcion> opcionesJugador) {
         Ordenada opcion;
@@ -32,13 +30,6 @@ public class ManejarOrderedC implements Estado {
 
             opcionPregunta=pregunta.obtenerOpciones().get(i);
             opcionPregunta.actualizarEstado(opcion);
-
         }
-
     }
-
-
-
-
-
 }

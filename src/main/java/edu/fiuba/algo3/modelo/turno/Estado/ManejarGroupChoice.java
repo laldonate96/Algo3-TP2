@@ -15,13 +15,11 @@ public class ManejarGroupChoice implements Estado {
         this.pregunta=pregunta;
     }
 
-
     private void validarOpcion(Opcion opcion) {
         if(!(opcion instanceof Grupo)){
             throw new OpcionesIncorrectasException(" la pregunta asignada no acepta este tipo de opciones");
         }
     }
-
 
     public void validarOpciones(List<Opcion> opcionesJugador) {
         Grupo opcion;
@@ -33,9 +31,7 @@ public class ManejarGroupChoice implements Estado {
 
             opcionPregunta=pregunta.obtenerOpciones().get(i);
             opcionPregunta.actualizarEstado(opcion);
-
         }
-
     }
 
 

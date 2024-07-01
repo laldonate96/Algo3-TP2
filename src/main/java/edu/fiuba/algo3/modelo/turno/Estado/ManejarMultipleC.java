@@ -14,13 +14,11 @@ public class ManejarMultipleC implements Estado {
         this.pregunta=pregunta;
     }
 
-
     private void validarOpcion(Opcion opcion) {
         if(!(opcion instanceof Simple)){
             throw new OpcionesIncorrectasException(" la pregunta asignada no acepta este tipo de opciones");
         }
     }
-
 
     public void validarOpciones(List<Opcion> opcionesJugador) {
         for (Simple opcionPregunta:pregunta.obtenerOpciones()) {

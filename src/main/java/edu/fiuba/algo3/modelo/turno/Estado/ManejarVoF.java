@@ -43,8 +43,4 @@ public class ManejarVoF implements Estado {
             throw new OpcionesInexistentesException(" La respuesta del usuario al Verdadero O Falso contiene opciones inexistentes");
         }
     }
-
-
-
-
 }
