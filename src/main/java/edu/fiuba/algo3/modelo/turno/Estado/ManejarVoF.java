@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.modelo.turno.Estado;
 
-import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-import edu.fiuba.algo3.modelo.excepciones.ModificadorInvalidoException;
+
 import edu.fiuba.algo3.modelo.excepciones.OpcionesIncorrectasException;
-import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
@@ -25,11 +22,10 @@ public class ManejarVoF implements Estado {
     }
 
     public void validarOpciones(List<Opcion> opcionesJugador) {
+        validarOpcion(opcionesJugador.get(0));
+        Simple opcionJugador=(Simple) opcionesJugador.get(0);
         for (Simple opcionPregunta:pregunta.obtenerOpciones()) {
-            for (Opcion opcion : opcionesJugador) {
-                validarOpcion(opcion);
-                ((Simple)opcion).actualizarEstado(opcionPregunta);
-            }
+            opcionPregunta.actualizarEstado(opcionJugador);
         }
     }
 

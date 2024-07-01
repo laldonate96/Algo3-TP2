@@ -3,24 +3,16 @@ package edu.fiuba.algo3.testEntrega4.AlgoHoot3Test;
 import edu.fiuba.algo3.modelo.AlgoHoot3;
 import edu.fiuba.algo3.modelo.CriterioDeVictoria.MejorPuntaje;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaJugadores;
-import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
-import edu.fiuba.algo3.modelo.Fabricas.FabricaPreguntas;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaNula;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.turno.Turno;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Or;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -89,21 +81,30 @@ public class AlgoHootTest {
                 new MejorPuntaje(3,14),
                 Lector.obtenerPreguntasDeJson(new MezclaNula(),("recursos/test.json")));
 
+        Ordenada opcionObtenida;
+        Ordenada opcionEsperada;
 
         //Act
         algoHoot3.pasarRonda();
         List<Ordenada> opcionesEsperadas=preguntaOrdenadaEsperada.obtenerOpciones();
-        List<Ordenada> opciones= ((OrderedChoice) algoHoot3.obtenerPreguntaDeRondaActual()).obtenerOpciones();
+        List<Ordenada> opcionesObtenidas= ((OrderedChoice) algoHoot3.obtenerPreguntaDeRondaActual()).obtenerOpciones();
 
         //Assert
 
         assertEquals(algoHoot3.obtenerPreguntaDeRondaActual().obtenerEnunciado(),preguntaOrdenadaEsperada.obtenerEnunciado());
         assertEquals(algoHoot3.obtenerPreguntaDeRondaActual().obtenerCategoria(), preguntaOrdenadaEsperada.obtenerCategoria());
 
-        assertTrue(opciones.get(0).equals(opcionesEsperadas.get(0)));
-        assertTrue(opciones.get(1).equals(opcionesEsperadas.get(1)));
-        assertTrue(opciones.get(2).equals(opcionesEsperadas.get(2)));
-        assertTrue(opciones.get(3).equals(opcionesEsperadas.get(3)));
+        for (int iterador = 0; iterador < 4;iterador++) {
+
+
+            opcionObtenida = opcionesObtenidas.get(iterador);
+
+            opcionEsperada = opcionesEsperadas.get(iterador);
+            opcionObtenida.actualizarEstado(opcionEsperada);
+
+            assertEquals(1, opcionEsperada.contarCorrecta());
+            assertEquals(0, opcionEsperada.contarIncorrecta());
+        }
 
     }
     @Test
@@ -122,8 +123,15 @@ public class AlgoHootTest {
         assertTrue(algoHoot3.obtenerJugadorActual().equals(jugadores.get(0)));
 
     }
+@Test
+    public void test05UnJugadorRespondeALaPreguntaYSeLeAsignanALaRespuesta1Puntos() {
 
-    @Test
+    }
+
+
+
+
+        @Test
     public void test14AlJugar14RondasYSolicitarLosJugadoresSegunCriterioSeObtienenLosEsperadosConLosPuntosEsperados(){
 
     }

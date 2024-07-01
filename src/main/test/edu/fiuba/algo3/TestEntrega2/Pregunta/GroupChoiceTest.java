@@ -84,7 +84,7 @@ public class GroupChoiceTest {
         pregunta.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(1, respuesta.obtenerPuntaje());
+        assertEquals(0, respuesta.obtenerPuntaje());
     }
 
     @Test

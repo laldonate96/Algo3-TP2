@@ -1,8 +1,6 @@
 
 package edu.fiuba.algo3.modelo.turno.Estado;
 
-import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.excepciones.ModificadorInvalidoException;
 import edu.fiuba.algo3.modelo.excepciones.OpcionesIncorrectasException;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
@@ -26,11 +24,15 @@ public class ManejarOrderedC implements Estado {
 
 
     public void validarOpciones(List<Opcion> opcionesJugador) {
-        for (Ordenada opcionPregunta:pregunta.obtenerOpciones()) {
-            for (Opcion opcion : opcionesJugador) {
-                validarOpcion(opcion);
-                ((Ordenada)opcion).actualizarEstado(opcionPregunta);
-            }
+        Ordenada opcion;
+        Ordenada opcionPregunta;
+        for (int i=0; i< opcionesJugador.size();i++) {
+            validarOpcion(opcionesJugador.get(i));
+            opcion = (Ordenada) opcionesJugador;
+
+            opcionPregunta=pregunta.obtenerOpciones().get(i);
+            opcionPregunta.actualizarEstado(opcion);
+
         }
 
     }
@@ -39,10 +41,4 @@ public class ManejarOrderedC implements Estado {
 
 
 
-    private void validarModificador(Modificador modificador) {
-        if(!pregunta.modificadorEsValido(modificador)){
-            throw new ModificadorInvalidoException("El modificador obtenido "+ modificador.getClass() + " no es valido para la pregunta asignada");
-        }
-
-    }
 }

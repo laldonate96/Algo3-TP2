@@ -26,7 +26,7 @@ public abstract class LectorParser {
      protected List<String> obtenerContenidoOpciones(JSONObject preguntaJson, int cantidadOpciones) {
           List<String> contenidoOpciones = new ArrayList<>();
 
-          for (int i = 1; i < cantidadOpciones; i++) {
+          for (int i = 1; i < cantidadOpciones+1; i++) {
                String opcionKey = "Opcion " + i;
                if (preguntaJson.has(opcionKey)) {
                     contenidoOpciones.add(preguntaJson.getString(opcionKey));

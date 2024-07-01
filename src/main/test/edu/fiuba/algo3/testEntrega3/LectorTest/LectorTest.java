@@ -1,23 +1,21 @@
 package edu.fiuba.algo3.testEntrega3.LectorTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaNula;
 import edu.fiuba.algo3.modelo.opcion.Grupo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
+import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.pregunta.*;
 
-import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.lector.Lector;
-import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 
 public class LectorTest {
 
@@ -38,6 +36,97 @@ public class LectorTest {
 //        preguntasLeidas = Lector.obtenerPreguntasDeJson(new MezclaNula(),("recursos/preguntas.json"));
 //        assertEquals(1, preguntasLeidas.size());
 //    }
+    @Test
+    public void test02UnaVerdaderoOFalsoLeidaEsIgualALaEsperada() {
+
+        //Arrange
+        String categoriaEsperada = "COMPUTACION";
+        String enunciadoEsperado = "Smalltalk es un lenguaje de programación muerto";
+        String explicacionEsperada = "Eee...  no vimos nada!";
+
+
+        Simple verdadero = new Simple("Verdadero", new Correcta());
+        Simple falso = new Simple("Falso", new Incorrecta());
+
+        List<Simple> opcionesEsperadas = List.of(verdadero, falso);
+
+        Simple opcionObtenida;
+        Simple opcionEsperada;
+
+
+        //Act
+        VerdaderoFalso preguntaLeida = (VerdaderoFalso) preguntasLeidas.get(1);
+        List<Simple> opcionesObtenidas = preguntaLeida.obtenerOpciones();
+
+        //Assert
+        assertEquals(categoriaEsperada, preguntaLeida.obtenerCategoria());
+        assertEquals(enunciadoEsperado, preguntaLeida.obtenerEnunciado());
+        assertEquals(explicacionEsperada, preguntaLeida.obtenerExplicacion());
+
+
+
+        for (int iterador = 0; iterador < 2; iterador++) {
+
+            opcionObtenida = opcionesObtenidas.get(iterador);
+            opcionEsperada = opcionesEsperadas.get(iterador);
+            opcionObtenida.actualizarEstado(opcionEsperada);
+            if (iterador == 1) {
+                assertEquals(1, opcionEsperada.contarCorrecta());
+                assertEquals(0, opcionEsperada.contarIncorrecta());
+            } else{
+                assertEquals(0, opcionEsperada.contarCorrecta());
+                assertEquals(1, opcionEsperada.contarIncorrecta());
+            }
+        }
+
+
+    }
+    @Test
+    public void test03UnaMultipleChoiceLeidaEsIgualALaEsperada() {
+
+        //Arrange
+        String categoriaEsperada = "ARTE";
+        String enunciadoEsperado = "¿Qué películas fueron dirigidas por el cineasta estadounidense Francis Ford Coppola?";
+        String explicacionEsperada = "Coppola dirigió El Padrino y El Gran Gatsby en su version original (Sin Di Caprio)";
+
+
+        Simple elGranGatsby = new Simple("El Gran Gatsby", new Incorrecta());
+        Simple losSimuladores = new Simple("Los Simuladores", new Incorrecta());
+        Simple scarface = new Simple("Scarface", new Incorrecta());
+        Simple bladeRunner = new Simple("Blade Runner", new Incorrecta());
+        Simple elPadrino = new Simple("El Padrino", new Incorrecta());
+
+        Simple opcionObtenida;
+        Simple opcionEsperada;
+
+        List<Simple> opcionesEsperadas = List.of(elGranGatsby, losSimuladores,scarface,bladeRunner,elPadrino);
+
+
+        //Act
+        MultipleChoice preguntaLeida = (MultipleChoice) preguntasLeidas.get(3);
+        List<Simple> opcionesObtenidas = preguntaLeida.obtenerOpciones();
+
+        //Assert
+        assertEquals(categoriaEsperada, preguntaLeida.obtenerCategoria());
+        assertEquals(enunciadoEsperado, preguntaLeida.obtenerEnunciado());
+        assertEquals(explicacionEsperada, preguntaLeida.obtenerExplicacion());
+
+
+        for (int iterador = 0; iterador < 5; iterador++) {
+
+            opcionObtenida = opcionesObtenidas.get(iterador);
+            opcionEsperada = opcionesEsperadas.get(iterador);
+            opcionObtenida.actualizarEstado(opcionEsperada);
+            if (iterador == 0 || iterador == 4) {
+                assertEquals(1, opcionEsperada.contarCorrecta());
+                assertEquals(0, opcionEsperada.contarIncorrecta());
+            } else{
+                assertEquals(0, opcionEsperada.contarCorrecta());
+                assertEquals(1, opcionEsperada.contarIncorrecta());
+            }
+        }
+    }
+
 
     @Test
     public void test13UnaOrderedChoiceLeidaEsIgualALaEsperada() {
@@ -56,6 +145,9 @@ public class LectorTest {
 
         List<Ordenada> opcionesEsperadas = List.of(televisorDeTuboCrt, microondas, imanesDelDelivery, heladera);
 
+        Ordenada opcionObtenida;
+        Ordenada opcionEsperada;
+
 
         //Act
         OrderedChoice preguntaLeida = (OrderedChoice) preguntasLeidas.get(0);
@@ -65,8 +157,14 @@ public class LectorTest {
         assertEquals(categoriaEsperada, preguntaLeida.obtenerCategoria());
         assertEquals(enunciadoEsperado, preguntaLeida.obtenerEnunciado());
         assertEquals(explicacionEsperada, preguntaLeida.obtenerExplicacion());
-        for (int iterador = 0; iterador < 4;iterador++){
-            assertTrue(opcionesEsperadas.get(iterador).equals(opcionesObtenidas.get(iterador)));
+        for (int iterador = 0; iterador < 4;iterador++) {
+
+            opcionObtenida = opcionesObtenidas.get(iterador);
+            opcionEsperada = opcionesEsperadas.get(iterador);
+            opcionObtenida.actualizarEstado(opcionEsperada);
+
+            assertEquals(1, opcionEsperada.contarCorrecta());
+            assertEquals(0, opcionEsperada.contarIncorrecta());
         }
     }
     @Test
@@ -80,6 +178,7 @@ public class LectorTest {
 
         String deportesGrupales = "Deportes Grupales";
         String deportesIndividuales = "Deportes Individuales";
+
         Grupo lioMessi = new Grupo("Lio Messi", deportesGrupales, new Correcta());
         Grupo manuGinobili = new Grupo("Manu Ginóbili", deportesGrupales, new Correcta());
         Grupo juanMartinDelPotro = new Grupo("Juan Martín del Potro", deportesIndividuales, new Correcta());
@@ -89,6 +188,8 @@ public class LectorTest {
 
         List<Grupo> opcionesEsperadas = List.of(lioMessi, manuGinobili, juanMartinDelPotro, miguelNajdorf, hugoConte, joseMeolans);
 
+        Grupo opcionObtenida;
+        Grupo opcionEsperada;
 
         //Act
         GroupChoice preguntaLeida = (GroupChoice) preguntasLeidas.get(2);
@@ -99,8 +200,14 @@ public class LectorTest {
         assertEquals(enunciadoEsperado, preguntaLeida.obtenerEnunciado());
         assertEquals(explicacionEsperada, preguntaLeida.obtenerExplicacion());
 //        assertEquals(opcionesEsperadas,opcionesObtenidas);
-        for (int iterador = 0; iterador < 6;iterador++){
-            assertTrue(opcionesEsperadas.get(iterador).equals(opcionesObtenidas.get(iterador)));
+        for (int iterador = 0; iterador < 5; iterador++) {
+
+            opcionObtenida = opcionesObtenidas.get(iterador);
+            opcionEsperada = opcionesEsperadas.get(iterador);
+            opcionObtenida.actualizarEstado(opcionEsperada);
+
+            assertEquals(1, opcionEsperada.contarCorrecta());
+            assertEquals(0, opcionEsperada.contarIncorrecta());
         }
     }
 }

@@ -2,72 +2,71 @@ package edu.fiuba.algo3.TestEntrega2.OpcionTest;
 
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SimpleTest {
-    private Opcion opcionCorrecta;
-    private Opcion opcionIncorrecta;
+    private Simple opcion1Correcta;
+    private Simple opcion1Incorrecta;
 
     @BeforeEach
     public void setUpClass() {
-        opcionCorrecta = new Simple("Opcion 1", new Correcta());
-        opcionIncorrecta = new Simple("Opcion 1", new Incorrecta());
+        opcion1Correcta = new Simple("Opcion 1", new Correcta());
+        opcion1Incorrecta = new Simple("Opcion 1", new Incorrecta());
     }
 
     @Test
     public void test01SiSeleAsignaEstadoCorrectaEsCorrecta() {
         //Assert
-        assertEquals(1, opcionCorrecta.contarCorrecta());
-        assertEquals(0, opcionCorrecta.contarIncorrecta());
+        assertEquals(1, opcion1Correcta.contarCorrecta());
+        assertEquals(0, opcion1Correcta.contarIncorrecta());
     }
 
     @Test
-    public void test02SiSeleAsignaEstadoIncorrectaNoEsCorrecta() {
+    public void test02SiSeleAsignaEstadoIncorrectaEsIncorrecta() {
         //Assert
-        assertEquals(0, opcionIncorrecta.contarCorrecta());
-        assertEquals(1, opcionIncorrecta.contarIncorrecta());
+        assertEquals(0, opcion1Incorrecta.contarCorrecta());
+        assertEquals(1, opcion1Incorrecta.contarIncorrecta());
     }
 
     @Test
-    public void test03CambiarElEstadoConOtraCorrectaEstableceElEstadoCorrecto() {
-        opcionIncorrecta.actualizarEstado(opcionCorrecta);
-        assertEquals(1, opcionIncorrecta.contarCorrecta());
+    public void test03CambiarElEstadoAUnaCorrectaConUnaIncorrectaIgualEstableceElEstadoIncorrecta() {
+        opcion1Incorrecta.actualizarEstado(opcion1Correcta);
+
+        assertEquals(0, opcion1Correcta.contarCorrecta());
+        assertEquals(1, opcion1Correcta.contarIncorrecta());
+
     }
     @Test
-    public void test04CambiarElEstadoConOtraIncorrectaEstableceElEstadoIncorrecto() {
-        opcionCorrecta.actualizarEstado(opcionCorrecta);
-        assertEquals(0, opcionIncorrecta.contarCorrecta());
-    }
+    public void test04CambiarElEstadoAUnaIncorrectaConUnaCorrectaIgualEstableceElEstadoCorrecto() {
 
+        opcion1Correcta.actualizarEstado(opcion1Incorrecta);
+
+
+        assertEquals(1, opcion1Incorrecta.contarCorrecta());
+        assertEquals(0, opcion1Incorrecta.contarIncorrecta());
+
+    }
     @Test
-    public void test05EsIgualAOtraSimpleConElMismoTexto(){
-        //Arrange
-        Simple opcion = new Simple("Opcion 1", new Correcta());
-        //Assert
+    public void test04CambiarElEstadoAUnaIncorrectaDifenrenteNoLoCambia() {
+        Simple opcion2Incorrecta = new Simple("Opcion 2", new Incorrecta());
 
-        assertTrue(opcionCorrecta.equals(opcion));
+        opcion1Correcta.actualizarEstado(opcion2Incorrecta);
+
+        assertEquals(0, opcion2Incorrecta.contarCorrecta());
+        assertEquals(1, opcion2Incorrecta.contarIncorrecta());
     }
-
     @Test
-    public void test06NoEsIgualAOtraSimpleConOtroTexto(){
-        //Arrange
-        Simple opcion = new Simple("Opcion 1n't", new Correcta());
-        //Assert
-        assertFalse(opcionCorrecta.equals(opcion));
+    public void test05CambiarElEstadoAUnaCorrectaDifenrenteNoLoCambia() {
+        Simple opcion2Correcta = new Simple("Opcion 2", new Correcta());
+        opcion1Incorrecta.actualizarEstado(opcion2Correcta);
+        assertEquals(1, opcion2Correcta.contarCorrecta());
+        assertEquals(0, opcion2Correcta.contarIncorrecta());
     }
 
 
-    @Test
-    public void test07NoEsIgualAUnaOpcionNoSimple(){
-        //Arrange
-        Ordenada opcionNoSimple = new Ordenada("Opcion 1", 1, new Correcta());
-        //Assert
-        assertNotEquals(opcionCorrecta, opcionNoSimple);
-    }
+
 }

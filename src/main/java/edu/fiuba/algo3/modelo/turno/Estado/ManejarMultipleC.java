@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.turno.Estado;
 
-import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.excepciones.ModificadorInvalidoException;
 import edu.fiuba.algo3.modelo.excepciones.OpcionesIncorrectasException;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
@@ -30,17 +28,6 @@ public class ManejarMultipleC implements Estado {
                 validarOpcion(opcion);
                 ((Simple)opcion).actualizarEstado(opcionPregunta);
             }
-        }
-
-    }
-
-
-
-
-
-    private void validarModificador(Modificador modificador) {
-        if(!pregunta.modificadorEsValido(modificador)){
-            throw new ModificadorInvalidoException("El modificador obtenido "+ modificador.getClass() + " no es valido para la pregunta asignada");
         }
 
     }

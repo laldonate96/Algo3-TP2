@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.turno.Estado;
 
-import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.excepciones.ModificadorInvalidoException;
+
 import edu.fiuba.algo3.modelo.excepciones.OpcionesIncorrectasException;
 import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
@@ -25,11 +24,15 @@ public class ManejarGroupChoice implements Estado {
 
 
     public void validarOpciones(List<Opcion> opcionesJugador) {
-        for (Grupo opcionPregunta:pregunta.obtenerOpciones()) {
-            for (Opcion opcion : opcionesJugador) {
-                validarOpcion(opcion);
-                ((Grupo)opcion).actualizarEstado(opcionPregunta);
-            }
+        Grupo opcion;
+        Grupo opcionPregunta;
+        for (int i=0; i< opcionesJugador.size();i++) {
+            validarOpcion(opcionesJugador.get(i));
+            opcion = (Grupo) opcionesJugador;
+
+            opcionPregunta=pregunta.obtenerOpciones().get(i);
+            opcionPregunta.actualizarEstado(opcion);
+
         }
 
     }
@@ -38,11 +41,6 @@ public class ManejarGroupChoice implements Estado {
 
 
 
-    private void validarModificador(Modificador modificador) {
-        if(!pregunta.modificadorEsValido(modificador)){
-            throw new ModificadorInvalidoException("El modificador obtenido "+ modificador.getClass() + " no es valido para la pregunta asignada");
-        }
 
-    }
 
 }
