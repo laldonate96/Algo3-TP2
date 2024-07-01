@@ -36,7 +36,10 @@ public class Jugador {
     }
 
     public void usar(Modificador modificador) {
-            modificador.actualizar(modificadores);
+        if (!modificadores.contains(modificador)) {
+            throw new ModificadorInexistenteException("El jugador " + nombre + " no posee el modificador usado.");
+        }
+        modificador.actualizar(modificadores);
     }
 
     public List<Modificador> obtenerModificadores(){

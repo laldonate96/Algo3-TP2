@@ -17,18 +17,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.turno.Turno;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.spy;
+
 
 
 public class GroupChoiceTest {
-    private static Turno turno;
     private Jugador jugador1;
     private Jugador jugador2;
 
@@ -36,8 +35,6 @@ public class GroupChoiceTest {
     static List<String> miembrosGrupo1;
     static List<String> miembrosGrupo2;
     private static Clasica clasica;
-    private Modificador nulo;
-    //USAR MOCKITO
     private List<Opcion> opcionesCorrectas;
     private List<Respuesta> respuestas;
 
@@ -47,13 +44,12 @@ public class GroupChoiceTest {
         grupos = Arrays.asList("Mamifero", "Pez");
         miembrosGrupo1 = Arrays.asList("Gato", "Perro");
         miembrosGrupo2 = List.of("Tiburon");
-        turno = spy(Turno.class);
+
     }
 
     @BeforeEach
     public void setUp() {
         List<Modificador> modificadores = FabricaModificadores.crearListaModificadores();
-        nulo = modificadores.get(0);
         jugador1 = new Jugador("Jugador 1", modificadores);
         jugador2 = new Jugador("Jugador 2", modificadores);
 
@@ -88,7 +84,7 @@ public class GroupChoiceTest {
         pregunta.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(1, jugador2.obtenerPuntaje());
+        assertEquals(1, respuesta.obtenerPuntaje());
     }
 
     @Test
@@ -104,7 +100,6 @@ public class GroupChoiceTest {
 
 
         List<Opcion> opcionesJugador=new ArrayList<>();
-//        opcionesJugador = opcionesCorrectas.crearCopiaMock(miembrosGrupo2, List.of(""));
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
@@ -113,7 +108,7 @@ public class GroupChoiceTest {
 
         //Assert
 
-        assertEquals(0, jugador1.obtenerPuntaje());
+        assertEquals(0, respuesta.obtenerPuntaje());
 
     }
     @Test
@@ -127,7 +122,6 @@ public class GroupChoiceTest {
                 "Animales"
         );
         List<Opcion> opcionesJugador=new ArrayList<>();
-//        opcionesJugador = opcionesCorrectas.crearCopiaMock(miembrosGrupo2, List.of(""));
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
@@ -137,7 +131,7 @@ public class GroupChoiceTest {
 
         //Assert
 
-        assertEquals(0, jugador1.obtenerPuntaje());
+        assertEquals(0, respuesta.obtenerPuntaje());
 
     }
     @Test
@@ -152,7 +146,6 @@ public class GroupChoiceTest {
         );
 
         List<Opcion> opcionesJugador=new ArrayList<>();
-//        opcionesJugador = opcionesCorrectas.crearCopiaMock(miembrosGrupo2, List.of(""));
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
@@ -163,7 +156,7 @@ public class GroupChoiceTest {
 
         //Assert
 
-        assertEquals(0, jugador1.obtenerPuntaje());
+        assertEquals(0, respuesta.obtenerPuntaje());
 
     }
 }
