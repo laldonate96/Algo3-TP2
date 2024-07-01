@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.lector;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
@@ -13,41 +13,42 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 
-public class ParserGroup implements LectorParser {
+public class ParserGroup extends LectorParser {
 
     @Override
     public Pregunta parsearPregunta(JSONObject preguntaJson, Puntaje puntaje) {
-        String enunciado = preguntaJson.getString("Pregunta");
-        String categoria = preguntaJson.getString("Tema");
-        String[] grupos = preguntaJson.getString("Respuesta").split("\\s*;\\s*");
+
+        leerEnunciadoCategoriaYExplicacion(preguntaJson);
+
+
+        String[] grupos = (preguntaJson.getString("Respuesta").split("\\s*;\\s*"));
 
         List<String> nombresGrupos=new ArrayList<>();
-        List<List<String>> contenidoOpcionesPorGrupo=new ArrayList<>();
-        List<String> contenidoOpciones=new ArrayList<>();
 
         String[] partesTexto;
         String indexGrupo;
-        List<String> indices;
+
+        List<String> posicionesCorrectas = new ArrayList<>();
 
         for (String grupo : grupos) {
 
-            partesTexto = grupo.split(":");
+            partesTexto = grupo.split("\\s*:\\s*");
             indexGrupo = partesTexto[0].trim();
-            indices = Arrays.asList(partesTexto[1].split("\\s*,\\s*"));
-
             nombresGrupos.add(preguntaJson.getString("Grupo " + indexGrupo));
-            for (String index : indices) {
-                int i = Integer.parseInt(index.trim());
-                String opcionKey = "Opcion " + i;
-                if (preguntaJson.has(opcionKey)) {
-                    contenidoOpciones.add(preguntaJson.getString(opcionKey));
-                }
-            }
-            contenidoOpcionesPorGrupo.add(contenidoOpciones);
-            contenidoOpciones = new ArrayList<>();
+
+
+            Collections.addAll(posicionesCorrectas, partesTexto[1].split("\\s*,\\s*"));
+            posicionesCorrectas.add("0");
         }
-        List<Opcion> opciones=FabricaOpciones.crearListaGrupo(nombresGrupos,contenidoOpcionesPorGrupo, new Correcta());
-        return FabricaPreguntas.crearPreguntaGroupChoice(enunciado, opciones, puntaje, categoria);
+        posicionesCorrectas.remove(posicionesCorrectas.size()-1);
+
+        List<String> contenidoOpciones=obtenerContenidoOpciones(preguntaJson,posicionesCorrectas.size());
+
+
+        List<Opcion> opciones=FabricaOpciones.crearListaGrupo(nombresGrupos,contenidoOpciones,posicionesCorrectas, new Correcta());
+        return FabricaPreguntas.crearPreguntaGroupChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
-    
+
+
+
 }

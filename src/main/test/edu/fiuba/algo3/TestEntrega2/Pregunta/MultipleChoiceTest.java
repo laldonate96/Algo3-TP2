@@ -25,7 +25,6 @@ public class MultipleChoiceTest {
     private Jugador jugador1;
 
     private static Parcial parcial;
-    private Modificador nulo;
     private List<Opcion> opciones;
     private List<Respuesta> respuestas;
 
@@ -38,7 +37,6 @@ public class MultipleChoiceTest {
     public void setUp() {
         List<Modificador> modificadores= FabricaModificadores.crearListaModificadores();
 
-        nulo = modificadores.get(0);
 
         jugador1 = new Jugador("Jugador 1", modificadores);
 
@@ -56,7 +54,7 @@ public class MultipleChoiceTest {
 
         Pregunta pregunta = new MultipleChoice(
             "¿Cuáles de las siguientes opciones son opcionesPregunta?",
-                opciones,       parcial, "Tema"
+                opciones,       parcial, "Tema","Say no More"
         );
 
 
@@ -77,7 +75,7 @@ public class MultipleChoiceTest {
 
         Pregunta pregunta = new MultipleChoice(
                 "¿Cuáles de las siguientes opciones son opcionesPregunta?",
-                opciones,       parcial, "Tema"
+                opciones,       parcial, "Tema","Say no More"
         );
 
         List<Opcion> opcionesJugador=FabricaOpciones.crearListaSimple(List.of("Opcion 1", "Opcion 3"),List.of("1"), new Correcta());

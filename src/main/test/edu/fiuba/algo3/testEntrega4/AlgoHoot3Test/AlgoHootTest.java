@@ -69,6 +69,7 @@ public class AlgoHootTest {
         assertTrue(algoHoot3.obtenerPreguntaDeRondaActual().obtenerOpciones().get(0).equals(opcionesEsperadas.get(0)));
         assertTrue(algoHoot3.obtenerPreguntaDeRondaActual().obtenerOpciones().get(1).equals(opcionesEsperadas.get(1)));
         assertTrue(algoHoot3.obtenerPreguntaDeRondaActual().obtenerOpciones().get(2).equals(opcionesEsperadas.get(2)));
+
         assertTrue(algoHoot3.obtenerPreguntaDeRondaActual().obtenerOpciones().get(3).equals(opcionesEsperadas.get(3)));
         assertTrue(algoHoot3.obtenerJugadorActual().equals(jugadores.get(0)));
 

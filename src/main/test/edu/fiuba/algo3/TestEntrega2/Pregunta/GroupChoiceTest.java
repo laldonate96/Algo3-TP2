@@ -29,11 +29,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GroupChoiceTest {
     private Jugador jugador1;
-    private Jugador jugador2;
+
 
     static List<String> grupos;
-    static List<String> miembrosGrupo1;
-    static List<String> miembrosGrupo2;
+    static List<String> contenidoOpciones;
+    static List<String> posicionesCorrectas;
     private static Clasica clasica;
     private List<Opcion> opcionesCorrectas;
     private List<Respuesta> respuestas;
@@ -42,8 +42,9 @@ public class GroupChoiceTest {
     public static void setUpClass() {
         clasica = new Clasica(3);
         grupos = Arrays.asList("Mamifero", "Pez");
-        miembrosGrupo1 = Arrays.asList("Gato", "Perro");
-        miembrosGrupo2 = List.of("Tiburon");
+        contenidoOpciones = Arrays.asList("Gato","Tiburon", "Perro");
+        posicionesCorrectas= Arrays.asList("1","3","0","2");
+
 
     }
 
@@ -51,13 +52,10 @@ public class GroupChoiceTest {
     public void setUp() {
         List<Modificador> modificadores = FabricaModificadores.crearListaModificadores();
         jugador1 = new Jugador("Jugador 1", modificadores);
-        jugador2 = new Jugador("Jugador 2", modificadores);
 
-        List<List<String>> miembrosPorGrupos=new ArrayList<>();
-        miembrosPorGrupos.add(miembrosGrupo1);
-        miembrosPorGrupos.add(miembrosGrupo2);
 
-        opcionesCorrectas= FabricaOpciones.crearListaGrupo(grupos,miembrosPorGrupos, new Correcta());
+
+        opcionesCorrectas= FabricaOpciones.crearListaGrupo(grupos,contenidoOpciones,posicionesCorrectas, new Correcta());
 
 
         respuestas= new ArrayList<>();
@@ -74,7 +72,7 @@ public class GroupChoiceTest {
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,
-                "Animales"
+                "Animales","Say no More"
         ) {
         };
         Respuesta respuesta= new Respuesta(opcionesCorrectas,jugador1);
@@ -95,7 +93,7 @@ public class GroupChoiceTest {
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,
-                "Animales"
+                "Animales","Say no More"
         );
 
 
@@ -119,8 +117,8 @@ public class GroupChoiceTest {
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,
-                "Animales"
-        );
+                "Animales","Say no More"
+         );
         List<Opcion> opcionesJugador=new ArrayList<>();
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
@@ -142,7 +140,7 @@ public class GroupChoiceTest {
                 "Poner las siguientes preguntas en su grupo correspondiente",
                 opcionesCorrectas,
                 clasica,
-                "Animales"
+                "Animales","Say no More"
         );
 
         List<Opcion> opcionesJugador=new ArrayList<>();

@@ -3,10 +3,8 @@ package edu.fiuba.algo3.TestEntrega2.Pregunta;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.Modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
@@ -27,7 +25,7 @@ public class OrderedChoiceTest {
 
     private Jugador jugador1;
     private static Clasica clasica;
-    private static Modificador nulo;
+
 
     private List<Respuesta> respuestas;
     private List<Opcion> opciones;
@@ -35,7 +33,7 @@ public class OrderedChoiceTest {
     @BeforeAll
     public static void setUpClass() {
         clasica= new Clasica(3);
-        nulo=new Nulo();
+
     }
 
     @BeforeEach
@@ -43,7 +41,7 @@ public class OrderedChoiceTest {
 
         List<Modificador> modificadores= FabricaModificadores.crearListaModificadores();
 
-        nulo = modificadores.get(0);
+
 
         jugador1 = new Jugador("Jugador 1", modificadores);
 
@@ -62,12 +60,12 @@ public class OrderedChoiceTest {
                 "Ordenar las siguientes opciones",
                 opciones,
                 clasica,
-                "Tema"
+                "Tema","Say no More"
         );
 
 
 
-        List<Opcion> opcionesJugador=new ArrayList<>();
+        List<Opcion> opcionesJugador;
         opcionesJugador = FabricaOpciones.crearListaOrdenada(List.of("Opcion 1", "Opcion 2", "Opcion 3"), List.of("3","2","1"),new Correcta());
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
@@ -91,7 +89,7 @@ public class OrderedChoiceTest {
                 "Ordenar las siguientes opciones",
                 opciones,
                 clasica,
-                "Tema"
+                "Tema","Say no More"
         );
 
         List<Opcion> opcionesJugador=new ArrayList<>();

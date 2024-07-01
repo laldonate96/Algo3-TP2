@@ -10,16 +10,17 @@ import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 public abstract class Pregunta {
     protected String categoria;
     protected String enunciado;
-    protected String textoRespuesta;
+    protected String explicacion;
     protected List<Opcion> opciones;
     protected Puntaje puntaje;
 
 
-    public Pregunta(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
+    public Pregunta(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
         this.enunciado = enunciado;
         this.opciones = opciones;
         this.puntaje = puntaje;
         this.categoria = categoria;
+        this.explicacion = explicacion;
     }
 
     public void asignarPuntajes(List<Respuesta> respuestas) {
@@ -42,7 +43,7 @@ public abstract class Pregunta {
         return opciones;
     }
 
-    public String obtenerTextoRespuesta() {
-        return textoRespuesta;
+    public String obtenerExplicacion() {
+        return explicacion;
     }
 }

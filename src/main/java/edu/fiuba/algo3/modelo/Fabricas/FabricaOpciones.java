@@ -13,19 +13,27 @@ import java.util.List;
 
 public class FabricaOpciones {
 
-    public static List<Opcion> crearListaGrupo(List<String> grupos, List<List<String>> contenidoOpcionesPorGrupo, Estado estadoIndicado) {
+    public static List<Opcion> crearListaGrupo(List<String> grupos, List<String> contenidoOpciones,List<String>  posicionesCorrectas,Estado estadoIndicado) {
         Grupo opcion;
-        List<String> contenidoOpciones;
-        List<Opcion> listaOpciones = new ArrayList<>();
-        int contador = 0;
 
-        for(String nombreGrupo:grupos){
-            contenidoOpciones=contenidoOpcionesPorGrupo.get(contador);
-            for(String contenidoOpcion:contenidoOpciones){
-                opcion = new Grupo(contenidoOpcion, nombreGrupo,estadoIndicado);
-                listaOpciones.add(opcion);
+        List<Opcion> listaOpciones = new ArrayList<>();
+        int posicionBuscada;
+        int posicionAnterior=Integer.parseInt(posicionesCorrectas.get(0));
+        int grupoActual = 0;
+        for (String textoPosicion : posicionesCorrectas) {
+            posicionBuscada = Integer.parseInt(textoPosicion);
+            if (posicionBuscada <posicionAnterior) {
+                grupoActual++;
+
+            } else {
+                opcion = new Grupo(contenidoOpciones.get(posicionBuscada-1), grupos.get(grupoActual), estadoIndicado);
+                if(grupoActual>0){
+                    listaOpciones.add(posicionBuscada-1,opcion);
+                } else{
+                    listaOpciones.add(opcion);
+                }
             }
-            contador++;
+            posicionAnterior=posicionBuscada;
         }
         return listaOpciones;
 
@@ -34,17 +42,18 @@ public class FabricaOpciones {
     public static  List<Opcion> crearListaOrdenada(List<String> contenidoOpciones, List<String> ordenCorrecto, Estado estadoIndicado ) {
 
         int posicionEnLista;
-        int posicionOrdenada=1;
 
+        String textoOpcion;
         List<Opcion> listaOpciones = new ArrayList<>();
 
         Ordenada opcion;
-        for (String textoPosicion : ordenCorrecto) {
-            posicionEnLista=Integer.parseInt(textoPosicion);
+        for(int i=0; i<contenidoOpciones.size();i++){
+            posicionEnLista=Integer.parseInt(ordenCorrecto.get(i));
+            textoOpcion=contenidoOpciones.get(i);
 
-            opcion = new Ordenada(contenidoOpciones.get(posicionOrdenada - 1), posicionEnLista ,estadoIndicado);
+            opcion = new Ordenada(textoOpcion,posicionEnLista  ,estadoIndicado);
+
             listaOpciones.add(opcion);
-            posicionOrdenada++;
         }
         return listaOpciones;
     }

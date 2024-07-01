@@ -25,7 +25,6 @@ public abstract class Opcion {
 
     public void actualizarEstado(Opcion opcion) {
         if (opcion.equals(this)) {
-            System.out.println("Se actualiza el estado de la opcion");
             this.estado=(opcion.estado);
         }
     }

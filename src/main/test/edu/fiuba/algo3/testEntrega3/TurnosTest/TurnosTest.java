@@ -52,8 +52,8 @@ public class TurnosTest {
         ConPenalidad penalidad= new ConPenalidad();
         manejarVoF=new ManejarVoF();
 
-        vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock");
-        vofp = new VerdaderoFalso("un enunciado", opciones, penalidad,"Mock");
+        vof = new VerdaderoFalso("un enunciado", opciones, clasica,"Mock", "Say no More");
+        vofp = new VerdaderoFalso("un enunciado", opciones, penalidad,"Mock","Say no More" );
 
 
         jugador1 = new Jugador("un jugador", FabricaModificadores.crearListaModificadores());

@@ -31,10 +31,10 @@ public class MejorPuntaje implements CriterioDeVictoria {
             j=i-1;
 
             while (j >= 0 && listaOrdenadaJugadores.get(j).tieneMejorPuntajeQue(jugador)) {
-                listaOrdenadaJugadores.add(j + 1, listaOrdenadaJugadores.get(j));
+                listaOrdenadaJugadores.set(j + 1, listaOrdenadaJugadores.get(j));
                 j = j - 1;
             }
-            listaOrdenadaJugadores.add(j + 1,jugador);
+            listaOrdenadaJugadores.set(j + 1,jugador);
         }
     }
 

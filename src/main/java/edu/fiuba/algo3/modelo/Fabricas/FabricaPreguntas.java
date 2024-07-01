@@ -19,19 +19,19 @@ public class FabricaPreguntas {
         return (opcionesCorrectas.size());
     }
 
-    public static Pregunta crearPreguntaVerdaderoFalso(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new VerdaderoFalso(enunciado, opciones, puntaje, categoria);
+    public static Pregunta crearPreguntaVerdaderoFalso(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
+        return new VerdaderoFalso(enunciado, opciones, puntaje, categoria,explicacion);
     }
 
-    public static Pregunta crearPreguntaMultipleChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new MultipleChoice(enunciado, opciones, puntaje, categoria);
+    public static Pregunta crearPreguntaMultipleChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
+        return new MultipleChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
 
-    public static Pregunta crearPreguntaOrderedChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new OrderedChoice(enunciado, opciones, puntaje, categoria);
+    public static Pregunta crearPreguntaOrderedChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
+        return new OrderedChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
 
-    public static Pregunta crearPreguntaGroupChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
-        return new GroupChoice(enunciado, opciones, puntaje, categoria);
+    public static Pregunta crearPreguntaGroupChoice(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria, String explicacion) {
+        return new GroupChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
 }
