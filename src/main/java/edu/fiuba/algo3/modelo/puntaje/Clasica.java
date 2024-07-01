@@ -12,7 +12,6 @@ public class Clasica extends Puntaje {
 
     public Clasica(int cantidadCorrectasPregunta){
         cantidadCorrectasEsperada = cantidadCorrectasPregunta;
-        validos = FabricaModificadores.crearValidosNoPenalidad();
     }
 
     @Override

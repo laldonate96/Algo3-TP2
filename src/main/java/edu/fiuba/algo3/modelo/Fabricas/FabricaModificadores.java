@@ -15,21 +15,4 @@ public class FabricaModificadores {
         listaModificadores.add(new Anulador());
         return listaModificadores;
     }
-
-    public static List<Modificador> crearValidosPenalidad() {
-        List<Modificador> listaModificadores = new ArrayList<>();
-        listaModificadores.add(new Nulo());
-        listaModificadores.add(new Multiplicador(2));
-        listaModificadores.add(new Multiplicador(3));
-        listaModificadores.add(new Anulador());
-        return listaModificadores;
-    }
-
-    public static List<Modificador> crearValidosNoPenalidad() {
-        List<Modificador> listaModificadores = new ArrayList<>();
-        listaModificadores.add(new Nulo());
-        listaModificadores.add(new Exclusividad());
-        listaModificadores.add(new Anulador());
-        return listaModificadores;
-    }
 }

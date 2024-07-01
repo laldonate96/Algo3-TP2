@@ -20,7 +20,6 @@ public class GrupoTest {
         opcionIncorrecta = new Grupo("Opcion 1", "Grupo 1", new Incorrecta());
     }
 
-
         @Test
         public void test01SiSeleAsignaEstadoCorrectaEsCorrecta() {
             //Assert

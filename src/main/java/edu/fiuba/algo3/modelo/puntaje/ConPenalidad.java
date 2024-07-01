@@ -8,10 +8,6 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 public class ConPenalidad extends Puntaje {
     protected int puntajeIncorrecta=-1;
 
-    public ConPenalidad(){
-        validos = FabricaModificadores.crearValidosPenalidad();
-    }
-
     @Override
     public void asignarPuntaje(Respuesta respuesta) {
         int correctas = 0;

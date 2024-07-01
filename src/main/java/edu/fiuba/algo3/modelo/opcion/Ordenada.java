@@ -23,6 +23,4 @@ public class Ordenada extends Opcion {
     protected boolean equals(Ordenada ordenada) {
         return this.texto.equals(ordenada.obtenerTexto()) && this.posicion == ordenada.obtenerPosicion();
     }
-
-
 }
