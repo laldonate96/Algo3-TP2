@@ -42,7 +42,7 @@ public class FabricaOpciones {
         for (String textoPosicion : ordenCorrecto) {
             posicionEnLista=Integer.parseInt(textoPosicion);
 
-            opcion = new Ordenada(contenidoOpciones.get(posicionEnLista - 1), posicionOrdenada ,estadoIndicado);
+            opcion = new Ordenada(contenidoOpciones.get(posicionOrdenada - 1), posicionEnLista ,estadoIndicado);
             listaOpciones.add(opcion);
             posicionOrdenada++;
         }

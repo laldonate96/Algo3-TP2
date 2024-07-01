@@ -76,6 +76,10 @@ public class AlgoHoot3 {
         jugadorActual=iteradorJugadores.next();
     }
 
+    public List<String> mostrarModificadoresUsados() {
+        return turno.mostrarModificadoresUsados();
+    }
+
     public boolean terminoLaRonda(){
         return !iteradorJugadores.hasNext() && !terminoJuego();
     }

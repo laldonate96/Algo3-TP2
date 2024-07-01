@@ -17,7 +17,7 @@ import javafx.scene.layout.HBox;
 public class EleccionGrupalVista implements OpcionesVista {
 
     private List<Spinner<String>> spinners = new ArrayList<>();
-    private List<Grupo> opcionesOriginales;
+    private List<Opcion> opcionesOriginales;
 
     private List<String> obtenerGrupos(List<Opcion> opciones) {
         List<String> grupos = new ArrayList<>();
@@ -33,6 +33,7 @@ public class EleccionGrupalVista implements OpcionesVista {
     @Override
     public void mostrarOpciones(List<Opcion> opciones, GridPane contenedor) {
         ObservableList<String> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
+        opcionesOriginales = opciones;
 
         for (Opcion opcion : opciones) {
             if (opcion instanceof Grupo) {
@@ -64,7 +65,7 @@ public class EleccionGrupalVista implements OpcionesVista {
             Spinner<String> spinner = spinners.get(i);
             String grupoSeleccionado = spinner.getValue();
 
-            Grupo opcionOriginal = opcionesOriginales.get(i);
+            Opcion opcionOriginal = opcionesOriginales.get(i);
             Grupo opcionNueva = new Grupo(opcionOriginal.obtenerTexto(), grupoSeleccionado, new Correcta());
 
             opcionesDelJugador.add(opcionNueva);

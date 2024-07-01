@@ -6,6 +6,8 @@ import edu.fiuba.algo3.controlador.ControladorDeJugador;
 import edu.fiuba.algo3.controlador.ControladorDePregunta;
 import edu.fiuba.algo3.controlador.ControladorDeTurno;
 import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
+import edu.fiuba.algo3.modelo.Modificador.Nulo;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
@@ -15,6 +17,7 @@ import edu.fiuba.algo3.vista.animaciones.Animacion;
 import edu.fiuba.algo3.vista.animaciones.MaquinaDeEscribir;
 import edu.fiuba.algo3.vista.botones.Boton;
 import edu.fiuba.algo3.vista.botones.BotonEnviarRespuesta;
+import edu.fiuba.algo3.vista.botones.BotonModificador;
 import edu.fiuba.algo3.vista.botones.CrearModificadores;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;
@@ -37,11 +40,12 @@ public class PreguntaVista extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    public void enviarRespuestas(){
+    public void enviarRespuestas(HBox modificadores){
         List<Opcion> respuestas = seleccionadorOpciones.retornarOpcionesDelJugador();
         if(!respuestas.isEmpty()){
             controladorDeTurno = new ControladorDeTurno();
-            controladorDeTurno.responderPregunta(respuestas, jugador.obtenerModificadores().get(1), ventanaPrincipal);
+            //Modificador modificarUsado = 
+            controladorDeTurno.responderPregunta(respuestas, this.obtenerModificadorUsado(modificadores), ventanaPrincipal);
         } else {
             Alerta RespuestaNoIngresa = new RespuestaNoIngresa();
             RespuestaNoIngresa.mostrarAlerta();
@@ -56,9 +60,11 @@ public class PreguntaVista extends Application {
         Text nombreJugador = new Text(jugador.obtenerNombre());
         nombreJugador.getStyleClass().add("nombreJugador");
 
+        Pregunta pregunta = controladorDePregunta.mostrarPregunta();
+
         HBox modificadoresBox = new HBox(10);
         modificadoresBox.setAlignment(Pos.CENTER);
-        CrearModificadores.crearModificadores(jugador, modificadoresBox);
+        CrearModificadores.crearModificadores(jugador, modificadoresBox, pregunta);
 
         VBox jugadorBox = new VBox(10);
         jugadorBox.getChildren().addAll(nombreJugador, modificadoresBox);
@@ -73,7 +79,6 @@ public class PreguntaVista extends Application {
         enunciado.getStyleClass().add("enunciado");
         enunciado.setWrappingWidth(600);
 
-        Pregunta pregunta = controladorDePregunta.mostrarPregunta();
         Animacion maquinaDeEscribir = new MaquinaDeEscribir(2, enunciado, pregunta.obtenerEnunciado());
         maquinaDeEscribir.aplicarAnimacion();
 
@@ -86,7 +91,7 @@ public class PreguntaVista extends Application {
         contenedorOpciones.setAlignment(Pos.CENTER);
 
         Boton botonResponder = new BotonEnviarRespuesta();
-        botonResponder.setOnAction(e -> this.enviarRespuestas());
+        botonResponder.setOnAction(e -> this.enviarRespuestas(modificadoresBox));
 
         this.seleccionadorOpciones.seleccionarVistaOpciones(pregunta, contenedorOpciones);
 
@@ -108,5 +113,15 @@ public class PreguntaVista extends Application {
 
         ventanaPrincipal.setScene(scene);
         ventanaPrincipal.show();
+    }
+
+    public Modificador obtenerModificadorUsado(HBox modificadoresBox){
+        for (int i = 0; i < modificadoresBox.getChildren().size(); i++) {
+            BotonModificador boton = (BotonModificador) modificadoresBox.getChildren().get(i);
+            if(boton.isDisabled()){
+                return boton.obtenerModificador();
+            }
+        }
+        return new Nulo();
     }
 }

@@ -3,7 +3,10 @@ package edu.fiuba.algo3.vista.opciones;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Ordenada;
+import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.GridPane;
@@ -15,11 +18,13 @@ public class OrderedChoiceVista implements OpcionesVista {
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
-        List<Opcion> opcionesSeleccionadas = new ArrayList<>();
+        List<String> opcionesSeleccionadas = new ArrayList<>();
+        List<String> ordenSeleccionado = new ArrayList<>();
         for (Spinner<Integer> selector : selectores) {
-            opcionesSeleccionadas.add(opciones.get(selector.getValue() - 1));
+            opcionesSeleccionadas.add(opciones.get(selectores.indexOf(selector)).obtenerTexto());
+            ordenSeleccionado.add(selector.getValue().toString());
         }
-        return opcionesSeleccionadas;
+        return FabricaOpciones.crearListaOrdenada(opcionesSeleccionadas, ordenSeleccionado, new Incorrecta());
     }
 
     @Override
