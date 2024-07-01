@@ -1,12 +1,10 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.Modificador;
-import edu.fiuba.algo3.modelo.modificador.Multiplicador;
-import edu.fiuba.algo3.modelo.modificador.Nulo;
-import edu.fiuba.algo3.modelo.opcion.Simple;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.estado.Incorrecta;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.Multiplicador;
+import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
+
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,21 +15,17 @@ import java.util.List;
 
 public class JugadorTest {
     private Jugador jugador;
-    private Modificador multiplicador;
-    private List<Modificador> modificadores;
-    private List<Opcion> opciones;
-    private Opcion opcion;
+    private ModificadorPuntaje multiplicador;
+    private List<ModificadorPuntaje> modificadores;
+
 
     @BeforeEach
     public void setUpClass() {
         multiplicador = new Multiplicador(2);
-        Nulo nulo = new Nulo();
+        NuloPuntaje nulo = new NuloPuntaje();
         modificadores = new ArrayList<>();
         modificadores.add(multiplicador);
         modificadores.add(nulo);
-        opcion = new Simple("Opcion 1", new Incorrecta());
-        opciones = new ArrayList<>();
-        opciones.add(opcion);
 
         jugador = new Jugador("Jugador 1", modificadores);
     }
@@ -54,7 +48,7 @@ public class JugadorTest {
     @Test
     public void test03UsarUnModificadorNoNuloRemueveDeLaListaDeModificadoresDelJugador() {
         //Act
-        jugador.responder(opciones, opciones, multiplicador);
+        jugador.usar(multiplicador);
 
         //Assert
         assertEquals(1, modificadores.size());
@@ -62,14 +56,15 @@ public class JugadorTest {
     @Test
     public void test04UsarUnModificadorNuloNoLoRemueveDeLaListaDeModificadoresDelJugador() {
         //Arrange
-        Nulo nulo = new Nulo();
+        NuloPuntaje nulo = new NuloPuntaje();
 
         //Act
-        jugador.responder(opciones, opciones, nulo);
+        jugador.usar(nulo);
 
         //Assert
         assertEquals(2, modificadores.size());
     }
 
 }
+
 
