@@ -47,7 +47,7 @@ public class InicioDelJuego extends Application {
         root.setTop(toolbarBox);
         root.setCenter(centerBox);
 
-        Scene escenaDelJuego = new Scene(root, 800, 500);
+        Scene escenaDelJuego = new Scene(root, 1280, 720);
 
         String cssPath = "src/css/style.css";
         URL cssURL = this.getClass().getResource(cssPath);

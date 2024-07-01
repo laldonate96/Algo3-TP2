@@ -30,11 +30,7 @@ public class VistaPrueba extends Application {
         List<Ordenada> opciones = FabricaOpciones.crearListaOrdenada(opcionesOrdered, List.of("2", "1"), new Correcta());
         Pregunta pregunta = new OrderedChoice("pepe", opciones, new Clasica(1), "categoria","Say no More" );
 
-        System.out.println("prueba");
-
         GridPane contenedor = new GridPane();
-
-
 
         SeleccionadorOpciones seleccionador = new SeleccionadorOpciones();
         seleccionador.seleccionarVistaOpciones(pregunta, contenedor);

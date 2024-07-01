@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
+import edu.fiuba.algo3.modelo.AlgoHoot3;
 //import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -19,6 +20,9 @@ public class ControladorUsoDeModificadores implements EventHandler<ActionEvent> 
 
     @Override
     public void handle(ActionEvent actionEvent) {
-//        jugadorActual.usar(modificador);
+    }
+
+    public void mostrarModificadoresDeRonda() {
+        AlgoHoot3.obtenerInstancia().mostrarModificadoresUsados();
     }
 }

@@ -10,5 +10,15 @@
     "Opcion 3": "Imanes del delivery",
     "Opcion 4": "Heladera",
     "Texto respuesta": "El microondas emite a  3 cm entre 73 y 200µ, y a 30 cm entre 4 a 8 µT. "
+  },
+  {
+    "ID": 2,
+    "Tema": "COMPUTACION",
+    "Tipo": "Verdadero Falso Simple",
+    "Pregunta": "Smalltalk es un lenguaje de programación muerto",
+    "Respuesta": "2",
+    "Opcion 1": "Verdadero",
+    "Opcion 2": "Falso",
+    "Texto respuesta": "Eee...  no vimos nada!"
   }
 ]

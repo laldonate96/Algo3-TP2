@@ -37,7 +37,5 @@ public class ManejarOrderedC implements Estado {
             opcionesPregunta.add(opcionPregunta.obtenerTexto() + " " + opcionPregunta.obtenerPosicion());
             
         }
-        System.out.println(opciones);
-        System.out.println(opcionesPregunta);
     }
 }

@@ -80,7 +80,7 @@ public class CargarJugadores extends Application {
         root.setTop(toolbarBox);
         root.setCenter(layout);
 
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 1280, 720);
 
         String css = getClass().getResource("src/css/style.css").toExternalForm();
         scene.getStylesheets().add(css);

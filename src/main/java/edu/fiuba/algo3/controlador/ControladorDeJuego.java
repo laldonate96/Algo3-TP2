@@ -18,7 +18,7 @@ public class ControladorDeJuego {
         
         AlgoHoot3 algoHoot = AlgoHoot3.obtenerInstancia();
      
-        algoHoot.iniciarAlgoHoot(jugadores, new Turno(), new MejorPuntaje(1,40), Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria(),("recursos/preguntas.json")));
+        algoHoot.iniciarAlgoHoot(jugadores, new Turno(), new MejorPuntaje(2,40), Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria(),("recursos/preguntas.json")));
         algoHoot.pasarRonda();
     }
 }

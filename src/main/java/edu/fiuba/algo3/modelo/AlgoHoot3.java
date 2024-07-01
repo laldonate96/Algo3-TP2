@@ -60,30 +60,23 @@ public class AlgoHoot3 {
 
     }
 
-
-
     public void pasarRonda() {
         rondas++;
-        for (Jugador jugador : jugadores) {
+        for (Jugador jugador:jugadores){
             System.out.println(jugador.obtenerPuntaje());
         }
         iteradorJugadores = jugadores.iterator();
         jugadorActual = iteradorJugadores.next();
-        System.out.println("Ronda: "+rondas);
-        System.out.println("terminoJuego: " + terminoJuego());
         if (terminoJuego()) {
             return;
         }
         turno.reiniciarTurno(obtenerPreguntaDeRondaActual(), FabricaEstado.crearEstado(obtenerPreguntaDeRondaActual()));
-
     }
 
     public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificador) {
         turno.agregarRespuesta(opcionesElegidas, jugadorActual, modificador);
         if (terminoLaRonda()){
             asignarPuntajes();
-            iteradorJugadores = jugadores.iterator();
-            pasarRonda();
             return;
         }
         jugadorActual=iteradorJugadores.next();
@@ -94,7 +87,7 @@ public class AlgoHoot3 {
     }
 
     public boolean terminoLaRonda(){
-        return !iteradorJugadores.hasNext() && !terminoJuego();
+        return (turno.cantidadDeRespuestas() == jugadores.size()) && !terminoJuego();
     }
 
     public int obtenerRonda(){

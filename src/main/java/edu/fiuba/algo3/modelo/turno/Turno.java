@@ -66,4 +66,8 @@ public class Turno {
         this.preguntaDelTurno=pregunta;
         this.estado=estado;
     }
+
+    public int cantidadDeRespuestas() {
+        return respuestas.size();
+    }
 }
