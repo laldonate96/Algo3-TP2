@@ -48,7 +48,7 @@ public class Multiplicador extends Modificador {
 
     @Override
     protected List<String> guardarModificadores(List<String> listaUsados) {
-        listaUsados.add(this.getClass() + " por " + factorDeMultiplicacion + " por el jugador " + duenio.obtenerNombre() + "\n");
+        listaUsados.add(this.getClass() + " x" + factorDeMultiplicacion + " usado por " + duenio.obtenerNombre() + "\n");
         return siguiente.guardarModificadores(listaUsados);
     }
 

@@ -24,11 +24,10 @@ public abstract class Modificador implements Usable {
 
     public List<String> mostrarModificadoresUsados(){
         List<String> modificadorUsados=new ArrayList<>();
-        modificadorUsados.add("Los modificadores usados Son: \n");
         return guardarModificadores(modificadorUsados);
     }
     protected List<String> guardarModificadores(List<String> listaUsados) {
-        listaUsados.add(this.getClass() + " por el jugador " + duenio.obtenerNombre() + "\n");
+        listaUsados.add(this.getClass() + " usado por " + duenio.obtenerNombre() + ".\n");
         return siguiente.guardarModificadores(listaUsados);
     }
 

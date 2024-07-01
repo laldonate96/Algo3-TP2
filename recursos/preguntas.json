@@ -1,17 +1,5 @@
 [
   {
-    "ID": 1,
-    "Tema": "CIENCIAS",
-    "Tipo": "Ordered Choice",
-    "Pregunta": "Ordene de MAYOR A MENOR los siguientes objetos hogareños según su nivel de radiación electromagnética emitido (el máximo recomendado es 100 microTeslas)",
-    "Respuesta": "2,1,4,3",
-    "Opcion 1": "Televisor de tubo CRT",
-    "Opcion 2": "Microondas",
-    "Opcion 3": "Imanes del delivery",
-    "Opcion 4": "Heladera",
-    "Texto respuesta": "El microondas emite a  3 cm entre 73 y 200µ, y a 30 cm entre 4 a 8 µT. "
-  },
-  {
     "ID": 2,
     "Tema": "COMPUTACION",
     "Tipo": "Verdadero Falso Simple",
@@ -20,16 +8,5 @@
     "Opcion 1": "Verdadero",
     "Opcion 2": "Falso",
     "Texto respuesta": "Eee...  no vimos nada!"
-  },
-  {
-    "ID": 6,
-    "Tema": "COMPUTACION",
-    "Tipo": "Verdadero Falso Penalidad",
-    "Pregunta": "En el plan viejo de la ingeniería en informática de la UBA, las materias de matemática, física, y química se podían promocionar con 6",
-    "Respuesta": "2",
-    "Opcion 1": "Verdadero",
-    "Opcion 2": "Falso",
-
-    "Texto respuesta": "Muy falso! Ninguna de esas materias fue, es ni será promocionable mientras exista. Disfruten los tiempos modernos y estudien lo que es central a su carrera!"
   }
 ]
