@@ -18,6 +18,7 @@ import edu.fiuba.algo3.vista.animaciones.MaquinaDeEscribir;
 import edu.fiuba.algo3.vista.botones.Boton;
 import edu.fiuba.algo3.vista.botones.BotonEnviarRespuesta;
 import edu.fiuba.algo3.vista.botones.BotonModificador;
+import edu.fiuba.algo3.vista.botones.BotonNulo;
 import edu.fiuba.algo3.vista.botones.CrearModificadores;
 import edu.fiuba.algo3.vista.opciones.SeleccionadorOpciones;
 import javafx.application.Application;
@@ -116,12 +117,13 @@ public class PreguntaVista extends Application {
     }
 
     public Modificador obtenerModificadorUsado(HBox modificadoresBox){
+        BotonModificador botonNulo = (BotonModificador) modificadoresBox.getChildren().get(0);
         for (int i = 0; i < modificadoresBox.getChildren().size(); i++) {
             BotonModificador boton = (BotonModificador) modificadoresBox.getChildren().get(i);
             if(boton.isDisabled()){
                 return boton.obtenerModificador();
             }
         }
-        return new Nulo();
+        return botonNulo.obtenerModificador();
     }
 }

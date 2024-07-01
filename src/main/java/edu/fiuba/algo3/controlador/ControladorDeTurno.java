@@ -5,7 +5,6 @@ import java.util.List;
 import edu.fiuba.algo3.modelo.AlgoHoot3;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.vista.InicioDelJuego;
 import edu.fiuba.algo3.vista.PreguntaVista;
 import edu.fiuba.algo3.vista.VistaPrueba;
 import javafx.event.ActionEvent;

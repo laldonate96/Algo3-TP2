@@ -3,7 +3,6 @@ package edu.fiuba.algo3.vista.botones;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.Modificador.Exclusividad;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.Modificador.Multiplicador;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -31,6 +30,10 @@ public class CrearModificadores {
                         break;
                     case "Anulador":
                         botones.add(new BotonAnulador(jugador, modificador, botones));
+                        modificadoresBox.getChildren().add(botones.get(botones.size() - 1));
+                        break;
+                    case "Nulo":
+                        botones.add(new BotonNulo(jugador, modificador, botones));
                         modificadoresBox.getChildren().add(botones.get(botones.size() - 1));
                         break;
                     default:

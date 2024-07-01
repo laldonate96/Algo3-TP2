@@ -73,7 +73,6 @@ public class AlgoHoot3 {
 
     public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificadorPuntaje) {
         turno.agregarRespuesta(opcionesElegidas, jugadorActual, modificadorPuntaje);
-        jugadorActual=iteradorJugadores.next();
         if (terminoLaRonda()){
             asignarPuntajes();
             iteradorJugadores = jugadores.iterator();
