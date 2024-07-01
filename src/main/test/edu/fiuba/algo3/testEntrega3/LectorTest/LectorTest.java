@@ -2,15 +2,13 @@ package edu.fiuba.algo3.testEntrega3.LectorTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaNula;
 import edu.fiuba.algo3.modelo.opcion.Grupo;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -58,7 +56,7 @@ public class LectorTest {
         //Assert
         assertEquals(categoriaEsperada,preguntaLeida.obtenerCategoria());
         assertEquals(enunciadoEsperado,preguntaLeida.obtenerEnunciado());
-//        assertEquals(textoRespuestaEsperado,preguntaLeida.obtenerTextoRespuesta());
+        assertEquals(textoRespuestaEsperado,preguntaLeida.obtenerTextoRespuesta());
         assertEquals(opcionesGrupoEsperadas,preguntaLeida.obtenerOpciones());
     }
 }

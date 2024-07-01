@@ -10,6 +10,7 @@ import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 public abstract class Pregunta {
     protected String categoria;
     protected String enunciado;
+    protected String textoRespuesta;
     protected List<Opcion> opciones;
     protected Puntaje puntaje;
 
@@ -40,5 +41,8 @@ public abstract class Pregunta {
     public List<Opcion> obtenerOpciones() {
         return opciones;
     }
-    
+
+    public String obtenerTextoRespuesta() {
+        return textoRespuesta;
+    }
 }
