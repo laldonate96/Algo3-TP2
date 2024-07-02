@@ -43,7 +43,7 @@ public class VistaGanador extends Application {
         titilante.aplicarAnimacion();
         Boton botonJugar = new Boton("Reiniciar", "botonJugar");
         botonJugar.setOnAction(event -> {
-            controladorMusica.cambiarMusica("recursos/musica/Tema 1.mp3");
+            controladorMusica.cambiarMusica("recursos/musica/Tema 4.mp3");
             controladorVentanaNueva.abrirVentanaNueva(inicioDelJuego, ventanaPrincipal);
         });
 

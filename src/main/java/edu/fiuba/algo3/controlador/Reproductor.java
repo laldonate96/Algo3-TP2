@@ -11,7 +11,7 @@ public class Reproductor {
     private double volumen = 0.1;
 
     private Reproductor() {
-        tema = "recursos/musica/Tema 1.mp3";
+        tema = "recursos/musica/Tema 4.mp3";
         inicializarMediaPlayer();
     }
 
