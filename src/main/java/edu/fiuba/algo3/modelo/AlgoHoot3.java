@@ -50,14 +50,12 @@ public class AlgoHoot3 {
 
         this.turno =turno;
 
-
         criterio.establecerJugadores(jugadores);
         this.criterio=criterio;
 
         rondas=0;
         jugadorActual=null;
         iteradorJugadores=null;
-
     }
 
     public void pasarRonda() {

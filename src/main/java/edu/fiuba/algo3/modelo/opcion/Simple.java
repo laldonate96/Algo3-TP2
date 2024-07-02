@@ -9,7 +9,6 @@ public class Simple extends Opcion {
         this.estado=estado;
     }
 
-
     @Override
     public int contarCorrecta() {
         return estado.contarCorrecta();
@@ -20,13 +19,11 @@ public class Simple extends Opcion {
         return estado.contarIncorrecta();
     }
 
-
     public void actualizarEstado(Simple opcion) {
         if(this.texto.equals(opcion.texto)) {
             opcion.estado=this.estado;
         }
     }
-
 
     public boolean tieneIgualTexto(Simple opcionJugador) {
         return this.texto.equals(opcionJugador.texto);

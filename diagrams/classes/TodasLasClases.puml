@@ -39,12 +39,12 @@ exception PreguntaInexistenteException {}
 
 '<Fabricas
 
-class FabricaEstado{
-    + {static} Estado crearEstado(Pregunta pregunta)
-}
-
 class FabricaJugadores{
     + {static} List<Jugador> crearListaJugadores(List<String> jugadores)
+}
+
+class FabricaManejador{
+    + {static} Manejador crearManejador(Pregunta pregunta)
 }
 
 class FabricaModificadores{
@@ -52,7 +52,7 @@ class FabricaModificadores{
 }
 
 class FabricaOpciones{
-    public static List<Grupo> crearListaGrupo(List<String> grupos, List<String> contenidoOpciones,List<String>  posicionesCorrectas,Estado estadoIndicado)
+    public static List<Grupal> crearListaGrupo(List<String> grupos, List<String> contenidoOpciones,List<String>  posicionesCorrectas,Estado estadoIndicado)
     public static List<Ordenada> crearListaOrdenada(List<String> contenidoOpciones, List<String> ordenCorrecto, Estado estadoIndicado)
     public static List<Simple> crearListaSimple(List<String> contenidoOpciones, List<String> posicionesDeCorrectas, Estado estado)
 }
@@ -62,7 +62,7 @@ class FabricaPreguntas{
     public static VerdaderoFalso crearPreguntaVerdaderoFalso(String enunciado, List<Simple> opciones, Puntaje puntaje, String categoria, String explicacion)
     public static MultipleChoice crearPreguntaMultipleChoice(String enunciado, List<Simple> opciones, Puntaje puntaje, String categoria, String explicacion)
     public static OrderedChoice crearPreguntaOrderedChoice(String enunciado, List<Ordenada> opciones, Puntaje puntaje, String categoria, String explicacion)
-    public static GroupChoice crearPreguntaGroupChoice(String enunciado, List<Grupo> opciones, Puntaje puntaje, String categoria, String explicacion)
+    public static GroupChoice crearPreguntaGroupChoice(String enunciado, List<Grupal> opciones, Puntaje puntaje, String categoria, String explicacion)
 }
 
 'Fabricas/>
@@ -95,7 +95,7 @@ class Jugador{
 
 '<Mezclador
 
-interface Mezclador{
+interface Mezclador {
     List<Pregunta> mezclarPreguntas(List<Pregunta> preguntas)
 }
 
@@ -110,7 +110,7 @@ class MezclaSinRepetirCategoria implements Mezclador{
 'Mezclador/>
 
 class Lector{
-    public {static} List<Pregunta> obtenerPreguntasDeJson(Mezclador mezclador,String direccion)
+    public {static} List<Pregunta> obtenerPreguntasDeJson(Mezclador mezclador, String direccion)
 }
 
 abstract class LectorParser{
@@ -119,18 +119,27 @@ abstract class LectorParser{
     protected String explicacion
 
     public abstract Pregunta parsearPregunta(JSONObject preguntaJson, Puntaje puntaje)
+
+    protected void leerEnunciadoCategoriaYExplicacion(JSONObject preguntaJson)
+    protected List<String> obtenerContenidoOpciones(JSONObject preguntaJson, int cantidadOpciones)
 }
 
-class ParserGroup extends LectorParser{}
-class ParserMChoice extends LectorParser{}
-class ParserOrdered extends LectorParser{}
-class ParserVoF extends LectorParser{}
+class ParserGroup extends LectorParser{
+    public Pregunta parsearPregunta(JSONObject preguntaJson, Puntaje puntaje)
+}
+class ParserMChoice extends LectorParser{
+    public Pregunta parsearPregunta(JSONObject preguntaJson, Puntaje puntaje)
+}
+class ParserOrdered extends LectorParser{
+    public Pregunta parsearPregunta(JSONObject preguntaJson, Puntaje puntaje)
+}
+class ParserVoF extends LectorParser{
+    public Pregunta parsearPregunta(JSONObject preguntaJson, Puntaje puntaje)
+}
 
 'Lector/>
 
 '<Modificador
-
-interface Usable{}
 
 abstract class Modificador implements Usable{
     # Jugador duenio
@@ -139,17 +148,60 @@ abstract class Modificador implements Usable{
     + {abstract} void modificarPuntajes(List<Respuesta> respuestas)
     + {abstract} void establecerDuenio(Jugador jugadorActivo)
     + {abstract} void agregarModificador(Modificador modificador)
-    + void actualizar(List<Modificador> modificadores)
-    + List<String> mostrarModificadoresUsados()
-    # List<String> guardarModificadores(List<String> listaUsados)
+    + Modificador actualizar(List<Modificador> modificadores)
+    + String mostrarModificador()
     + boolean usableConPenalidad()
     + boolean usableSinPenalidad()
 }
 
-class Anulador extends Modificador{}
-class Exclusividad extends Modificador{}
-class Nulo extends Modificador{}
-class Multiplicador extends Modificador{}
+class Anulador extends Modificador{
+    private int factorDeMultiplicacion
+    private int llamados
+
+    public void modificarPuntajes(List<Respuesta> respuestas)
+    private void aplicarModificador(List<Respuesta> respuestas)
+    public void establecerDuenio(Jugador jugadorActivo)
+    public void agregarModificador(Modificador modificador)
+    private boolean esIgual(Modificador modificador)
+}
+
+class Exclusividad extends Modificador{
+    private int llamados
+    private int factorDeMultiplicacion
+
+    public void modificarPuntajes(List<Respuesta> respuestas)
+    private void aplicarModificador(List<Respuesta> respuestas)
+    public void establecerDuenio(Jugador jugadorActivo)
+    public void agregarModificador(Modificador modificador)
+    private boolean esIgual(Modificador modificador)
+    public boolean usableConPenalidad()
+}
+
+class Multiplicador extends Modificador{
+    private final int factorDeMultiplicacion
+
+    public Multiplicador(int factorDeMultiplicacion)
+    public void modificarPuntajes(List<Respuesta> respuestas)
+    private void aplicarModificador(List<Respuesta> respuestas)
+    public void establecerDuenio(Jugador jugadorActivo)
+    public boolean tieneFactor(int factorDeMultiplicacion)
+    public void agregarModificador(Modificador modificador)
+    public String mostrarModificador()
+    public boolean usableSinPenalidad()
+}
+
+class Nulo extends Modificador{
+    public void modificarPuntajes(List<Respuesta> respuestas)
+    public void establecerDuenio(Jugador jugadorActivo)
+    public void agregarModificador(Modificador modificador)
+    public Modificador actualizar(List<Modificador> modificadores)
+    public String mostrarModificador()
+}
+
+interface Usable{
+    public boolean usableConPenalidad()
+    public boolean usableSinPenalidad()
+}
 
 'Modificador/>
 
@@ -157,65 +209,239 @@ class Multiplicador extends Modificador{}
 
 '<Estado
 
-abstract class Estado{}
+abstract class Estado {
+    public int contarCorrecta()
+    public int contarIncorrecta()
+}
 
-class Correcta extends Estado{}
-class Incorrecta extends Estado{}
+class Correcta extends Estado{
+    public int contarCorrecta()
+}
+class Incorrecta extends Estado{
+    public int contarIncorrecta()
+}
 
 'Estado/>
 
-abstract class Opcion{}
+abstract class Opcion{
+    protected String texto
+    
+    public Opcion(String texto, Estado estado)
+    public {abstract} int contarCorrecta()
+    public {abstract} int contarIncorrecta()
+    public String obtenerTexto()
+}
 
-class Grupo extends Opcion{}
-class Ordenada extends Opcion{}
-class Simple extends Opcion{}
+class Grupal extends Opcion{
+    private final String nombreGrupo;
+    private int puntosCorrecta;
+    private int puntosIncorrecta;
+
+    public Grupal(String texto, String nombreGrupo, Estado estado)
+    public void actualizarEstado(Grupal opcion)
+    public String obtenerGrupo()
+    public int contarCorrecta()
+    public int contarIncorrecta()
+}
+class Ordenada extends Opcion{
+    private final int posicion
+    private int puntosIncorrecta
+    private int puntosCorrecta
+
+    public Ordenada(String texto, int posicion, Estado estado)
+    public void actualizarEstado(Ordenada opcion)
+    public int contarCorrecta()
+    public int contarIncorrecta()
+    public String obtenerPosicion()
+}
+class Simple extends Opcion{
+    private Estado estado
+
+    public Simple(String texto, Estado estado)
+    public int contarCorrecta()
+    public int contarIncorrecta()
+    public void actualizarEstado(Simple opcion)
+    public boolean tieneIgualTexto(Simple opcionJugador)
+}
 
 'Opcion/>
 
 '<Pregunta
 
-abstract class Pregunta{}
+abstract class Pregunta{
+    protected String categoria
+    protected String enunciado
+    protected String explicacion
+    protected Puntaje puntaje
 
-class GroupChoice extends Pregunta{}
-class MultipleChoice extends Pregunta{}
-class OrderedChoice extends Pregunta{}
-class VerdaderoFalso extends Pregunta{}
+    public Pregunta(String enunciado, Puntaje puntaje, String categoria, String explicacion)
+
+    public void asignarPuntajes(List<Respuesta> respuestas)
+    public boolean modificadorEsValido(Modificador modificador)
+    public String obtenerCategoria()
+    public String obtenerEnunciado()
+    public String obtenerExplicacion()
+}
+
+class GroupChoice extends Pregunta{
+    private final List<Grupal> opciones;
+
+    public GroupChoice(String enunciado, List<Grupal> opciones, Puntaje puntaje, String categoria, String explicacion)
+    public List<Grupal> obtenerOpciones()
+}
+
+class MultipleChoice extends Pregunta{
+    private List<Simple> opciones
+
+    public MultipleChoice(String enunciado, List<Simple> opciones, Puntaje puntaje, String categoria, String explicacion)
+    public List<Simple> obtenerOpciones()
+}
+
+class OrderedChoice extends Pregunta{
+    private final List<Ordenada> opciones
+
+    public OrderedChoice(String enunciado, List<Ordenada> opciones, Puntaje puntaje, String categoria, String explicacion)
+    public List<Ordenada> obtenerOpciones()
+}
+
+class VerdaderoFalso extends Pregunta{
+    private List<Simple> opciones
+
+    public VerdaderoFalso(String enunciado, List<Simple> opciones, Puntaje puntaje, String categoria, String explicacion)
+    public List<Simple> obtenerOpciones()
+}
 
 'Pregunta/>
 
 '<Puntaje
 
-abstract class Puntaje{}
+abstract class Puntaje{
+    protected int puntaje
 
-class Clasica extends Puntaje{}
-class ConPenalidad extends Puntaje{}
-class Parcial extends Puntaje{}
+    public {abstract} void asignarPuntaje(Respuesta respuesta)
+    public void asignarPuntajes(List<Respuesta> respuestas)
+    public {abstract} boolean modificadorEsValido(Modificador modificador)
+}
+
+class Clasica extends Puntaje{
+    protected int cantidadCorrectasEsperada
+
+    public Clasica(int cantidadCorrectasPregunta)
+    public void asignarPuntaje(Respuesta respuesta)
+    public boolean modificadorEsValido(Modificador modificador)
+}
+
+class ConPenalidad extends Puntaje{
+    protected int puntajeIncorrecta
+
+    public void asignarPuntaje(Respuesta respuesta)
+    public boolean modificadorEsValido(Modificador modificador)
+}
+
+class Parcial extends Puntaje{
+    public void asignarPuntaje(Respuesta respuesta)
+    public boolean modificadorEsValido(Modificador modificador)
+}
 
 'Puntaje/>
 
 '<Respuesta
 
-class Respuesta{}
+class Respuesta{
+    private final List<Opcion> opciones
+    private final Jugador jugador
+    private int puntaje
+
+    public Respuesta(List<Opcion> opciones, Jugador jugador)
+    public void asignarPuntaje(int puntaje)
+    public List<Opcion> obtenerOpciones()
+    public int obtenerPuntaje()
+    public void multiplicarPuntaje(int valor)
+    public boolean esCorrecta()
+    public void sumarPuntaje()
+    public boolean perteneceA(Jugador jugador)
+}
 
 'Respuesta/>
 
 '<Turno
 
-'<Estado
+'<Estado/Manejador
 
-interface Estado{}
+interface Manejador{
+    void validarOpciones(List<Opcion> opcionesJugador)
+}
 
-class ManejarGroupChoice implements Estado{}
-class ManejarMultipleC implements Estado{}
-class ManejarOrderedC implements Estado{}
-class ManejarVoF implements Estado{}
+class ManejarGroupChoice implements Manejador{
+    GroupChoice pregunta;
 
-'Estado/>
+    public ManejarGroupChoice(GroupChoice pregunta)
+    private void validarOpcion(Opcion opcion)
+    public void validarOpciones(List<Opcion> opcionesJugador)
+}
 
-class Turno{}
+class ManejarMultipleC implements Manejador{
+    private final MultipleChoice pregunta
+
+    public ManejarMultipleC(MultipleChoice pregunta)
+    private void validarOpcion(Opcion opcion)
+    public void validarOpciones(List<Opcion> opcionesJugador)
+}
+
+class ManejarOrderedC implements Manejador{
+    private final OrderedChoice pregunta
+
+    public ManejarOrderedC(OrderedChoice pregunta)
+    private void validarOpcion(Opcion opcion)
+    public void validarOpciones(List<Opcion> opcionesJugador)
+}
+
+class ManejarVoF implements Manejador{
+    private final VerdaderoFalso pregunta;
+
+    public ManejarVoF(VerdaderoFalso pregunta)
+    private void validarOpcion(Opcion opcion)
+    public void validarOpciones(List<Opcion> opcionesJugador)
+}
+
+'Estado/Manejador/>
+
+class Turno{
+    private List<Respuesta> respuestas
+    private Pregunta preguntaDelTurno
+    private Modificador modificador
+    private Manejador manejador
+
+    public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, Modificador modificador)
+    public void asignarPuntajes()
+    public void reiniciarTurno(Pregunta pregunta, Manejador manejador)
+    public int cantidadDeRespuestas()
+}
 
 'Turno/>
 
-class AlgoHoot3
+class AlgoHoot3{
+    private List<Pregunta> preguntas
+    private List<Jugador> jugadores
+    private Turno turno
+    private static AlgoHoot3 instancia
+    private int rondas
+    private Iterator<Jugador> iteradorJugadores
+    private Jugador jugadorActual
+    private CriterioDeVictoria criterio
+
+    public {static} AlgoHoot3 obtenerInstancia()
+
+    public void iniciarAlgoHoot(List<Jugador> jugadores, Turno turno, CriterioDeVictoria criterio, List<Pregunta> preguntas)
+    public void pasarRonda()
+    public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificador)
+    public boolean terminoLaRonda()
+    public int obtenerRonda()
+    public Pregunta obtenerPreguntaDeRondaActual()
+    public void asignarPuntajes()
+    public Jugador obtenerJugadorActual()
+    public boolean terminoJuego()
+    public List<Jugador> jugadoresOrdenadosPorCriterio()
+}
 
 'Modelo/>
