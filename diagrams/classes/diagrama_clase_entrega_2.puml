@@ -5,7 +5,7 @@ title Diagrama de clases
 class Jugador{
     - nombre: String
     - puntaje: int
-    - modificadores: List<Modificador>
+    - modificadores: List<ModificadorPuntaje>
     ---
     + Jugador(nombre: String, modificadores: List<Modificador>)
     + sumarPuntaje(puntaje: int)
@@ -13,48 +13,100 @@ class Jugador{
     + responder(opciones: List<Opcion>, opcionesPregunta: List<Opcion>, modificador: Modificador)
 }
 
-interface Modificador {
+abstract class ModificadorPuntaje {
+    -usos: int
+    ----
     + modificarPuntaje(puntaje: int): int
     + usar()
     + equals(modificador: Modificador): Bool
-    + tieneUsos(): Bool
+    + actualizar(modificadores: List<ModificadorPuntaje>)
 }
 
-class Multiplicador {
+class Multiplicador extends ModificadorPuntaje {
     - factorDeMultiplicacion: int
-    - usos: int
     ---
     + Multiplicador(factor: int)
     + modificarPuntaje(puntaje: int): int
-    + usar()
-    + equals(modificador: Modificador): Bool
-    + tieneUsos(): Bool
+    + equals(modificadorPuntaje: ModificadorPuntaje): Bool
+    + equals(multiplicador: Multiplicador): Bool
 }
 
-class Nulo {
+class NuloPuntaje extends ModificadorPuntaje {
     ---
     + Nulo()
     + modificarPuntaje(puntaje: int): int
     + usar()
     + equals(modificador: Modificador): Bool
-    + tieneUsos(): Bool
+    + actualizar(modificadores: List<ModificadorPuntaje>)
 }
 
-interface Respuesta {
-    + sumarPuntaje(puntaje: int)
-    + obtenerOpciones(): List<Opcion>
-    + validarOpcion(opcion: Opcion)
+class ExclusividadPuntaje extends ModificadorPuntaje {
+    ---
+    + ExclusividadPuntaje()
+    + equals(modificadorPuntaje: ModificadorPuntaje): Bool
+    + equals(exlusividad: ExclusividadPuntaje): Bool
+    + modificarPuntaje(puntaje: int): int
 }
 
-Class RespuestaConcreta {
+class AnuladorPuntaje extends ModificadorPuntaje {
+    ---
+    + AnuladorPuntaje()
+    + equals(modificadorPuntaje: ModificadorPuntaje): Bool
+    + equals(anulador: AnuladorPuntaje): Bool
+    + modificarPuntaje(puntaje: int): int
+}
+
+interface ModificadorTurno{
+    ---
+    + modificarPuntajes(respuestas: List<Respuesta> )
+    + usar(modificadorPuntaje: ModificadorPuntaje , jugadorActivo: Jugador)
+}
+
+class AnuladorTurno implements ModificadorTurno{
+    - modificadorReferencia: ModificadorPuntaje
+    - cantidadDeCorrectas: int
+    - jugadoresProtegidos: List<Jugador>
+    -factorDeMultiplicacion: int
+    ---
+    + AnuladorTurno( modificadorReferencia: ModificadorPuntaje)
+    + modificarPuntajes(respuestas: List<Respuesta>)
+    + usarModificador( jugadorActivo: Jugador)
+    + usar(modificadorPuntaje: ModificadorPuntaje, jugadorActivo: Jugador)
+}
+
+class ExclusividadTurno implements ModificadorTurno{
+    - modificadorDeReferencia: ModificadorPuntaje
+    - llamados: int
+    - cantidadDeCorrectas: int
+    -factorDeMultiplicacion: int
+    ---
+    + ExclusividadTurno(modificadorDereferencia: ModificadorPuntaje)
+    + modificarPuntajes(respuestas: List<Respuesta>)
+    + usarModificador()
+    + usar(modificadorPuntaje: ModificadorPuntaje, jugadorActivo: Jugador)
+}
+
+class NuloTurno implements ModificadorTurno{
+    ---
+    + modificarPuntajes(respuestas: List<Respuesta>)
+    + usar(modificadorPuntaje: ModificadorPuntaje, jugadorActivo: Jugador)
+}
+
+class Respuesta {
     - opciones: List<Opcion>
     - jugador: Jugador
-    - modificador: Modificador
+    -puntaje: int
+    - modificador: ModificadorPuntaje
     ---
-    + Respuesta(opciones: List<Opcion>,jugador: Jugador )
+    + asignarPuntaje(puntaje:int)
+    + obtenerPuntaje(): int
+    + Respuesta(opciones: List<Opcion>,jugador: Jugador, modificadorPuntaje: ModificadorPuntaje )
     + sumarPuntaje(puntaje: int)
     + obtenerOpciones(): List<Opcion>
-    + validarOpcion(opcion: Opcion)
+    + multiplicarPuntaje(valor:int)
+    + esCorrecta(): boolean
+    + sumarPuntaje()
+    + perteneceA(jugador: Jugador ):boolean
 }
 
  abstract class Puntaje {
@@ -63,37 +115,32 @@ Class RespuestaConcreta {
 }
 
 class Clasica extends Puntaje{
-     + asignarPuntaje([super])
+     + Clasica([super])
+     + asignarPuntaje(respuesta: Respuesta)
 }
 
 class ConPenalidad extends Puntaje{
-     + asignarPuntaje([super])
+     + ConPenalidad([super])
+     + asignarPuntaje(respuesta: Respuesta)
 }
 
-abstract class Pregunta {
-    # enunciado: String
+class Parcial extends Puntaje{
+    + Parcial([super])
+    +asignarPuntaje(respuesta: Respuesta)
+}
+
+
+class Pregunta {
+    # enunciaod: String
     # opciones: List<Opcion>
     # puntaje: Puntaje
+    # categoria: String
     ---
-    + Pregunta(enunciado: String, opciones: List<Opcion>, puntaje: Puntaje )
+    + Pregunta(enunciado: String, opciones: List<Opcion>, puntaje: Puntaje, categoria: String )
     + asignarPuntajes(respuestas: List<Respuesta>)
+    + obtenerOpciones(): List<String>
 }
 
-class VerdaderoFalso extends Pregunta {
-    +VerdaderoOFalso([super])
-}
-
-class MultipleChoice extends Pregunta {
-    +MultipleChoice([super])
-}
-
-class OrderedChoice extends Pregunta {
-    +OrderedChoice([super])
-}
-
-class GroupChoice extends Pregunta {
-    +GroupChoice([super])
-}
 
 abstract class Opcion {
     #texto: String
@@ -102,21 +149,29 @@ abstract class Opcion {
     ---
     +Opcion(texto: String, estado: Estado)
     +equals(opcion: Opcion): Bool
-    +aceptar(OpcionVisitor visitor)
-    +esCorrecta(): Bool
-    +actualizarEstado(estado: Estado)
+    +actualizarEstado(Opcion opcion)
+    +contarCorrecta():int
+    +contarIncorrecta():int
     +obtenerTexto(): String
+    # equals(ordenada: Ordenada)): Bool
+    # equals(simple: Simple)): Bool
+    # equals(grupo: Grupo): Bool
 }
 
-class Ordered extends Opcion {
+class Ordenada extends Opcion {
     -posicion: int
     ---
     +Ordered([super], posicion: int)
     +obtenerPosicion(): int
+    + equals(opcion: Opcion)): Bool
+    + equals(ordenada: Ordenada)): Bool
 }
 
 class Simple extends Opcion {
+    ---
     +Simple([super])
+    + equals(opcion: Opcion)): Bool
+    + equals(simple: Simple)): Bool
 }
 
 class Grupo extends Opcion {
@@ -124,6 +179,8 @@ class Grupo extends Opcion {
     ---
     +Grupo([super], nombreGrupo: String)
     +obtenerGrupo(): String
+    + equals(opcion: Opcion)): Bool
+    + equals(grupo: Grupo): Bool
 }
 
 interface Estado {
@@ -138,19 +195,22 @@ class Incorrecta implements Estado {
     + esCorrecta()
 }
 
-interface OpcionVisitor {
-    + visitar(opcion: Simple)
-    + visitar(opcion: Ordered)
-    + visitar(opcion: Grupo)
-}
-
-class OpcionEsVisitor {
-    -opcion: Opcion
+class AlgoHoot3{
+    - preguntas: List<Pregunta>
+    - instancia: AlgoHoot3
+    - rondas: int
+    - jugadorActual: Jugador
     ---
-    + OpcionEsVisitor(opcion: Opcion)
-    + visitar(opcion: Simple)
-    + visitar(opcion: Ordered)
-    + visitar(opcion: Grupo)
+    + obtenerInstancia(): AlgoHoot3
+    + pasarRonda(nuevoTurno: Turno):int
+    + pasarTurno(opcionesElegidas: List<String>,modificadorPuntaje ModificadorPuntaje)
+    + jugarTurno()
+    + obtenerRonda(): int
+    + obtenerPreguntaDeRondaActual(): Pregunta
+    + asignarModificadorTurno(modificadorTurno: ModificadorTurno)
+    + crearRespuestaJugador(opcionesElegida: List<String>, jugador: Jugador,modificadorPuntaje ModificadorPuntaje )
+    + asignarPuntajes()
+    + obtenerJugadorActual(): Jugador
 }
 
 class Turno {
@@ -166,21 +226,15 @@ class Turno {
 }
 
 
-Turno o-- Jugador
-Turno o-- Modificador
-Turno *-- Pregunta
+Turno "1" o-- "*" Jugador
+Turno "1" o-down "0..*" ModificadorTurno
+Turno *-l- Pregunta
 Jugador "1" <-d- Respuesta
-Respuesta .l.> Pregunta
+Pregunta ..> Respuesta
 Puntaje .u.> Respuesta
 Opcion *-r- Estado
 Respuesta -> Opcion:"1..*"
-Opcion .u.|> OpcionVisitor
-OpcionEsVisitor .l.|> OpcionVisitor
-RespuestaConcreta ..|> Respuesta
-Jugador -l> Modificador: "1..*"
-Multiplicador .u.|> Modificador
-Nulo .u.|> Modificador
-RespuestaConcreta --> Modificador
-
+Respuesta -l-> ModificadorPuntaje
+AlgoHoot3 --> Turno
 
 @enduml

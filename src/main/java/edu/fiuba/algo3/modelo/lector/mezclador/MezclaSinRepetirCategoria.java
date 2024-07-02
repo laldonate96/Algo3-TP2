@@ -12,19 +12,28 @@ public class MezclaSinRepetirCategoria implements Mezclador {
         Collections.shuffle(preguntas);
         List<Pregunta> preguntasMezcladas = new ArrayList<>();
         while (!preguntas.isEmpty()) {
+            int tamanioActual = preguntasMezcladas.size();
             if (preguntasMezcladas.isEmpty()) {
                 preguntasMezcladas.add(preguntas.get(0));
                 preguntas.remove(0);
                 continue;
             }
             for (Pregunta pregunta : preguntas) {
-                if (!(preguntasMezcladas.get(preguntasMezcladas.size() - 1).obtenerCategoria().equals(pregunta.obtenerCategoria()))) {
+                if (!compararCategorias(preguntasMezcladas.get(preguntasMezcladas.size() - 1), pregunta)) {
                     preguntasMezcladas.add(pregunta);
                     preguntas.remove(pregunta);
                     break;
                 }
             }
+            if (tamanioActual == preguntasMezcladas.size()) {
+                preguntasMezcladas.add(preguntas.get(0));
+                preguntas.remove(0);
+            }
         }
         return preguntasMezcladas;
+    }
+
+    private boolean compararCategorias(Pregunta pregunta1, Pregunta pregunta2) {
+        return pregunta1.obtenerCategoria().equals(pregunta2.obtenerCategoria());
     }
 }

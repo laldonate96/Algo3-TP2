@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import org.json.JSONObject;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
@@ -27,8 +28,8 @@ public class ParserOrdered implements LectorParser {
                 contenidoOpciones.add(preguntaJson.getString(opcionKey));
             }
         }
-        List<Opcion> opciones=FabricaOpciones.crearListaOrdenada(contenidoOpciones,posicionesCorrectas);
-        return FabricaPreguntas.crearPreguntaOrdered(enunciado, opciones, puntaje, categoria);
+        List<Opcion> opciones=FabricaOpciones.crearListaOrdenada(contenidoOpciones,posicionesCorrectas, new Correcta());
+        return FabricaPreguntas.crearPregunta(enunciado, opciones, puntaje, categoria);
     }
     
 }

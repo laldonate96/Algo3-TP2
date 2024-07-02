@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.jugador;
 
 import java.util.List;
 
-import edu.fiuba.algo3.excepciones.ModificadorInexistenteException;
+import edu.fiuba.algo3.modelo.excepciones.ModificadorInexistenteException;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 
@@ -25,26 +25,19 @@ public class Jugador {
         return puntaje;
     }
 
-
     public void usar(ModificadorPuntaje modificadorReferencia){
         ModificadorPuntaje modificadorBuscado = buscarModificador(modificadorReferencia);
         modificadorBuscado.usar();
         modificadorBuscado.actualizar(modificadores);
     }
 
-
     public boolean tieneNombre(String buscado) {
         return nombre.equals(buscado);
     }
+
     public boolean equals(Jugador jugador){
         return this.tieneNombre(jugador.nombre);
     }
-
-    public boolean tieneModificador(ModificadorPuntaje modificadorPuntaje) {
-        return modificadores.contains(modificadorPuntaje);
-    }
-
-
 
     private ModificadorPuntaje buscarModificador(ModificadorPuntaje modificadorReferencia) {
         int contador=0;
@@ -56,10 +49,14 @@ public class Jugador {
                 modificadorPuntaje = modificadores.get(contador);
                 contador++;
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new ModificadorInexistenteException("El jugador"+ nombre+ "no posee el modificador usado." );
+        } catch (IndexOutOfBoundsException e) {
+            throw new ModificadorInexistenteException("El jugador "+ nombre+ " no posee el modificador usado.");
         }
         return modificadorPuntaje;
+    }
+
+    public String obtenerNombre(){
+        return this.nombre;
     }
 }
 

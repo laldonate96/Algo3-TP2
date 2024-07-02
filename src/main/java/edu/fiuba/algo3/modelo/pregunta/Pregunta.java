@@ -4,10 +4,10 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-public abstract class Pregunta {
+public class Pregunta {
     protected String categoria;
     protected String enunciado;
     protected List<Opcion> opciones;
@@ -25,22 +25,17 @@ public abstract class Pregunta {
         puntaje.asignarPuntajes(respuestas);
     }
 
-
-//    protected void asignarPuntaje(List<Respuesta> respuestas) {
-//        puntaje.asignarPuntaje(respuesta);
-//    }
-
-
     public String obtenerCategoria() {
         return categoria;
     }
 
-    public List<String> obtenerOpciones() {
-        List<String> textoOpciones = new ArrayList<>();
-        for(Opcion opcion:opciones){
-            textoOpciones.add(opcion.obtenerTexto());
-        }
-        return textoOpciones;
+    public String obtenerEnunciado() {
+        return enunciado;
+    }
+
+    public List<Opcion> obtenerOpciones() {
+
+        return opciones;
     }
 
 }

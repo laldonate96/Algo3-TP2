@@ -1,0 +1,41 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+title Diagrama de Fabricas
+
+class FabricaJugadores{
+    ---
+    + crearListaJugadores(jugadores: List<String>): List<Jugador>
+}
+
+class FabricaModificadores{
+    ---
+    + crearListaModificadoresPuntaje(): List<ModificadorPuntaje>
+    + crearListaModificadoresTurno(): List<ModificadorTurno>
+}
+
+class FabricaOpciones{
+    ---
+    + crearListaGrupo(grupos: List<String>, contenidoOpcionesPorGrupo: List<List<String>>): List<Opcion>
+    + crearListaOrdenada(contenidoOpciones: List<String>, ordenCorrecto: List<String>): List<Opcion>
+    + crearListaSimple(contenidoOpciones: List<String>, posicionesDeCorrectas: List<String>): List<Opcion>
+}
+
+class FabricaPreguntas{
+    ---
+    + obtenerCantidadCorrectas(preguntaJson: JSONObject): int
+    + crearPreguntaVOF( enunciado: String, opciones: List<Opcion>, puntaje: Puntaje, categoria: String ): Pregunta
+    + crearPreguntaMChoice( enunciado: String, opciones: List<Opcion>, puntaje: Puntaje, categoria: String ): Pregunta
+    + crearPreguntaGroup( enunciado: String, opciones: List<Opcion>, puntaje: Puntaje, categoria: String ): Pregunta
+    + crearPreguntaOrdered( enunciado: String, opciones: List<Opcion>, puntaje: Puntaje, categoria: String ): Pregunta
+}
+class Lector {
+    + obtenerPreguntasDeJson(mezclador: MezclaSinRepetirCategoria): List<Pregunta>
+}
+
+Lector ..>FabricaJugadores
+Lector ..>FabricaModificadores
+Lector ..> FabricaOpciones
+Lector .>FabricaPreguntas
+
+@enduml

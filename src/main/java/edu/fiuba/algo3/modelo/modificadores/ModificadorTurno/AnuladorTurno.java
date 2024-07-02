@@ -4,20 +4,19 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class AnuladorTurno implements ModificadorTurno {
 
     ModificadorPuntaje modificadorReferencia;
-    int cantidadCorrectas;
-    List<Jugador> jugadoresProtegidos;
     private int factorDeMultiplicacion;
+    private int cantidadLlamados;
+    private Jugador jugadorProtegido;
 
     public AnuladorTurno(ModificadorPuntaje modificadorReferencia) {
-        jugadoresProtegidos = new ArrayList<>();
         this.modificadorReferencia = modificadorReferencia;
-        cantidadCorrectas=0;
+        cantidadLlamados=0;
         factorDeMultiplicacion =1;
     }
 
@@ -26,7 +25,7 @@ public class AnuladorTurno implements ModificadorTurno {
     public void modificarPuntajes(List<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
             if(respuesta.esCorrecta()) {
-                if (respuesta.perteneceA(jugadoresProtegidos.get(0))) {
+                if (respuesta.perteneceA(jugadorProtegido)) {
                     respuesta.multiplicarPuntaje(factorDeMultiplicacion);
                 } else {
                     respuesta.multiplicarPuntaje(0);
@@ -37,8 +36,9 @@ public class AnuladorTurno implements ModificadorTurno {
     }
 
     private void usarModificador(Jugador jugadorActivo) {
-        jugadoresProtegidos.add(jugadorActivo);
-        if(jugadoresProtegidos.size()>1){
+        jugadorProtegido=jugadorActivo;
+        cantidadLlamados++;
+        if(cantidadLlamados>1){
             factorDeMultiplicacion =0;
         }
     }

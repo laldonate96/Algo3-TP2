@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.opcion;
 
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.AnuladorPuntaje;
 import edu.fiuba.algo3.modelo.opcion.estado.Estado;
 
 public abstract class Opcion {
@@ -43,6 +42,7 @@ public abstract class Opcion {
     }
 
     public String obtenerTexto() {
+        
         return texto;
     }
 

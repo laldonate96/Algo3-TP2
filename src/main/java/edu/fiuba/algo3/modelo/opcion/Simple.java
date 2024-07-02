@@ -9,8 +9,6 @@ public class Simple extends Opcion {
         super(texto, estado);
     }
 
-
-
     @Override
     public boolean equals(Opcion opcion) {
         return opcion.equals(this);
