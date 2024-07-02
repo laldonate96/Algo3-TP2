@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.Tests.AlgoHoot3Test.TurnosTest.Pregunta.OpcionTest.EstadoTest;
+package edu.fiuba.algo3.Tests.AlgoHoot3Test.TurnoTest.Pregunta.OpcionTest.EstadoTest;
 
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Estado;

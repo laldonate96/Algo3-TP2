@@ -24,8 +24,7 @@ public class MultipleChoice extends Pregunta {
     private Simple validarOpcion(Opcion opcion) {
         try {
         return (Simple) opcion;
-    }
-        catch(ClassCastException e){
+    } catch(ClassCastException e){
             throw new OpcionesIncorrectasException(" Una pregunta "+ this.getClass().getSimpleName()+" no acepta este tipo de opciones.");
     }
 }

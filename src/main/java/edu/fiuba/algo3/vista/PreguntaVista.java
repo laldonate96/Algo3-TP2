@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import java.io.File;
 import java.util.List;
 
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
@@ -35,7 +36,6 @@ public class PreguntaVista extends Application {
     private Stage ventanaPrincipal;
     private Jugador jugador = new ControladorDeJugador().obtenerJugadorActual();
     private ControladorDePregunta controladorDePregunta = new ControladorDePregunta();
-    private ControladorDeTurno controladorDeTurno;
     private SeleccionadorOpciones seleccionadorOpciones = new SeleccionadorOpciones();
     public static void main(String[] args) {
         launch(args);
@@ -43,7 +43,7 @@ public class PreguntaVista extends Application {
     public void enviarRespuestas(HBox modificadores){
         List<Opcion> respuestas = seleccionadorOpciones.retornarOpcionesDelJugador();
         if(!respuestas.isEmpty()){
-            controladorDeTurno = new ControladorDeTurno();
+            ControladorDeTurno controladorDeTurno = new ControladorDeTurno();
             //Modificador modificarUsado = 
             controladorDeTurno.responderPregunta(respuestas, this.obtenerModificadorUsado(modificadores), ventanaPrincipal);
         } else {
@@ -53,7 +53,7 @@ public class PreguntaVista extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage)  {
         this.ventanaPrincipal = stage;
         ventanaPrincipal.setTitle("AlgoHoot - Pregunta");
 
@@ -108,7 +108,7 @@ public class PreguntaVista extends Application {
 
         Scene scene = new Scene(root, 1280, 720);
 
-        String css = getClass().getResource("src/css/style.css").toExternalForm();
+        String css = new File("src/main/java/edu/fiuba/algo3/vista/src/css/style.css").toURI().toString();
         scene.getStylesheets().add(css);
 
         ventanaPrincipal.setScene(scene);

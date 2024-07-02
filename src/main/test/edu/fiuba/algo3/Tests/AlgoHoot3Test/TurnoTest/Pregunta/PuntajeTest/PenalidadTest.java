@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.Tests.AlgoHoot3Test.TurnosTest.Pregunta.PuntajeTest;
+package edu.fiuba.algo3.Tests.AlgoHoot3Test.TurnoTest.Pregunta.PuntajeTest;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
