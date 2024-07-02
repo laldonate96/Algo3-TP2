@@ -23,82 +23,135 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class OrderedChoiceTest {
 
 
+    private static List<String> ordenCorrecto;
+    private static List<String> opcionesTexto;
+    private OrderedChoice pregunta;
     private Jugador jugador1;
-    private static Clasica clasica;
-
-
     private List<Respuesta> respuestas;
-    private List<Ordenada> opcionesPregunta;
 
     @BeforeAll
-    public static void setUpClass() {
-        clasica= new Clasica(3);
+    public static void setUpClass(){
+        String textoOpcion1="COBOL";
+        String textoOpcion2="Go";
+        String textoOpcion3="Smalltalk";
+        String textoOpcion4 = "C++";
+        String textoOpcion5 = "Java";
+        String textoOpcion6 = "Python";
+        opcionesTexto= List.of(textoOpcion1, textoOpcion2, textoOpcion3, textoOpcion4, textoOpcion5, textoOpcion6);
 
+        ordenCorrecto = List.of("1", "3","4","6","5", "2");
     }
 
     @BeforeEach
     public void setUp() {
-
         List<Modificador> modificadores= FabricaModificadores.crearListaModificadores();
 
 
 
-        jugador1 = new Jugador("Jugador 1", modificadores);
+        List<Ordenada> opcionesPregunta = FabricaOpciones.crearListaOrdenada(opcionesTexto, ordenCorrecto);
 
-        List<String> opcionesTexto= List.of("Opcion 1", "Opcion 2", "Opcion 3");
-        List<String> ordenCorrecto = List.of("3", "2", "1");
 
-        respuestas=new ArrayList<>();
-        opcionesPregunta = FabricaOpciones.crearListaOrdenada(opcionesTexto, ordenCorrecto);
-    }
+        jugador1=new Jugador("Juan", modificadores);
 
-    @Test
-    public void test01OrderedChoiceAsignaPuntajeCorrectoAJugadorQueRespondeCorrectamente(){
-        //Arrange
 
-        Pregunta pregunta = new OrderedChoice(
+
+        Clasica clasica = new Clasica(6);
+        pregunta = new OrderedChoice(
                 "Ordenar las siguientes opciones",
                 opcionesPregunta,
                 clasica,
                 "Tema","Say no More"
         );
+        respuestas = new ArrayList<>();
+
+    }
 
 
 
+    @Test
+    public void test01RecibeOpcionesCorrectasYSuEstadoEsElEsperado(){
+
+
+        List<Opcion> opciones =new ArrayList<> (FabricaOpciones.crearListaOrdenada(opcionesTexto,ordenCorrecto));
+
+        pregunta.validarOpciones(opciones);
+
+        for (int i = 0; i < 6; i++) {
+            assertEquals(1, opciones.get(i).contarCorrecta());
+            assertEquals(0, opciones.get(i).contarIncorrecta());
+        }
+    }
+
+    @Test
+    public void test02ManejadorRecibeOpcionesIncorrectasYLasValidaCorrectamente(){
+
+        List<String> ordenIncorrecto=List.of("2","4","6","1","3","5");
+        List<Opcion> opciones =new ArrayList<> (FabricaOpciones.crearListaOrdenada(opcionesTexto,ordenIncorrecto));
+
+        pregunta.validarOpciones(opciones);
+
+        for (int i = 0; i < 6; i++) {
+            assertEquals(0, opciones.get(i).contarCorrecta());
+            assertEquals(1, opciones.get(i).contarIncorrecta());
+        }
+    }
+
+//    @Test
+//    public void test03RecibeOpcionesCorrectasEIncorrectasYLasValidaCorrectamente(){
+//
+//
+//        List<String> ordenMezclado=List.of("1","3","2","4","6","5");
+//        List<Opcion> opciones =new ArrayList<> (FabricaOpciones.crearListaOrdenada(opcionesTexto,ordenMezclado));
+//
+//        pregunta.validarOpciones(opciones);
+//
+//        for (int i = 0; i < 6; i++) {
+//            if (i < 2){
+//                assertEquals(1, opciones.get(i).contarCorrecta());
+//                assertEquals(0, opciones.get(i).contarIncorrecta());
+//            } else {
+//                assertEquals(0, opciones.get(i).contarCorrecta());
+//                assertEquals(1, opciones.get(i).contarIncorrecta());
+//            }
+//        }
+//    }
+
+
+
+    @Test
+    public void test04Asigna1PuntoAUnaRespuestaConOpcionesCorrectas(){
+        //Arrange
         List<Opcion> opcionesJugador;
-        opcionesJugador =new ArrayList<>(FabricaOpciones.crearListaOrdenada(List.of("Opcion 1", "Opcion 2", "Opcion 3"), List.of("3","2","1")));
+        opcionesJugador =new ArrayList<>(FabricaOpciones.crearListaOrdenada(opcionesTexto,ordenCorrecto));
+        pregunta.validarOpciones(opcionesJugador);
+
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
         //Act
-        pregunta.asignarPuntajes(respuestas);
-
-        //Act
-
         pregunta.asignarPuntajes(respuestas);
 
         //Assert
-        assertEquals(0, respuesta.obtenerPuntaje());
+        assertEquals(1, respuesta.obtenerPuntaje());
     }
 
     @Test
-    public void test02OrderedChoiceAsignaPuntajeCorrectoAJugadorQueRespondeIncorrectamente() {
+    public void test5Asigna0PuntosAUnaRespuestaConAlMenosUnaOpcionIncorrecta() {
         //Arrange
 
-        Pregunta pregunta = new OrderedChoice(
-                "Ordenar las siguientes opciones",
-                opcionesPregunta,
-                clasica,
-                "Tema","Say no More"
-        );
+        List<String> ordenDosIncorrectas=List.of("2","3","4","6","5","1");
+        List<Opcion> opcionesJugador;
+        opcionesJugador = new ArrayList<> (FabricaOpciones.crearListaOrdenada(opcionesTexto,ordenDosIncorrectas));
 
-        List<Opcion> opcionesJugador=new ArrayList<>();
+
+        pregunta.validarOpciones(opcionesJugador);
 
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
         //Act
         pregunta.asignarPuntajes(respuestas);
+
         //Assert
         assertEquals(0, respuesta.obtenerPuntaje());
     }

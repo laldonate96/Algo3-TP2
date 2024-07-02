@@ -21,6 +21,7 @@ public class FabricaOpcionesTest {
         Ordenada opcionEsperada;
 
 
+
         List<String> contenidoOpciones=List.of("Televisor de tubo CRT","Microondas","Imanes del delivery","Heladera");
         List<String> posicionesCorrectas=List.of("2","1","4","3");
         Ordenada televisorDeTuboCrt = new Ordenada(contenidoOpciones.get(0),2);

@@ -53,6 +53,7 @@ public class AlgoHootTest {
         algoHoot3.iniciarAlgoHoot(jugadores, new Turno(), new MejorPuntaje(3,14),
                                     Lector.obtenerPreguntasDeJson(new MezclaNula(),("recursos/test.json")));
 
+
         //Act
 
         int ronda = algoHoot3.obtenerRonda();

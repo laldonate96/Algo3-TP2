@@ -14,11 +14,8 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 
 
-import edu.fiuba.algo3.modelo.turno.Estado.Manejador;
-import edu.fiuba.algo3.modelo.turno.Estado.ManejarVoF;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,8 +35,7 @@ public class TurnosTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private Turno turno;
-    private Manejador manejarVoF;
-    private ManejarVoF manejarVoFP;
+
 
 
     @BeforeAll
@@ -63,7 +59,6 @@ public class TurnosTest {
         //arrange
 
         verdaderoOFalso = preguntasTest.get(1);
-        manejarVoF = new ManejarVoF((VerdaderoFalso) verdaderoOFalso);
 
 
         List<String> contenidoOpciones1 = List.of("Verdadero");
@@ -75,7 +70,7 @@ public class TurnosTest {
         List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(verdaderoOFalso, manejarVoF);
+        turno.reiniciarTurno(verdaderoOFalso);
 
 
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
@@ -98,7 +93,6 @@ public class TurnosTest {
     public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaYseLespidePuntos() {
         //arrange
         verdaderoOFalsoPenalidad = preguntasTest.get(5);
-        manejarVoFP = new ManejarVoF((VerdaderoFalso) verdaderoOFalsoPenalidad);
 
         List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1 = List.of("1");
@@ -109,7 +103,7 @@ public class TurnosTest {
         List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(verdaderoOFalsoPenalidad, manejarVoFP);
+        turno.reiniciarTurno(verdaderoOFalsoPenalidad);
 
 
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
@@ -132,7 +126,6 @@ public class TurnosTest {
         //arrange
 //        MultipleChoice multipleChoicePenalidad = (MultipleChoice) preguntasTest.get(6);
         verdaderoOFalsoPenalidad = preguntasTest.get(5);
-        manejarVoFP = new ManejarVoF((VerdaderoFalso) verdaderoOFalsoPenalidad);
 
         List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1 = List.of("1");
@@ -143,7 +136,7 @@ public class TurnosTest {
         List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(verdaderoOFalsoPenalidad, manejarVoFP);
+        turno.reiniciarTurno(verdaderoOFalsoPenalidad);
 
 
         Modificador multiplicador = jugador1.obtenerModificadores().get(1);
@@ -164,7 +157,6 @@ public class TurnosTest {
     public void test04seJuegaUnTurnoConUnaPreguntaVoFClasicaConAnuladorYseLespidePuntos() {
         //arrange
         verdaderoOFalso = preguntasTest.get(1);
-        manejarVoF = new ManejarVoF((VerdaderoFalso) verdaderoOFalso);
 
         List<String> contenidoOpciones1 = List.of("Falso");
         List<String> posicion1 = List.of("1");
@@ -175,7 +167,7 @@ public class TurnosTest {
         List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(verdaderoOFalso, manejarVoF);
+        turno.reiniciarTurno(verdaderoOFalso);
 
 
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
@@ -200,7 +192,6 @@ public class TurnosTest {
     public void test05AgregarRespuestasConNuloAsignarlasReiniciarYVolverAAgregarlasAsignaLosPuntosEsperados() {
         //arrange
         verdaderoOFalsoPenalidad = preguntasTest.get(5);
-        manejarVoFP = new ManejarVoF((VerdaderoFalso) verdaderoOFalsoPenalidad);
 
         List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1 = List.of("1");
@@ -211,7 +202,7 @@ public class TurnosTest {
         List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(verdaderoOFalsoPenalidad, manejarVoFP);
+        turno.reiniciarTurno(verdaderoOFalsoPenalidad);
 
 
         Modificador nuloJugador = jugador1.obtenerModificadores().get(0);
@@ -229,7 +220,7 @@ public class TurnosTest {
         opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(verdaderoOFalsoPenalidad, manejarVoFP);
+        turno.reiniciarTurno(verdaderoOFalsoPenalidad);
 
 
         turno.agregarRespuesta(opcionesJugador2, jugador2, multiplicador);
@@ -250,7 +241,6 @@ public class TurnosTest {
     public void test06AgregarRespuestasMultiplicadorYAnuladorAsignarlasReiniciarYVolverAAgregarlasAsignaLosPuntosEsperados() {
         //arrange
         verdaderoOFalsoPenalidad = preguntasTest.get(5);
-        manejarVoFP = new ManejarVoF((VerdaderoFalso) verdaderoOFalsoPenalidad);
 
         List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1 = List.of("1");
@@ -261,7 +251,7 @@ public class TurnosTest {
         List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(verdaderoOFalsoPenalidad, manejarVoFP);
+        turno.reiniciarTurno(verdaderoOFalsoPenalidad);
 
 
         Modificador nuloJugador = jugador1.obtenerModificadores().get(0);
@@ -279,7 +269,7 @@ public class TurnosTest {
         opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(verdaderoOFalsoPenalidad, manejarVoFP);
+        turno.reiniciarTurno(verdaderoOFalsoPenalidad);
 
 
         multiplicador = jugador2.obtenerModificadores().get(1);

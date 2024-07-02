@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 
 public abstract class Pregunta {
@@ -38,4 +39,9 @@ public abstract class Pregunta {
     public String obtenerExplicacion() {
         return explicacion;
     }
+
+    protected abstract void validarTamanioOpciones(List<Opcion> opcionesJugador);
+
+    public abstract  void validarOpciones(List<Opcion> opcionesJugador);
+
 }

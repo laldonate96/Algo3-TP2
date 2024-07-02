@@ -10,13 +10,11 @@ import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.Modificador.Nulo;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
-import edu.fiuba.algo3.modelo.turno.Estado.Manejador;
 
 public class Turno {
     private List<Respuesta> respuestas;
     private Pregunta preguntaDelTurno;
     private Modificador modificador;
-    private Manejador manejador;
 
     public Turno(){
         this.respuestas = new ArrayList<>();
@@ -24,7 +22,7 @@ public class Turno {
     }
 
     public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, Modificador modificador) {
-        manejador.validarOpciones(opcionesJugador);
+        preguntaDelTurno.validarOpciones(opcionesJugador);
 
         Respuesta respuesta=new Respuesta(opcionesJugador, jugador);
         respuestas.add(respuesta);
@@ -46,11 +44,10 @@ public class Turno {
         }
     }
 
-    public void reiniciarTurno(Pregunta pregunta, Manejador manejador) {
+    public void reiniciarTurno(Pregunta pregunta) {
         this.respuestas = new ArrayList<>();
         this.modificador= new Nulo();
         this.preguntaDelTurno=pregunta;
-        this.manejador = manejador;
     }
 
     public int cantidadDeRespuestas() {

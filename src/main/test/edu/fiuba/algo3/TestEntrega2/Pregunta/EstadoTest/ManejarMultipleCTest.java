@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.testEntrega3.TurnosTest.EstadoTest;
+package edu.fiuba.algo3.TestEntrega2.Pregunta.EstadoTest;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaPreguntas;
@@ -8,25 +8,30 @@ import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
-import edu.fiuba.algo3.modelo.turno.Estado.ManejarMultipleC;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
 public class ManejarMultipleCTest {
-    private static ManejarMultipleC manejadorMC;
+    private static List<Simple> opcionesPregunta;
+    private MultipleChoice pregunta;
 
     @BeforeAll
-    public static void setupClass(){
+    public static void setupClass() {
         List<String> contenidoOpciones = List.of("Si", "Obvio", "No");
         List<String> posicionesDeCorrectas = List.of("1", "2");
-        List<Simple> opcionesPregunta = FabricaOpciones.crearListaSimple(contenidoOpciones, posicionesDeCorrectas, new Correcta());
-        MultipleChoice pregunta = FabricaPreguntas.crearPreguntaMultipleChoice("Grupo1 = aprobado?", opcionesPregunta, new ConPenalidad(), "Test", "No hay polqué");
-        manejadorMC = new ManejarMultipleC(pregunta);
+        opcionesPregunta = FabricaOpciones.crearListaSimple(contenidoOpciones, posicionesDeCorrectas, new Correcta());
+    }
+
+    @BeforeEach
+    public void SetUp(){
+         pregunta = FabricaPreguntas.crearPreguntaMultipleChoice("Grupo1 = aprobado?", opcionesPregunta, new ConPenalidad(), "Test", "No hay polqué");
     }
 
     @Test
@@ -34,8 +39,7 @@ public class ManejarMultipleCTest {
         List<String> stringsContenido = List.of("Si", "Obvio");
         List<String> stringsPosiciones = List.of("1", "2");
         List<Opcion> opciones = new ArrayList<>(FabricaOpciones.crearListaSimple(stringsContenido, stringsPosiciones, new Incorrecta()));
-
-        manejadorMC.validarOpciones(opciones);
+        pregunta.validarOpciones(opciones);
 
         assertEquals(1, opciones.get(0).contarCorrecta());
         assertEquals(1, opciones.get(1).contarCorrecta());
@@ -49,7 +53,7 @@ public class ManejarMultipleCTest {
         List<String> stringsPosiciones = List.of("3");
         List<Opcion> opciones = new ArrayList<>(FabricaOpciones.crearListaSimple(stringsContenido, stringsPosiciones, new Incorrecta()));
 
-        manejadorMC.validarOpciones(opciones);
+        pregunta.validarOpciones(opciones);
 
         assertEquals(0, opciones.get(0).contarCorrecta());
         assertEquals(1, opciones.get(0).contarIncorrecta());
@@ -61,7 +65,7 @@ public class ManejarMultipleCTest {
         List<String> stringsPosiciones = List.of("1", "2", "3");
         List<Opcion> opciones = new ArrayList<>(FabricaOpciones.crearListaSimple(stringsContenido, stringsPosiciones, new Incorrecta()));
 
-        manejadorMC.validarOpciones(opciones);
+        pregunta.validarOpciones(opciones);
 
         assertEquals(1, opciones.get(0).contarCorrecta());
         assertEquals(1, opciones.get(1).contarCorrecta());
