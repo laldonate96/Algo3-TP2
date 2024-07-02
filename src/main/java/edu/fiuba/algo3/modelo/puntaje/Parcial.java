@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
-import edu.fiuba.algo3.modelo.Modificador.Modificador;
+
+import edu.fiuba.algo3.modelo.Modificador.Usable;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
@@ -20,8 +21,8 @@ public class Parcial extends Puntaje {
     }
 
     @Override
-    public boolean modificadorEsValido(Modificador modificador) {
-        return modificador.usableSinPenalidad();
+    public boolean modificadorEsValido(Usable usable) {
+        return usable.usableSinPenalidad();
     }
 }
 
