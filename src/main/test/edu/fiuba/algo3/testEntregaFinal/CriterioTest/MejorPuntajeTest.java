@@ -96,7 +96,7 @@ public class MejorPuntajeTest {
 
     }
     @Test
-    void test04SabeTerminoElJuegoSiLasRondasSuperanElMaximoAsignadoYUnJugadorTieneElMaximoDePuntos(){
+    void test05SabeTerminoElJuegoSiLasRondasSuperanElMaximoAsignadoYUnJugadorTieneElMaximoDePuntos(){
         //Arrange
         jugadores.get(0).sumarPuntaje(-1);
         jugadores.get(1).sumarPuntaje(0);
@@ -113,7 +113,7 @@ public class MejorPuntajeTest {
 
     }
     @Test
-    void test05OrdenaCorrectamenteAlterminarElJuego(){
+    void test06OrdenaCorrectamenteAlterminarElJuego(){
         //Arrange
         jugadores.get(1).sumarPuntaje(10);
         jugadores.get(5).sumarPuntaje(4);
