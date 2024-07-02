@@ -1,0 +1,29 @@
+@startuml PUNTAJE
+
+abstract class Puntaje{
+    ~ puntaje:int
+
+    + {abstract} asignarPuntaje(respuesta:Respuesta)
+    + asignarPuntajes(respuestas:List<Respuesta>)
+    + {abstract} modificadorEsValido(modificador:Modificador):boolean
+}
+
+class Clasica extends Puntaje{
+    ~ cantidadCorrectasEsperada:int
+
+    + Clasica(cantidadCorrectasPregunta:int)
+    + asignarPuntaje(respuesta:Respuesta)
+    + modificadorEsValido(modificador:Modificador):boolean
+}
+
+class ConPenalidad extends Puntaje{
+    ~ puntajeIncorrecta:int
+
+    + asignarPuntaje(respuesta:Respuesta)
+    + modificadorEsValido(modificador:Modificador):boolean
+}
+
+class Parcial extends Puntaje{
+    + asignarPuntaje(respuesta:Respuesta)
+    + modificadorEsValido(modificador:Modificador):boolean
+}
