@@ -3,7 +3,6 @@ package edu.fiuba.algo3.testEntrega4.FabricasTest;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaPreguntas;
 import edu.fiuba.algo3.modelo.opcion.Grupo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
 
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;

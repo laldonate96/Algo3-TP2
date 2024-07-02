@@ -104,7 +104,8 @@
 
 .enunciado{
     -fx-font-size: 20px;
-    -fx-fill: #F1C40F; 
+    -fx-fill: #e4e4e1;
+    -fx-font-weight: bold; 
 }
 
 .explicacion{
@@ -116,6 +117,7 @@
 .labelOpcion .text{
     -fx-font-size: 15px;
     -fx-fill: #2ECC71; 
+    -fx-font-weight: bold;
 }
 
 .spinner{
@@ -125,15 +127,16 @@
 
 .nombreJugador {
     -fx-font-size: 20px;
-    -fx-fill: #E74C3C; 
+    -fx-fill: #e4e4e1; 
     -fx-font-weight: bold;
 }
 
 .jugadorBox{
     -fx-padding: 10px;
     -fx-text-fill: #F1C40F; 
-    -fx-border-color: #F1C40F;
-    -fx-border-width: 2px;
+    -fx-border-color: #3aa8e7;
+    -fx-border-width: 5px;
+    -fx-border-radius: 5px;
 }
 
 .botonReset{

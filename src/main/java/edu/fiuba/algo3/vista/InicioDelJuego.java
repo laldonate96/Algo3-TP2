@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
-import edu.fiuba.algo3.controlador.Reproductor;
-import edu.fiuba.algo3.vista.alertas.Alerta;
-import edu.fiuba.algo3.vista.alertas.AlgoSalioMal;
 import edu.fiuba.algo3.vista.animaciones.Titilante;
 import edu.fiuba.algo3.vista.botones.Boton;
 import javafx.application.Application;

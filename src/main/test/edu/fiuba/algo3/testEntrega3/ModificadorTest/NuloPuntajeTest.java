@@ -3,7 +3,6 @@ package edu.fiuba.algo3.testEntrega3.ModificadorTest;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.Modificador.Multiplicador;
 import edu.fiuba.algo3.modelo.Modificador.Nulo;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;

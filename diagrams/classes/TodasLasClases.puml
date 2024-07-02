@@ -1,0 +1,221 @@
+@startuml TODAS LAS CLASES
+
+'<Modelo
+
+'<CriterioDeVictoria
+
+interface CriterioDeVictoria{
+    +void establecerJugadores(List<Jugador> jugadores)
+    +List<Jugador> jugadoresOrdenados()
+    +boolean terminoJuego(int rondasJugadas)
+}
+
+class MejorPuntaje implements CriterioDeVictoria {
+    - final int limitePuntos;
+    - final int limiteRondas;
+    ~ List<Jugador> listaOrdenadaJugadores;
+
+    + MejorPuntaje(int limiteRondas,int limitePuntos)
+    + List<Jugador> jugadoresOrdenados()
+    - void ordenarLista()
+    + void establecerJugadores(List<Jugador> jugadores)
+    + boolean terminoJuego(int rondasJugadas)
+}
+
+'CriterioDeVictoria/>
+
+'<Excepciones
+
+exception ArchivoInexistenteException {}
+exception CantidadDeJugadoresMenorADosException {}
+exception ModificadorInexistenteException {}
+exception ModificadorInvalidoException {}
+exception OpcionesDeTamanioInvalidoException {}
+exception OpcionesIncorrectasException {}
+exception OpcionesInexistentesException {}
+exception PreguntaInexistenteException {}
+
+'Excepciones/>
+
+'<Fabricas
+
+class FabricaEstado{
+    + {static} Estado crearEstado(Pregunta pregunta)
+}
+
+class FabricaJugadores{
+    + {static} List<Jugador> crearListaJugadores(List<String> jugadores)
+}
+
+class FabricaModificadores{
+    public static List<Modificador> crearListaModificadores()
+}
+
+class FabricaOpciones{
+    public static List<Grupo> crearListaGrupo(List<String> grupos, List<String> contenidoOpciones,List<String>  posicionesCorrectas,Estado estadoIndicado)
+    public static List<Ordenada> crearListaOrdenada(List<String> contenidoOpciones, List<String> ordenCorrecto, Estado estadoIndicado)
+    public static List<Simple> crearListaSimple(List<String> contenidoOpciones, List<String> posicionesDeCorrectas, Estado estado)
+}
+
+class FabricaPreguntas{
+    public static int obtenerCantidadCorrectas(JSONObject preguntaJson)
+    public static VerdaderoFalso crearPreguntaVerdaderoFalso(String enunciado, List<Simple> opciones, Puntaje puntaje, String categoria, String explicacion)
+    public static MultipleChoice crearPreguntaMultipleChoice(String enunciado, List<Simple> opciones, Puntaje puntaje, String categoria, String explicacion)
+    public static OrderedChoice crearPreguntaOrderedChoice(String enunciado, List<Ordenada> opciones, Puntaje puntaje, String categoria, String explicacion)
+    public static GroupChoice crearPreguntaGroupChoice(String enunciado, List<Grupo> opciones, Puntaje puntaje, String categoria, String explicacion)
+}
+
+'Fabricas/>
+
+'<Jugador
+
+class Jugador{
+    private int puntaje;
+    private final String nombre;
+    private final List<Modificador> modificadores;
+    private Modificador ultimoModificadorUsado;
+
+    public Jugador(String nombre, List<Modificador> modificadores)
+
+    private void establecerDuenioModificadores()
+    public void sumarPuntaje(int puntaje)
+    public int obtenerPuntaje()
+    public boolean tieneMejorPuntajeQue(Jugador jugador)
+    public void usar(Modificador modificador)
+    public List<Modificador> obtenerModificadores()
+    public boolean tieneNombre(String buscado)
+    public boolean equals(Jugador jugador)
+    public String obtenerNombre()
+    public Modificador obtenerUltimoModificadorUsado()
+}
+
+'Jugador/>
+
+'<Lector
+
+'<Mezclador
+
+interface Mezclador{
+    List<Pregunta> mezclarPreguntas(List<Pregunta> preguntas)
+}
+
+class MezclaNula implements Mezclador{
+    public List<Pregunta> mezclarPreguntas(List<Pregunta> preguntas)
+}
+
+class MezclaSinRepetirCategoria implements Mezclador{
+    public List<Pregunta> mezclarPreguntas(List<Pregunta> preguntas)
+}
+
+'Mezclador/>
+
+class Lector{
+    public {static} List<Pregunta> obtenerPreguntasDeJson(Mezclador mezclador,String direccion)
+}
+
+abstract class LectorParser{
+    protected String enunciado
+    protected String categoria
+    protected String explicacion
+
+    public abstract Pregunta parsearPregunta(JSONObject preguntaJson, Puntaje puntaje)
+}
+
+class ParserGroup extends LectorParser{}
+class ParserMChoice extends LectorParser{}
+class ParserOrdered extends LectorParser{}
+class ParserVoF extends LectorParser{}
+
+'Lector/>
+
+'<Modificador
+
+interface Usable{}
+
+abstract class Modificador implements Usable{
+    # Jugador duenio
+    # Modificador siguiente
+
+    + {abstract} void modificarPuntajes(List<Respuesta> respuestas)
+    + {abstract} void establecerDuenio(Jugador jugadorActivo)
+    + {abstract} void agregarModificador(Modificador modificador)
+    + void actualizar(List<Modificador> modificadores)
+    + List<String> mostrarModificadoresUsados()
+    # List<String> guardarModificadores(List<String> listaUsados)
+    + boolean usableConPenalidad()
+    + boolean usableSinPenalidad()
+}
+
+class Anulador extends Modificador{}
+class Exclusividad extends Modificador{}
+class Nulo extends Modificador{}
+class Multiplicador extends Modificador{}
+
+'Modificador/>
+
+'<Opcion
+
+'<Estado
+
+abstract class Estado{}
+
+class Correcta extends Estado{}
+class Incorrecta extends Estado{}
+
+'Estado/>
+
+abstract class Opcion{}
+
+class Grupo extends Opcion{}
+class Ordenada extends Opcion{}
+class Simple extends Opcion{}
+
+'Opcion/>
+
+'<Pregunta
+
+abstract class Pregunta{}
+
+class GroupChoice extends Pregunta{}
+class MultipleChoice extends Pregunta{}
+class OrderedChoice extends Pregunta{}
+class VerdaderoFalso extends Pregunta{}
+
+'Pregunta/>
+
+'<Puntaje
+
+abstract class Puntaje{}
+
+class Clasica extends Puntaje{}
+class ConPenalidad extends Puntaje{}
+class Parcial extends Puntaje{}
+
+'Puntaje/>
+
+'<Respuesta
+
+class Respuesta{}
+
+'Respuesta/>
+
+'<Turno
+
+'<Estado
+
+interface Estado{}
+
+class ManejarGroupChoice implements Estado{}
+class ManejarMultipleC implements Estado{}
+class ManejarOrderedC implements Estado{}
+class ManejarVoF implements Estado{}
+
+'Estado/>
+
+class Turno{}
+
+'Turno/>
+
+class AlgoHoot3
+
+'Modelo/>
