@@ -13,12 +13,14 @@ import javafx.scene.layout.HBox;
 public class OrderedChoiceVista implements OpcionesVista {
     private final List<Spinner<Integer>> selectores = new ArrayList<>();
     private List<Ordenada> opciones;
+    String texto;
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
         List<Opcion> opcionesJugador = new ArrayList<>();
         for (Spinner<Integer> selector : selectores) {
-            String texto = opciones.get(selectores.indexOf(selector)).obtenerTexto();
+
+            texto = opciones.get(selectores.indexOf(selector)).obtenerTexto();
             int posicion = Integer.parseInt(selector.getValue().toString());
             opcionesJugador.add(new Ordenada(texto, posicion));
         }
