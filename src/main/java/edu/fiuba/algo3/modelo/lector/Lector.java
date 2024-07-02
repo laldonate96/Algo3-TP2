@@ -12,7 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import edu.fiuba.algo3.modelo.excepciones.ArchivoInexistenteException;
-import edu.fiuba.algo3.modelo.Fabricas.FabricaPreguntas;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import edu.fiuba.algo3.modelo.puntaje.ConPenalidad;
@@ -48,7 +47,7 @@ public class Lector {
                         break;
                     case "Multiple Choice Simple":
                         parser = new ParserMChoice();
-                        clasica = new Clasica(FabricaPreguntas.obtenerCantidadCorrectas(preguntaJson));
+                        clasica = new Clasica(ParserMChoice.obtenerCantidadCorrectas(preguntaJson));
                         pregunta = parser.parsearPregunta(preguntaJson, clasica);
                         break;
                     case "Multiple Choice Penalidad":
@@ -61,12 +60,12 @@ public class Lector {
                         break;
                     case "Ordered Choice":
                         parser = new ParserOrdered();
-                        clasica = new Clasica(FabricaPreguntas.obtenerCantidadCorrectas(preguntaJson));
+                        clasica = new Clasica(LectorParser.obtenerCantidadOpciones(preguntaJson));
                         pregunta = parser.parsearPregunta(preguntaJson, clasica);
                         break;
                     case "Group Choice":
                         parser = new ParserGroup();
-                        clasica = new Clasica(FabricaPreguntas.obtenerCantidadCorrectas(preguntaJson));
+                        clasica = new Clasica(LectorParser.obtenerCantidadOpciones(preguntaJson));
                         pregunta = parser.parsearPregunta(preguntaJson, clasica);
                         break;
                     default:

@@ -15,6 +15,20 @@ public abstract class LectorParser {
      protected String categoria;
      protected String explicacion;
 
+     public static int obtenerCantidadOpciones(JSONObject preguntaJson) {
+          int cantidadOpciones = 0;
+
+          for (int i = 0; i < 7; i++) {
+
+               String opcionKey = "Opcion " + i;
+               if (preguntaJson.has(opcionKey)) {
+                    cantidadOpciones++;
+               }
+          }
+          return cantidadOpciones;
+     }
+
+
      public abstract Pregunta parsearPregunta(JSONObject preguntaJson, Puntaje puntaje);
 
 

@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Grupal;
-import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import org.json.JSONObject;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
@@ -23,7 +22,7 @@ public class ParserGroup extends LectorParser {
 
         String[] grupos = (preguntaJson.getString("Respuesta").split("\\s*;\\s*"));
 
-        List<String> nombresGrupos=new ArrayList<>();
+        List<String> nombresGrupos = new ArrayList<>();
 
         String[] partesTexto;
         String indexGrupo;
@@ -40,14 +39,15 @@ public class ParserGroup extends LectorParser {
             Collections.addAll(posicionesCorrectas, partesTexto[1].split("\\s*,\\s*"));
             posicionesCorrectas.add("0");
         }
-        posicionesCorrectas.remove(posicionesCorrectas.size()-1);
+        posicionesCorrectas.remove(posicionesCorrectas.size() - 1);
 
-        List<String> contenidoOpciones=obtenerContenidoOpciones(preguntaJson,posicionesCorrectas.size());
+        List<String> contenidoOpciones = obtenerContenidoOpciones(preguntaJson, posicionesCorrectas.size());
 
 
-        List<Grupal> opciones=FabricaOpciones.crearListaGrupo(nombresGrupos,contenidoOpciones,posicionesCorrectas);
-        return FabricaPreguntas.crearPreguntaGroupChoice(enunciado, opciones, new Clasica(opciones.size()), categoria,explicacion);
+        List<Grupal> opciones = FabricaOpciones.crearListaGrupo(nombresGrupos, contenidoOpciones, posicionesCorrectas);
+        return FabricaPreguntas.crearPreguntaGroupChoice(enunciado, opciones, puntaje, categoria, explicacion);
     }
+
 
 
 

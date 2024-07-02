@@ -25,4 +25,12 @@ public class ParserMChoice extends LectorParser {
 
         return FabricaPreguntas.crearPreguntaMultipleChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
+
+
+    public static int obtenerCantidadCorrectas(JSONObject preguntaJson) {
+        List<String> opcionesCorrectas = Arrays.asList(preguntaJson.getString("Respuesta").split("\\s*,\\s*"));
+
+        return (opcionesCorrectas.size());
+    }
+
 }
