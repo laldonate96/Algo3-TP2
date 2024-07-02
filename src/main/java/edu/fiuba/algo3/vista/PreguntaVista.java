@@ -5,9 +5,7 @@ import java.util.List;
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
 import edu.fiuba.algo3.controlador.ControladorDePregunta;
 import edu.fiuba.algo3.controlador.ControladorDeTurno;
-
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
-
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
@@ -48,7 +46,7 @@ public class PreguntaVista extends Application {
             controladorDeTurno.responderPregunta(respuestas, this.obtenerModificadorUsado(modificadores), ventanaPrincipal);
         } else {
             Alerta RespuestaNoIngresa = new RespuestaNoIngresa();
-            RespuestaNoIngresa.mostrarAlerta();
+            RespuestaNoIngresa.mostrarAlerta(ventanaPrincipal);
         }
     }
 
@@ -93,7 +91,7 @@ public class PreguntaVista extends Application {
         Boton botonResponder = new BotonEnviarRespuesta();
         botonResponder.setOnAction(e -> this.enviarRespuestas(modificadoresBox));
 
-        this.seleccionadorOpciones.seleccionarVistaOpciones(pregunta, contenedorOpciones);
+        this.seleccionadorOpciones.seleccionarVistaOpciones(pregunta, contenedorOpciones,ventanaPrincipal);
 
         VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(ventanaPrincipal);
 

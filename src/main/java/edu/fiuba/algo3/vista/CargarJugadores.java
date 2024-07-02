@@ -5,7 +5,6 @@ import java.util.List;
 import edu.fiuba.algo3.controlador.ControladorDeJuego;
 import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.vista.alertas.AlgoSalioMal;
 import edu.fiuba.algo3.vista.alertas.IngreseMasJugadores;
 import edu.fiuba.algo3.vista.alertas.NombreNoIngresado;
 import edu.fiuba.algo3.vista.alertas.NombresNoIngresados;
@@ -104,11 +103,11 @@ public class CargarJugadores extends Application {
     public void agregarJugador() {
         String nombreJugador = inputJugador.getText().trim();
         if (!nombreJugador.isEmpty()) {
-            vistaJugadores.agregarJugador(nombreJugador);
+            vistaJugadores.agregarJugador(nombreJugador, ventanaPrincipal);
             inputJugador.clear();
         } else {
             NombreNoIngresado nombreNoIngresado = new NombreNoIngresado();
-            nombreNoIngresado.mostrarAlerta();
+            nombreNoIngresado.mostrarAlerta(ventanaPrincipal);
         }
     }
 
@@ -119,10 +118,10 @@ public class CargarJugadores extends Application {
             controladorVentanaNueva.abrirVentanaNueva(new PreguntaVista(), ventanaPrincipal);
         } else if(listaDeNombres.isEmpty()){
             NombresNoIngresados nombresNoIngresados = new NombresNoIngresados();
-            nombresNoIngresados.mostrarAlerta();
+            nombresNoIngresados.mostrarAlerta(ventanaPrincipal);
         } else {
             IngreseMasJugadores ingreseMasJugadores = new IngreseMasJugadores();
-            ingreseMasJugadores.mostrarAlerta();
+            ingreseMasJugadores.mostrarAlerta(ventanaPrincipal);
         }
     }
 }

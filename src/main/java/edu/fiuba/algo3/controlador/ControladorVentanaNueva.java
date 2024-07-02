@@ -16,7 +16,7 @@ public class ControladorVentanaNueva {
             stage.close();
         } catch (Exception e) {
             Alerta algoSalioMal = new AlgoSalioMal();
-            algoSalioMal.mostrarAlerta();
+            algoSalioMal.mostrarAlerta(stage);
         }
     }
 }

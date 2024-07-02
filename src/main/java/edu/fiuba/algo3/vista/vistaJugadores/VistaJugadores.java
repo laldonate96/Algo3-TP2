@@ -10,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class VistaJugadores {
 
@@ -21,10 +22,10 @@ public class VistaJugadores {
         this.contenedor = new VBox();
     }
 
-    public void agregarJugador(String jugador){
+    public void agregarJugador(String jugador, Stage stage){
         if (this.listaDeJugadores.contains(jugador)){
             Alerta repetirNombre = new RepetirNombre();
-            repetirNombre.mostrarAlerta();
+            repetirNombre.mostrarAlerta(stage);
         } else {
             this.listaDeJugadores.add(jugador);
             actualizarVista();
