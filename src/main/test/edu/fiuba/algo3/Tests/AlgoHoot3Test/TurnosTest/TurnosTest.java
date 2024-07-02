@@ -227,7 +227,6 @@ public class TurnosTest {
     @Test
     public void test06AgregarRespuestasMultiplicadorYAnuladorAsignarlasReiniciarYVolverAAgregarlasAsignaLosPuntosEsperados() {
         //arrange
-        verdaderoOFalsoPenalidad = preguntasTest.get(5);
 
         List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1 = List.of("1");

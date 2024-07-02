@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.vista.FinRondaVista;
 import edu.fiuba.algo3.vista.PreguntaVista;
 import edu.fiuba.algo3.vista.VistaGanador;
-import edu.fiuba.algo3.vista.VistaPrueba;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
