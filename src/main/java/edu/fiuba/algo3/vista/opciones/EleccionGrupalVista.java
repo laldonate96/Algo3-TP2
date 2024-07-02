@@ -40,6 +40,8 @@ public class EleccionGrupalVista implements OpcionesVista {
                 opcionLabel.getStyleClass().add("labelOpcion");
                 
                 Spinner<String> grupoSpinner = new Spinner<>();
+                grupoSpinner.getStyleClass().add(Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL);
+                grupoSpinner.setPrefWidth(250);
 
                 SpinnerValueFactory<String> listaGrupoSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(observableListGrupo);
                 grupoSpinner.setValueFactory(listaGrupoSpinner);

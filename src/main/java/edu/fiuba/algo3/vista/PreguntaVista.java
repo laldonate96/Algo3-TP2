@@ -73,7 +73,7 @@ public class PreguntaVista extends Application {
         BorderPane jugadorBoxConBorde = new BorderPane(jugadorBox);
         jugadorBoxConBorde.getStyleClass().add("jugadorBox");
         jugadorBoxConBorde.setPadding(new Insets(10));
-        jugadorBoxConBorde.setMaxWidth(400);
+        jugadorBoxConBorde.setMaxWidth(300);
 
         Text enunciado = new Text();
         enunciado.getStyleClass().add("enunciado");
@@ -97,7 +97,7 @@ public class PreguntaVista extends Application {
 
         VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(ventanaPrincipal);
 
-        VBox layout = new VBox(10);
+        VBox layout = new VBox(25);
         layout.setPadding(new Insets(20));
         layout.getChildren().addAll(jugadorBoxConBorde, centerBox, contenedorOpciones, botonResponder);
         layout.setAlignment(Pos.CENTER);
