@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.testEntrega4.AlgoHoot3Test;
 
 import edu.fiuba.algo3.modelo.AlgoHoot3;
-import edu.fiuba.algo3.modelo.CriterioDeVictoria.MejorPuntaje;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaJugadores;
+import edu.fiuba.algo3.modelo.criterioDeVictoria.MejorPuntaje;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaNula;

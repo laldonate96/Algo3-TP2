@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.testEntregaFinal.CriterioTest;
 
-import edu.fiuba.algo3.modelo.CriterioDeVictoria.MejorPuntaje;
+import edu.fiuba.algo3.modelo.criterioDeVictoria.MejorPuntaje;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -4,9 +4,9 @@ package edu.fiuba.algo3.modelo;
 import java.util.Iterator;
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.CriterioDeVictoria.CriterioDeVictoria;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaManejador;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
+import edu.fiuba.algo3.modelo.criterioDeVictoria.CriterioDeVictoria;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeJugadoresMenorADosException;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.CriterioDeVictoria;
+package edu.fiuba.algo3.modelo.criterioDeVictoria;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
