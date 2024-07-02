@@ -62,6 +62,9 @@ public class AlgoHoot3 {
 
     public void pasarRonda() {
         rondas++;
+
+        Jugador anteriorPrimero=jugadores.remove(0);
+        jugadores.add(anteriorPrimero);
         iteradorJugadores = jugadores.iterator();
         jugadorActual = iteradorJugadores.next();
         if (terminoJuego()) {

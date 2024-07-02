@@ -32,8 +32,8 @@ public class Jugador {
         return puntaje;
     }
 
-    public int tienePeorPuntajeQue(Jugador jugador){
-        return Integer.compare(jugador.puntaje, puntaje);
+    public boolean tieneMejorPuntajeQue(Jugador jugador){
+       return puntaje > jugador.puntaje;
     }
 
     public void usar(Modificador modificador) {

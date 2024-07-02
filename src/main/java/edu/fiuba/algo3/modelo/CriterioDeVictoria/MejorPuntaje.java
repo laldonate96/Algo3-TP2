@@ -8,7 +8,6 @@ import java.util.List;
 public class MejorPuntaje implements CriterioDeVictoria {
     private final int limitePuntos;
     private final int limiteRondas;
-    private boolean terminoJuego;
     List<Jugador> listaOrdenadaJugadores;
 
     public MejorPuntaje(int limiteRondas,int limitePuntos){
@@ -23,7 +22,7 @@ public class MejorPuntaje implements CriterioDeVictoria {
     }
 
     private void ordenarLista(){
-        listaOrdenadaJugadores.sort(Jugador::tienePeorPuntajeQue);
+        listaOrdenadaJugadores.sort((j1, j2) -> j1.tieneMejorPuntajeQue(j2)?-1:1);
     }
 
     @Override
