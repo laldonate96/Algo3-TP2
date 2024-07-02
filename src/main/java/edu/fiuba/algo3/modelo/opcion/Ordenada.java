@@ -12,8 +12,6 @@ public class Ordenada extends Opcion {
         puntosIncorrecta=0;
     }
 
-
-
     public void actualizarEstado(Ordenada opcion) {
         if (this.texto.equals(opcion.texto) && this.posicion==opcion.posicion) {
             opcion.puntosCorrecta=1;

@@ -9,9 +9,7 @@ public abstract class Modificador implements Usable {
     protected Jugador duenio;
     protected Modificador siguiente;
 
-
     public abstract void modificarPuntajes(List<Respuesta> respuestas);
-
 
     public abstract void establecerDuenio(Jugador jugadorActivo);
 

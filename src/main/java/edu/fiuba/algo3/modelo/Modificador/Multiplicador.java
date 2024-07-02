@@ -8,9 +8,6 @@ import java.util.List;
 public class Multiplicador extends Modificador {
     private final int factorDeMultiplicacion;
 
-
-
-
     public Multiplicador(int factorDeMultiplicacion){
         this.factorDeMultiplicacion = factorDeMultiplicacion;
         this.siguiente=new Nulo();

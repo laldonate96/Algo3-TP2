@@ -8,20 +8,14 @@ import java.util.List;
 
 
 public class Exclusividad extends Modificador {
-
     private int llamados;
-
     private int factorDeMultiplicacion;
-
-
 
     public Exclusividad() {
         llamados = 1;
         siguiente =new Nulo();
         factorDeMultiplicacion =2;
     }
-
-
 
     @Override
     public void modificarPuntajes(List<Respuesta> respuestas) {
@@ -68,6 +62,5 @@ public class Exclusividad extends Modificador {
     public boolean usableConPenalidad() {
         return false;
     }
-
 }
 

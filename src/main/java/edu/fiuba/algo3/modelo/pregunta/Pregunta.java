@@ -10,9 +10,7 @@ public abstract class Pregunta {
     protected String categoria;
     protected String enunciado;
     protected String explicacion;
-
     protected Puntaje puntaje;
-
 
     public Pregunta(String enunciado, Puntaje puntaje, String categoria, String explicacion) {
         this.enunciado = enunciado;
@@ -36,9 +34,8 @@ public abstract class Pregunta {
     public String obtenerEnunciado() {
         return enunciado;
     }
+
     public String obtenerExplicacion() {
         return explicacion;
     }
-
-
 }

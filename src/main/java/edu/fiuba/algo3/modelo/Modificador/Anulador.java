@@ -11,7 +11,6 @@ public class Anulador extends Modificador {
     private int factorDeMultiplicacion;
     private int llamados;
 
-
     public Anulador() {
         llamados=1;
         factorDeMultiplicacion =1;
@@ -23,7 +22,6 @@ public class Anulador extends Modificador {
         this.aplicarModificador(respuestas);
         siguiente.modificarPuntajes(respuestas);
     }
-
 
     private void aplicarModificador(List<Respuesta> respuestas) {
 
@@ -42,25 +40,20 @@ public class Anulador extends Modificador {
         }
     }
 
-
     public void establecerDuenio(Jugador jugadorActivo) {
         duenio=jugadorActivo;
     }
 
     @Override
     public void agregarModificador(Modificador modificador) {
-        if( esIgual(modificador)){
+        if(esIgual(modificador)){
             llamados++;
         } else {
             siguiente.agregarModificador(modificador);
         }
     }
 
-
     private boolean esIgual(Modificador modificador) {
         return modificador.getClass().equals(this.getClass());
     }
 }
-
-
-

@@ -8,10 +8,7 @@ public abstract class Opcion {
     
     public Opcion(String texto) {
         this.texto = texto;
-
     }
-
-
 
     public abstract int contarCorrecta();
 

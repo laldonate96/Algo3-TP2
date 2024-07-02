@@ -14,7 +14,6 @@ public class VerdaderoFalso extends Pregunta {
         this.opciones=opciones;
     }
 
-
     public List<Simple> obtenerOpciones() {
         return opciones;
     }

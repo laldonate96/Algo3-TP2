@@ -13,8 +13,6 @@ public class Grupal extends Opcion {
         puntosCorrecta= 0;
     }
 
-
-
     public void actualizarEstado(Grupal opcion) {
         if (this.texto.equals(opcion.texto) && this.nombreGrupo.equals(opcion.nombreGrupo)) {
             opcion.puntosCorrecta=1;
@@ -26,7 +24,6 @@ public class Grupal extends Opcion {
     public String obtenerGrupo(){
         return this.nombreGrupo;
     }
-
 
     @Override
     public int contarCorrecta() {
