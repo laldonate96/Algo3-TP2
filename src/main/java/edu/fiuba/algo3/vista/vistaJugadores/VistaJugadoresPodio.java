@@ -35,8 +35,8 @@ public class VistaJugadoresPodio {
                 puntuacionBox.getChildren().addAll(puntuacion);
 
                 if (top == 1) {
-                    jugadorBox.getStyleClass().add("jugadorGanador");
-                    puntuacionBox.getStyleClass().add("puntuacionGanador");
+                    jugadorBox.getStyleClass().add("jugadoresPodio");
+                    puntuacionBox.getStyleClass().add("jugadoresPodio");
                 } else {
                     jugadorBox.getStyleClass().add("jugadoresPodio");
                     puntuacionBox.getStyleClass().add("jugadoresPodio");
