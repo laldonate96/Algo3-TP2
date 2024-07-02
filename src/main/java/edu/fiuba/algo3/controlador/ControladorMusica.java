@@ -4,7 +4,7 @@ public class ControladorMusica {
     private Reproductor reproductor;
 
     public ControladorMusica() {
-        reproductor = new Reproductor();
+        reproductor = Reproductor.obtenerInstancia();
         iniciar();
     }
 

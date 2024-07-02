@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
+import edu.fiuba.algo3.controlador.ControladorMusica;
 import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
 import edu.fiuba.algo3.vista.animaciones.Titilante;
 import edu.fiuba.algo3.vista.animaciones.Traslacion;
@@ -25,6 +26,7 @@ public class VistaGanador extends Application {
     private InicioDelJuego inicioDelJuego = new InicioDelJuego();
     private VistaJugadoresPodio vistaJugadoresPodio = new VistaJugadoresPodio();
     private ControladorDeJugador controladorDeJugador = new ControladorDeJugador();
+    private ControladorMusica controladorMusica = new ControladorMusica();
 
     public static void main(String[] args) {
         launch(args);
@@ -33,13 +35,17 @@ public class VistaGanador extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.ventanaPrincipal = primaryStage;
+        controladorMusica.cambiarMusica("recursos/musica/Ganador.mp3");
 
         Text titulo = new Text("GANADOR " + ganador().toUpperCase());
         titulo.getStyleClass().add("ganadorTitulo");
         Titilante titilante = new Titilante(2, titulo);
         titilante.aplicarAnimacion();
         Boton botonJugar = new Boton("Reiniciar", "botonJugar");
-        botonJugar.setOnAction(event -> controladorVentanaNueva.abrirVentanaNueva(inicioDelJuego, ventanaPrincipal));
+        botonJugar.setOnAction(event -> {
+            controladorMusica.cambiarMusica("recursos/musica/Tema 1.mp3");
+            controladorVentanaNueva.abrirVentanaNueva(inicioDelJuego, ventanaPrincipal);
+        });
 
         VBox centerBox = new VBox(10);
         centerBox.getChildren().add(titulo);

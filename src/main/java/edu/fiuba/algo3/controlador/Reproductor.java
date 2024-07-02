@@ -5,13 +5,21 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Reproductor {
+    private static Reproductor instancia;
     private String tema;
     private MediaPlayer mediaPlayer;
     private double volumen = 0.1;
 
-    public Reproductor() {
+    private Reproductor() {
         tema = "recursos/musica/Tema 1.mp3";
         inicializarMediaPlayer();
+    }
+
+    public static Reproductor obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new Reproductor();
+        }
+        return instancia;
     }
 
     private void inicializarMediaPlayer() {

@@ -35,8 +35,6 @@ public class InicioDelJuego extends Application {
         Boton botonJugar = new Boton("Jugar", "botonJugar");
         botonJugar.setOnAction(event -> controladorVentanaNueva.abrirVentanaNueva(cargarJugadores, ventanaPrincipal));
 
-
-
         VBox centerBox = new VBox(20);
         centerBox.getChildren().addAll(titulo, botonJugar);
         centerBox.setAlignment(Pos.CENTER);
