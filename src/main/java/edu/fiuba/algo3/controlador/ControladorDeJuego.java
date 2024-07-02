@@ -13,7 +13,7 @@ import edu.fiuba.algo3.modelo.turno.Turno;
 
 
 public class ControladorDeJuego {
-    public void iniciarJuego(List<String> nombresDeJugadores) {
+    public void iniciarJuego(List<String> nombresDeJugadores, int rondas, int puntos) {
         
         List<Jugador> jugadores = FabricaJugadores.crearListaJugadores(nombresDeJugadores);
         
@@ -21,7 +21,7 @@ public class ControladorDeJuego {
 
         List<Pregunta> preguntas = Lector.obtenerPreguntasDeJson(new MezclaSinRepetirCategoria(),("recursos/preguntas.json"));
      
-        algoHoot.iniciarAlgoHoot(jugadores, new Turno(), new MejorPuntaje(preguntas.size(),40), preguntas);
+        algoHoot.iniciarAlgoHoot(jugadores, new Turno(), new MejorPuntaje(rondas, puntos), preguntas);
         algoHoot.pasarRonda();
     }
 }

@@ -10,12 +10,14 @@ import edu.fiuba.algo3.vista.alertas.IngreseMasJugadores;
 import edu.fiuba.algo3.vista.alertas.NombreNoIngresado;
 import edu.fiuba.algo3.vista.alertas.NombresNoIngresados;
 import edu.fiuba.algo3.vista.botones.Boton;
+import edu.fiuba.algo3.vista.selectores.SelectorInicioJuego;
 import edu.fiuba.algo3.vista.vistaJugadores.VistaJugadores;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
@@ -31,6 +33,8 @@ public class CargarJugadores extends Application {
     private int MAX_CARACTERES = 26;
     private ControladorVentanaNueva controladorVentanaNueva = new ControladorVentanaNueva();
     private List<Jugador> jugadores;
+    private SelectorInicioJuego selectorRondas = new SelectorInicioJuego();
+    private SelectorInicioJuego selectorPuntos = new SelectorInicioJuego();
 
     public static void main(String[] args) {
         launch(args);
@@ -39,7 +43,10 @@ public class CargarJugadores extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.ventanaPrincipal = stage;
-        ventanaPrincipal.setTitle("Agreguen los jugadores");
+        ventanaPrincipal.setTitle("Jugadores y Limites");
+
+        HBox limiteRondas = selectorRondas.crearSelectorInicioJuego("Limite de rondas:", 25);
+        HBox limitePuntos = selectorPuntos.crearSelectorInicioJuego("Limite de puntos:", 40);
 
         Label jugadoresLabel = new Label("Agregar Jugador:");
         jugadoresLabel.getStyleClass().add("jugadoresLabel");
@@ -57,11 +64,10 @@ public class CargarJugadores extends Application {
         inputJugador.setTextFormatter(formatearTexto);
 
         Boton botonJugar = new Boton("Jugar", "button");
-        botonJugar.setOnAction(event -> jugar());
         Boton botonAgregar = new Boton("Agregar Jugador", "button");
 
         botonAgregar.setOnAction(event -> agregarJugador());
-        botonJugar.setOnAction(event -> jugar());
+        botonJugar.setOnAction(event -> jugar(selectorRondas.obtenerLimite(), selectorPuntos.obtenerLimite()));
 
         VBox jugadores = vistaJugadores.mostrarJugadores();
 
@@ -71,7 +77,7 @@ public class CargarJugadores extends Application {
 
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20));
-        layout.getChildren().addAll(jugadoresLabel, inputJugador, buttonLayout, jugadores);
+        layout.getChildren().addAll(limiteRondas, limitePuntos, jugadoresLabel, inputJugador, buttonLayout, jugadores);
         layout.setAlignment(Pos.CENTER);
 
         VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(ventanaPrincipal);
@@ -100,10 +106,10 @@ public class CargarJugadores extends Application {
         }
     }
 
-    public void jugar() {
+    public void jugar(int rondas, int puntos) {
         List<String> listaDeNombres = vistaJugadores.obtenerJugadores();
         if (!listaDeNombres.isEmpty()) {
-            controladorDeJuego.iniciarJuego(listaDeNombres);
+            controladorDeJuego.iniciarJuego(listaDeNombres, rondas, puntos);
             controladorVentanaNueva.abrirVentanaNueva(new PreguntaVista(), ventanaPrincipal);
         } else if(listaDeNombres.isEmpty()){
             NombresNoIngresados nombresNoIngresados = new NombresNoIngresados();

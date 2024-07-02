@@ -59,7 +59,6 @@ public class AlgoHoot3 {
 
     public void pasarRonda() {
         rondas++;
-
         Jugador anteriorPrimero=jugadores.remove(0);
         jugadores.add(anteriorPrimero);
         iteradorJugadores = jugadores.iterator();
@@ -80,7 +79,7 @@ public class AlgoHoot3 {
     }
     
     public boolean terminoLaRonda(){
-        return (turno.cantidadDeRespuestas() == jugadores.size()) && !terminoJuego();
+        return (turno.cantidadDeRespuestas() == jugadores.size());
     }
 
     public int obtenerRonda(){
