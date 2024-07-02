@@ -24,9 +24,11 @@ public class VistaJugadoresPodio {
             
             if (count == 0) {
                 jugadorTop1.getStyleClass().add("primerElementoTitulo");
+                jugadorTop1.setText(jugadorTop1.getText() + "segundo");
                 jugadorBox.getStyleClass().add("primerElementoPodio");
             } else {
                 jugadorTop1.getStyleClass().add("primeraVentanaTitulo");
+                jugadorTop1.setText(jugadorTop1.getText() + "tercero");
                 jugadorBox.getStyleClass().add("jugadoresPodio");
             }
 
