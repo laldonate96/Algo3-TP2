@@ -27,7 +27,7 @@ public class Toolbar {
         "El juego fue desarrollado por los siguientes estudiantes de la Universidad de Buenos Aires:\n" +
         "- Lucas Aldonate\n" +
         "- Valentino Ceniceros\n" +
-        "- Felipe Santellan\n" +
+        "- Felipe Santellán\n" +
         "- Ignacio Orgeira\n" +
         "- Ivan Fuschetto.\n" +
         "El juego fue desarrollado en el marco de la materia Algoritmos y Programación III.\n"
@@ -64,9 +64,9 @@ public class Toolbar {
         button2.getItems().addAll(item1, item2, item3, item4, sliderMenuItem);
         MenuButton button3 = new MenuButton("Ver");
         MenuItem item5 = new MenuItem("Acerca De");
-        item5.setOnAction(e -> controladorPantalla.mostrarVentana(stage, acercaDe));
+        item5.setOnAction(e -> controladorPantalla.mostrarVentana(acercaDe));
         MenuItem item6 = new MenuItem("Reglas");
-        item6.setOnAction(e -> controladorPantalla.mostrarVentana(stage, reglas));
+        item6.setOnAction(e -> controladorPantalla.mostrarVentana(reglas));
         button3.getItems().addAll(item5, item6);
         Button button4 = new Boton("Salir", "botonToolbar");
         button4.setOnAction(e -> cerrarJuego(stage));

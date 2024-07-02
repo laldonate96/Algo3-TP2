@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 
 public class InicioDelJuego extends Application {
@@ -34,7 +35,7 @@ public class InicioDelJuego extends Application {
         Boton botonJugar = new Boton("Jugar", "botonJugar");
         botonJugar.setOnAction(event -> controladorVentanaNueva.abrirVentanaNueva(cargarJugadores, ventanaPrincipal));
 
-        
+
 
         VBox centerBox = new VBox(20);
         centerBox.getChildren().addAll(titulo, botonJugar);
@@ -48,13 +49,11 @@ public class InicioDelJuego extends Application {
 
         Scene escenaDelJuego = new Scene(root, 1280, 720);
 
-        String cssPath = "src/css/style.css";
-        URL cssURL = this.getClass().getResource(cssPath);
-        if (cssURL != null) {
-            String css = cssURL.toExternalForm();
+        try {
+            String css =  new File("src/main/java/edu/fiuba/algo3/vista/src/css/style.css").toURI().toString();
             escenaDelJuego.getStylesheets().add(css);
-        } else {
-            System.err.println("Archivo CSS no encontrado: " + cssPath);
+        } catch (NullPointerException e) {
+            System.err.println("Archivo CSS no encontrado: " + e.getMessage());
         }
 
         primaryStage.setTitle("Algohoot");
