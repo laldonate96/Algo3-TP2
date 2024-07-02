@@ -1,54 +1,46 @@
 package edu.fiuba.algo3.vista.vistaJugadores;
 
-import edu.fiuba.algo3.modelo.AlgoHoot3;
-import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.jugador.Jugador;
-import javafx.animation.Animation;
-import javafx.animation.FadeTransition;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-//import org.w3c.dom.Text;
-import javafx.scene.text.*;
-import javafx.util.Duration;
-
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
+
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import javafx.geometry.Pos;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class VistaJugadoresPodio {
 
     public void armarPodio(VBox jugadoresPodio, List<Jugador> jugadores) {
 
-        int top = 1;
-        for (Jugador jugador : jugadores) {
-            if (top < 4) {
-                Text jugadorTop1 = new Text(jugador.obtenerNombre() + " ");
+        jugadores.remove(0);
+        List<Jugador> topJugadores = jugadores.subList(0, Math.min(2, jugadores.size()));
+
+        int count = 0;
+        for (Jugador jugador : topJugadores) {
+
+            Text jugadorTop1 = new Text(jugador.obtenerNombre() + " ");
+
+            VBox jugadorBox = new VBox(10);
+            jugadorBox.getChildren().addAll(jugadorTop1);
+            
+            if (count == 0) {
+                jugadorTop1.getStyleClass().add("primerElementoTitulo");
+                jugadorBox.getStyleClass().add("primerElementoPodio");
+            } else {
                 jugadorTop1.getStyleClass().add("primeraVentanaTitulo");
-                VBox jugadorBox = new VBox(10);
-                jugadorBox.getChildren().addAll(jugadorTop1);
-
-                Text puntuacion = new Text(jugador.obtenerPuntaje() + " puntos");
-                puntuacion.getStyleClass().add("primeraVentanaTitulo");
-                VBox puntuacionBox = new VBox(10);
-                puntuacionBox.getChildren().addAll(puntuacion);
-
-                if (top == 1) {
-                    jugadorBox.getStyleClass().add("jugadoresPodio");
-                    puntuacionBox.getStyleClass().add("jugadoresPodio");
-                } else {
-                    jugadorBox.getStyleClass().add("jugadoresPodio");
-                    puntuacionBox.getStyleClass().add("jugadoresPodio");
-                    ;
-                }
-
-                HBox contenedor2 = new HBox(10);
-                contenedor2.getChildren().addAll(jugadorBox, puntuacionBox);
-                contenedor2.setAlignment(Pos.CENTER);
-                jugadoresPodio.getChildren().add(contenedor2);
-                top++;
+                jugadorBox.getStyleClass().add("jugadoresPodio");
             }
+
+            jugadorBox.setAlignment(Pos.CENTER);
+            jugadorBox.setMaxWidth(Double.MAX_VALUE); 
+            
+            VBox contenedor2 = new VBox(10);
+            contenedor2.getChildren().addAll(jugadorBox);
+            contenedor2.setAlignment(Pos.CENTER);
+            contenedor2.setMaxWidth(Double.MAX_VALUE);
+            
+            jugadoresPodio.getChildren().add(contenedor2);
+            
+            count++;
         }
     }
 }

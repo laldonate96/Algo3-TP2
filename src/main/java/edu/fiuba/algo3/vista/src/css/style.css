@@ -184,40 +184,42 @@
     -fx-fill: #2980b9;
 }
 
-.textoJugadorGanador{
+.textoJugadorGanador {
     -fx-font-family: "Times New Roman";
     -fx-font-size: 25px;
-    -fx-fill: #ECF0F1;
-
+    -fx-fill: #ebff55; 
+    -fx-text-alignment: center;
 }
-.jugadorGanador{
+.jugadoresPodio {
     -fx-padding: 25px;
     -fx-text-fill: #2980b9;
-    -fx-background-radius: 46%;
-    -fx-border-radius: 46%;
+    -fx-background-radius: 45, 99%;
+    -fx-border-radius: 45, 99%;
     -fx-border-color: #2980b9;
     -fx-border-width: 3px;
-    -fx-background-color:  #2980b9;
+    -fx-background-color: #2980b9;
+    -fx-pref-width: 200px; 
+    -fx-max-width: 200px; 
+    -fx-alignment: center; 
+}
+.primeraVentanaTitulo {
+    -fx-font-size: 25px; 
+    -fx-fill: #ebff55; 
 }
 
-.puntuacionGanador{
-    -fx-padding: 25px;
+.primerElementoTitulo {
+    -fx-font-size: 35px; 
+    -fx-fill: #ebff55;
+}
+.primerElementoPodio {
+    -fx-padding: 30px; 
     -fx-text-fill: #2980b9;
-    -fx-background-radius: 45,999%;
-    -fx-border-radius: 45,999%;
+    -fx-background-radius: 45, 99%;
+    -fx-border-radius: 45, 99%;
     -fx-border-color: #2980b9;
     -fx-border-width: 3px;
-    -fx-background-color:  #2980b9;
+    -fx-background-color: #2980b9;
+    -fx-pref-width: 250px;
+    -fx-max-width: 250px; 
+    -fx-alignment: center;
 }
-
-.jugadoresPodio{
-    -fx-padding: 25px;
-    -fx-text-fill: #2980b9;
-    -fx-background-radius: 45,99%;
-    -fx-border-radius: 45,99%;
-    -fx-border-color: #2980b9;
-    -fx-border-width: 3px;
-    -fx-background-color:  #2980b9;
-}
-
-
