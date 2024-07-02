@@ -40,7 +40,7 @@ public class TurnosTest {
 
     @BeforeAll
     public static void setupClass() {
-        preguntasTest = Lector.obtenerPreguntasDeJson(new MezclaNula(), ("recursos/test.json"));
+        preguntasTest = Lector.obtenerPreguntasDeJson(new MezclaNula(), "recursos/test.json");
     }
 
     @BeforeEach
@@ -52,15 +52,13 @@ public class TurnosTest {
 
         turno = new Turno();
 
+        verdaderoOFalso = preguntasTest.get(1);
+        verdaderoOFalsoPenalidad = preguntasTest.get(5);
     }
 
     @Test
-    public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYseLespidePuntos() {
+    public void test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYSeLesPidePuntos() {
         //arrange
-
-        verdaderoOFalso = preguntasTest.get(1);
-
-
         List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1 = List.of("1");
         List<Opcion> opcionesJugador1 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Incorrecta()));
@@ -71,7 +69,6 @@ public class TurnosTest {
 
 
         turno.reiniciarTurno(verdaderoOFalso);
-
 
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
         Modificador nuloJugador2 = jugador2.obtenerModificadores().get(0);
@@ -92,7 +89,7 @@ public class TurnosTest {
     @Test
     public void test02seJuegaUnTurnoConUnaPreguntaVoFPenalizadaYseLespidePuntos() {
         //arrange
-        verdaderoOFalsoPenalidad = preguntasTest.get(5);
+
 
         List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1 = List.of("1");
@@ -102,9 +99,7 @@ public class TurnosTest {
         List<String> posicion2 = List.of();
         List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
-
         turno.reiniciarTurno(verdaderoOFalsoPenalidad);
-
 
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
         Modificador nuloJugador2 = jugador2.obtenerModificadores().get(0);
@@ -125,7 +120,7 @@ public class TurnosTest {
     public void test03UsandoUnaMultipleChoicePenalidadYUnMultiplicadorYLosJugadoresObtienenLosPuntosEsperados() {
         //arrange
 //        MultipleChoice multipleChoicePenalidad = (MultipleChoice) preguntasTest.get(6);
-        verdaderoOFalsoPenalidad = preguntasTest.get(5);
+
 
         List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1 = List.of("1");
@@ -156,7 +151,7 @@ public class TurnosTest {
     @Test
     public void test04seJuegaUnTurnoConUnaPreguntaVoFClasicaConAnuladorYseLespidePuntos() {
         //arrange
-        verdaderoOFalso = preguntasTest.get(1);
+
 
         List<String> contenidoOpciones1 = List.of("Falso");
         List<String> posicion1 = List.of("1");
@@ -191,8 +186,6 @@ public class TurnosTest {
     @Test
     public void test05AgregarRespuestasConNuloAsignarlasReiniciarYVolverAAgregarlasAsignaLosPuntosEsperados() {
         //arrange
-        verdaderoOFalsoPenalidad = preguntasTest.get(5);
-
         List<String> contenidoOpciones1 = List.of("Verdadero");
         List<String> posicion1 = List.of("1");
         List<Opcion> opcionesJugador1 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Correcta()));
@@ -201,16 +194,13 @@ public class TurnosTest {
         List<String> posicion2 = List.of();
         List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
-
         turno.reiniciarTurno(verdaderoOFalsoPenalidad);
-
 
         Modificador nuloJugador = jugador1.obtenerModificadores().get(0);
         Modificador multiplicador = jugador2.obtenerModificadores().get(0);
 
         turno.agregarRespuesta(opcionesJugador2, jugador2, multiplicador);
         turno.agregarRespuesta(opcionesJugador1, jugador1, nuloJugador);
-
 
         turno.asignarPuntajes();
         jugador2.obtenerPuntaje();
@@ -219,18 +209,15 @@ public class TurnosTest {
         opcionesJugador1 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones1, posicion1, new Incorrecta()));
         opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
-
         turno.reiniciarTurno(verdaderoOFalsoPenalidad);
-
 
         turno.agregarRespuesta(opcionesJugador2, jugador2, multiplicador);
         turno.agregarRespuesta(opcionesJugador1, jugador1, nuloJugador);
 
         //act
         turno.asignarPuntajes();
-
-
         jugador2.obtenerPuntaje();
+
         // assert
         assertEquals(-2, jugador1.obtenerPuntaje());
         assertEquals(2, jugador2.obtenerPuntaje());
