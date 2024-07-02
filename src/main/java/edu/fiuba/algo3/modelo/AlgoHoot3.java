@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.CriterioDeVictoria.CriterioDeVictoria;
-import edu.fiuba.algo3.modelo.Fabricas.FabricaEstado;
+import edu.fiuba.algo3.modelo.Fabricas.FabricaManejador;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.excepciones.CantidadDeJugadoresMenorADosException;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -67,7 +67,7 @@ public class AlgoHoot3 {
         if (terminoJuego()) {
             return;
         }
-        turno.reiniciarTurno(obtenerPreguntaDeRondaActual(), FabricaEstado.crearEstado(obtenerPreguntaDeRondaActual()));
+        turno.reiniciarTurno(obtenerPreguntaDeRondaActual(), FabricaManejador.crearManejador(obtenerPreguntaDeRondaActual()));
     }
 
     public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificador) {
