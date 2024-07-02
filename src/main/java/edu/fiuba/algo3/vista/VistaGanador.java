@@ -1,15 +1,6 @@
 package edu.fiuba.algo3.vista;
-//import edu.fiuba.algo3.controlador.ControladorDeJugadores;
-//import edu.fiuba.algo3.controlador.ControladorGanador;
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
 import edu.fiuba.algo3.controlador.ControladorVentanaNueva;
-import edu.fiuba.algo3.modelo.Modificador.Modificador;
-import edu.fiuba.algo3.modelo.Modificador.Multiplicador;
-import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.vista.CargarJugadores;
-import edu.fiuba.algo3.vista.InicioDelJuego;
-import edu.fiuba.algo3.vista.Toolbar;
-import edu.fiuba.algo3.vista.animaciones.AnimacionBotones;
 import edu.fiuba.algo3.vista.animaciones.Titilante;
 import edu.fiuba.algo3.vista.animaciones.Traslacion;
 import edu.fiuba.algo3.vista.botones.Boton;
@@ -19,14 +10,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
+
 import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -40,7 +31,6 @@ public class VistaGanador extends Application {
     private InicioDelJuego inicioDelJuego = new InicioDelJuego();
     private VistaJugadoresPodio vistaJugadoresPodio = new VistaJugadoresPodio();
     private ControladorDeJugador controladorDeJugador = new ControladorDeJugador();
-//    private List<Jugador> jugadores;
 
     public static void main(String[] args) {
         launch(args);
@@ -91,17 +81,11 @@ public class VistaGanador extends Application {
 
         Scene escenaDelJuego = new Scene(ganador, 1280, 720);
 
-        String cssPath = "C:/Users/Usuario/TP2Algo3/Algo3-TP2/src/main/java/edu/fiuba/algo3/vista/src/css/style.css";
+        String cssPath = "src/css/style.css";
 
-        // Crear un objeto File con la ruta del archivo CSS
-        File cssFile = new File(cssPath);
-
-        // Verificar si el archivo existe y es un archivo (no un directorio)
-        if (cssFile.exists() && cssFile.isFile()) {
-            // Obtener la ruta del archivo como URI
-            String css = cssFile.toURI().toString();
-
-            // Agregar el archivo CSS como hoja de estilos a escenaDelJuego
+        URL cssURL = this.getClass().getResource(cssPath);
+        if (cssURL != null) {
+            String css = cssURL.toExternalForm();
             escenaDelJuego.getStylesheets().add(css);
         } else {
             System.err.println("Archivo CSS no encontrado: " + cssPath);
