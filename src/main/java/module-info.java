@@ -9,4 +9,6 @@ module edu.fiuba.algo3 {
     requires javafx.media;
     requires java.scripting;
     exports edu.fiuba.algo3;
+
+    opens edu.fiuba.algo3.testEntregaFinal.CriterioTest to org.junit.platform.commons;
 }
