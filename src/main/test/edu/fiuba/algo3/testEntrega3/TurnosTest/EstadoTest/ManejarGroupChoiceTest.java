@@ -16,11 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ManejarGroupChoiceTest {
     private static ManejarGroupChoice manejadorGC;
-    private static List<Pregunta> preguntasTest;
 
     @BeforeAll
     public static void setupClass(){
-        preguntasTest = Lector.obtenerPreguntasDeJson(new MezclaNula(),("recursos/test.json"));
+        List<Pregunta> preguntasTest = Lector.obtenerPreguntasDeJson(new MezclaNula(), ("recursos/test.json"));
         manejadorGC = new ManejarGroupChoice((GroupChoice) preguntasTest.get(2));
     }
 

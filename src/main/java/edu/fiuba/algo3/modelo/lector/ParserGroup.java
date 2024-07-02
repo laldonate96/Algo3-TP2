@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Grupal;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
 import org.json.JSONObject;
 

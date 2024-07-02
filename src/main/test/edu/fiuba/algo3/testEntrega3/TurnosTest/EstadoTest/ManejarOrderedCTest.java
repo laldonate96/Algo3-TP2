@@ -17,11 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ManejarOrderedCTest {
 
     private static ManejarOrderedC manejadorOC;
-    private static List<Pregunta> preguntasTest;
 
     @BeforeAll
     public static void setupClass(){
-        preguntasTest = Lector.obtenerPreguntasDeJson(new MezclaNula(),("recursos/test.json"));
+        List<Pregunta> preguntasTest = Lector.obtenerPreguntasDeJson(new MezclaNula(), ("recursos/test.json"));
         manejadorOC = new ManejarOrderedC((OrderedChoice) preguntasTest.get(7));
     }
 

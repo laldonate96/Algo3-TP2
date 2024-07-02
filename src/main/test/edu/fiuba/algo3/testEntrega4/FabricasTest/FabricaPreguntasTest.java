@@ -27,7 +27,7 @@ public class FabricaPreguntasTest {
         List<Simple> opciones = FabricaOpciones.crearListaSimple(contenidoOpciones, posicionesDeCorrectas, new Correcta());
 
         //Act
-        VerdaderoFalso preguntaObtenida =(VerdaderoFalso) FabricaPreguntas.crearPreguntaVerdaderoFalso("¿Grupo 1 aprueba el TP?", opciones, new Clasica(1), "test","Say no More");
+        VerdaderoFalso preguntaObtenida = FabricaPreguntas.crearPreguntaVerdaderoFalso("¿Grupo 1 aprueba el TP?", opciones, new Clasica(1), "test","Say no More");
 
         //Assert
         assertEquals("test", preguntaObtenida.obtenerCategoria());
@@ -64,7 +64,7 @@ public class FabricaPreguntasTest {
         List<Grupal> opciones = FabricaOpciones.crearListaGrupo(grupos, contenidoOpciones,posicionesCorrectas);
 
         //Act
-        GroupChoice preguntaObtenida = (GroupChoice)FabricaPreguntas.crearPreguntaGroupChoice("Clasifique segun sea par o impar", opciones, new Clasica(1), "test","Say no More");
+        GroupChoice preguntaObtenida = FabricaPreguntas.crearPreguntaGroupChoice("Clasifique segun sea par o impar", opciones, new Clasica(1), "test","Say no More");
 
         //Assert
         assertEquals("test", preguntaObtenida.obtenerCategoria());
@@ -80,10 +80,10 @@ public class FabricaPreguntasTest {
     public void test04CrearPreguntaOrdered(){
         //Arrange
         List<String> opcionesOrdered = List.of("opcion1", "opcion2", "opcion3");
-        List<Ordenada> opciones = FabricaOpciones.crearListaOrdenada(opcionesOrdered, List.of("1", "2", "3"), new Correcta());
+        List<Ordenada> opciones = FabricaOpciones.crearListaOrdenada(opcionesOrdered, List.of("1", "2", "3"));
 
         //Act
-        OrderedChoice preguntaObtenida =(OrderedChoice) FabricaPreguntas.crearPreguntaOrderedChoice("Ordene los siguientes numbers", opciones, new Clasica(1), "test","Say no More");
+        OrderedChoice preguntaObtenida = FabricaPreguntas.crearPreguntaOrderedChoice("Ordene los siguientes numbers", opciones, new Clasica(1), "test","Say no More");
 
         //Assert
         assertEquals("test", preguntaObtenida.obtenerCategoria());

@@ -34,7 +34,7 @@ public class FabricaOpcionesTest {
 
         //Act
 
-        List<Ordenada> opcionesObtenidas = FabricaOpciones.crearListaOrdenada(contenidoOpciones,posicionesCorrectas, new Correcta());
+        List<Ordenada> opcionesObtenidas = FabricaOpciones.crearListaOrdenada(contenidoOpciones,posicionesCorrectas);
 
         //Assert
         assertEquals(opcionesEsperadas.size(), opcionesObtenidas.size());

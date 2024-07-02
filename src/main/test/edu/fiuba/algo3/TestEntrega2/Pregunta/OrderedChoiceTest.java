@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.puntaje.Clasica;
@@ -50,7 +49,7 @@ public class OrderedChoiceTest {
         List<String> ordenCorrecto = List.of("3", "2", "1");
 
         respuestas=new ArrayList<>();
-        opcionesPregunta = FabricaOpciones.crearListaOrdenada(opcionesTexto, ordenCorrecto, new Correcta());
+        opcionesPregunta = FabricaOpciones.crearListaOrdenada(opcionesTexto, ordenCorrecto);
     }
 
     @Test
@@ -67,7 +66,7 @@ public class OrderedChoiceTest {
 
 
         List<Opcion> opcionesJugador;
-        opcionesJugador =new ArrayList<>(FabricaOpciones.crearListaOrdenada(List.of("Opcion 1", "Opcion 2", "Opcion 3"), List.of("3","2","1"),new Correcta()));
+        opcionesJugador =new ArrayList<>(FabricaOpciones.crearListaOrdenada(List.of("Opcion 1", "Opcion 2", "Opcion 3"), List.of("3","2","1")));
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
