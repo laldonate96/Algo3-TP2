@@ -18,7 +18,7 @@ public class MejorPuntajeTest {
     private MejorPuntaje criterio;
 
     @BeforeEach
-    void setUp(){
+    public void setUp(){
         Jugador jugador1=new Jugador("Juan", List.of());
         Jugador jugador2=new Jugador("Lucas", List.of());
         Jugador jugador3=new Jugador("Nacho", List.of());
@@ -32,7 +32,7 @@ public class MejorPuntajeTest {
         criterio.establecerJugadores(jugadores);
     }
     @Test
-    void test01SabeQueNoTerminoElJuegoSiTodoEstaEn0(){
+    public void test01SabeQueNoTerminoElJuegoSiTodoEstaEn0(){
 
         //Arrange
 
@@ -43,7 +43,7 @@ public class MejorPuntajeTest {
         assertFalse(criterio.terminoJuego(0));
     }
     @Test
-    void test02SabeQueNoTerminoElJuegoSinTodoEn0(){
+    public void test02SabeQueNoTerminoElJuegoSinTodoEn0(){
         //Arrange
         jugadores.get(0).sumarPuntaje(-1);
         jugadores.get(1).sumarPuntaje(0);
@@ -64,7 +64,7 @@ public class MejorPuntajeTest {
 
 
     @Test
-    void test03SabeTerminoElJuegoSiUnJugadorTieneLosPuntosMaximos(){
+    public void test03SabeTerminoElJuegoSiUnJugadorTieneLosPuntosMaximos(){
         //Arrange
         jugadores.get(0).sumarPuntaje(-1);
         jugadores.get(1).sumarPuntaje(0);
@@ -82,7 +82,7 @@ public class MejorPuntajeTest {
     }
 
     @Test
-    void test04SabeTerminoElJuegoSiLasRondasSuperanElMaximoAsignado(){
+    public void test04SabeTerminoElJuegoSiLasRondasSuperanElMaximoAsignado(){
         //Arrange
         jugadores.get(0).sumarPuntaje(-1);
         jugadores.get(1).sumarPuntaje(0);
@@ -99,7 +99,7 @@ public class MejorPuntajeTest {
 
     }
     @Test
-    void test05SabeTerminoElJuegoSiLasRondasSuperanElMaximoAsignadoYUnJugadorTieneElMaximoDePuntos(){
+    public void test05SabeTerminoElJuegoSiLasRondasSuperanElMaximoAsignadoYUnJugadorTieneElMaximoDePuntos(){
         //Arrange
         jugadores.get(0).sumarPuntaje(-1);
         jugadores.get(1).sumarPuntaje(0);
@@ -116,7 +116,7 @@ public class MejorPuntajeTest {
 
     }
     @Test
-    void test06OrdenaCorrectamenteAlterminarElJuego(){
+    public void test06OrdenaCorrectamenteAlterminarElJuego(){
         //Arrange
         jugadores.get(1).sumarPuntaje(10);
         jugadores.get(5).sumarPuntaje(4);
