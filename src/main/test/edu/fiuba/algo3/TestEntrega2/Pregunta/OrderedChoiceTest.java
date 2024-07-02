@@ -96,25 +96,25 @@ public class OrderedChoiceTest {
         }
     }
 
-//    @Test
-//    public void test03RecibeOpcionesCorrectasEIncorrectasYLasValidaCorrectamente(){
-//
-//
-//        List<String> ordenMezclado=List.of("1","3","2","4","6","5");
-//        List<Opcion> opciones =new ArrayList<> (FabricaOpciones.crearListaOrdenada(opcionesTexto,ordenMezclado));
-//
-//        pregunta.validarOpciones(opciones);
-//
-//        for (int i = 0; i < 6; i++) {
-//            if (i < 2){
-//                assertEquals(1, opciones.get(i).contarCorrecta());
-//                assertEquals(0, opciones.get(i).contarIncorrecta());
-//            } else {
-//                assertEquals(0, opciones.get(i).contarCorrecta());
-//                assertEquals(1, opciones.get(i).contarIncorrecta());
-//            }
-//        }
-//    }
+    @Test
+    public void test03RecibeOpcionesCorrectasEIncorrectasYLasValidaCorrectamente(){
+
+
+        List<String> ordenMezclado=List.of("1","3","2","4","6","5");
+        List<Opcion> opciones =new ArrayList<> (FabricaOpciones.crearListaOrdenada(opcionesTexto,ordenMezclado));
+
+        pregunta.validarOpciones(opciones);
+
+        for (int i = 0; i < 6; i++) {
+            if (i==0 || i== 2){
+                assertEquals(1, opciones.get(i).contarCorrecta());
+                assertEquals(0, opciones.get(i).contarIncorrecta());
+            } else {
+                assertEquals(0, opciones.get(i).contarCorrecta());
+                assertEquals(1, opciones.get(i).contarIncorrecta());
+            }
+        }
+    }
 
 
 
