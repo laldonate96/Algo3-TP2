@@ -8,6 +8,7 @@ import java.util.List;
 public class MejorPuntaje implements CriterioDeVictoria {
     private final int limitePuntos;
     private final int limiteRondas;
+    private boolean terminoJuego;
     List<Jugador> listaOrdenadaJugadores;
 
     public MejorPuntaje(int limiteRondas,int limitePuntos){
@@ -17,11 +18,12 @@ public class MejorPuntaje implements CriterioDeVictoria {
 
     @Override
     public List<Jugador> jugadoresOrdenados() {
+        ordenarLista();
         return listaOrdenadaJugadores;
     }
 
     private void ordenarLista(){
-        listaOrdenadaJugadores.sort((j1, j2) -> j1.tieneMejorPuntajeQue(j2)?-1:1);
+        listaOrdenadaJugadores.sort(Jugador::tienePeorPuntajeQue);
     }
 
     @Override
@@ -36,7 +38,7 @@ public class MejorPuntaje implements CriterioDeVictoria {
         if(rondasJugadas>limiteRondas){
             return true;
         } else {
-            return ganador.obtenerPuntaje() > limitePuntos;
+            return ganador.obtenerPuntaje() >= limitePuntos;
         }
     }
 }

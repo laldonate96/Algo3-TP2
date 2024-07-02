@@ -9,7 +9,7 @@ import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManejarOrderedC implements Estado {
+public class ManejarOrderedC implements Manejador {
     private final OrderedChoice pregunta;
 
     public ManejarOrderedC(OrderedChoice pregunta) {

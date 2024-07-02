@@ -11,7 +11,7 @@ import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 
 import java.util.List;
 
-public class ManejarVoF implements Estado {
+public class ManejarVoF implements Manejador {
     private final VerdaderoFalso pregunta;
 
     public ManejarVoF(VerdaderoFalso pregunta) {

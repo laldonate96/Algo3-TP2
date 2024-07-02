@@ -10,6 +10,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -75,5 +76,17 @@ public class NuloPuntajeTest {
         assertEquals(1, respuesta.obtenerPuntaje());
     }
 
+
+    @Test
+    public void test06MostrarModificadorDevuelveElMensajeEsperado() {
+        //Act
+
+        String mensaje="Modificador usado: Ninguno";
+
+
+
+        //Assert
+        Assertions.assertEquals(mensaje, nulo.mostrarModificador());
+    }
 
 }

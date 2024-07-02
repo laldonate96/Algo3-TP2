@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Modificador.Anulador;
 import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -137,5 +138,19 @@ public class AnuladorTurnoTest {
 
         //Assert
         assertEquals(tamanioEsperado, modificadores.size());
+    }
+
+
+
+    @Test
+    public void test06MostrarModificadorDevuelveElMensajeEsperado() {
+        //Act
+
+        String mensaje="Modificador usado: " + anulador.getClass().getSimpleName();
+
+
+
+        //Assert
+        Assertions.assertEquals(mensaje, anulador.mostrarModificador());
     }
 }

@@ -12,6 +12,7 @@ import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -131,5 +132,29 @@ public class MultiplicadorPuntajeTest {
         for (Respuesta respuesta : respuestas) {
             assertEquals(1, respuesta.obtenerPuntaje());
         }
+    }
+
+    @Test
+    public void test06MostrarModificadorDevuelveElMensajeEsperado() {
+        //Act
+
+        String mensaje="Modificador usado: " + multiplicadorDos.getClass().getSimpleName() +" x2";
+        int tamanioEsperado= modificadores.size()-1;
+
+
+
+        //Assert
+        Assertions.assertEquals(mensaje, multiplicadorDos.mostrarModificador());
+    }
+    @Test
+    public void test06MostrarModificadorConOtroFactorDevuelveElMensajeEsperado() {
+        //Act
+
+        String mensaje="Modificador usado: " + multiplicadorTres.getClass().getSimpleName() +" x3";
+
+
+
+        //Assert
+        Assertions.assertEquals(mensaje, multiplicadorTres.mostrarModificador());
     }
 }

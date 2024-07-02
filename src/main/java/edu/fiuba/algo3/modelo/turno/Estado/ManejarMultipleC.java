@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.pregunta.MultipleChoice;
 
 import java.util.List;
 
-public class ManejarMultipleC implements Estado {
+public class ManejarMultipleC implements Manejador {
     private final MultipleChoice pregunta;
 
     public ManejarMultipleC(MultipleChoice pregunta) {

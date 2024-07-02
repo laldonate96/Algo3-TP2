@@ -17,7 +17,7 @@ import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalso;
 
 
-import edu.fiuba.algo3.modelo.turno.Estado.Estado;
+import edu.fiuba.algo3.modelo.turno.Estado.Manejador;
 import edu.fiuba.algo3.modelo.turno.Estado.ManejarVoF;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +38,7 @@ public class TurnosTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private Turno turno;
-    private Estado manejarVoF;
+    private Manejador manejarVoF;
     private ManejarVoF manejarVoFP;
 
 

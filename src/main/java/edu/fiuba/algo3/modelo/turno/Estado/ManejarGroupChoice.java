@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 
 import java.util.List;
 
-public class ManejarGroupChoice implements Estado {
+public class ManejarGroupChoice implements Manejador {
     GroupChoice pregunta;
 
     public ManejarGroupChoice(GroupChoice pregunta) {
