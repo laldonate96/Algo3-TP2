@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import java.io.File;
 import java.util.List;
 
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
@@ -82,7 +83,7 @@ public void start(Stage primaryStage) throws Exception {
     Scene scene = new Scene(root, 1280, 720);
 
     try {
-        String css = getClass().getResource("src/css/style.css").toExternalForm();
+        String css = new File("src/main/java/edu/fiuba/algo3/vista/src/css/style.css").toURI().toString();
         scene.getStylesheets().add(css);
     } catch (NullPointerException e) {
         System.err.println("Archivo CSS no encontrado: " + e.getMessage());

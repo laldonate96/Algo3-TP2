@@ -16,7 +16,7 @@ public class ControladorPantalla {
         }
     }
 
-    public void mostrarVentana(Stage stage, Label etiqueta) {
+    public void mostrarVentana(Label etiqueta) {
         VerVista reglas = new VerVista();
         reglas.mostrarVentana(etiqueta);
     }

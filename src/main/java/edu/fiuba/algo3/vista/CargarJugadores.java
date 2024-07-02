@@ -17,7 +17,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.BorderPane;
@@ -45,8 +45,9 @@ public class CargarJugadores extends Application {
         this.ventanaPrincipal = stage;
         ventanaPrincipal.setTitle("Jugadores y Limites");
 
-        HBox limiteRondas = selectorRondas.crearSelectorInicioJuego("Limite de rondas:", 25);
-        HBox limitePuntos = selectorPuntos.crearSelectorInicioJuego("Limite de puntos:", 40);
+        int cantidadRondas = controladorDeJuego.cantidadPreguntaJuego();
+        HBox limiteRondas = selectorRondas.crearSelectorInicioJuego("Limite de rondas:", cantidadRondas);
+        HBox limitePuntos = selectorPuntos.crearSelectorInicioJuego("Limite de puntos:", cantidadRondas * 2);
 
         Label jugadoresLabel = new Label("Agregar Jugador:");
         jugadoresLabel.getStyleClass().add("jugadoresLabel");
@@ -71,13 +72,18 @@ public class CargarJugadores extends Application {
 
         VBox jugadores = vistaJugadores.mostrarJugadores();
 
+        ScrollPane scrollPane = new ScrollPane(jugadores);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setPrefViewportHeight(200);
+        scrollPane.setStyle("-fx-background: transparent; -fx-background-color: transparent;");
+
         HBox buttonLayout = new HBox(10);
         buttonLayout.setAlignment(Pos.CENTER);
         buttonLayout.getChildren().addAll(botonAgregar, botonJugar);
 
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20));
-        layout.getChildren().addAll(limiteRondas, limitePuntos, jugadoresLabel, inputJugador, buttonLayout, jugadores);
+        layout.getChildren().addAll(limiteRondas, limitePuntos, jugadoresLabel, inputJugador, buttonLayout, scrollPane);
         layout.setAlignment(Pos.CENTER);
 
         VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(ventanaPrincipal);
@@ -108,18 +114,15 @@ public class CargarJugadores extends Application {
 
     public void jugar(int rondas, int puntos) {
         List<String> listaDeNombres = vistaJugadores.obtenerJugadores();
-        if (!listaDeNombres.isEmpty()) {
+        if (listaDeNombres.size() > 1) {
             controladorDeJuego.iniciarJuego(listaDeNombres, rondas, puntos);
             controladorVentanaNueva.abrirVentanaNueva(new PreguntaVista(), ventanaPrincipal);
         } else if(listaDeNombres.isEmpty()){
             NombresNoIngresados nombresNoIngresados = new NombresNoIngresados();
             nombresNoIngresados.mostrarAlerta();
-        }else if(listaDeNombres.size() == 1){
+        } else {
             IngreseMasJugadores ingreseMasJugadores = new IngreseMasJugadores();
             ingreseMasJugadores.mostrarAlerta();
-        }else{
-            AlgoSalioMal algoSalioMal = new AlgoSalioMal();
-            algoSalioMal.mostrarAlerta();
         }
     }
 }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import java.io.File;
 import java.util.List;
 
 import edu.fiuba.algo3.controlador.ControladorDeJugador;
@@ -108,7 +109,7 @@ public class PreguntaVista extends Application {
 
         Scene scene = new Scene(root, 1280, 720);
 
-        String css = getClass().getResource("src/css/style.css").toExternalForm();
+        String css = new File("src/main/java/edu/fiuba/algo3/vista/src/css/style.css").toURI().toString();
         scene.getStylesheets().add(css);
 
         ventanaPrincipal.setScene(scene);
