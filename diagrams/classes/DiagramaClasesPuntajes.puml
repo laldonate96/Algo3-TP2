@@ -1,5 +1,7 @@
 @startuml PUNTAJE
 
+skinparam classAttributeIconSize 0
+
 abstract class Puntaje{
     ~ puntaje:int
 
@@ -13,17 +15,19 @@ class Clasica extends Puntaje{
 
     + Clasica(cantidadCorrectasPregunta:int)
     + asignarPuntaje(respuesta:Respuesta)
-    + modificadorEsValido(modificador:Modificador):boolean
+    + modificadorEsValido(modificador:Usable):boolean
 }
 
 class ConPenalidad extends Puntaje{
     ~ puntajeIncorrecta:int
 
     + asignarPuntaje(respuesta:Respuesta)
-    + modificadorEsValido(modificador:Modificador):boolean
+    + modificadorEsValido(modificador:Usable):boolean
 }
 
-class Parcial extends Puntaje{
+class Parcial {
     + asignarPuntaje(respuesta:Respuesta)
-    + modificadorEsValido(modificador:Modificador):boolean
+    + modificadorEsValido(modificador:Usable):boolean
 }
+
+Puntaje <|-up- Parcial
