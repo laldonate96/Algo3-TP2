@@ -73,17 +73,11 @@ public void start(Stage primaryStage) throws Exception {
     VBox mainBox = new VBox();
     mainBox.setAlignment(Pos.CENTER);
     mainBox.setSpacing(20);
-    mainBox.getChildren().addAll(explicacion, jugadoresBox);
-
-    VBox btnBox = new VBox();
-    btnBox.setAlignment(Pos.CENTER_RIGHT);
-    btnBox.setSpacing(20);
-    btnBox.getChildren().addAll(botonSiguienteRonda);
+    mainBox.getChildren().addAll(explicacion, jugadoresBox, botonSiguienteRonda);
 
     BorderPane root = new BorderPane();
     root.setTop(toolbarBox);
     root.setCenter(mainBox);
-    root.setRight(btnBox);
 
     Scene scene = new Scene(root, 1280, 720);
 
