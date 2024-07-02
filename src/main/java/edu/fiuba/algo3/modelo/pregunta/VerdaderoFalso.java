@@ -5,13 +5,12 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.excepciones.OpcionesDeTamanioInvalidoException;
 import edu.fiuba.algo3.modelo.excepciones.OpcionesIncorrectasException;
-import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.puntaje.Puntaje;
 
 public class VerdaderoFalso extends Pregunta {
-    private List<Simple> opciones;
+    private final List<Simple> opciones;
 
     public VerdaderoFalso(String enunciado, List<Simple> opciones, Puntaje puntaje, String categoria, String explicacion) {
         super(enunciado, puntaje, categoria, explicacion);
@@ -24,11 +23,9 @@ public class VerdaderoFalso extends Pregunta {
 
     private Simple validarOpcion(Opcion opcion) {
         try {
-
             return (Simple) opcion;
         } catch (ClassCastException e) {
-
-            throw new OpcionesIncorrectasException(" Una pregunta Verdadero O Falso no acepta este tipo de opciones");
+            throw new OpcionesIncorrectasException(" Una pregunta "+ this.getClass().getSimpleName()+" no acepta este tipo de opciones.");
         }
     }
 

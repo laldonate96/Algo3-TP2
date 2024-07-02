@@ -26,21 +26,20 @@ public class MultipleChoice extends Pregunta {
         return (Simple) opcion;
     }
         catch(ClassCastException e){
-            throw new OpcionesIncorrectasException(" Una pregunta Multiple Choice no acepta este tipo de opciones");
+            throw new OpcionesIncorrectasException(" Una pregunta "+ this.getClass().getSimpleName()+" no acepta este tipo de opciones.");
     }
 }
 
     @Override
     protected void validarTamanioOpciones(List<Opcion> opcionesJugador) {
         if( opcionesJugador.size()>this.opciones.size()){
-            throw new OpcionesDeTamanioInvalidoException(" La respuesta del usuario a una Pregunta Multiple Choice contiene opciones elegida  que las existentes.");
+            throw new OpcionesDeTamanioInvalidoException(" La respuesta del usuario a una Pregunta "+this.getClass().getSimpleName()+" contiene mas opciones elegidas  que las existentes.");
         }
     }
 
     public void validarOpciones(List<Opcion> opcionesJugador) {
         Simple simple;
-
-
+        validarTamanioOpciones(opcionesJugador);
         for (Opcion opcion : opcionesJugador) {
             simple=validarOpcion(opcion);
             for (Simple opcionPregunta : this.obtenerOpciones()) {

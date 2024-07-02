@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.excepciones.OpcionesDeTamanioInvalidoException;
@@ -24,7 +24,7 @@ public class OrderedChoice extends Pregunta {
         try {
             return (Ordenada) opcion;
         } catch (ClassCastException e) {
-            throw new OpcionesIncorrectasException(" Una pregunta Ordered Choice no acepta este tipo de opciones");
+            throw new OpcionesIncorrectasException(" Una pregunta "+ this.getClass().getSimpleName()+" no acepta este tipo de opciones.");
         }
     }
 
@@ -32,7 +32,7 @@ public class OrderedChoice extends Pregunta {
     @Override
     protected void validarTamanioOpciones(List<Opcion> opcionesJugador) {
         if( opcionesJugador.size()>this.opciones.size()){
-            throw new OpcionesDeTamanioInvalidoException(" La respuesta del usuario a una Pregunta Ordered Choice contiene opciones elegida  que las existentes.");
+            throw new OpcionesDeTamanioInvalidoException(" La respuesta del usuario a una Pregunta "+this.getClass().getSimpleName()+" contiene mas opciones elegidas  que las existentes.");
         }
     }
 
@@ -40,7 +40,7 @@ public class OrderedChoice extends Pregunta {
     public void validarOpciones(List<Opcion> opcionesJugador) {
         Ordenada opcion;
         Ordenada opcionPregunta;
-
+        validarTamanioOpciones(opcionesJugador);
         for (int i=0; i< opcionesJugador.size();i++) {
             opcion=validarOpcion(opcionesJugador.get(i));
             opcionPregunta=this.obtenerOpciones().get(i);
