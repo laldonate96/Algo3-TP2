@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.vista.FinRondaVista;
 import edu.fiuba.algo3.vista.PreguntaVista;
+import edu.fiuba.algo3.vista.VistaGanador;
 import edu.fiuba.algo3.vista.VistaPrueba;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -39,7 +40,7 @@ public class ControladorDeTurno implements EventHandler<ActionEvent> {
         algoHoot.pasarRonda();
 
         if (algoHoot.terminoJuego()) {
-            ventanaNueva.abrirVentanaNueva(new VistaPrueba(), stage);
+            ventanaNueva.abrirVentanaNueva(new VistaGanador(), stage);
             return;
         }
 
