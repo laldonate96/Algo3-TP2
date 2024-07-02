@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo.opcion;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Estado;
+
 
 public abstract class Opcion {
 
     protected String texto;
     
-    public Opcion(String texto, Estado estado) {
+    public Opcion(String texto) {
         this.texto = texto;
 
     }

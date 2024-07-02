@@ -2,9 +2,8 @@ package edu.fiuba.algo3.testEntrega3.TurnosTest.EstadoTest;
 
 import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaNula;
-import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Estado.ManejarGroupChoice;
@@ -30,12 +29,12 @@ public class ManejarGroupChoiceTest {
         String deportesGrupales = "Deportes Grupales";
         String deportesIndividuales = "Deportes Individuales";
 
-        Grupo lioMessi = new Grupo("Lio Messi", deportesGrupales, new Incorrecta());
-        Grupo manuGinobili = new Grupo("Manu Ginóbili", deportesGrupales, new Incorrecta());
-        Grupo juanMartinDelPotro = new Grupo("Juan Martín del Potro", deportesIndividuales, new Incorrecta());
-        Grupo miguelNajdorf = new Grupo("Miguel Najdorf", deportesIndividuales, new Incorrecta());
-        Grupo hugoConte = new Grupo("Hugo Conte", deportesGrupales, new Incorrecta());
-        Grupo joseMeolans = new Grupo("José Meolans", deportesIndividuales, new Incorrecta());
+        Grupal lioMessi = new Grupal("Lio Messi", deportesGrupales);
+        Grupal manuGinobili = new Grupal("Manu Ginóbili", deportesGrupales);
+        Grupal juanMartinDelPotro = new Grupal("Juan Martín del Potro", deportesIndividuales);
+        Grupal miguelNajdorf = new Grupal("Miguel Najdorf", deportesIndividuales);
+        Grupal hugoConte = new Grupal("Hugo Conte", deportesGrupales);
+        Grupal joseMeolans = new Grupal("José Meolans", deportesIndividuales);
 
         List<Opcion> opciones = List.of(lioMessi, manuGinobili, juanMartinDelPotro, miguelNajdorf, hugoConte, joseMeolans);
 
@@ -52,12 +51,12 @@ public class ManejarGroupChoiceTest {
         String deportesGrupales = "Deportes Grupales";
         String deportesIndividuales = "Deportes Individuales";
 
-        Grupo lioMessi = new Grupo("Lio Messi", deportesIndividuales, new Incorrecta());
-        Grupo manuGinobili = new Grupo("Manu Ginóbili", deportesIndividuales, new Incorrecta());
-        Grupo juanMartinDelPotro = new Grupo("Juan Martín del Potro", deportesGrupales, new Incorrecta());
-        Grupo miguelNajdorf = new Grupo("Miguel Najdorf", deportesGrupales, new Incorrecta());
-        Grupo hugoConte = new Grupo("Hugo Conte", deportesIndividuales, new Incorrecta());
-        Grupo joseMeolans = new Grupo("José Meolans", deportesGrupales, new Incorrecta());
+        Grupal lioMessi = new Grupal("Lio Messi", deportesIndividuales);
+        Grupal manuGinobili = new Grupal("Manu Ginóbili", deportesIndividuales);
+        Grupal juanMartinDelPotro = new Grupal("Juan Martín del Potro", deportesGrupales);
+        Grupal miguelNajdorf = new Grupal("Miguel Najdorf", deportesGrupales);
+        Grupal hugoConte = new Grupal("Hugo Conte", deportesIndividuales);
+        Grupal joseMeolans = new Grupal("José Meolans", deportesGrupales);
 
         List<Opcion> opciones = List.of(lioMessi, manuGinobili, juanMartinDelPotro, miguelNajdorf, hugoConte, joseMeolans);
 
@@ -74,12 +73,12 @@ public class ManejarGroupChoiceTest {
         String deportesGrupales = "Deportes Grupales";
         String deportesIndividuales = "Deportes Individuales";
 
-        Grupo lioMessi = new Grupo("Lio Messi", deportesIndividuales, new Incorrecta());
-        Grupo manuGinobili = new Grupo("Manu Ginóbili", deportesIndividuales, new Incorrecta());
-        Grupo juanMartinDelPotro = new Grupo("Juan Martín del Potro", deportesGrupales, new Incorrecta());
-        Grupo miguelNajdorf = new Grupo("Miguel Najdorf", deportesIndividuales, new Incorrecta());
-        Grupo hugoConte = new Grupo("Hugo Conte", deportesGrupales, new Incorrecta());
-        Grupo joseMeolans = new Grupo("José Meolans", deportesIndividuales, new Incorrecta());
+        Grupal lioMessi = new Grupal("Lio Messi", deportesIndividuales);
+        Grupal manuGinobili = new Grupal("Manu Ginóbili", deportesIndividuales);
+        Grupal juanMartinDelPotro = new Grupal("Juan Martín del Potro", deportesGrupales);
+        Grupal miguelNajdorf = new Grupal("Miguel Najdorf", deportesIndividuales);
+        Grupal hugoConte = new Grupal("Hugo Conte", deportesGrupales);
+        Grupal joseMeolans = new Grupal("José Meolans", deportesIndividuales);
 
         List<Opcion> opciones = List.of(lioMessi, manuGinobili, juanMartinDelPotro, miguelNajdorf, hugoConte, joseMeolans);
 

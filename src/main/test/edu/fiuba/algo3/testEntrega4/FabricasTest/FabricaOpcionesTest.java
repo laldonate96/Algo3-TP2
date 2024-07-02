@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
@@ -23,10 +23,10 @@ public class FabricaOpcionesTest {
 
         List<String> contenidoOpciones=List.of("Televisor de tubo CRT","Microondas","Imanes del delivery","Heladera");
         List<String> posicionesCorrectas=List.of("2","1","4","3");
-        Ordenada televisorDeTuboCrt = new Ordenada(contenidoOpciones.get(0),2, new Incorrecta());
-        Ordenada microondas =         new Ordenada(contenidoOpciones.get(1),1, new Incorrecta());
-        Ordenada imanesDelDelivery =  new Ordenada(contenidoOpciones.get(2),4, new Incorrecta());
-        Ordenada heladera =           new Ordenada(contenidoOpciones.get(3),3, new Incorrecta());
+        Ordenada televisorDeTuboCrt = new Ordenada(contenidoOpciones.get(0),2);
+        Ordenada microondas =         new Ordenada(contenidoOpciones.get(1),1);
+        Ordenada imanesDelDelivery =  new Ordenada(contenidoOpciones.get(2),4);
+        Ordenada heladera =           new Ordenada(contenidoOpciones.get(3),3);
 
 
         List<Ordenada> opcionesEsperadas = List.of(televisorDeTuboCrt, microondas, imanesDelDelivery, heladera);
@@ -55,19 +55,19 @@ public class FabricaOpcionesTest {
     @Test
     public void test02FabricaOpcionesGrupo(){
         //Arrange
-        Grupo opcionObtenida;
-        Grupo opcionEsperada;
+        Grupal opcionObtenida;
+        Grupal opcionEsperada;
 
-        Grupo opcion1 = new Grupo("x", "1", new Incorrecta());
-        Grupo opcion2 = new Grupo("a", "2", new Incorrecta());
-        Grupo opcion3 = new Grupo("y", "1", new Incorrecta());
-        Grupo opcion4 = new Grupo("z", "1", new Incorrecta());
-        Grupo opcion5 = new Grupo("s", "2", new Incorrecta());
-        Grupo opcion6 = new Grupo("d", "2", new Incorrecta());
-        List<Grupo> opcionesEsperadas=List.of(opcion1,opcion2,opcion3,opcion4,opcion5,opcion6);
+        Grupal opcion1 = new Grupal("x", "1");
+        Grupal opcion2 = new Grupal("a", "2");
+        Grupal opcion3 = new Grupal("y", "1");
+        Grupal opcion4 = new Grupal("z", "1");
+        Grupal opcion5 = new Grupal("s", "2");
+        Grupal opcion6 = new Grupal("d", "2");
+        List<Grupal> opcionesEsperadas=List.of(opcion1,opcion2,opcion3,opcion4,opcion5,opcion6);
 
         //Act
-        List<Grupo> opcionesObtenidas = FabricaOpciones.crearListaGrupo(List.of("1", "2"), List.of("x", "a","y", "z", "s", "d"),List.of("1","3","4","0","2","5","6"), new Correcta());
+        List<Grupal> opcionesObtenidas = FabricaOpciones.crearListaGrupo(List.of("1", "2"), List.of("x", "a","y", "z", "s", "d"),List.of("1","3","4","0","2","5","6"));
 
         //Assert
         assertEquals(opcionesEsperadas.size(), opcionesObtenidas.size());

@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.TestEntrega2.OpcionTest;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +12,7 @@ public class OrdenadaTest {
 
     @BeforeEach
     public void setUpClass() {
-        opcion1 = new Ordenada("Opcion 1", 1, new Correcta());
+        opcion1 = new Ordenada("Opcion 1", 1);
         
     }
 
@@ -32,7 +30,7 @@ public class OrdenadaTest {
 
     @Test
     public void test02CambiarElEstadoConOtraIgualLaVuelveCorrecta() {
-        Ordenada opcion2 = new Ordenada("Opcion 1", 1, new Incorrecta());
+        Ordenada opcion2 = new Ordenada("Opcion 1", 1);
 
         opcion1.actualizarEstado(opcion2);
 
@@ -42,7 +40,7 @@ public class OrdenadaTest {
     }
     @Test
     public void test03CambiarElEstadoConOtraConDiferenteTextoLaVuelveIncorrecta() {
-        Ordenada opcion3 = new Ordenada("Opcion 2", 1, new Incorrecta());
+        Ordenada opcion3 = new Ordenada("Opcion 2", 1);
         opcion1.actualizarEstado(opcion3);
 
         //Assert
@@ -51,7 +49,7 @@ public class OrdenadaTest {
     }
     @Test
     public void test04CambiarElEstadoConOtraConDiferentePosicionLaVuelveIncorrecta() {
-        Ordenada opcion4 = new Ordenada("Opcion 1", 2, new Incorrecta());
+        Ordenada opcion4 = new Ordenada("Opcion 1", 2);
         opcion1.actualizarEstado(opcion4);
 
         //Assert

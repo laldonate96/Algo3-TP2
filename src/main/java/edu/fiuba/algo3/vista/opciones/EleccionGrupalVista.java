@@ -3,9 +3,8 @@ package edu.fiuba.algo3.vista.opciones;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
@@ -17,11 +16,11 @@ import javafx.scene.layout.HBox;
 public class EleccionGrupalVista implements OpcionesVista {
 
     private List<Spinner<String>> spinners = new ArrayList<>();
-    private List<Grupo> opcionesOriginales;
+    private List<Grupal> opcionesOriginales;
 
-    private List<String> obtenerGrupos(List<Grupo> opciones) {
+    private List<String> obtenerGrupos(List<Grupal> opciones) {
         List<String> grupos = new ArrayList<>();
-        for (Grupo opcion : opciones) {
+        for (Grupal opcion : opciones) {
             if (!grupos.contains(opcion.obtenerGrupo())){
                 grupos.add(opcion.obtenerGrupo());
             }
@@ -30,12 +29,12 @@ public class EleccionGrupalVista implements OpcionesVista {
     }
 
 
-    public void mostrarOpciones(List<Grupo> opciones, GridPane contenedor) {
+    public void mostrarOpciones(List<Grupal> opciones, GridPane contenedor) {
         ObservableList<String> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
         opcionesOriginales = opciones;
         String grupoDefault = opciones.get(0).obtenerGrupo();
 
-        for (Grupo opcion : opciones) {
+        for (Grupal opcion : opciones) {
                 Label opcionLabel = new Label(opcion.obtenerTexto());
                 opcionLabel.getStyleClass().add("labelOpcion");
                 
@@ -65,7 +64,7 @@ public class EleccionGrupalVista implements OpcionesVista {
             String grupoSeleccionado = spinner.getValue();
 
             Opcion opcionOriginal = opcionesOriginales.get(i);
-            Grupo opcionNueva = new Grupo(opcionOriginal.obtenerTexto(), grupoSeleccionado, new Incorrecta());
+            Grupal opcionNueva = new Grupal(opcionOriginal.obtenerTexto(), grupoSeleccionado);
 
             opcionesDelJugador.add(opcionNueva);
         }

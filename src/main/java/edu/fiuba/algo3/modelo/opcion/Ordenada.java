@@ -1,14 +1,12 @@
 package edu.fiuba.algo3.modelo.opcion;
 
-import edu.fiuba.algo3.modelo.opcion.estado.Estado;
-
 public class Ordenada extends Opcion {
     private final int posicion;
     private int puntosIncorrecta;
     private int puntosCorrecta;
 
-    public Ordenada(String texto, int posicion, Estado estado) {
-        super(texto, estado);
+    public Ordenada(String texto, int posicion) {
+        super(texto);
         this.posicion = posicion;
         puntosCorrecta=0;
         puntosIncorrecta=0;

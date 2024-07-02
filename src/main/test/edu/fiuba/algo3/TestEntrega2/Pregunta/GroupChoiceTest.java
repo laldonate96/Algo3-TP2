@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaModificadores;
 
-import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
 import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
@@ -37,7 +37,7 @@ public class GroupChoiceTest {
     static List<String> contenidoOpciones;
     static List<String> posicionesCorrectas;
     private static Clasica clasica;
-    private List<Grupo> opcionesPregunta;
+    private List<Grupal> opcionesPregunta;
     private List<Respuesta> respuestas;
 
     @BeforeAll
@@ -57,7 +57,7 @@ public class GroupChoiceTest {
 
 
 
-        opcionesPregunta= FabricaOpciones.crearListaGrupo(grupos,contenidoOpciones,posicionesCorrectas, new Correcta());
+        opcionesPregunta= FabricaOpciones.crearListaGrupo(grupos,contenidoOpciones,posicionesCorrectas);
 
 
         respuestas= new ArrayList<>();
@@ -99,7 +99,7 @@ public class GroupChoiceTest {
         );
 
 
-        List<Opcion> opcionesJugador=new ArrayList<>(FabricaOpciones.crearListaGrupo(grupos,contenidoOpciones,List.of("2","0"), new Incorrecta()));
+        List<Opcion> opcionesJugador=new ArrayList<>(FabricaOpciones.crearListaGrupo(grupos,contenidoOpciones,List.of("2","0") ));
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
@@ -121,7 +121,7 @@ public class GroupChoiceTest {
                 clasica,
                 "Animales","Say no More"
          );
-        List<Opcion> opcionesJugador=new ArrayList<>(FabricaOpciones.crearListaGrupo(grupos,contenidoOpciones,List.of("2","0","1","3"), new Incorrecta()));
+        List<Opcion> opcionesJugador=new ArrayList<>(FabricaOpciones.crearListaGrupo(grupos,contenidoOpciones,List.of("2","0","1","3") ));
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 
@@ -145,7 +145,7 @@ public class GroupChoiceTest {
                 "Animales","Say no More"
         );
 
-        List<Opcion> opcionesJugador=new ArrayList<>(FabricaOpciones.crearListaGrupo(grupos,contenidoOpciones,List.of("1","0","2"), new Incorrecta()));
+        List<Opcion> opcionesJugador=new ArrayList<>(FabricaOpciones.crearListaGrupo(grupos,contenidoOpciones,List.of("1","0","2") ));
         Respuesta respuesta= new Respuesta(opcionesJugador,jugador1);
         respuestas.add(respuesta);
 

@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.Fabricas;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import org.json.JSONObject;
@@ -32,7 +32,7 @@ public class FabricaPreguntas {
         return new OrderedChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
 
-    public static GroupChoice crearPreguntaGroupChoice(String enunciado, List<Grupo> opciones, Puntaje puntaje, String categoria, String explicacion) {
+    public static GroupChoice crearPreguntaGroupChoice(String enunciado, List<Grupal> opciones, Puntaje puntaje, String categoria, String explicacion) {
         return new GroupChoice(enunciado, opciones, puntaje, categoria,explicacion);
     }
 }

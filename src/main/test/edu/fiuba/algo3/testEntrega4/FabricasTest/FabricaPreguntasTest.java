@@ -2,7 +2,7 @@ package edu.fiuba.algo3.testEntrega4.FabricasTest;
 
 import edu.fiuba.algo3.modelo.Fabricas.FabricaOpciones;
 import edu.fiuba.algo3.modelo.Fabricas.FabricaPreguntas;
-import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
@@ -61,7 +61,7 @@ public class FabricaPreguntasTest {
         List<String> grupos = List.of("par", "impar");
         List<String> contenidoOpciones = List.of("1","2","3", "4");
         List<String> posicionesCorrectas=List.of("2","4","0","1","3");
-        List<Grupo> opciones = FabricaOpciones.crearListaGrupo(grupos, contenidoOpciones,posicionesCorrectas, new Correcta());
+        List<Grupal> opciones = FabricaOpciones.crearListaGrupo(grupos, contenidoOpciones,posicionesCorrectas);
 
         //Act
         GroupChoice preguntaObtenida = (GroupChoice)FabricaPreguntas.crearPreguntaGroupChoice("Clasifique segun sea par o impar", opciones, new Clasica(1), "test","Say no More");

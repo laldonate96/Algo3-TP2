@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Fabricas;
 
-import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 
@@ -12,10 +12,10 @@ import java.util.List;
 
 public class FabricaOpciones {
 
-    public static List<Grupo> crearListaGrupo(List<String> grupos, List<String> contenidoOpciones,List<String>  posicionesCorrectas,Estado estadoIndicado) {
-        Grupo opcion;
+    public static List<Grupal> crearListaGrupo(List<String> grupos, List<String> contenidoOpciones, List<String>  posicionesCorrectas) {
+        Grupal opcion;
 
-        List<Grupo> listaOpciones = new ArrayList<>();
+        List<Grupal> listaOpciones = new ArrayList<>();
         int posicionBuscada;
         int posicionAnterior=Integer.parseInt(posicionesCorrectas.get(0));
         int grupoActual = 0;
@@ -24,7 +24,7 @@ public class FabricaOpciones {
             if (posicionBuscada <posicionAnterior) {
                 grupoActual++;
             } else {
-                opcion = new Grupo(contenidoOpciones.get(posicionBuscada-1), grupos.get(grupoActual), estadoIndicado);
+                opcion = new Grupal(contenidoOpciones.get(posicionBuscada-1), grupos.get(grupoActual));
                 if(grupoActual>0){
                     listaOpciones.add(posicionBuscada-1,opcion);
                 } else{
@@ -49,7 +49,7 @@ public class FabricaOpciones {
             posicionEnLista=(ordenCorrecto.indexOf(String.valueOf(i+1)) + 1);
             textoOpcion=contenidoOpciones.get(i);
 
-            opcion = new Ordenada(textoOpcion,posicionEnLista  ,estadoIndicado);
+            opcion = new Ordenada(textoOpcion,posicionEnLista);
 
             listaOpciones.add(opcion);
         }

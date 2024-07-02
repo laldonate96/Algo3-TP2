@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaNula;
-import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
@@ -138,10 +138,10 @@ public class LectorTest {
         String explicacionEsperada = "El microondas emite a  3 cm entre 73 y 200µ, y a 30 cm entre 4 a 8 µT. ";
 
 
-        Ordenada televisorDeTuboCrt = new Ordenada("Televisor de tubo CRT", 2, new Correcta());
-        Ordenada microondas = new Ordenada("Microondas",                    1, new Correcta());
-        Ordenada imanesDelDelivery = new Ordenada("Imanes del delivery",    4, new Correcta());
-        Ordenada heladera = new Ordenada("Heladera",                        3, new Correcta());
+        Ordenada televisorDeTuboCrt = new Ordenada("Televisor de tubo CRT", 2);
+        Ordenada microondas = new Ordenada("Microondas",                    1);
+        Ordenada imanesDelDelivery = new Ordenada("Imanes del delivery",    4);
+        Ordenada heladera = new Ordenada("Heladera",                        3);
 
         List<Ordenada> opcionesEsperadas = List.of(televisorDeTuboCrt, microondas, imanesDelDelivery, heladera);
 
@@ -179,21 +179,21 @@ public class LectorTest {
         String deportesGrupales = "Deportes Grupales";
         String deportesIndividuales = "Deportes Individuales";
 
-        Grupo lioMessi = new Grupo("Lio Messi", deportesGrupales, new Correcta());
-        Grupo manuGinobili = new Grupo("Manu Ginóbili", deportesGrupales, new Correcta());
-        Grupo juanMartinDelPotro = new Grupo("Juan Martín del Potro", deportesIndividuales, new Correcta());
-        Grupo miguelNajdorf = new Grupo("Miguel Najdorf", deportesIndividuales, new Correcta());
-        Grupo hugoConte = new Grupo("Hugo Conte", deportesGrupales, new Correcta());
-        Grupo joseMeolans = new Grupo("José Meolans", deportesIndividuales, new Correcta());
+        Grupal lioMessi = new Grupal("Lio Messi", deportesGrupales);
+        Grupal manuGinobili = new Grupal("Manu Ginóbili", deportesGrupales);
+        Grupal juanMartinDelPotro = new Grupal("Juan Martín del Potro", deportesIndividuales);
+        Grupal miguelNajdorf = new Grupal("Miguel Najdorf", deportesIndividuales);
+        Grupal hugoConte = new Grupal("Hugo Conte", deportesGrupales);
+        Grupal joseMeolans = new Grupal("José Meolans", deportesIndividuales);
 
-        List<Grupo> opcionesEsperadas = List.of(lioMessi, manuGinobili, juanMartinDelPotro, miguelNajdorf, hugoConte, joseMeolans);
+        List<Grupal> opcionesEsperadas = List.of(lioMessi, manuGinobili, juanMartinDelPotro, miguelNajdorf, hugoConte, joseMeolans);
 
-        Grupo opcionObtenida;
-        Grupo opcionEsperada;
+        Grupal opcionObtenida;
+        Grupal opcionEsperada;
 
         //Act
         GroupChoice preguntaLeida = (GroupChoice) preguntasLeidas.get(2);
-        List<Grupo> opcionesObtenidas = preguntaLeida.obtenerOpciones();
+        List<Grupal> opcionesObtenidas = preguntaLeida.obtenerOpciones();
 
         //Assert
         assertEquals(categoriaEsperada, preguntaLeida.obtenerCategoria());

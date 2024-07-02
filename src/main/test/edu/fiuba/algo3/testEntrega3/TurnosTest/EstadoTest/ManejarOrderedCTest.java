@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.lector.Lector;
 import edu.fiuba.algo3.modelo.lector.mezclador.MezclaNula;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
 import edu.fiuba.algo3.modelo.pregunta.Pregunta;
 import edu.fiuba.algo3.modelo.turno.Estado.ManejarOrderedC;
@@ -28,12 +27,12 @@ public class ManejarOrderedCTest {
 
     @Test
     public void test01ManejadorRecibeOpcionesCorrectasYLasValidaCorrectamente(){
-        Ordenada cobol = new Ordenada("COBOL", 1, new Incorrecta());
-        Ordenada go = new Ordenada("Go", 6, new Incorrecta());
-        Ordenada smalltalk = new Ordenada("Smalltalk", 2, new Incorrecta());
-        Ordenada cpulsplus = new Ordenada("C++", 3, new Incorrecta());
-        Ordenada java = new Ordenada("Java", 5, new Incorrecta());
-        Ordenada python = new Ordenada("Python", 4, new Incorrecta());
+        Ordenada cobol = new Ordenada("COBOL", 1);
+        Ordenada go = new Ordenada("Go", 6);
+        Ordenada smalltalk = new Ordenada("Smalltalk", 2);
+        Ordenada cpulsplus = new Ordenada("C++", 3);
+        Ordenada java = new Ordenada("Java", 5);
+        Ordenada python = new Ordenada("Python", 4);
 
         List<Opcion> opciones = List.of(cobol, go, smalltalk, cpulsplus, java, python);
 
@@ -47,12 +46,12 @@ public class ManejarOrderedCTest {
 
     @Test
     public void test02ManejadorRecibeOpcionesIncorrectasYLasValidaCorrectamente(){
-        Ordenada cobol = new Ordenada("COBOL", 2, new Incorrecta());
-        Ordenada go = new Ordenada("Go", 4, new Incorrecta());
-        Ordenada smalltalk = new Ordenada("Smalltalk", 6, new Incorrecta());
-        Ordenada cpulsplus = new Ordenada("C++", 1, new Incorrecta());
-        Ordenada java = new Ordenada("Java", 3, new Incorrecta());
-        Ordenada python = new Ordenada("Python", 5, new Incorrecta());
+        Ordenada cobol = new Ordenada("COBOL", 2);
+        Ordenada go = new Ordenada("Go", 4);
+        Ordenada smalltalk = new Ordenada("Smalltalk", 6);
+        Ordenada cpulsplus = new Ordenada("C++", 1);
+        Ordenada java = new Ordenada("Java", 3);
+        Ordenada python = new Ordenada("Python", 5);
 
         List<Opcion> opciones = List.of(cobol, go, smalltalk, cpulsplus, java, python);
 
@@ -66,12 +65,12 @@ public class ManejarOrderedCTest {
 
     @Test
     public void test03ManejadorRecibeOpcionesCorrectasEIncorrectasYLasValidaCorrectamente(){
-        Ordenada cobol = new Ordenada("COBOL", 1, new Incorrecta());
-        Ordenada go = new Ordenada("Go", 6, new Incorrecta());
-        Ordenada smalltalk = new Ordenada("Smalltalk", 2, new Incorrecta());
-        Ordenada cpulsplus = new Ordenada("C++", 4, new Incorrecta());
-        Ordenada java = new Ordenada("Java", 3, new Incorrecta());
-        Ordenada python = new Ordenada("Python", 5, new Incorrecta());
+        Ordenada cobol = new Ordenada("COBOL", 1);
+        Ordenada go = new Ordenada("Go", 6);
+        Ordenada smalltalk = new Ordenada("Smalltalk", 2);
+        Ordenada cpulsplus = new Ordenada("C++", 4);
+        Ordenada java = new Ordenada("Java", 3);
+        Ordenada python = new Ordenada("Python", 5);
 
         List<Opcion> opciones = List.of(cobol, go, smalltalk, cpulsplus, java, python);
 

@@ -5,14 +5,13 @@ import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 public class OrderedChoiceVista implements OpcionesVista {
-    private List<Spinner<Integer>> selectores = new ArrayList<>();
+    private final List<Spinner<Integer>> selectores = new ArrayList<>();
     private List<Ordenada> opciones;
 
     @Override
@@ -21,7 +20,7 @@ public class OrderedChoiceVista implements OpcionesVista {
         for (Spinner<Integer> selector : selectores) {
             String texto = opciones.get(selectores.indexOf(selector)).obtenerTexto();
             int posicion = Integer.parseInt(selector.getValue().toString());
-            opcionesJugador.add(new Ordenada(texto, posicion, new Incorrecta()));
+            opcionesJugador.add(new Ordenada(texto, posicion));
         }
 
         return opcionesJugador;
@@ -32,7 +31,7 @@ public class OrderedChoiceVista implements OpcionesVista {
         opciones = opcionesRecibidas;
         int cantidadOpciones = opciones.size();
 
-        for (Opcion opcion : opciones) {
+        for (Ordenada opcion : opciones) {
             Label labelOpcion = new Label(opcion.obtenerTexto()); 
             labelOpcion.getStyleClass().add("labelOpcion");
             Spinner<Integer> spinnerOpcion = new Spinner<>(1, cantidadOpciones, 1);

@@ -1,19 +1,17 @@
 package edu.fiuba.algo3.TestEntrega2.OpcionTest;
 
 
-import edu.fiuba.algo3.modelo.opcion.estado.Correcta;
-import edu.fiuba.algo3.modelo.opcion.estado.Incorrecta;
-import edu.fiuba.algo3.modelo.opcion.Grupo;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GrupoTest {
-    private Grupo opcion1;
+public class GrupalTest {
+    private Grupal opcion1;
 
     @BeforeEach
     public void setUpClass() {
-        opcion1 = new Grupo("Opcion 1", "Grupo 1", new Correcta());
+        opcion1 = new Grupal("Opcion 1", "Grupo 1");
     }
 
         @Test
@@ -26,7 +24,7 @@ public class GrupoTest {
 
         @Test
         public void test02CambiarElEstadoAOtraIgualLaVuelveCorrecta() {
-            Grupo opcion2 = new Grupo("Opcion 1", "Grupo 1", new Incorrecta());
+            Grupal opcion2 = new Grupal("Opcion 1", "Grupo 1");
 
             opcion1.actualizarEstado(opcion2);
 
@@ -36,7 +34,7 @@ public class GrupoTest {
         }
         @Test
         public void test03CambiarElEstadoAOtraConDiferenteTextoLaVuelveIncorrecta() {
-            Grupo opcion3 = new Grupo("Opcion 2", "Grupo 1", new Incorrecta());
+            Grupal opcion3 = new Grupal("Opcion 2", "Grupo 1");
 
             opcion1.actualizarEstado(opcion3);
 
@@ -47,7 +45,7 @@ public class GrupoTest {
 
          @Test
          public void test04CambiarElEstadoAOtraConDiferenteGrupoLaVuelveIncorrecta() {
-             Grupo opcion4 = new Grupo("Opcion 1", "Grupo 2", new Incorrecta());
+             Grupal opcion4 = new Grupal("Opcion 1", "Grupo 2");
              opcion1.actualizarEstado(opcion4);
 
              //Assert
