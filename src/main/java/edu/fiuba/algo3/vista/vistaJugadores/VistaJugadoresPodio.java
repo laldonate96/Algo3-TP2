@@ -23,7 +23,7 @@ public class VistaJugadoresPodio {
 
         int top = 1;
         for (Jugador jugador : jugadores) {
-            if (top < 6) {
+            if (top < 4) {
                 Text jugadorTop1 = new Text(jugador.obtenerNombre() + " ");
                 jugadorTop1.getStyleClass().add("primeraVentanaTitulo");
                 VBox jugadorBox = new VBox(10);
