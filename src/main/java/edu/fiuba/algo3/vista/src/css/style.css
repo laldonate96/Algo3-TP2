@@ -169,6 +169,11 @@
     -fx-text-fill: #F1C40F;
 }
 
+.ganadorTitulo {
+    -fx-font-size: 100px;
+    -fx-fill: #2980b9;
+}
+
 .textoJugadorGanador{
     -fx-font-family: "Times New Roman";
     -fx-font-size: 25px;
