@@ -29,8 +29,4 @@ public class Ordenada extends Opcion {
     public int contarIncorrecta() {
         return puntosIncorrecta;
     }
-
-    public int obtenerPosicion() {
-        return posicion;
-    }
 }
