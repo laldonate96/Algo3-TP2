@@ -12,7 +12,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.net.URL;
 
 public class InicioDelJuego extends Application {
     private Stage ventanaPrincipal;
@@ -24,7 +23,7 @@ public class InicioDelJuego extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage)  {
         this.ventanaPrincipal = primaryStage;
 
         Text titulo = new Text("Bienvenido a Algohoot");

@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.Modificador;
 
 public interface Usable {
-    public boolean usableConPenalidad();
+    boolean usableConPenalidad();
 
-    public boolean usableSinPenalidad();
+    boolean usableSinPenalidad();
 }

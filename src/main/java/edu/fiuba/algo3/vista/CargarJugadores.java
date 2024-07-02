@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import java.io.File;
 import java.util.List;
 
 import edu.fiuba.algo3.controlador.ControladorDeJuego;
@@ -29,7 +30,7 @@ public class CargarJugadores extends Application {
     private Stage ventanaPrincipal;
     private TextField inputJugador;
     private ControladorDeJuego controladorDeJuego = new ControladorDeJuego();
-    private int MAX_CARACTERES = 26;
+    private final int MAX_CARACTERES = 12;
     private ControladorVentanaNueva controladorVentanaNueva = new ControladorVentanaNueva();
     private List<Jugador> jugadores;
     private SelectorInicioJuego selectorRondas = new SelectorInicioJuego();
@@ -40,7 +41,7 @@ public class CargarJugadores extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage)  {
         this.ventanaPrincipal = stage;
         ventanaPrincipal.setTitle("Jugadores y Limites");
 
@@ -93,7 +94,7 @@ public class CargarJugadores extends Application {
 
         Scene scene = new Scene(root, 1280, 720);
 
-        String css = getClass().getResource("src/css/style.css").toExternalForm();
+        String css = new File("src/main/java/edu/fiuba/algo3/vista/src/css/style.css").toURI().toString();
         scene.getStylesheets().add(css);
 
         stage.setScene(scene);

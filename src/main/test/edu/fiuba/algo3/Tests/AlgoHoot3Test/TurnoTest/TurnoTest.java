@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.Tests.AlgoHoot3Test.TurnosTest;
+package edu.fiuba.algo3.Tests.AlgoHoot3Test.TurnoTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 import edu.fiuba.algo3.modelo.turno.Turno;
 
-public class TurnosTest {
+public class TurnoTest {
 
 
     private static List<Pregunta> preguntasTest;
@@ -35,7 +35,11 @@ public class TurnosTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private Turno turno;
-
+    private Pregunta multipleChoicePenalidad;
+    private Pregunta orderedChoice;
+    private Pregunta groupChoice;
+    private Pregunta multipleChoiceSimple;
+    private Pregunta multipleChoiceParcial;
 
 
     @BeforeAll
@@ -45,15 +49,19 @@ public class TurnosTest {
 
     @BeforeEach
     public void setUp() {
+        orderedChoice=preguntasTest.get(0);
+        verdaderoOFalso = preguntasTest.get(1);
+        groupChoice=preguntasTest.get(2);
+        multipleChoiceParcial=preguntasTest.get(3);
+        multipleChoiceSimple = preguntasTest.get(4);
+        verdaderoOFalsoPenalidad = preguntasTest.get(5);
+        multipleChoicePenalidad=preguntasTest.get(6);
 
-
-        jugador1 = new Jugador("un jugador", FabricaModificadores.crearListaModificadores());
-        jugador2 = new Jugador("otro jugador", FabricaModificadores.crearListaModificadores());
+        jugador1 = new Jugador("Contigo", FabricaModificadores.crearListaModificadores());
+        jugador2 = new Jugador("Pipo", FabricaModificadores.crearListaModificadores());
 
         turno = new Turno();
 
-        verdaderoOFalso = preguntasTest.get(1);
-        verdaderoOFalsoPenalidad = preguntasTest.get(5);
     }
 
     @Test
@@ -68,13 +76,13 @@ public class TurnosTest {
         List<Opcion> opcionesJugador2 = new ArrayList<>(FabricaOpciones.crearListaSimple(contenidoOpciones2, posicion2, new Incorrecta()));
 
 
-        turno.reiniciarTurno(verdaderoOFalso);
-
         Modificador nuloJugador1 = jugador1.obtenerModificadores().get(0);
         Modificador nuloJugador2 = jugador2.obtenerModificadores().get(0);
 
+        turno.reiniciarTurno(verdaderoOFalso);
         turno.agregarRespuesta(opcionesJugador1, jugador1, nuloJugador1);
         turno.agregarRespuesta(opcionesJugador2, jugador2, nuloJugador2);
+
 
         //act
 
@@ -119,7 +127,6 @@ public class TurnosTest {
     @Test
     public void test03UsandoUnaMultipleChoicePenalidadYUnMultiplicadorYLosJugadoresObtienenLosPuntosEsperados() {
         //arrange
-//        MultipleChoice multipleChoicePenalidad = (MultipleChoice) preguntasTest.get(6);
 
 
         List<String> contenidoOpciones1 = List.of("Verdadero");

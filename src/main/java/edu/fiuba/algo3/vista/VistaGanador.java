@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import javafx.scene.text.Text;
 
 import java.io.File;
-import java.net.URL;
 
 public class VistaGanador extends Application {
     private Stage ventanaPrincipal;
@@ -33,7 +32,7 @@ public class VistaGanador extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         this.ventanaPrincipal = primaryStage;
         controladorMusica.cambiarMusica("recursos/musica/Ganador.mp3");
 
