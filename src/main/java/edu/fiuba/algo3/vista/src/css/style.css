@@ -168,3 +168,41 @@
     -fx-font-weight: bold;
     -fx-text-fill: #F1C40F;
 }
+
+.textoJugadorGanador{
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 25px;
+    -fx-fill: #ECF0F1;
+
+}
+.jugadorGanador{
+    -fx-padding: 25px;
+    -fx-text-fill: #2980b9;
+    -fx-background-radius: 46%;
+    -fx-border-radius: 46%;
+    -fx-border-color: #B84C3C;
+    -fx-border-width: 3px;
+    -fx-background-color:  #2980b9;
+}
+
+.puntuacionGanador{
+    -fx-padding: 25px;
+    -fx-text-fill: #2980b9;
+    -fx-background-radius: 45,999%;
+    -fx-border-radius: 45,999%;
+    -fx-border-color: #B84C3C;
+    -fx-border-width: 3px;
+    -fx-background-color:  #2980b9;
+}
+
+.jugadoresPodio{
+    -fx-padding: 25px;
+    -fx-text-fill: #2980b9;
+    -fx-background-radius: 45,99%;
+    -fx-border-radius: 45,99%;
+    -fx-border-color: #2980b9;
+    -fx-border-width: 3px;
+    -fx-background-color:  #2980b9;
+}
+
+
