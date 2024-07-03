@@ -27,3 +27,22 @@ Aquellos que deseen colaborar con el proyecto pueden consultar la [guía de desa
 ## Licencia
 
 Este repositorio se encuentra bajo la Licencia MIT.
+
+## Comando de ejecución de la app
+
+```bash
+mvn clean test
+```
+
+## Comando de ejecución de la app
+
+```bash
+mvn clean javafx:run
+```
+
+## Requisitos
+
+```
+java 14
+maven 3.6.0
+```
