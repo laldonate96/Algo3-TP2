@@ -145,7 +145,7 @@ abstract class Modificador implements Usable{
     # duenio:Jugador
     # siguiente:Modificador
 
-    + {abstract} modificarPuntajes(respuestas:List<Respuesta>)
+    + modificarPuntajes(respuestas:List<Respuesta>)
     + {abstract} establecerDuenio(jugadorActivo:Jugador)
     + {abstract} agregarModificador(modificador:Modificador)
     + actualizar(List<Modificador> modificadores):Modificador 
@@ -158,8 +158,7 @@ class Anulador extends Modificador{
     - factorDeMultiplicacion:int
     - llamados:int
 
-    + modificarPuntajes(respuestas:List<Respuesta>)
-    - aplicarModificador(respuestas:List<Respuesta>)
+    ~ aplicarModificador(respuestas:List<Respuesta>)
     + establecerDuenio(jugadorActivo:Jugador)
     + agregarModificador(modificador:Modificador)
     - boolean esIgual(modificador:Modificador)
@@ -169,8 +168,7 @@ class Exclusividad extends Modificador{
     - llamados:int
     - factorDeMultiplicacion:int
 
-    + modificarPuntajes(respuestas:List<Respuesta>)
-    - aplicarModificador(respuestas:List<Respuesta>)
+    ~ aplicarModificador(respuestas:List<Respuesta>)
     + establecerDuenio(jugadorActivo:Jugador)
     + agregarModificador(modificador:Modificador)
     - esIgual(modificador:Modificador):boolean 
@@ -181,8 +179,7 @@ class Multiplicador extends Modificador{
     - factorDeMultiplicacion:int
 
     + Multiplicador(factorDeMultiplicacion:int)
-    + modificarPuntajes(respuestas:List<Respuesta>)
-    - aplicarModificador(respuestas:List<Respuesta>)
+    ~ aplicarModificador(respuestas:List<Respuesta>)
     + establecerDuenio(jugadorActivo:Jugador)
     + boolean tieneFactor(factorDeMultiplicacion:int)
     + agregarModificador(modificador:Modificador)
@@ -192,6 +189,7 @@ class Multiplicador extends Modificador{
 
 class Nulo extends Modificador{
     + modificarPuntajes(respuestas:List<Respuesta>)
+    ~ aplicarModificador(respuestas:List<Respuesta>)
     + establecerDuenio(jugadorActivo:Jugador)
     + agregarModificador(modificador:Modificador)
     + actualizar(modificadores:List<Modificador>):Modificador
@@ -252,7 +250,6 @@ class Ordenada extends Opcion{
     + actualizarEstado(opcion:Ordenada)
     + contarCorrecta():int
     + contarIncorrecta():int
-    + obtenerPosicion():String
 }
 class Simple extends Opcion{
     - estado:Estado
@@ -288,6 +285,8 @@ class GroupChoice extends Pregunta{
 
     + GroupChoice(enunciado:String, List<Grupal> opciones, puntaje:Puntaje, categoria:String, explicacion:String)
     + obtenerOpciones():List<Grupal>
+    + validarOpciones(opcionesJugador:List<Opcion>)
+    ~ validarTamanioOpciones(opcionesJugador:List<Opcion>)
 }
 
 class MultipleChoice extends Pregunta{
@@ -295,6 +294,8 @@ class MultipleChoice extends Pregunta{
 
     + MultipleChoice(enunciado:String, opciones:List<Simple>, puntaje:Puntaje, categoria:String, explicacion:String)
     + obtenerOpciones():List<Simple>
+    + validarOpciones(opcionesJugador:List<Opcion>)
+    ~ validarTamanioOpciones(opcionesJugador:List<Opcion>)
 }
 
 class OrderedChoice extends Pregunta{
@@ -302,6 +303,8 @@ class OrderedChoice extends Pregunta{
 
     + OrderedChoice(enunciado:String, opciones:List<Ordenada>, puntaje:Puntaje, categoria:String, explicacion:String)
     + obtenerOpciones():List<Ordenada>
+    + validarOpciones(opcionesJugador:List<Opcion>)
+    ~ validarTamanioOpciones(opcionesJugador:List<Opcion>)
 }
 
 class VerdaderoFalso extends Pregunta{
@@ -309,6 +312,8 @@ class VerdaderoFalso extends Pregunta{
 
     + VerdaderoFalso(enunciado:String, opciones:List<Simple>, puntaje:Puntaje, categoria:String, explicacion:String)
     + obtenerOpciones():List<Simple>
+    + validarOpciones(opcionesJugador:List<Opcion>)
+    ~ validarTamanioOpciones(opcionesJugador:List<Opcion>)
 }
 
 'Pregunta/>
@@ -366,51 +371,10 @@ class Respuesta{
 
 '<Turno
 
-'<Estado/Manejador
-
-interface Manejador{
-    + validarOpciones(opcionesJugador:List<Opcion>)
-}
-
-class ManejarGroupChoice implements Manejador{
-    pregunta:GroupChoice
-
-    + ManejarGroupChoice(pregunta:GroupChoice)
-    - validarOpcion(opcion:Opcion)
-    + validarOpciones(opcionesJugador:List<Opcion>)
-}
-
-class ManejarMultipleC implements Manejador{
-    - pregunta:MultipleChoice
-
-    + ManejarMultipleC(pregunta:MultipleChoice)
-    - validarOpcion(opcion:Opcion)
-    + validarOpciones(opcionesJugador:List<Opcion>)
-}
-
-class ManejarOrderedC implements Manejador{
-    - pregunta:OrderedChoice
-
-    + ManejarOrderedC(pregunta:OrderedChoice)
-    - validarOpcion(opcion:Opcion)
-    + validarOpciones(opcionesJugador:List<Opcion>)
-}
-
-class ManejarVoF implements Manejador{
-    - pregunta:VerdaderoFalso;
-
-    + ManejarVoF(pregunta:VerdaderoFalso)
-    - validarOpcion(opcion:Opcion)
-    + validarOpciones(opcionesJugador:List<Opcion>)
-}
-
-'Estado/Manejador/>
-
 class Turno{
     - respuestas:List<Respuesta>
     - preguntaDelTurno:Pregunta
     - modificador:Modificador
-    - manejador:Manejador
 
     + agregarRespuesta(opcionesJugador:List<Opcion>, jugador:Jugador, modificador:Modificador)
     + asignarPuntajes()
@@ -445,3 +409,7 @@ class AlgoHoot3{
 }
 
 'Modelo/>
+
+'<RELACIONES
+
+'RELACIONES/>

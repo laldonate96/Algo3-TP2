@@ -86,6 +86,6 @@ Respuesta -left-> "1" Jugador
 Pregunta -left-> "1" Puntaje
 
 Turno o-down- "2..*" Respuesta
-Turno o-up- "*" Pregunta
-Turno -left-> "1" Modificador
+Turno o-up- "1" Pregunta
+Turno o-left- "1" Modificador
 

@@ -4,7 +4,6 @@ skinparam classAttributeIconSize 0
 
 abstract class Modificador implements Usable{
     # duenio:Jugador
-    # siguiente:Modificador
 
     + modificarPuntajes(respuestas:List<Respuesta>)
     + {abstract} establecerDuenio(jugadorActivo:Jugador)

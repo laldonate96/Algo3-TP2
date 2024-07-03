@@ -16,7 +16,6 @@ class AlgoHoot3{
     + terminoLaRonda():boolean
     + obtenerRonda():int
     + obtenerPreguntaDeRondaActual():Pregunta
-    + asignarPuntajes()
     + obtenerJugadorActual():Jugador
     + terminoJuego():boolean
     + jugadoresOrdenadosPorCriterio():List<Jugador>
