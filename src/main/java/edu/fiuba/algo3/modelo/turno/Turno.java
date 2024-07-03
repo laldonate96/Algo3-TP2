@@ -23,14 +23,12 @@ public class Turno {
 
     public void agregarRespuesta(List<Opcion> opcionesJugador, Jugador jugador, Modificador modificador) {
         preguntaDelTurno.validarOpciones(opcionesJugador);
-
         Respuesta respuesta=new Respuesta(opcionesJugador, jugador);
         respuestas.add(respuesta);
 
         if(!preguntaDelTurno.modificadorEsValido(modificador)){
             throw new ModificadorInvalidoException("El modificador obtenido "+ modificador.getClass() + " no es valido para la pregunta asignada");
         }
-
         this.modificador.agregarModificador(modificador);
         jugador.usar(modificador);
     }

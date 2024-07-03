@@ -19,6 +19,9 @@ public class Nulo extends Modificador {
     }
 
     @Override
+    protected void aplicarModificador(List<Respuesta> respuestas) {}
+
+    @Override
     public void establecerDuenio(Jugador jugadorActivo) {
     }
 
