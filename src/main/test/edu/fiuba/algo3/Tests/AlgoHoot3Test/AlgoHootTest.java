@@ -143,19 +143,19 @@ public class AlgoHootTest {
         algoHoot3.iniciarAlgoHoot(jugadores, new Turno(),
                             new MejorPuntaje(3,14),
                             List.of(verdaderoFalsoConPenalidad));
-         algoHoot3.pasarRonda();
-         Opcion opcionesJugador1=new Simple("Falso",new Incorrecta());
-         Opcion opcionesJugador2=new Simple("Falso",new Incorrecta());
-         Opcion opcionesJugador3=new Simple("Verdadero",new Incorrecta());
+        algoHoot3.pasarRonda();
+        Opcion opcionesJugador1=new Simple("Falso",new Incorrecta());
+        Opcion opcionesJugador2=new Simple("Falso",new Incorrecta());
+        Opcion opcionesJugador3=new Simple("Verdadero",new Incorrecta());
 
 
-         Modificador modificadorJugador1=jugadoresEsperados.get(0).obtenerModificadores().get(2);
-         Modificador modificadorJugador2=jugadoresEsperados.get(1).obtenerModificadores().get(1);
-         Modificador modificadorJugador3=jugadoresEsperados.get(2).obtenerModificadores().get(1);
+        Modificador modificadorJugador1=jugadoresEsperados.get(0).obtenerModificadores().get(2);
+        Modificador modificadorJugador2=jugadoresEsperados.get(1).obtenerModificadores().get(1);
+        Modificador modificadorJugador3=jugadoresEsperados.get(2).obtenerModificadores().get(1);
 
-         algoHoot3.jugarTurno(List.of(opcionesJugador1),modificadorJugador1);
-         algoHoot3.jugarTurno(List.of(opcionesJugador2),modificadorJugador2);
-         algoHoot3.jugarTurno(List.of(opcionesJugador3),modificadorJugador3);
+        algoHoot3.jugarTurno(List.of(opcionesJugador1),modificadorJugador1);
+        algoHoot3.jugarTurno(List.of(opcionesJugador2),modificadorJugador2);
+        algoHoot3.jugarTurno(List.of(opcionesJugador3),modificadorJugador3);
 
          //Act
 

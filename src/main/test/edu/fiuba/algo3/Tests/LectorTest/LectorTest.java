@@ -129,7 +129,7 @@ public class LectorTest {
 
 
     @Test
-    public void test13UnaOrderedChoiceLeidaEsIgualALaEsperada() {
+    public void test043UnaOrderedChoiceLeidaEsIgualALaEsperada() {
 
         //Arrange
 
@@ -168,7 +168,7 @@ public class LectorTest {
         }
     }
     @Test
-    public void test14UnaGroupChoiceLeidaEsIgualALaEsperada() {
+    public void test05UnaGroupChoiceLeidaEsIgualALaEsperada() {
 
         //Arrange
 
