@@ -1,10 +1,12 @@
 @startuml MODIFICADORES
 
+skinparam classAttributeIconSize 0
+
 abstract class Modificador implements Usable{
     # duenio:Jugador
     # siguiente:Modificador
 
-    + {abstract} modificarPuntajes(respuestas:List<Respuesta>)
+    + modificarPuntajes(respuestas:List<Respuesta>)
     + {abstract} establecerDuenio(jugadorActivo:Jugador)
     + {abstract} agregarModificador(modificador:Modificador)
     + actualizar(List<Modificador> modificadores):Modificador 
@@ -17,8 +19,7 @@ class Anulador extends Modificador{
     - factorDeMultiplicacion:int
     - llamados:int
 
-    + modificarPuntajes(respuestas:List<Respuesta>)
-    - aplicarModificador(respuestas:List<Respuesta>)
+    ~ aplicarModificador(respuestas:List<Respuesta>)
     + establecerDuenio(jugadorActivo:Jugador)
     + agregarModificador(modificador:Modificador)
     - boolean esIgual(modificador:Modificador)
@@ -28,8 +29,7 @@ class Exclusividad extends Modificador{
     - llamados:int
     - factorDeMultiplicacion:int
 
-    + modificarPuntajes(respuestas:List<Respuesta>)
-    - aplicarModificador(respuestas:List<Respuesta>)
+    ~ aplicarModificador(respuestas:List<Respuesta>)
     + establecerDuenio(jugadorActivo:Jugador)
     + agregarModificador(modificador:Modificador)
     - esIgual(modificador:Modificador):boolean 
@@ -40,8 +40,7 @@ class Multiplicador extends Modificador{
     - factorDeMultiplicacion:int
 
     + Multiplicador(factorDeMultiplicacion:int)
-    + modificarPuntajes(respuestas:List<Respuesta>)
-    - aplicarModificador(respuestas:List<Respuesta>)
+    ~ aplicarModificador(respuestas:List<Respuesta>)
     + establecerDuenio(jugadorActivo:Jugador)
     + boolean tieneFactor(factorDeMultiplicacion:int)
     + agregarModificador(modificador:Modificador)
@@ -49,8 +48,9 @@ class Multiplicador extends Modificador{
     + usableSinPenalidad():boolean
 }
 
-class Nulo extends Modificador{
+class Nulo {
     + modificarPuntajes(respuestas:List<Respuesta>)
+    ~ aplicarModificador(respuestas:List<Respuesta>)
     + establecerDuenio(jugadorActivo:Jugador)
     + agregarModificador(modificador:Modificador)
     + actualizar(modificadores:List<Modificador>):Modificador
@@ -61,3 +61,7 @@ interface Usable{
     + usableConPenalidad():boolean
     + usableSinPenalidad():boolean
 }
+
+Modificador o-left- "1" Modificador
+
+Modificador <|-up- Nulo
