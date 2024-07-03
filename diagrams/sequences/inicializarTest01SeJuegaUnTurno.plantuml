@@ -1,0 +1,32 @@
+title tests01DosJugadoresConVoFConPenalidadUsanExcluyenteYAnuladorYReturna2Y0PuntosConJuegoYaIniciado
+
+Actor TestAlgohoot
+
+participant "algohoot3:Algohoot3" as algoHoot3
+participant "turno:Turno" as turno
+participant "preguntaDelTurno:VerdaderoOFalsoConPenalidad" as preguntaDelTurno
+participant "opcion:Simple" as opcion
+participant "jugadores:List<Jugador>" as jugadores
+participant "jugador:Jugador" as Jugador
+participant "modificadores:List<Modificadores>" as modificadores
+participant "criterio:CriterioDeVictoria" as criterioDeVictoria
+
+
+
+
+
+Activate TestAlgohoot
+
+TestAlgohoot -> algoHoot3:obtenerInstancia()
+activate algoHoot3
+loop para la lista de 2 jugadores
+TestAlgohoot -> algoHoot3:jugarTurno(opcionesElegidas:List<Opcion> , modificador:Modificador)
+algoHoot3 -> turno:agregarRespuesta(opcionesElegidas, jugadorActual:Jugador, modificador:Modificador)
+activate turno
+turno -> preguntaDelTurno:ValidarOpciones(opcionesElegidad, jugador)
+activate preguntaDelTurno
+preguntaDelTurno -> preguntaDelTurno:validarOpciones(opcionesElegidas)
+preguntaDelTurno -> opcion:validarOpcion(opcion)
+activate opcion 
+
+
