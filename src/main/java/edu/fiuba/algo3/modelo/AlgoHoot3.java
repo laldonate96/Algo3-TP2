@@ -70,7 +70,7 @@ public class AlgoHoot3 {
     public void jugarTurno(List<Opcion> opcionesElegidas, Modificador modificador) {
         turno.agregarRespuesta(opcionesElegidas, jugadorActual, modificador);
         if (terminoLaRonda()){
-            asignarPuntajes();
+            turno.asignarPuntajes();
             jugadores.add(jugadores.remove(0));
             return;
         }
@@ -89,9 +89,7 @@ public class AlgoHoot3 {
         return preguntas.get(rondas-1);
     }
 
-    public void asignarPuntajes(){
-        turno.asignarPuntajes();
-    }
+
 
     public Jugador obtenerJugadorActual() {
         return jugadorActual;

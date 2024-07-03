@@ -14,13 +14,8 @@ public class Multiplicador extends Modificador {
     }
 
 
-    @Override
-    public void modificarPuntajes(List<Respuesta> respuestas) {
-        this.aplicarModificador(respuestas);
-        siguiente.modificarPuntajes(respuestas);
-    }
 
-    private void aplicarModificador(List<Respuesta> respuestas) {
+    protected void aplicarModificador(List<Respuesta> respuestas) {
         for(Respuesta respuesta: respuestas){
             if (respuesta.perteneceA(duenio)){
                 respuesta.multiplicarPuntaje(factorDeMultiplicacion);

@@ -29,7 +29,7 @@ public class FinRondaVista extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage)  {
         VBox toolbarBox = Toolbar.obtenerInstancia().mostrarToolbar(primaryStage);
 
         List<Jugador> jugadores = controladorDeJugador.obtenerJugadores();

@@ -17,14 +17,9 @@ public class Anulador extends Modificador {
         siguiente=new Nulo();
     }
 
-    @Override
-    public void modificarPuntajes(List<Respuesta> respuestas) {
-        this.aplicarModificador(respuestas);
-        siguiente.modificarPuntajes(respuestas);
-    }
 
-    private void aplicarModificador(List<Respuesta> respuestas) {
 
+    protected void aplicarModificador(List<Respuesta> respuestas) {
         if(llamados>1){
             factorDeMultiplicacion =0;
         }
