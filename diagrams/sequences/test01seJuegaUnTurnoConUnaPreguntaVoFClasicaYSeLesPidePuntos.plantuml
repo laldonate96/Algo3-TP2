@@ -1,0 +1,57 @@
+title test01seJuegaUnTurnoConUnaPreguntaVoFClasicaYSeLesPidePuntos\n
+
+
+Actor Test01
+
+participant ":Turno" as turno
+participant ":Pregunta:VerdaderoOFalso" as pregunta
+participant ":Puntaje:Clasica" as puntaje
+participant ":Opcion:Simple" as opcion
+participant ":Respuesta" as respuesta
+participant "Jugador" as jugador
+participant "Modificador" as modificador
+
+'SetUp en su propio Diagrama'
+activate Test01
+'Borre un loop en el que se asignan las opciones por que quedaba feo comentar eso en el pdf'
+    "Test01" -> "turno": reiniciarTurno[verdaderoOFalso]
+    
+    activate turno
+        "turno" -> "turno" :[pregunta=verdaderoOFalso]
+
+       loop [_ por cada jugador (en este caso 2)]
+            "Test01" -> "turno": agregarRespuesta[opcionesjugador,jugador,nulojugador]
+            'Desarrollado en su propio diagrama'
+        end
+
+        "Test01" -> "turno":asignarPuntajes()
+        "turno"->"pregunta":asignarPuntajes[respuestas]
+            activate pregunta
+                "pregunta"->"puntaje":asignarPuntajes[respuestas]
+                activate puntaje
+                    loop [_ por cada respuesta(en este caso 2)]
+                        "puntaje"->"puntaje":asignarPuntaje[respuesta]
+                        loop [_ por cada opcion(en este caso 2)]
+                            "puntaje"->"opcion": contarCorrectas[]
+                        end
+                        "puntaje"->"respuesta":asignarPuntaje[puntaje]
+                    end
+            deactivate puntaje
+        deactivate pregunta
+        "turno"->"modificador":modificarPuntajes[respuestas]
+        activate modificador
+        loop [_ por cada modificador hasta llegar al que no tiene siguiente]
+                    "modificador"->"modificador":aplicarModificador[respuestas]
+                     "modificador"->"modificador":modificarPuntajes[respuestas]
+                end
+        deactivate modificador
+
+
+    loop [_ por cada respuesta(en este caso 2)]
+        "turno"->"respuesta":sumarPuntaje[]
+        activate respuesta
+            "respuesta"->"jugador":sumarPuntaje[puntaje]
+        deactivate respuesta
+
+    end        
+       

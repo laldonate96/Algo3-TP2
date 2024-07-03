@@ -1,0 +1,24 @@
+title TurnoTestSetUP\n
+
+Actor Test
+
+participant ":Lector" as lector
+participant "preguntas:List<Pregunta>" as preguntas
+participant "pregunta:Pregunta" as pregunta
+participant "Jugador" as Jugador
+participant "turno:Turno" as Turno
+
+activate Test
+    "Test" -> "lector": obtenerPreguntasJson [new MezclaNula(),"recursos/test.json"]
+    "lector" -> "Test":[preguntas]
+        loop [_ por cada Pregunta (en este caso 7)]
+                "Test" -> "preguntas": get[]
+                "Test" -> "pregunta": [pregunta]    
+        end    
+    
+    loop [_ por cada Jugador (en este caso 2)]
+                "Test" -> "Jugador": [nombreJugador,FabricaModificadores.crearListaModificadores()]
+                "Jugador" -> "Jugador": [jugador]    
+    end     
+    "Test" -> "Turno" : new[]    
+ deactivate Test

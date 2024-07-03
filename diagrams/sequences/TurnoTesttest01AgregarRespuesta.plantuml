@@ -1,0 +1,58 @@
+title TurnoTes01AgregarRespuesta\n
+
+Actor Test
+
+participant ":Turno" as turno
+participant ":Pregunta:VerdaderoOFalso" as pregunta
+participant ":Opcion:Simple" as opcion
+participant ":Opcion:Simple" as opcionJugador
+participant "Modificador" as modificador
+participant "Estado:Incorrecta" as estado
+participant "Puntaje:Clasica" as puntaje
+participant "Jugador" as jugador
+participant "modificadores:List<Modificador>" as modificadores
+participant "Modificador:Nulo" as modificadorJugador
+participant "respuestas:List<Respuesta>" as respuestas
+participant "respuesta:Respuesta" as respuesta
+
+
+activate turno
+            "turno" -> "pregunta": validarOpciones[opcionesJugador]
+            activate pregunta
+                 loop [_ por cada opcion (en este caso 2)]
+                    "pregunta"-> "opcion":actualizarEstado(opcionJugador)
+                    activate opcion
+                        "opcion" -> "opcionJugador":setEstado[opcion.estado]
+                    deactivate opcion
+                end
+            deactivate pregunta
+        "turno"-> "respuesta": [opcionesJugador,jugador]
+        "turno"-> "respuestas":add[respuesta]
+        "turno" -> "pregunta":modificadorEsValido[modificador]
+        activate pregunta  
+            "pregunta"-> "puntaje":modificadorEsValido[modificador]
+            activate puntaje
+                "puntaje" -> "modificador": usableSinPenalidad[]
+                "modificador"-> "puntaje": [true];
+            "puntaje" -> "pregunta": [true]
+            deactivate puntaje
+        "pregunta"-> "turno": [true]
+        deactivate pregunta
+    
+        "turno"->"modificador":agregarModificador[nuloJugador]
+        activate modificador
+        loop [_ por cada modificador hasta llegar al que no tiene siguiente]
+                     "modificador"->"modificador":agregarModificador[nuloJugador]
+                end
+        deactivate modificador
+
+        "turno" -> "jugador":usar(nuloJugador)
+
+        activate jugador
+        "jugador"-> "modificadores": contains[nuloJugador]        
+            activate modificadorJugador
+                "jugador"-> "modificadorJugador":actualizar(modificadores)
+                "modificadorJugador"->"modificadorJugador":[siguiente=null]
+            deactivate modificadorJugador
+        deactivate jugador
+deactivate turno
