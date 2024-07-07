@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
+
+import edu.fiuba.algo3.modelo.Modificador.Usable;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
@@ -7,7 +9,7 @@ public class Clasica extends Puntaje {
     protected int cantidadCorrectasEsperada;
 
     public Clasica(int cantidadCorrectasPregunta){
-        cantidadCorrectasEsperada= cantidadCorrectasPregunta;
+        cantidadCorrectasEsperada = cantidadCorrectasPregunta;
     }
 
     @Override
@@ -23,5 +25,10 @@ public class Clasica extends Puntaje {
         } else {
             respuesta.asignarPuntaje(0);
         }
+    }
+
+    @Override
+    public boolean modificadorEsValido(Usable usable) {
+        return usable.usableSinPenalidad();
     }
 }

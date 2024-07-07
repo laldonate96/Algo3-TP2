@@ -2,19 +2,26 @@ package edu.fiuba.algo3.modelo.jugador;
 
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
 import edu.fiuba.algo3.modelo.excepciones.ModificadorInexistenteException;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.ModificadorPuntaje;
-import edu.fiuba.algo3.modelo.modificadores.ModificadorPuntaje.NuloPuntaje;
 
 public class Jugador {
     private int puntaje;
     private final String nombre;
-    private final List<ModificadorPuntaje> modificadores;
+    private final List<Modificador> modificadores;
+    private Modificador ultimoModificadorUsado;
 
-    public Jugador(String nombre, List<ModificadorPuntaje> modificadores) {
+    public Jugador(String nombre, List<Modificador> modificadores) {
         this.nombre = nombre;
         this.puntaje = 0;
         this.modificadores = modificadores;
+        establecerDuenioModificadores();
+    }
+
+    private void establecerDuenioModificadores() {
+        for(Modificador modificador:modificadores){
+            modificador.establecerDuenio(this);
+        }
     }
 
     public void sumarPuntaje(int puntaje) {
@@ -25,10 +32,19 @@ public class Jugador {
         return puntaje;
     }
 
-    public void usar(ModificadorPuntaje modificadorReferencia){
-        ModificadorPuntaje modificadorBuscado = buscarModificador(modificadorReferencia);
-        modificadorBuscado.usar();
-        modificadorBuscado.actualizar(modificadores);
+    public boolean tieneMejorPuntajeQue(Jugador jugador){
+       return puntaje > jugador.puntaje;
+    }
+
+    public void usar(Modificador modificador) {
+        if (!modificadores.contains(modificador)) {
+            throw new ModificadorInexistenteException("El jugador " + nombre + " no posee el modificador usado.");
+        }
+        this.ultimoModificadorUsado = modificador.actualizar(modificadores);
+    }
+
+    public List<Modificador> obtenerModificadores(){
+        return modificadores;
     }
 
     public boolean tieneNombre(String buscado) {
@@ -39,24 +55,13 @@ public class Jugador {
         return this.tieneNombre(jugador.nombre);
     }
 
-    private ModificadorPuntaje buscarModificador(ModificadorPuntaje modificadorReferencia) {
-        int contador=0;
-        ModificadorPuntaje modificadorPuntaje= new NuloPuntaje();
-
-
-        try {
-            while (!modificadorPuntaje.equals(modificadorReferencia)) {
-                modificadorPuntaje = modificadores.get(contador);
-                contador++;
-            }
-        } catch (IndexOutOfBoundsException e) {
-            throw new ModificadorInexistenteException("El jugador "+ nombre+ " no posee el modificador usado.");
-        }
-        return modificadorPuntaje;
-    }
 
     public String obtenerNombre(){
         return this.nombre;
+    }
+
+    public Modificador obtenerUltimoModificadorUsado(){
+        return ultimoModificadorUsado;
     }
 }
 

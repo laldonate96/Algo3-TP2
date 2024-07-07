@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.puntaje;
 
+import edu.fiuba.algo3.modelo.Modificador.Usable;
 import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public abstract class Puntaje {
         }
     }
 
+    public abstract boolean modificadorEsValido(Usable usable);
 }
+

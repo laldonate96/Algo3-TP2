@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.Fabricas;
 
-import edu.fiuba.algo3.modelo.opcion.Grupo;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Ordenada;
 import edu.fiuba.algo3.modelo.opcion.Simple;
 
@@ -13,45 +12,54 @@ import java.util.List;
 
 public class FabricaOpciones {
 
-    public static List<Opcion> crearListaGrupo(List<String> grupos, List<List<String>> contenidoOpcionesPorGrupo, Estado estadoIndicado) {
-        Grupo opcion;
-        List<String> contenidoOpciones;
-        List<Opcion> listaOpciones = new ArrayList<>();
+    public static List<Grupal> crearListaGrupo(List<String> grupos, List<String> contenidoOpciones, List<String>  posicionesCorrectas) {
+        Grupal opcion;
 
-
-        for(String nombreGrupo:grupos){
-            contenidoOpciones=contenidoOpcionesPorGrupo.remove(0);
-            for(String contenidoOpcion:contenidoOpciones){
-                opcion = new Grupo(contenidoOpcion, nombreGrupo,estadoIndicado);
-                listaOpciones.add(opcion);
+        List<Grupal> listaOpciones = new ArrayList<>();
+        int posicionBuscada;
+        int posicionAnterior=Integer.parseInt(posicionesCorrectas.get(0));
+        int grupoActual = 0;
+        for (String textoPosicion : posicionesCorrectas) {
+            posicionBuscada = Integer.parseInt(textoPosicion);
+            if (posicionBuscada <posicionAnterior) {
+                grupoActual++;
+            } else {
+                opcion = new Grupal(contenidoOpciones.get(posicionBuscada-1), grupos.get(grupoActual));
+                if(grupoActual>0){
+                    listaOpciones.add(posicionBuscada-1,opcion);
+                } else{
+                    listaOpciones.add(opcion);
+                }
             }
+            posicionAnterior=posicionBuscada;
         }
         return listaOpciones;
 
     }
-    public static  List<Opcion> crearListaOrdenada(List<String> contenidoOpciones, List<String> ordenCorrecto, Estado estadoIndicado ) {
+
+    public static  List<Ordenada> crearListaOrdenada(List<String> contenidoOpciones, List<String> ordenCorrecto ) {
 
         int posicionEnLista;
-        int posicionOrdenada=1;
 
-        List<Opcion> listaOpciones = new ArrayList<>();
+        String textoOpcion;
+        List<Ordenada> listaOpciones = new ArrayList<>();
 
         Ordenada opcion;
-        for (String textoPosicion : ordenCorrecto) {
-            posicionEnLista=Integer.parseInt(textoPosicion);
+        for(int i=0; i<contenidoOpciones.size();i++){
+            posicionEnLista=(ordenCorrecto.indexOf(String.valueOf(i+1)) + 1);
+            textoOpcion=contenidoOpciones.get(i);
 
-            opcion = new Ordenada(contenidoOpciones.get(posicionEnLista - 1), posicionOrdenada ,estadoIndicado);
+            opcion = new Ordenada(textoOpcion,posicionEnLista);
+
             listaOpciones.add(opcion);
-            posicionOrdenada++;
         }
         return listaOpciones;
     }
 
-
-    public static List<Opcion> crearListaSimple(List<String> contenidoOpciones, List<String> posicionesDeCorrectas, Estado estado){
+    public static List<Simple> crearListaSimple(List<String> contenidoOpciones, List<String> posicionesDeCorrectas, Estado estado){
 
         int posicion = 1;
-        List<Opcion> listaOpciones=new ArrayList<>();
+        List<Simple> listaOpciones=new ArrayList<>();
         Simple opcion;
         for (String contenidoOpcion : contenidoOpciones) {
             if (posicionesDeCorrectas.contains(String.valueOf(posicion))) {
@@ -64,5 +72,4 @@ public class FabricaOpciones {
         }
         return listaOpciones;
     }
-    public static void crearListaOpciones(){}
 }

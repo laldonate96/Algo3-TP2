@@ -3,86 +3,72 @@ package edu.fiuba.algo3.vista.opciones;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.opcion.Grupal;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 public class EleccionGrupalVista implements OpcionesVista {
 
-    private List<Opcion> opcionesJugador;
-    private VBox grupo1;
-    private VBox grupo2;
+    private final List<Spinner<String>> spinners = new ArrayList<>();
+    private List<Grupal> opcionesOriginales;
 
-    public EleccionGrupalVista() {
-        opcionesJugador = new ArrayList<>();
+    private List<String> obtenerGrupos(List<Grupal> opciones) {
+        List<String> grupos = new ArrayList<>();
+        for (Grupal opcion : opciones) {
+            if (!grupos.contains(opcion.obtenerGrupo())){
+                grupos.add(opcion.obtenerGrupo());
+            }
+        }
+        return grupos;
     }
 
-    @Override
-    public void mostrarOpciones(List<Opcion> opciones, Pane contenedor) {
-        grupo1 = new VBox();
-        grupo2 = new VBox();
-        HBox grupos = new HBox(grupo1, grupo2);
-        grupos.setSpacing(20);
 
-        for (Opcion opcion : opciones) {
-            Label opcionLabel = new Label(opcion.obtenerTexto());
-            opcionLabel.setOnDragDetected(event -> {
-                Dragboard panelArrastrable = opcionLabel.startDragAndDrop(TransferMode.MOVE);
-                panelArrastrable.setDragView(opcionLabel.snapshot(null, null));
-                event.consume();
-            });
+    public void mostrarOpciones(List<Grupal> opciones, GridPane contenedor) {
+        ObservableList<String> observableListGrupo = FXCollections.observableArrayList(obtenerGrupos(opciones));
+        opcionesOriginales = opciones;
+        String grupoDefault = opciones.get(0).obtenerGrupo();
 
-            opcionLabel.setOnDragDone(event -> {
-                if (event.getTransferMode() == TransferMode.MOVE) {
-                    opcionesJugador.add(opcion);
-                }
-                event.consume();
-            });
+        for (Grupal opcion : opciones) {
+                Label opcionLabel = new Label(opcion.obtenerTexto());
+                opcionLabel.getStyleClass().add("labelOpcion");
+                
+                Spinner<String> grupoSpinner = new Spinner<>();
+                grupoSpinner.getStyleClass().add(Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL);
+                grupoSpinner.setPrefWidth(250);
 
-            opcionLabel.setOnDragEntered(event -> {
-                if (event.getGestureSource() != opcionLabel && event.getDragboard().hasString()) {
-                    opcionLabel.setStyle("-fx-background-color: yellow;");
-                }
-                event.consume();
-            });
+                SpinnerValueFactory<String> listaGrupoSpinner = new SpinnerValueFactory.ListSpinnerValueFactory<>(observableListGrupo);
+                grupoSpinner.setValueFactory(listaGrupoSpinner);
+                grupoSpinner.getValueFactory().setValue(grupoDefault);
 
-            opcionLabel.setOnDragExited(event -> {
-                opcionLabel.setStyle("");
-                event.consume();
-            });
+                HBox hbox = new HBox(10);
+                hbox.getChildren().addAll(grupoSpinner, opcionLabel);
 
-            opcionLabel.setOnDragOver(event -> {
-                if (event.getGestureSource() != opcionLabel && event.getDragboard().hasString()) {
-                    event.acceptTransferModes(TransferMode.MOVE);
-                }
-                event.consume();
-            });
+                contenedor.add(hbox, 0, opciones.indexOf(opcion));
+                spinners.add(grupoSpinner);
 
-            opcionLabel.setOnDragDropped(event -> {
-                Dragboard panelArrastrable = event.getDragboard();
-                boolean success = false;
-                if (panelArrastrable.hasString()) {
-                    ((VBox) opcionLabel.getParent()).getChildren().remove(opcionLabel);
-                    ((VBox) event.getGestureTarget()).getChildren().add(opcionLabel);
-                    success = true;
-                }
-                event.setDropCompleted(success);
-                event.consume();
-            });
-
-            contenedor.getChildren().add(opcionLabel);
         }
-
-        contenedor.getChildren().add(grupos);
     }
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
+          List<Opcion> opcionesDelJugador = new ArrayList<>();
 
-    return new ArrayList<>();
+        for (int i = 0; i < spinners.size(); i++) {
+            Spinner<String> spinner = spinners.get(i);
+            String grupoSeleccionado = spinner.getValue();
+
+            Opcion opcionOriginal = opcionesOriginales.get(i);
+            Grupal opcionNueva = new Grupal(opcionOriginal.obtenerTexto(), grupoSeleccionado);
+
+            opcionesDelJugador.add(opcionNueva);
+        }
+        
+        return opcionesDelJugador;
     }
 }

@@ -4,28 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.Simple;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.GridPane;
 
 public class VerdaderoOFalsoVista implements OpcionesVista {
 
     private CheckBox opcion1;
     private CheckBox opcion2;
-    private List<Opcion> opciones;
+    private List<Simple> opciones;
 
     @Override
     public List<Opcion> retornarOpcionesDelJugador() {
-        List<Opcion> opcinesSeleccionadas = new ArrayList<>();
+        List<Opcion> opcionesSeleccionadas = new ArrayList<>();
         if (opcion1.isSelected()) {
-            opcinesSeleccionadas.add(opciones.get(0));
+            opcionesSeleccionadas.add(opciones.get(0));
         } else if (opcion2.isSelected()) {
-            opcinesSeleccionadas.add(opciones.get(1));
+            opcionesSeleccionadas.add(opciones.get(1));
         }
-        return opcinesSeleccionadas;
+        return opcionesSeleccionadas;
     }
 
-    @Override
-    public void mostrarOpciones(List<Opcion> opciones, Pane contenedor) {
+
+    public void mostrarOpciones(List<Simple> opciones, GridPane contenedor) {
         this.opciones = opciones;
         opcion1 = new CheckBox(opciones.get(0).obtenerTexto());
         opcion2 = new CheckBox(opciones.get(1).obtenerTexto());
@@ -42,6 +43,7 @@ public class VerdaderoOFalsoVista implements OpcionesVista {
             }
         });
 
-        contenedor.getChildren().addAll(opcion1, opcion2);
+        contenedor.add(opcion1, 0, 0);
+        contenedor.add(opcion2, 0, 1);
     }
 }

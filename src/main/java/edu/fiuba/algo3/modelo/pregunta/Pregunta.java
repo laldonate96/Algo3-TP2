@@ -1,28 +1,31 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.puntaje.Puntaje;
-import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
-
-
 import java.util.List;
 
-public class Pregunta {
+import edu.fiuba.algo3.modelo.Modificador.Modificador;
+import edu.fiuba.algo3.modelo.Respuesta.Respuesta;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.puntaje.Puntaje;
+
+public abstract class Pregunta {
     protected String categoria;
     protected String enunciado;
-    protected List<Opcion> opciones;
+    protected String explicacion;
     protected Puntaje puntaje;
 
-    public Pregunta(String enunciado, List<Opcion> opciones, Puntaje puntaje, String categoria) {
+    public Pregunta(String enunciado, Puntaje puntaje, String categoria, String explicacion) {
         this.enunciado = enunciado;
-        this.opciones = opciones;
         this.puntaje = puntaje;
         this.categoria = categoria;
+        this.explicacion = explicacion;
     }
 
     public void asignarPuntajes(List<Respuesta> respuestas) {
-
         puntaje.asignarPuntajes(respuestas);
+    }
+
+    public boolean modificadorEsValido(Modificador modificador){
+        return puntaje.modificadorEsValido(modificador);
     }
 
     public String obtenerCategoria() {
@@ -33,9 +36,12 @@ public class Pregunta {
         return enunciado;
     }
 
-    public List<Opcion> obtenerOpciones() {
-
-        return opciones;
+    public String obtenerExplicacion() {
+        return explicacion;
     }
+
+    protected abstract void validarTamanioOpciones(List<Opcion> opcionesJugador);
+
+    public abstract  void validarOpciones(List<Opcion> opcionesJugador);
 
 }

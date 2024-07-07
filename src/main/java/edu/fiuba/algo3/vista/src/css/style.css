@@ -5,6 +5,9 @@
     -fx-margin: 0;
     -fx-font-family: 'Comic Sans MS';
     -fx-background-color: #2C3E50;
+    -fx-background-image: url('file:src/main/java/edu/fiuba/algo3/vista/src/img/background.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
 }
 
 
@@ -20,7 +23,8 @@
     -fx-font-size: 25px;
     -fx-fill: #ECF0F1; 
 }
-.button {
+
+.button{
     -fx-padding: 20px;
     -fx-font-size: 14px;
     -fx-border-radius: 5px;
@@ -29,6 +33,193 @@
 }
 
 .button:hover {
-    
     -fx-background-color: #2980b9;
+}
+
+.botonToolbar{
+    -fx-padding: 5px;
+    -fx-font-size: 10px;
+    -fx-border-radius: 0px;
+    -fx-background-color: #e4e4e1;
+    -fx-text-fill: #000000; 
+    -fx-margin: 0px;
+}
+
+.dragable{
+    -fx-text-fill: #e8ff1c;
+}
+
+.botonJugador{   
+    -fx-padding: 5px;
+    -fx-font-size: 15px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #2980b9;
+    -fx-text-fill: #F1C40F; 
+}
+
+.botonJugador:hover{
+    -fx-background-color: #E74C3C;
+    -fx-text-fill: #2C3E50; 
+}
+
+.botonModificador{
+    -fx-padding: 5px;
+    -fx-font-size: 20px;
+    -fx-background-color: #2980b9;
+    -fx-text-fill: #F1C40F;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-margin: 0px;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+}
+
+.botonModificador:hover{
+    -fx-background-color: #B84C3C;
+    -fx-text-fill: #e4e4e1;
+}
+
+.menu-button .label {
+    -fx-text-fill: black;
+}
+
+.menu-button:hover {
+    -fx-background-color: #2980b9;
+    -fx-cursor: hand;
+}
+
+.menu-item {
+    -fx-cursor: hand;
+}
+
+.menu-item .label {
+    -fx-text-fill: black;
+}
+
+.check-box .text {
+    -fx-font-size: 15px;
+    -fx-fill: #2ECC71;
+    -fx-font-weight: bold;
+}
+
+.enunciado{
+    -fx-font-size: 20px;
+    -fx-fill: #e4e4e1;
+    -fx-font-weight: bold; 
+}
+
+.explicacion{
+    -fx-font-size: 35;
+    -fx-fill: #E74C3C; 
+    -fx-font-weight: bold;
+}
+
+.labelOpcion .text{
+    -fx-font-size: 15px;
+    -fx-fill: #2ECC71; 
+    -fx-font-weight: bold;
+}
+
+.spinner{
+    -fx-font-size: 15px;
+    -fx-text-fill: #2ECC71; 
+}
+
+.nombreJugador {
+    -fx-font-size: 20px;
+    -fx-fill: #e4e4e1; 
+    -fx-font-weight: bold;
+}
+
+.jugadorBox{
+    -fx-padding: 10px;
+    -fx-text-fill: #F1C40F; 
+    -fx-border-color: #3aa8e7;
+    -fx-border-width: 5px;
+    -fx-border-radius: 5px;
+}
+
+.botonReset{
+    -fx-padding: 5px;
+    -fx-font-size: 20px;
+    -fx-background-color: #F1C40F;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-margin: 0px;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-background-image: url('file:src/main/java/edu/fiuba/algo3/vista/src/img/boton_reset.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.botonReset:hover{
+    -fx-background-color: #B84C3C;
+    -fx-text-fill: #e4e4e1;
+}
+
+.labelPostRonda {
+    -fx-font-size: 20px;
+    -fx-fill: #ECF0F1; 
+}
+
+.flechaPuntajeJugador {
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F1C40F;
+}
+
+.ganador {
+    -fx-padding: 0;
+    -fx-margin: 0;
+    -fx-font-family: 'Comic Sans MS';
+    -fx-background-color: #2C3E50;
+    -fx-background-image: url('file:src/main/java/edu/fiuba/algo3/vista/src/img/ganaddor.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.ganadorTitulo {
+    -fx-font-size: 100px;
+    -fx-fill: #2980b9;
+}
+
+.textoJugadorGanador {
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 25px;
+    -fx-fill: #ebff55; 
+    -fx-text-alignment: center;
+}
+.jugadoresPodio {
+    -fx-padding: 25px;
+    -fx-text-fill: #2980b9;
+    -fx-background-radius: 45, 99%;
+    -fx-border-radius: 45, 99%;
+    -fx-border-color: #2980b9;
+    -fx-border-width: 3px;
+    -fx-background-color: #2980b9;
+    -fx-pref-width: 200px; 
+    -fx-max-width: 200px; 
+    -fx-alignment: center; 
+}
+.primeraVentanaTitulo {
+    -fx-font-size: 25px; 
+    -fx-fill: #ebff55; 
+}
+
+.primerElementoTitulo {
+    -fx-font-size: 35px; 
+    -fx-fill: #ebff55;
+}
+.primerElementoPodio {
+    -fx-padding: 30px; 
+    -fx-text-fill: #2980b9;
+    -fx-background-radius: 45, 99%;
+    -fx-border-radius: 45, 99%;
+    -fx-border-color: #2980b9;
+    -fx-border-width: 3px;
+    -fx-background-color: #2980b9;
+    -fx-pref-width: 250px;
+    -fx-max-width: 250px; 
+    -fx-alignment: center;
 }
